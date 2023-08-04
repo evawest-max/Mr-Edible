@@ -1,0 +1,39 @@
+.store-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.app-store-logo-container{
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+}
+h1{
+    font-family: Raleway;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+}
+p{
+    font-family: Raleway;
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.store{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color:  #FFF;
+    width: 306px;
+    padding: 5px 28px;
+    align-items: center;
+    gap: 19px;
+    font-family: Raleway;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}

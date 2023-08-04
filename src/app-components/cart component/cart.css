@@ -1,0 +1,201 @@
+.cartContainer{
+    display: flex;
+    gap: 5px;
+    margin-left: 180px;
+    color: #FFF;
+    margin-top: 53px;
+}
+
+.cartContainer img{
+    width: 50px;
+    height: 50px;
+}
+.carttext{
+    margin-top: 0px;
+    text-align: center;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+
+.goback{
+    color: #DA722C;
+    text-align: left;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.cartdisplay-items-container{
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    left: 410px;
+    font-size: 50px;
+    background: #FFF;
+    width: 700px;
+    color: black;
+    text-align: center;
+}
+.cartdisplay-container{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.cart-transprent-background{
+    position: relative;
+    z-index: 1;
+    background-color: black;
+    width: 1519px;
+    height: 1640px;
+    opacity: 0.4;
+}
+.cartdisplay-items-container input{
+    border-radius: 10px;
+    border-color: darkblue;
+    width: 200px;
+    height: 35PX;
+}
+.promo-button{
+    background-color: darkblue;
+    color: white;
+    cursor: pointer;
+    font-family: Raleway;
+    font-size: 17px;
+    width: 204px;
+    height: 38px;
+    border-radius: 10px;
+}
+.checkoutButton{
+    background-color: darkblue;
+    color: white;
+    width: 400px;
+    height: 38px;
+    color: #FFF;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.cart-back-arrow{
+    display: flex;
+    margin-left: 40px;
+    cursor: pointer;
+}
+.cart-selections-title{
+    color: darkblue;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+.amount-container{
+    display: flex;
+    gap: 250px;
+    margin: 0px 170px;
+}
+.cart-amount-tittle{
+    text-align: center;
+    color: green;
+}
+.cart-toggle-container{
+    display: flex;
+    gap: 200px;
+    margin: 60px 0px;
+    justify-content: center;
+    
+}
+.cart-toggle{
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 100%;
+    background-color: lightblue;
+    cursor: pointer;
+}
+.location-toggle{
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.foodcartMapped{
+    display: flex;
+    
+    background: #D9D9D9;
+    box-shadow: 0px 0px 20px 0px #DA722C;
+    margin: 5px 100px;
+    gap: 15px;
+    border: 1px solid;
+}
+.increaseCartNumb{
+    width: 22px;
+    height: 75px;
+    background: #FFF1DC;
+    margin-top: 15.05px;
+    margin-left: 35.87px;
+    margin-bottom: 15.05px;
+}
+.increaseNumb{
+    color: #000;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    margin: 0px;
+}
+.increaseBtn{
+    cursor: pointer;
+    color: #000;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    border: 1px solid;
+    margin: 0px;
+    padding: 0px;
+}
+.foodcartInfomation{
+    display: flex;
+    gap: 50px;
+    width: fit-content;
+    height: 85px;
+    margin-top: 7.5px;
+}
+.foodcartMappedImage{
+    width: 80px;
+    height: 80px;
+    margin-right: 40px;
+    margin-bottom: 0px;
+}
+.foodcartMappedAmount{
+    margin-left: 40px;
+    font-size: large;
+    font-family: raleway;
+}
+.Xbutton{
+    
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+label{
+    font-size: 20px;
+    
+}

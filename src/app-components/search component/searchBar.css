@@ -1,0 +1,14 @@
+.SearchbarContainer{
+    display: flex;
+    margin: 0px 500px;
+}
+.SearchbarContainer input{
+    width: 472px;
+    height: 30px;
+    border-radius: 5px;
+    background: #FFFCED;
+    
+}
+input{
+    padding: 0px 10px;
+}

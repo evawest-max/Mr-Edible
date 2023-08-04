@@ -1,0 +1,41 @@
+import "./footer.css"
+import facebook from "./facebook.svg"
+import instagram from "./instagram.svg"
+import whatsapp from "./whatsapp.svg"
+import copyright from "./copyright.svg"
+function Footer(){
+    return(
+        <div className="container">
+            <div className="footer-container" >
+                <div>
+                    <h4 className="link-title">Quick Links</h4>
+                    <div className="quick-links">
+                        <p>About Us</p>
+                        <p>Our mission and vision</p>
+                        <p>Privacy Policy</p>
+                        <p>Terms & Conditions</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 className="link-title">Contact Us</h4>
+                    <div className="quick-links">
+                        <p>contact@mredible.com</p>
+                        <div className="footer-image">
+                            <img src={facebook} alt="facebook"/>
+                            <img src={instagram} alt="instagram"/>
+                            <img src={whatsapp} alt="whats app"/>
+                        </div>
+                        <div >
+                            <input className="footer-input" type="text" placeholder="Email address"/>
+                            <button className="footer-button"><b>Subcribe</b></button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <p className="copyright-para">This app was developed by<img src={copyright} alt="copyright"/>Ebunolwa Akinwumi 2023</p>
+        </div>
+    )
+}
+
+export default Footer
