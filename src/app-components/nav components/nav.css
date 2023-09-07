@@ -1,6 +1,5 @@
 
 .navcontainer{
-    
     color: #FFF;
     display: flex;
     flex-direction: row;
@@ -17,15 +16,30 @@
     gap: 50px;
     padding: 0px 20px
 }
-.navcontainer nav ul li{
+.navcontainer nav ul a{
+    color: white;
     list-style: none;
+    text-decoration: none;
     text-align: center;
     font-family: Raleway;
-    font-size: 20px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 800;
     line-height: normal;
     cursor: pointer;
+}
+
+.navcontainer nav ul a.active{
+    background-color: orange;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: darkblue;
+}
+.navcontainer nav ul a:hover{
+    background-color: rgb(244, 196, 108);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: darkblue;
 }
 .logo{
     width: 130px;

@@ -1,22 +1,24 @@
 //import Adverts from "./advert section/adverts"
 import "./Foodsection.css";
-import freshlycooked from "./freshlycooked.png"
-import lessthan from "./less-than.svg"
-import greaterthan from "./greaterThan.svg"
-//import smallChops from "./small chops.png"
-//import smallchops2 from "./small chops 2.png"
-//import rice from "./rice and chicken 1.png"
-//import soup from "./DALAS-SOUPS.png"
+import specialadverts from "./foodAdverts";
+import "react-alice-carousel/lib/alice-carousel.css";
+import { Link } from "react-router-dom";
+import AliceCarousel from "react-alice-carousel";
 
-function Foodsection() {
+
+
+function Foodsection() { 
   return (
-    <div className="foods">
+    
       <div className="advertcontainer">
-        <img src={lessthan} alt="lessthan"/>
-        <img className="advert-img" src={freshlycooked} alt="advert" />
-        <img src={greaterthan} alt="greater than"/>
+        <AliceCarousel>
+          <Link to="/special"><p><img className="advert-img" src={specialadverts[0].link} alt="advert" /></p></Link>
+          <Link to="/special"><p><img className="advert-img" src={specialadverts[1].link} alt="advert" /></p></Link>
+          <Link to="/special"><p><img className="advert-img" src={specialadverts[2].link} alt="advert" /></p></Link>
+          <Link to="/special"><p><img className="advert-img" src={specialadverts[3].link} alt="advert" /></p></Link>
+        </AliceCarousel>
       </div> 
-    </div>
+    
   );
 }
 export default Foodsection;

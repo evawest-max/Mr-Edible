@@ -13,7 +13,7 @@ function Store(){
                 </div>
                 <div className="store">
                     <img src={playStore} alt="app store"/>
-                    <h4>App Store</h4>
+                    <h4> Google Play Store</h4>
                 </div>
             </div>
         </div>

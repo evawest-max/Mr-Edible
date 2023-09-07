@@ -1,17 +1,23 @@
 import { useState } from "react"
 
-let qt=0
-function ItemQuantity(){
-    const [quantitys, newQuantity]=useState(qt)
-        function increaseQuantitys(){
-            qt+=1
-            newQuantity(qt)
-        }
-        function decreaseQuantitys(){
-            
-            qt > 0? qt-=1 : qt+=0
-            newQuantity(qt)
-        }
+
+
+function ItemQuantity(props){
+    let [quantitys, newQuantitys]=useState(1)
+            function increaseQuantitys(){
+                let qt=quantitys+1
+                newQuantitys(qt)
+                //console.log(quantitys)
+               
+                //itemamount=item.amount*qt
+            }
+            function decreaseQuantitys(){ 
+                let qt=quantitys-1
+                newQuantitys(qt)
+                console.log(quantitys)
+                
+            }
+
     return (
         <div className="increaseCartNumb">
             <p onClick={increaseQuantitys} className="increaseBtn">+</p>
@@ -20,4 +26,5 @@ function ItemQuantity(){
         </div>
     )
 }
+
 export default ItemQuantity

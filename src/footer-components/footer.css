@@ -36,6 +36,11 @@
     margin-top: 50px;
     margin-bottom: 10px;
 }
+.copyright-para img{
+    width: 20px;
+    height: 20px;
+    margin: 0px 10px;
+}
 .link-title{
     color: #DA722C;
     text-align: left;
@@ -46,10 +51,11 @@
     line-height: normal;
 }
 .footer-input{
-    width: 526.138px;
+    max-width: 526.138px;
     height: 38px;
     border-radius: 8px;
     background: #FFF;
+    padding-right: 360px;
 }
 .footer-button{
     position: absolute;

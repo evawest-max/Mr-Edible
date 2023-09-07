@@ -33,7 +33,7 @@ function Footer(){
                     </div>
                 </div>
             </div>
-            <p className="copyright-para">This app was developed by<img src={copyright} alt="copyright"/>Ebunolwa Akinwumi 2023</p>
+            <p className="copyright-para">Copyright<img src={copyright} alt="copyright"/>Ebunolwa Akinwumi 2023</p>
         </div>
     )
 }

@@ -1,43 +1,41 @@
 import { useState } from "react";
-import { increaseCount } from "../cart component/cart";
 import "./Foodsection.css";
-let addToCartToggle=false
- export let count=1
+
  export let checkout=[]
 function Fooditem(props){
     const [counts, newcounts]=useState(1)
     const [buttonState, newbuttonState]= useState(<button onClick={addToCart} className="food-button">Add to cart</button>)
+    
     function removefromCart(){
-        addToCartToggle = !addToCartToggle
-        count--
-        
-        for (let i=0; i<checkout.length; i++){
-            checkout[i]===props.id?checkout.pop(checkout[i]):console.log("cant find it")
-        };
-        
+        props.removeclickeds()       
+            let indexs=    checkout.findIndex(checkindex)
+                function checkindex(checkouts){
+                    return checkouts===props.id
+                }
+                checkout.splice(indexs,1) 
+            //this function loops through the checkout array and and if the item in the checkout array march the item id, it removes it from the list
         newcounts(counts-1)
         newbuttonState(<button onClick={addToCart} className="food-button">Add to cart</button>)
-        console.log(count)
-        console.log(addToCartToggle)
-        console.log(checkout)
     }
     function addToCart(){
-        addToCartToggle = !addToCartToggle
-        count++
-        checkout.push(props.id)
-       // {addToCartToggle? buttonState:newbuttonState(<button onClick={removefromCart} className="food-button">remove</button>)} 
-        newbuttonState(<button onClick={removefromCart} className="food-button">remove</button>)
-        console.log(count)
-        console.log(addToCartToggle)
+        let checkCheckout=checkout.includes(props.id)
+        if (checkCheckout){
+            console.log("id can not be added because it already exist")
+        }else{
+            props.addclickeds()
+            checkout.push(props.id)
+        }
+        newbuttonState(<button onClick={removefromCart} className="food-button">Remove</button>)
         console.log(checkout)
+        console.log(props.id)
     }
     return(
         <div>
-        <div className="food-item"  >
-          <img src={props.image} alt="rice"/>
-          <p >{props.name}<br/>${props.price}</p>
-          {buttonState}
-        </div>
+            <div className="food-item"  >
+                <img src={props.image} alt="rice"/>
+                <p >{props.name}<br/>${props.price}</p>
+                {buttonState}
+            </div>
         </div>
     )
 }

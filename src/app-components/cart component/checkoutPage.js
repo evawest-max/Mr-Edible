@@ -1,6 +1,7 @@
 import backArrow from "./back arrow.svg"
 import location from "./location.svg"
 import checkoutcart from "./cart-checkout.svg"
+import { Link } from "react-router-dom"
 
 function CheckoutPage(props){
     
@@ -8,11 +9,11 @@ function CheckoutPage(props){
     
     return(
         <div className="cartdisplay-container">
-                    <div onClick={props.clear} className="cart-transprent-background"></div>
+                    <Link to="/cart"><div onClick={props.clear} className="cart-transprent-background"></div></Link>
                     <div className="cartdisplay-items-container">
                         <div className="cart-back-arrow">
-                            <img onClick={props.clear} src={backArrow} alt="back arrow"/>
-                            <h4 onClick={props.clear} className="goback">continue shopping</h4>
+                        <Link to="/cart"><img onClick={props.clear} src={backArrow} alt="back arrow"/></Link>
+                            <h4 onClick={props.clear} className="goback">Back to cart</h4>
                         </div> 
                         <form>
                             <label>Your name</label>
@@ -31,9 +32,9 @@ function CheckoutPage(props){
                             </select>
                             
                         </form>
-                        <button className="checkoutButton">Checkout</button>
+                        <button className="checkoutButton">Place Your Order</button>
                         <div className="cart-toggle-container">
-                            <img className= "togglestate" src={checkoutcart} alt="cart"/>
+                            <Link to="/cart"><img className= "togglestate" src={checkoutcart} alt="cart"/></Link>
                             <img  className="cart-toggle" src={location} alt="location"/>
                         </div>
                     </div>

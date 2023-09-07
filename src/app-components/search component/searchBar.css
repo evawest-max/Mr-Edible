@@ -1,14 +1,23 @@
 .SearchbarContainer{
     display: flex;
     margin: 0px 500px;
+    position: absolute;
+    top: 89px;
 }
 .SearchbarContainer input{
     width: 472px;
-    height: 30px;
+    height: 25px;
     border-radius: 5px;
     background: #FFFCED;
     
 }
 input{
     padding: 0px 10px;
+}
+.fruit{
+    position: absolute;
+    top: 20px;
+    left: 1150px;
+    text-decoration: none;
+    margin: 0px;
 }
