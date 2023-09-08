@@ -33,7 +33,7 @@ function Fooditem(props){
         <div>
             <div className="food-item"  >
                 <img src={props.image} alt="rice"/>
-                <p >{props.name}<br/>${props.price}</p>
+                <p >{props.name}<br/>₦{props.price}</p>
                 {buttonState}
             </div>
         </div>

@@ -3,6 +3,7 @@
     color: #FFF;
     margin: 0px;
     position: fixed;
+    z-index: 100;
 }
 
 .cartContainer img{
@@ -45,13 +46,14 @@
     position: absolute;
     top: 0px;
     left: 0px;
+    z-index: 100;
 }
 .cart-transprent-background{
     position: relative;
     z-index: 1;
     background-color: black;
     width: 1519px;
-    height: 1640px;
+    height: 900px;
     opacity: 0.4;
 }
 .cartdisplay-items-container input{
@@ -99,13 +101,34 @@
     font-weight: 800;
     line-height: normal;
 }
+.amount-main-container{
+    display: flex;
+    gap: 200px;
+    padding: 0px;
+}
+.amount-title-container{
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    margin-left:170px;
+}
+.amount-title-container p{
+    margin: 0px;
+    padding: 5px 0px;
+    text-align: left;
+    width: 90px;
+    color: green;
+}
 .amount-container{
     display: flex;
-    gap: 250px;
-    margin: 0px 170px;
+    flex-direction: column;
+    margin-right:170px;
 }
-.cart-amount-tittle{
-    text-align: center;
+.amount-container p{
+    margin: 0px;
+    padding: 5px 0px;
+    text-align: left;
+    width: 90px;
     color: green;
 }
 .cart-toggle-container{
@@ -115,7 +138,7 @@
     justify-content: center;
     
 }
-.cart-toggle{
+.cart-toggle-cart-in{
     width: 30px;
     height: 30px;
     padding: 10px;
@@ -123,13 +146,27 @@
     background-color: lightblue;
     cursor: pointer;
 }
-.location-toggle{
+.cart-toggle-checkout-out{
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    cursor: pointer
+}
+.cart-toggle-cart-out{
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    cursor: pointer
+}
+.cart-toggle-chechout-in{
     width: 30px;
     height: 30px;
     padding: 10px;
     border-radius: 100%;
+    background-color: lightblue;
     cursor: pointer;
 }
+
 .foodcartMapped{
     display: flex;
     
@@ -198,4 +235,7 @@
 label{
     font-size: 20px;
     
+}
+form input{
+    text-align: center;
 }

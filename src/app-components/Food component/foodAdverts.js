@@ -1,7 +1,8 @@
 import freshlycooked from "./freshlycooked.jpg"
 import spagsoup from "./spag soup.jpg"
 import chickensoup from "./chicken soup.jpg"
-import bangasoup from "./banga soup.jpg"
+import bangasoup from "./banga soup.png"
+import bugers from "./buger advert.jpg"
 
 const specialadverts=[
     {
@@ -22,7 +23,7 @@ const specialadverts=[
     },
     {
         id:4,
-        link:freshlycooked
+        link:bugers
     }
 ]
 

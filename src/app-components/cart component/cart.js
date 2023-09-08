@@ -87,7 +87,7 @@ function Cart(){
         
         filteredFoodItems.forEach(element => {
             cartTotal+=element.amount
-            deleveryfee+=1
+            deleveryfee+=500
         });
         let subtotal=cartTotal+deleveryfee+tax
     
@@ -108,30 +108,43 @@ function Cart(){
                         <input type="text" placeholder="Promo code"/>
                         <button className="promo-button">Apply code</button>
                     </div>
-                    <div>
-                   
-                        <div className="amount-container">
-                            <p className="cart-amount-tittle">tax</p>
-                            <p className="cart-amount-tittle">${tax}</p>
+                    <div className="amount-main-container">
+                        <div className="amount-title-container">
+                            <div>
+                                <p className="cart-amount-tittle">tax:</p>
+                            </div>
+                            <div >
+                                <p className="cart-amount-tittle">delevery:</p>
+                            </div>
+                            <div >
+                                <p className="cart-amount-tittle">Cart total:</p>
+                            </div>
                         </div>
                         <div className="amount-container">
-                            <p className="cart-amount-tittle">delevery</p>
-                            <p className="cart-amount-tittle">${deleveryfee}</p>
+                            <div>
+                                <p className="cart-amount-tittle">₦{tax}</p>
+                            </div>
+                            <div>
+                                <p className="cart-amount-tittle">₦{deleveryfee}</p>
+                            </div>
+                            <div>
+                                <p className="cart-amount-tittle">₦{cartTotal}</p>
+                            </div>
                         </div>
-                        <div className="amount-container">
-                            <p className="cart-amount-tittle">Cart total</p>
-                            <p className="cart-amount-tittle">${cartTotal}</p>
-                        </div>
+                    </div>
                         <hr/>
-                        <div className="amount-container">
+                    <div className="amount-main-container">
+                        <div className="amount-title-container" >
                             <p className="cart-amount-tittle">Subtotal</p>
-                            <p className="cart-amount-tittle">${subtotal}</p>
+                        </div>
+                        <div className="amount-container">
+                            <p className="cart-amount-tittle">₦{subtotal}</p>
                         </div>
                     </div>
                     <Link to="/checkoutpage"><button  className="checkoutButton">Proceed to checkout</button></Link>
                     <div className="cart-toggle-container">
-                        <img className="cart-toggle" src={checkoutcart} alt="cart"/>
-                        <Link to="/checkoutpage"><img src={location} alt="location"/></Link>
+                        <img className="cart-toggle-cart-in" src={checkoutcart} alt="cart"/>
+                        <Link to="/checkoutpage"><img className="cart-toggle-checkout-out" src={location} alt="location"/></Link>
                     </div>
                 </div>
             </div>

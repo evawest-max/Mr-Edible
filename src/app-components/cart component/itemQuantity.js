@@ -11,8 +11,13 @@ function ItemQuantity(props){
                
                 //itemamount=item.amount*qt
             }
-            function decreaseQuantitys(){ 
-                let qt=quantitys-1
+            function decreaseQuantitys(){
+                let qt=null
+                if (quantitys>1){
+                    qt=quantitys-1
+                } else{
+                    qt=1
+                }
                 newQuantitys(qt)
                 console.log(quantitys)
                 

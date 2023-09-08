@@ -1,6 +1,5 @@
 import { useRef, useState } from "react"
 import "./searchBar.css"
-import vector from "./Vector.svg"
 import Foodsection from "../Food component/Foodsection"
 import foods from "../Food component/foods"
 import Fooditem from "../Food component/food item"
@@ -48,7 +47,6 @@ function SearchBar(){
             <Link to="/cart" className="fruit"><CartIcon countt={counts}/></Link>
             <div className="SearchbarContainer">
                 <input onChange={findFood}  ref={inputRef} type="text" placeholder="I am searching for..."/>
-                <img src={vector} alt="search"/>
             </div>
             
              

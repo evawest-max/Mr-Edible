@@ -1,6 +1,6 @@
 function Vendors(){
     return(
-        <h2>New vendors are yet to join the app</h2>
+        <h2 className="vendorContainer">We are yet to onboard new vendors. use the subscribe button below to stay updated</h2>
     )
 }
 

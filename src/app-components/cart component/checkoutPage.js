@@ -26,16 +26,17 @@ function CheckoutPage(props){
                             <input type="text" placeholder="no1 kane street"/><br/>
                             <label>Delivery locationr</label>
                             <select name="" id="">
-                                <option value="Texas">Texas</option>
-                                <option value="New York">New york</option>
-                                <option value="Capetown">Capetown</option>
+                                <option value="Texas">Port Harcourt</option>
+                                <option value="New York">Warri</option>
+                                <option value="Capetown">Lagos</option>
+                                <option value="Capetown">Asaba</option>
                             </select>
                             
                         </form>
                         <button className="checkoutButton">Place Your Order</button>
                         <div className="cart-toggle-container">
-                            <Link to="/cart"><img className= "togglestate" src={checkoutcart} alt="cart"/></Link>
-                            <img  className="cart-toggle" src={location} alt="location"/>
+                            <Link to="/cart"><img className= "cart-toggle-cart-out" src={checkoutcart} alt="cart"/></Link>
+                            <img  className="cart-toggle-chechout-in" src={location} alt="location"/>
                         </div>
                     </div>
                 </div>

@@ -2,8 +2,7 @@
 .advertcontainer{
     display: flex;
     justify-content: center;
-    
-    
+    padding-top: 136px;
 }
 .advert-img{
     width: 100%;
