@@ -6,20 +6,20 @@
 .app-store-logo-container{
     display: flex;
     justify-content: center;
-    gap: 22px;
+    gap: 10px;
 }
 h1{
     font-family: Raleway;
-    font-size: 60px;
+    font-size: 30px;
     font-style: normal;
     font-weight: 900;
     line-height: normal;
 }
 p{
     font-family: Raleway;
-font-size: 16px;
+font-size: 14px;
 font-style: normal;
-font-weight: 700;
+font-weight: 600;
 line-height: normal;
 }
 .store{
@@ -27,14 +27,75 @@ line-height: normal;
     justify-content: center;
     background-color: black;
     color:  #FFF;
-    width: 306px;
-    padding: 5px 28px;
+    width: 135px;
+    padding: 0px 10px;
     align-items: center;
-    gap: 19px;
+    gap: 10px;
     font-family: Raleway;
-    font-size: 25px;
+    
+    border-radius: 15px;
+}
+.store h4{
+    font-family: Raleway;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.store img{
+    width: 20px;
+}
+
+
+@media screen and (min-width:1000px){
+    .store-container{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .app-store-logo-container{
+        display: flex;
+        justify-content: center;
+        gap: 22px;
+    }
+    h1{
+        font-family: Raleway;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+    }
+    p{
+        font-family: Raleway;
+    font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    border-radius: 30px;
+    }
+    .store{
+        display: flex;
+        justify-content: center;
+        background-color: black;
+        color:  #FFF;
+        width: 306px;
+        padding: 3px 17px;
+        align-items: center;
+        gap: 19px;
+        font-family: Raleway;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        border-radius: 30px;
+    }
+    .store h4{
+        font-family: Raleway;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    }
+    .store img{
+        width: 50px;
+    }
 }

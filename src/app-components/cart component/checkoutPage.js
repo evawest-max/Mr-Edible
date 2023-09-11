@@ -2,12 +2,15 @@ import backArrow from "./back arrow.svg"
 import location from "./location.svg"
 import checkoutcart from "./cart-checkout.svg"
 import { Link } from "react-router-dom"
+import { Navbar } from "../nav components/nav"
 
 function CheckoutPage(props){
     
    
     
     return(
+        <div>
+        <Navbar/>
         <div className="cartdisplay-container">
                     <Link to="/cart"><div onClick={props.clear} className="cart-transprent-background"></div></Link>
                     <div className="cartdisplay-items-container">
@@ -39,6 +42,7 @@ function CheckoutPage(props){
                             <img  className="cart-toggle-chechout-in" src={location} alt="location"/>
                         </div>
                     </div>
+                </div>
                 </div>
     )
 }

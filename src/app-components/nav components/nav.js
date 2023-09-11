@@ -9,7 +9,7 @@ function Navbar() {
   return (
     
       <div className="navcontainer">
-        <NavLink to="/home"><img className="logo" src={mrEdible} alt="logo" /></NavLink>
+        <NavLink to="/"><img className="logo" src={mrEdible} alt="logo" /></NavLink>
         <nav>
           <ul>
             <NavLink to="/vendors">Food Vendors</NavLink>

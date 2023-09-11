@@ -1,19 +1,21 @@
+.searchcontainer{
+    background: radial-gradient(61.32% 53.53% at 33.80% 48.98%, #050367 0%, #01000A 100%);
+}
 .SearchbarContainer{
     display: flex;
-    margin: 0px 500px;
+    margin: 0px 70px;
     position: absolute;
-    top: 89px;
+    top: 40px;
 }
 .SearchbarContainer input{
-    width: 472px;
-    height: 25px;
+    width: 200px;
+    height: 20px;
     border-radius: 5px;
     background: #FFFCED;
     position: fixed;
     z-index: 100;
-}
-input{
     padding: 0px 10px;
+    border: none;
 }
 .fruit{
     position: absolute;
@@ -22,3 +24,38 @@ input{
     text-decoration: none;
     margin: 0px;
 }
+
+
+
+@media screen and (min-width:600px){
+    .searchcontainer{
+        background: radial-gradient(61.32% 53.53% at 33.80% 48.98%, #050367 0%, #01000A 100%);
+    }
+    .SearchbarContainer{
+        display: flex;
+        margin: 0px 500px;
+        position: absolute;
+        top: 60px;
+    }
+    .SearchbarContainer input{
+        width: 472px;
+        height: 20px;
+        border-radius: 5px;
+        background: #FFFCED;
+        position: fixed;
+        z-index: 100;
+        padding: 0px 10px;
+        border: none;
+    }
+    .fruit{
+        position: absolute;
+        top: 20px;
+        left: 1150px;
+        text-decoration: none;
+        margin: 0px;
+    }
+}
+
+
+
+

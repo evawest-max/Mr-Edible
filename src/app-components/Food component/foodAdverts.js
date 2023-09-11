@@ -7,7 +7,7 @@ import bugers from "./buger advert.jpg"
 const specialadverts=[
     {
         id:0,
-        link:freshlycooked
+        link:spagsoup 
     },
     {
         id:1,
@@ -15,7 +15,7 @@ const specialadverts=[
     },
     {
         id:2,
-        link:spagsoup
+        link:freshlycooked
     },
     {
         id:3,

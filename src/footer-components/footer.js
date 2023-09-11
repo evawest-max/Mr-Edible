@@ -14,6 +14,7 @@ function Footer(){
                         <p>Our mission and vision</p>
                         <p>Privacy Policy</p>
                         <p>Terms & Conditions</p>
+                        <p>FAQ</p>
                     </div>
                 </div>
                 <div>
@@ -33,7 +34,7 @@ function Footer(){
                     </div>
                 </div>
             </div>
-            <p className="copyright-para">Copyright<img src={copyright} alt="copyright"/>Ebunolwa Akinwumi 2023</p>
+            <p className="copyright-para"><img src={copyright} alt="copyright"/> 2023 Ebunolwa Akinwumi. All Rights reserved</p>
         </div>
     )
 }

@@ -1,20 +1,21 @@
 .cartContainer{
     display: flex;
-    color: #FFF;
+    color: white;
     margin: 0px;
     position: fixed;
     z-index: 100;
+    left: 330px;
 }
 
 .cartContainer img{
-    width: 35px;
-    height: 35px;
+    width: 15px;
+    height: 15px;
 }
 .carttext{
     margin: 0px;
     text-align: center;
     font-family: Raleway;
-    font-size: 20px;
+    font-size: 10px;
     font-style: normal;
     font-weight: normal;
     line-height: normal;
@@ -35,10 +36,10 @@
     position: absolute;
     z-index: 2;
     top: 0px;
-    left: 410px;
+    left:   0px;
     font-size: 50px;
     background: #FFF;
-    width: 700px;
+    width: 375px;
     color: black;
     text-align: center;
 }
@@ -52,65 +53,78 @@
     position: relative;
     z-index: 1;
     background-color: black;
-    width: 1519px;
-    height: 900px;
+    width: 375;
+    height: 750px;
     opacity: 0.4;
+    position: fixed;
 }
 .cartdisplay-items-container input{
     border-radius: 10px;
     border-color: darkblue;
-    width: 200px;
-    height: 35PX;
+    width: auto;
+    height: auto;
+    padding: 5px;
+}
+.cartdisplay-items-container form label{
+    font-size: 15px;
+    margin-right: 5px;
+}
+.cartdisplay-items-container form input{
+    font-size: 15px;
+    height: 8px;
 }
 .promo-button{
     background-color: darkblue;
     color: white;
     cursor: pointer;
     font-family: Raleway;
-    font-size: 17px;
-    width: 204px;
-    height: 38px;
+    font-size: 14px;
+    width: auto;
+    height: auto;
+    padding: 5px;
     border-radius: 10px;
 }
 .checkoutButton{
     background-color: darkblue;
     color: white;
-    width: 400px;
-    height: 38px;
+    width: auto;
+    height: auto;
+    padding: 3px 20px;
     color: #FFF;
     text-align: center;
     font-family: Raleway;
-    font-size: 24px;
+    font-size: 20px;
     font-style: normal;
-    font-weight: 800;
+    font-weight: 600;
     line-height: normal;
     border-radius: 10px;
     cursor: pointer;
 }
 .cart-back-arrow{
     display: flex;
-    margin-left: 40px;
+    margin-left: 10px;
     cursor: pointer;
 }
 .cart-selections-title{
     color: darkblue;
     text-align: center;
     font-family: Raleway;
-    font-size: 32px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 800;
     line-height: normal;
 }
 .amount-main-container{
     display: flex;
-    gap: 200px;
+    justify-content: center;
+    gap: 00px;
     padding: 0px;
 }
 .amount-title-container{
     display: flex;
     flex-direction: column;
     padding: 0px;
-    margin-left:170px;
+    margin-left:0px;
 }
 .amount-title-container p{
     margin: 0px;
@@ -122,7 +136,7 @@
 .amount-container{
     display: flex;
     flex-direction: column;
-    margin-right:170px;
+    margin-right:0px;
 }
 .amount-container p{
     margin: 0px;
@@ -130,10 +144,11 @@
     text-align: left;
     width: 90px;
     color: green;
+    text-align: right;
 }
 .cart-toggle-container{
     display: flex;
-    gap: 200px;
+    gap: 100px;
     margin: 60px 0px;
     justify-content: center;
     
@@ -167,36 +182,28 @@
     cursor: pointer;
 }
 
-.foodcartMapped{
-    display: flex;
-    
-    background: #D9D9D9;
-    box-shadow: 0px 0px 20px 0px #DA722C;
-    margin: 5px 100px;
-    gap: 15px;
-    border: 1px solid;
-}
+
 .increaseCartNumb{
     width: 22px;
-    height: 75px;
+    height: 68px;
     background: #FFF1DC;
-    margin-top: 15.05px;
-    margin-left: 35.87px;
-    margin-bottom: 15.05px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    color: darkblue;
 }
 .increaseNumb{
-    color: #000;
     text-align: center;
     font-family: Raleway;
-    font-size: 24px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 800;
     line-height: normal;
     margin: 0px;
+    color: darkblue;
 }
 .increaseBtn{
     cursor: pointer;
-    color: #000;
     text-align: center;
     font-family: Raleway;
     font-size: 18px;
@@ -206,36 +213,298 @@
     border: 1px solid;
     margin: 0px;
     padding: 0px;
+    color: darkblue;
+}
+.foodcartMapped{
+    display: flex;
+    background: #D9D9D9;
+    box-shadow: 0px 0px 20px 0px #DA722C;
+    margin: 5px 10px;
+    gap: 15px;
+    border: 1px solid;
 }
 .foodcartInfomation{
     display: flex;
-    gap: 50px;
     width: fit-content;
-    height: 85px;
     margin-top: 7.5px;
 }
+.foodcartInfomation p{
+    margin-left: 20px;
+    width: 100px;
+    font-family: raleway;
+    font-size: 11px;
+    color: darkblue;
+}
 .foodcartMappedImage{
-    width: 80px;
-    height: 80px;
-    margin-right: 40px;
-    margin-bottom: 0px;
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
 }
 .foodcartMappedAmount{
-    margin-left: 40px;
-    font-size: large;
+    font-size: 13px;
     font-family: raleway;
+    color: darkblue;
 }
-.Xbutton{
-    
-    width: 20px;
-    height: 20px;
+.Xbutton{  
+    width: 10px;
+    height: 10px;
     flex-shrink: 0;
     margin-right: 10px;
 }
 label{
     font-size: 20px;
-    
 }
 form input{
     text-align: center;
+}
+
+@media screen and (min-width:900px){
+    .cartContainer{
+        display: flex;
+        color: #FFF;
+        margin: 0px;
+        position: fixed;
+        z-index: 100;
+        left: 1200px;
+    }
+
+    .cartContainer img{
+        width: 25px;
+        height: 25px;
+    }
+    .carttext{
+        margin: 0px;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: normal;
+        line-height: normal;
+        text-decoration-line: none;
+    }
+
+
+    .goback{
+        color: #DA722C;
+        text-align: left;
+        font-family: Raleway;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+    .cartdisplay-items-container{
+        position: absolute;
+        z-index: 2;
+        top: 0px;
+        left: 410px;
+        font-size: 50px;
+        background: #FFF;
+        width: 700px;
+        color: black;
+        text-align: center;
+    }
+    .cartdisplay-container{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 100;
+    }
+    .cart-transprent-background{
+        position: relative;
+        z-index: 1;
+        background-color: black;
+        width: 1519px;
+        height: 750px;
+        opacity: 0.4;
+        position: fixed;
+    }
+    .cartdisplay-items-container input{
+        border-radius: 10px;
+        border-color: darkblue;
+        width: 200px;
+        height: 35PX;
+    }
+    .promo-button{
+        background-color: darkblue;
+        color: white;
+        cursor: pointer;
+        font-family: Raleway;
+        font-size: 17px;
+        width: 204px;
+        height: 38px;
+        border-radius: 10px;
+    }
+    .checkoutButton{
+        background-color: darkblue;
+        color: white;
+        width: 400px;
+        height: 38px;
+        color: #FFF;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    .cart-back-arrow{
+        display: flex;
+        margin-left: 40px;
+        cursor: pointer;
+    }
+    .cart-selections-title{
+        color: darkblue;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+    }
+    .amount-main-container{
+        display: flex;
+        gap: 200px;
+        padding: 0px;
+    }
+    .amount-title-container{
+        display: flex;
+        flex-direction: column;
+        padding: 0px;
+        margin-left:170px;
+    }
+    .amount-title-container p{
+        margin: 0px;
+        padding: 5px 0px;
+        text-align: left;
+        width: 90px;
+        color: green;
+    }
+    .amount-container{
+        display: flex;
+        flex-direction: column;
+        margin-right:170px;
+    }
+    .amount-container p{
+        margin: 0px;
+        padding: 5px 0px;
+        text-align: left;
+        width: 90px;
+        color: green;
+    }
+    .cart-toggle-container{
+        display: flex;
+        gap: 200px;
+        margin: 60px 0px;
+        justify-content: center;
+        
+    }
+    .cart-toggle-cart-in{
+        width: 30px;
+        height: 30px;
+        padding: 10px;
+        border-radius: 100%;
+        background-color: lightblue;
+        cursor: pointer;
+    }
+    .cart-toggle-checkout-out{
+        width: 30px;
+        height: 30px;
+        padding: 10px;
+        cursor: pointer
+    }
+    .cart-toggle-cart-out{
+        width: 30px;
+        height: 30px;
+        padding: 10px;
+        cursor: pointer
+    }
+    .cart-toggle-chechout-in{
+        width: 30px;
+        height: 30px;
+        padding: 10px;
+        border-radius: 100%;
+        background-color: lightblue;
+        cursor: pointer;
+    }
+
+    .foodcartMapped{
+        display: flex;
+        
+        background: #D9D9D9;
+        box-shadow: 0px 0px 20px 0px #DA722C;
+        margin: 5px 100px;
+        gap: 15px;
+        border: 1px solid;
+    }
+    .increaseCartNumb{
+        width: 22px;
+        height: 75px;
+        background: #FFF1DC;
+        margin-top: 15.05px;
+        margin-left: 35.87px;
+        margin-bottom: 15.05px;
+        color: darkblue;
+    }
+    .increaseNumb{
+        color: darkblue;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        margin: 0px;
+    }
+    .increaseBtn{
+        cursor: pointer;
+        color: darkblue;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        border: 1px solid;
+        margin: 0px;
+        padding: 0px;
+    }
+    .foodcartInfomation{
+        display: flex;
+        gap: 5px;
+        width: fit-content;
+        height: 85px;
+        margin-top: 7.5px;
+    }
+    .foodcartInfomation p{
+       
+        width: 120px;
+        font-family: raleway;
+        font-size: 15px;
+        color: darkblue;
+    }
+    .foodcartMappedImage{
+        width: 80px;
+        height: 80px;
+        
+    }
+    .foodcartMappedAmount{
+        font-size: large;
+        font-family: raleway;
+    }
+    .Xbutton{
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+        margin-right: 10px;
+    }
+    label{
+        font-size: 20px;
+        
+    }
+    form input{
+        text-align: center;
+    }
 }

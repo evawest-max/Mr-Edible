@@ -9,7 +9,7 @@ function Store(){
             <div className="app-store-logo-container">
                 <div className="store">
                     <img src={appStore} alt="app store"/>
-                    <h4>App Store</h4>
+                    <h4>Apple Store</h4>
                 </div>
                 <div className="store">
                     <img src={playStore} alt="app store"/>

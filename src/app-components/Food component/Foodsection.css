@@ -1,29 +1,30 @@
-
 .advertcontainer{
-    display: flex;
-    justify-content: center;
-    padding-top: 136px;
+    padding-top: 50px;
+    height: 355px;
 }
 .advert-img{
     width: 100%;
     object-fit: cover;
-    height: 500px;
+    height: 190px;
     cursor: pointer;
 }
 .food-container{
     display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(5, 1fr);
-    margin: 0px 80px;
+    gap: 18px;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0px 31px;
+    
+    overflow: none;
 }
 .food-item{
-    width: 180px;
-    height: 200px;
+    width: 140px;
+    height: 173px;
     font-family: Raleway;
     color: white;
     text-align: center;
     transition: transform .3s;
-    margin: 30px 10px;
+    margin: 0px 0px;
+    
 }
 .food-item:hover{
     transform: scale(1.05);
@@ -32,13 +33,78 @@
     border-bottom: 10px;
 }
 .food-item img{
-    width: 180px;
-    height: 101px;
+    width: 140px;
+    height: 100px;
+}
+.food-item p{
+    color: white;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 .food-button{
-    width: 180px;
-    height: 30px;
+    width: 140px;
+    height: 25px;
     border-radius: 10px;
     background: #FA9807;
     cursor: pointer;
+}
+
+@media screen and (min-width:600px){
+    .advertcontainer{
+        display: flex;
+        justify-content: center;
+        padding-top: 67px;
+        height: 580px;
+    }
+    .advert-img{
+        width: 100%;
+        object-fit: cover;
+        height: 580px;
+        cursor: pointer;
+    }
+    .food-container{
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(5, 1fr);
+        margin: 90px 80px;
+    }
+    .food-item{
+        width: 180px;
+        height: 200px;
+        font-family: Raleway;
+        color: white;
+        text-align: center;
+        transition: transform .3s;
+        margin: 30px 10px;
+    }
+    .food-item:hover{
+        transform: scale(1.05);
+        box-shadow: 0px 0px 10px 3px lightblue;
+        border: 1px solid;
+        border-bottom: 10px;
+    }
+    .food-item img{
+        width: 180px;
+        height: 101px;
+    }
+    .food-item p{
+        color: white;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+    .food-button{
+        width: 180px;
+        height: 30px;
+        border-radius: 10px;
+        background: #FA9807;
+        cursor: pointer;
+    }
 }

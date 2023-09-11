@@ -1,4 +1,7 @@
 .notfound-container{
     color: white;
     text-align: center;
+    padding-top: 200px;
+    background: radial-gradient(61.32% 53.53% at 33.80% 48.98%, #050367 0%, #01000A 100%);
+
 }

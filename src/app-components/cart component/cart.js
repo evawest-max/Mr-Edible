@@ -11,6 +11,7 @@ import ItemQuantity from "./itemQuantity"
 //import CheckoutPage from "./checkoutPage"
 import { Link } from "react-router-dom"
 import { reduceNumberOnCart } from "../search component/searchBar"
+import { Navbar } from "../nav components/nav"
 
  
 
@@ -73,7 +74,7 @@ function Cart(){
                     <div className="foodcartInfomation">
                         <img className="foodcartMappedImage" src={item.link} alt="food"/>
                         <p>{item.name}</p>
-                        <p className="foodcartMappedAmount">${item.amount}</p>
+                        <p className="foodcartMappedAmount">₦{item.amount}</p>
                         <img onClick={removeFromCart} className="Xbutton" src={removeBTN} alt="remove button"/>
                     </div>
                 </div>
@@ -92,13 +93,14 @@ function Cart(){
         let subtotal=cartTotal+deleveryfee+tax
     
     return(
-        
+        <div>
+        <Navbar/>
         <div className="cartdisplay-container">
-                <Link to="/home"><div className="cart-transprent-background"></div></Link>
+                <Link to="/"><div className="cart-transprent-background"></div></Link>
                 <div className="cartdisplay-items-container">
                     <div className="cart-back-arrow">
-                        <Link to="/home"><img  src={backArrow} alt="back arrow"/></Link> 
-                        <h4 className="goback">continue shopping</h4>
+                        <Link to="/"><img  src={backArrow} alt="back arrow"/></Link> 
+                        <h4 className="goback">Continue shopping</h4>
                     </div>
                     <div>
                         <h2 className="cart-selections-title">Your Cart</h2>
@@ -111,10 +113,10 @@ function Cart(){
                     <div className="amount-main-container">
                         <div className="amount-title-container">
                             <div>
-                                <p className="cart-amount-tittle">tax:</p>
+                                <p className="cart-amount-tittle">Tax:</p>
                             </div>
                             <div >
-                                <p className="cart-amount-tittle">delevery:</p>
+                                <p className="cart-amount-tittle">Delevery:</p>
                             </div>
                             <div >
                                 <p className="cart-amount-tittle">Cart total:</p>
@@ -147,6 +149,7 @@ function Cart(){
                         <Link to="/checkoutpage"><img className="cart-toggle-checkout-out" src={location} alt="location"/></Link>
                     </div>
                 </div>
+            </div>
             </div>
     )
 }
