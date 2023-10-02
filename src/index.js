@@ -10,6 +10,7 @@ import Footer from './footer-components/footer';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    
     <App/>
     <Store/>
     <Footer/>

@@ -1,8 +1,60 @@
 
+    .navcontainer-mobile{
+        color: #FFF;
+        display: flex;
+        flex-direction: row;
+        background-color: rgb(16, 13, 26);
+        position: fixed;
+        z-index: 1;
+        width: 1100px;
+    }
+    .navcontainer-mobile nav ul{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        gap: 10px;
+        padding: 0px 20px;
+        
+        margin-top: 40px;
+    }
+    .navcontainer-mobile nav{
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .navcontainer-mobile nav ul a{
+        color: white;
+        list-style: none;
+        text-decoration: none;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        cursor: pointer;
+    }
+    .navcontainer-mobile nav ul a.active{
+        background-color: orange;
+        border-radius: 5px;
+        padding: 2px 10px;
+        color: darkblue;
+    }
+    .menubutton-mobile{
+        width: 24px;
+        height: 24px;
+        margin-left: 270px;
+        margin-top: 5px;
+    }
+    
+
+
 
     .navcontainer{
         color: #FFF;
-        display: flex;
+        display: none;
         flex-direction: row;
         background-color: rgb(12, 3, 37);
         position: fixed;
@@ -55,11 +107,222 @@
 
 
 
+@media screen and (min-width:390px){
+    
+    .navcontainer-mobile{
+        color: #FFF;
+        display: flex;
+        flex-direction: row;
+        background-color: rgb(16, 13, 26);
+        position: fixed;
+        z-index: 1;
+        width: 388px;
+    }
+    .navcontainer-mobile nav ul{
+        display: flex;
+        flex-direction: column;
+        padding: 0px 20px;
+        margin-top: 40px;
+    }
+    .navcontainer-mobile nav{
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 310px;
+        z-index: 2;
+    }
+    
+    .navcontainer-mobile nav ul a{
+        color: white;
+        list-style: none;
+        text-decoration: none;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        cursor: pointer;
+    }
+    .navcontainer-mobile nav ul a.active{
+        background-color: orange;
+        border-radius: 5px;
+        padding: 2px 10px;
+        color: darkblue;
+    }
+    .menubutton-mobile{
+        width: 24px;
+        height: 24px;
+        margin-left: 270px;
+        margin-top: 5px;
+    }
+    
 
+    .navcontainer{
+        color: #FFF;
+        display: none;
+        flex-direction: row;
+        background-color: rgb(12, 3, 37);
+        position: fixed;
+        z-index: 100;
+        width: 1100px;
+        
+        
+    }
+    .navcontainer nav{
+        margin-left: 0px;
+    }
+    .navcontainer nav ul{
+        display: flex;
+        justify-content: space-evenly;
+        gap: 10px;
+        padding: 0px 20px
+    }
+    .navcontainer nav ul a{
+        color: white;
+        list-style: none;
+        text-decoration: none;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        cursor: pointer;
+    }
 
+    .navcontainer nav ul a.active{
+        background-color: orange;
+        border-radius: 5px;
+        padding: 2px 10px;
+        color: darkblue;
+    }
+    .navcontainer nav ul a:hover{
+        border: 2px solid;
+        background-color: rgb(244, 196, 108);
+        border-radius: 5px;
+        padding: 0.5px 5px;
+        color: darkblue;
+    }
+    .logo{
+        width: 60px;
+        height: 60px;
+        margin-right: 172;
+        cursor: pointer;
+    }
+    
+}
 
+@media screen and (min-width:540px){
+    .navcontainer-mobile{
+        color: #FFF;
+        display: flex;
+        flex-direction: row;
+        background-color: rgb(16, 13, 26);
+        position: fixed;
+        z-index: 1;
+        width: 540px;
+    }
+    .navcontainer-mobile nav ul{
+        display: flex;
+        flex-direction: column;
+        padding: 0px 20px;
+        margin-top: 40px;
+    }
+    .navcontainer-mobile nav{
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 430px;
+        z-index: 2;
+    }
+    
+    .navcontainer-mobile nav ul a{
+        color: white;
+        list-style: none;
+        text-decoration: none;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        cursor: pointer;
+    }
+    .navcontainer-mobile nav ul a.active{
+        background-color: orange;
+        border-radius: 5px;
+        padding: 2px 10px;
+        color: darkblue;
+    }
+    .menubutton-mobile{
+        width: 24px;
+        height: 24px;
+        margin-left: 410px;
+        margin-top: 5px;
+    }
+    
+
+    .navcontainer{
+        color: #FFF;
+        display: none;
+        flex-direction: row;
+        background-color: rgb(12, 3, 37);
+        position: fixed;
+        z-index: 100;
+        width: 1100px;
+        
+        
+    }
+    .navcontainer nav{
+        margin-left: 0px;
+    }
+    .navcontainer nav ul{
+        display: flex;
+        justify-content: space-evenly;
+        gap: 10px;
+        padding: 0px 20px
+    }
+    .navcontainer nav ul a{
+        color: white;
+        list-style: none;
+        text-decoration: none;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        cursor: pointer;
+    }
+
+    .navcontainer nav ul a.active{
+        background-color: orange;
+        border-radius: 5px;
+        padding: 2px 10px;
+        color: darkblue;
+    }
+    .navcontainer nav ul a:hover{
+        border: 2px solid;
+        background-color: rgb(244, 196, 108);
+        border-radius: 5px;
+        padding: 0.5px 5px;
+        color: darkblue;
+    }
+    .logo{
+        width: 60px;
+        height: 60px;
+        margin-right: 172;
+        cursor: pointer;
+    }
+}
 
 @media screen and (min-width:900px){
+    .navcontainer-mobile{
+        display: none;
+    }
     .navcontainer{
         color: #FFF;
         display: flex;

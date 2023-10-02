@@ -5,7 +5,7 @@ function Store(){
     return(
         <div className="store-container">
             <h1>Get Our App</h1>
-            <p>you can use our app for a better experience on your smart phone</p>
+            <p>You can download our app on Google play store or apple store</p>
             <div className="app-store-logo-container">
                 <div className="store">
                     <img src={appStore} alt="app store"/>

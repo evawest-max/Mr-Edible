@@ -1,6 +1,5 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./cart.css"
-//import mdi_cart from "./mdi_cart.svg"
 import backArrow from "./back arrow.svg"
 import location from "./location.svg"
 import checkoutcart from "./cart-checkout.svg"
@@ -8,69 +7,76 @@ import { checkout} from "../Food component/food item"
 import foods from "../Food component/foods"
 import removeBTN from "./x button.svg"
 import ItemQuantity from "./itemQuantity"
-//import CheckoutPage from "./checkoutPage"
+import { Cartcontext } from "../context folder/appContext"
 import { Link } from "react-router-dom"
-import { reduceNumberOnCart } from "../search component/searchBar"
 import { Navbar } from "../nav components/nav"
-
- 
+import { useContext } from "react"
+import { reduceNumberOnCart } from "../search component/searchBar"
 
 export let changeAddToCart=false
-function Cart(){
-        let filteredFoodItems= foods.filter((i)=>{
-            return checkout.includes(i.id)
-        })
-        filteredFoodItems.reverse()
+export let checkoutpagetotal=0
 
-        function newmap(){
-            reduceNumberOnCart()
-            filteredFoodItems= foods.filter((i)=>{
-                return checkout.includes(i.id)
-            })
-            filteredFoodItems.reverse()
-            foodsmapped=foodsmapped=filteredFoodItems.map((item, index)=>{    
-                function removeFromCart(){  
-                    let indexs=    checkout.findIndex(checkindex)
-                        function checkindex(checkouts){
-                            return checkouts===item.id
-                        }
-                        checkout.splice(indexs,1)
-                        filteredFoodItems.pop()
-                        //alert("it was clicked")
-                        newmap()
-                        newfoodState(foodsmapped)
-                       
-                    //this function loops through the checkout array and and if the item in the checkout array march the item id, it removes it from the list
+function Cart(){
+    let deleveryfee=0
+    const tax=5
+    
+    
+    const cart=useContext(Cartcontext)
+    
+    let filteredFoodItems= foods.filter((i)=>{
+        return checkout.includes(i.id)
+    })
+    filteredFoodItems.reverse()
+
+    filteredFoodItems.forEach(element => {
+        deleveryfee+=1000
+    });
+
+    const [subtotal, newsubtotal]=useState(cart.totalItemInCart+deleveryfee+tax)
+    useEffect(()=>{
+        newsubtotal(cart.totalItemInCart+deleveryfee+tax)
+    },[cart.totalItemInCart, deleveryfee])
+    
+
+    const [foodState, newfoodState]=useState(filteredFoodItems.map((item, index)=>{    
+        function removeFromCart(){
+            reduceNumberOnCart()  
+            cart.deleteFromCart(item.id) 
+            let indexs=    checkout.findIndex(checkindex)
+                function checkindex(checkouts){
+                    return checkouts===item.id
                 }
-                return(
-                    <div key={index} className="foodcartMapped">
-                        <ItemQuantity/>
-                        <div className="foodcartInfomation">
-                            <img className="foodcartMappedImage" src={item.link} alt="food"/>
-                            <p>{item.name}</p>
-                            <p className="foodcartMappedAmount">${item.amount}</p>
-                            <img onClick={removeFromCart} className="Xbutton" src={removeBTN} alt="remove button"/>
-                        </div>
-                    </div>
-                ) 
-            })
+                checkout.splice(indexs,1)
         }
-        let foodsmapped=filteredFoodItems.map((item, index)=>{    
-            function removeFromCart(){   
+        return(
+            <div key={index} className="foodcartMapped">
+                <ItemQuantity id={item.id} price={item.amount}/>
+                <div className="foodcartInfomation">
+                    <img className="foodcartMappedImage" src={item.link} alt="food"/>
+                    <p>{item.name}</p>
+                    <p className="foodcartMappedAmount">₦{item.amount}</p>
+                    <img onClick={removeFromCart} className="Xbutton" src={removeBTN} alt="remove button"/>
+                </div>
+            </div>
+        ) 
+    })
+    )
+
+    useEffect(()=>{
+        newfoodState(filteredFoodItems.map((item, index)=>{    
+            function removeFromCart(){  
+                reduceNumberOnCart()
+                cart.deleteFromCart(item.id) 
                 let indexs=    checkout.findIndex(checkindex)
                     function checkindex(checkouts){
                         return checkouts===item.id
                     }
                     checkout.splice(indexs,1)
                     filteredFoodItems.pop()
-                    
-                    newmap()
-                    newfoodState(foodsmapped)                
-                //this function loops through the checkout array and and if the item in the checkout array march the item id, it removes it from the list
             }
             return(
                 <div key={index} className="foodcartMapped">
-                    <ItemQuantity/>
+                    <ItemQuantity id={item.id} price={item.amount}/>
                     <div className="foodcartInfomation">
                         <img className="foodcartMappedImage" src={item.link} alt="food"/>
                         <p>{item.name}</p>
@@ -79,18 +85,11 @@ function Cart(){
                     </div>
                 </div>
             ) 
-        })
-        const [foodState, newfoodState]=useState(foodsmapped)
+        }))
+        checkoutpagetotal=subtotal
+    },[cart.items])
 
-        let cartTotal=0
-        let deleveryfee=0
-        const tax=1
-        
-        filteredFoodItems.forEach(element => {
-            cartTotal+=element.amount
-            deleveryfee+=500
-        });
-        let subtotal=cartTotal+deleveryfee+tax
+    checkoutpagetotal=subtotal
     
     return(
         <div>
@@ -107,7 +106,7 @@ function Cart(){
                         <div>{foodState}</div>
                     </div>
                     <div>
-                        <input type="text" placeholder="Promo code"/>
+                        <input className="promo-input" type="text" placeholder="Promo code"/>
                         <button className="promo-button">Apply code</button>
                     </div>
                     <div className="amount-main-container">
@@ -116,7 +115,7 @@ function Cart(){
                                 <p className="cart-amount-tittle">Tax:</p>
                             </div>
                             <div >
-                                <p className="cart-amount-tittle">Delevery:</p>
+                                <p className="cart-amount-tittle">Delevery fee:</p>
                             </div>
                             <div >
                                 <p className="cart-amount-tittle">Cart total:</p>
@@ -130,7 +129,7 @@ function Cart(){
                                 <p className="cart-amount-tittle">₦{deleveryfee}</p>
                             </div>
                             <div>
-                                <p className="cart-amount-tittle">₦{cartTotal}</p>
+                                <p className="cart-amount-tittle">₦{cart.totalItemInCart}</p>
                             </div>
                         </div>
                     </div>

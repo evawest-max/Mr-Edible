@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    align-items: center;
 }
 .app-store-logo-container{
     display: flex;
@@ -15,12 +16,13 @@ h1{
     font-weight: 900;
     line-height: normal;
 }
-p{
+.store-container p{
     font-family: Raleway;
-font-size: 14px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    width: 300px;
 }
 .store{
     display: flex;
@@ -29,10 +31,8 @@ line-height: normal;
     color:  #FFF;
     width: 135px;
     padding: 0px 10px;
-    align-items: center;
-    gap: 10px;
+    gap: 2px;
     font-family: Raleway;
-    
     border-radius: 15px;
 }
 .store h4{
@@ -43,7 +43,7 @@ line-height: normal;
     line-height: normal;
 }
 .store img{
-    width: 20px;
+    width: 30px;
 }
 
 
@@ -52,6 +52,7 @@ line-height: normal;
         display: flex;
         flex-direction: column;
         text-align: center;
+        
     }
     .app-store-logo-container{
         display: flex;
@@ -65,12 +66,12 @@ line-height: normal;
         font-weight: 900;
         line-height: normal;
     }
-    p{
+    .store-container p{
         font-family: Raleway;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
     }
     .store{
         display: flex;
@@ -90,10 +91,10 @@ line-height: normal;
     }
     .store h4{
         font-family: Raleway;
-    font-size: 17px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
     }
     .store img{
         width: 50px;

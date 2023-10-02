@@ -7,10 +7,12 @@ import CartIcon from "../cart component/cartIcon"
 import { Link } from "react-router-dom"
 import { Navbar } from "../nav components/nav"
 
+
 let psd=0
 export function reduceNumberOnCart(){
     psd--
 }
+
 function SearchBar(){
     let [itmap, newitmap]=useState(foods.map((items, index)=>{
         return(
@@ -46,7 +48,7 @@ function SearchBar(){
     return(
         <div className="searchcontainer">
             <Navbar/>
-            <Link to="/cart" className="fruit"><CartIcon countt={counts}/></Link>
+            <Link to="/cart"><CartIcon countt={counts}/></Link>
             <div className="SearchbarContainer">
                 <input onChange={findFood}  ref={inputRef} type="text" placeholder="I am searching for..."/>
             </div>

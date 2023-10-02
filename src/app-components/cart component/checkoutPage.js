@@ -1,49 +1,98 @@
+import "./checkoutpage.css";
 import backArrow from "./back arrow.svg"
-import location from "./location.svg"
-import checkoutcart from "./cart-checkout.svg"
-import { Link } from "react-router-dom"
-import { Navbar } from "../nav components/nav"
+//import mredible from "./mrEdible.PNG"
+//import { Cartcontext } from "../context folder/appContext";
 
-function CheckoutPage(props){
-    
-   
-    
-    return(
-        <div>
-        <Navbar/>
-        <div className="cartdisplay-container">
-                    <Link to="/cart"><div onClick={props.clear} className="cart-transprent-background"></div></Link>
-                    <div className="cartdisplay-items-container">
-                        <div className="cart-back-arrow">
-                        <Link to="/cart"><img onClick={props.clear} src={backArrow} alt="back arrow"/></Link>
-                            <h4 onClick={props.clear} className="goback">Back to cart</h4>
-                        </div> 
-                        <form>
-                            <label>Your name</label>
-                            <input type="text" placeholder="yourname"/><br/>
-                            <label>Your Phone number</label>
-                            <input type="text" placeholder="090********"/><br/>
-                            <label>Your Email</label>
-                            <input type="text" placeholder="example@yahoo.com"/><br/>
-                            <label>Your street address</label>
-                            <input type="text" placeholder="no1 kane street"/><br/>
-                            <label>Delivery locationr</label>
-                            <select name="" id="">
-                                <option value="Texas">Port Harcourt</option>
-                                <option value="New York">Warri</option>
-                                <option value="Capetown">Lagos</option>
-                                <option value="Capetown">Asaba</option>
-                            </select>
-                            
-                        </form>
-                        <button className="checkoutButton">Place Your Order</button>
-                        <div className="cart-toggle-container">
-                            <Link to="/cart"><img className= "cart-toggle-cart-out" src={checkoutcart} alt="cart"/></Link>
-                            <img  className="cart-toggle-chechout-in" src={location} alt="location"/>
-                        </div>
-                    </div>
-                </div>
-                </div>
-    )
+import { useState} from "react";
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
+import { Link } from "react-router-dom";
+import { checkoutpagetotal } from "./cart";
+
+
+
+export default function Cartitem() {
+  //const cart=useContext(Cartcontext)
+  //const [amount, setAmount] = useState(0);
+  const [location,setlocation]=useState("")
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const config = {
+    public_key: "FLWPUBK_TEST-cb119a9a9127ae014d8a8ddd16e081da-X",
+    tx_ref: Date.now(),
+    amount: checkoutpagetotal.toString(),
+    currency: "NGN",
+    payment_options: "card,mobilemoney,ussd",
+    customer: {
+      email: email,
+      phone_number: phone,
+      name: name,
+      location: location
+      //amount:cart.totalItemInCart
+    },
+    customizations: {
+      title: "Mr Edible",
+      description: "Payment for items in cart",
+      logo: "https://s3.amazonaws.com/logos.brandpa.com/images/0996ece46a850625a585854e651c4c0c.png",
+    },
+  };
+
+  const handleFlutterPayment = useFlutterwave(config);
+
+  return (
+    <div className="App">
+    <div className="cart-back-arrow">
+        <Link to="/cart"><img src={backArrow} alt="back arrow"/></Link>
+            <h4 className="goback">Back to cart</h4>
+    </div> 
+      <div className="containers">
+        <input
+          type="number"
+          placeholder="Amount"
+          value={checkoutpagetotal.toString()}
+          //onchange={(e) => setAmount(cart.totalItemInCart.toString())}
+        />
+        <select 
+        onChange={(e) => setlocation(e.target.value)} 
+        >
+          <option value="Port Harcourt">Port Harcourt</option>
+          <option value="Warri">Warri</option>
+          <option value="Lagos">Lagos</option>
+          <option value="Asaba">Asaba</option>
+          <option value="Chosose location" selected>Choose Location</option>
+        </select>
+        <input
+          type="text"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Name"
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Phone"
+          onChange={(e) => setPhone(e.target.value)}
+        />
+        
+        <button
+          onClick={() =>
+            handleFlutterPayment({
+              callback: (response) => {
+                alert("Thank you, your purchase was successfull and our delivery agent will be intouch with you soon")
+                console.log(response);
+                closePaymentModal();
+              },
+              onClose: () => {},
+            })
+          }
+        >
+          Pay
+        </button>
+      </div>
+    </div>
+  );
 }
-export default CheckoutPage

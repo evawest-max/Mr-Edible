@@ -1,0 +1,54 @@
+
+  
+  .App{
+    text-align: center;
+  }
+  
+  .containers{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+    background-color: blue;
+  }
+  
+  .containers input{
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .containers select{
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .containers button{
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    background: rgb(0, 11, 128);
+    cursor: pointer;
+    color: #fff;
+  }
+  
+  .containers button:hover{
+    background: #FA9807;
+  }

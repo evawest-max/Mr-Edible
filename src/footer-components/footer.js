@@ -24,7 +24,8 @@ function Footer(){
                         <div className="footer-image">
                             <img src={facebook} alt="facebook"/>
                             <img src={instagram} alt="instagram"/>
-                            <img src={whatsapp} alt="whats app"/>
+                            <a href="https://api.Whatsapp.com/send?phone=2347032397184&text=I%27m+having+an+issue+can+you+please+help+me+resolve+it"><img src={whatsapp} alt="whats app"/></a>
+                            
                         </div>
                         <div >
                             <input className="footer-input" type="text" placeholder="Email address"/>

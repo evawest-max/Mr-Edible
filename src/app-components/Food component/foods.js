@@ -2,56 +2,56 @@ const foods =[
     {
         id:0,
         name:"Rice and chicken",
-        amount:1500,
-        link:"https://www.pngkit.com/png/full/437-4371581_enjoy-two-hot-and-crispy-pieces-of-fried.png"
+        amount:3500,
+        link:"https://c4.wallpaperflare.com/wallpaper/604/535/600/stalk-rice-meat-greens-wallpaper-preview.jpg"
     },
     {
         id:200,
         name:"Egusi soup",
-        amount:1820,
-        link:"https://w7.pngwing.com/pngs/817/1021/png-transparent-undhiyu-nigerian-cuisine-eba-efo-riro-egusi-soup-kitchen.png"
+        amount:4820,
+        link:"https://www.allnigerianrecipes.com/wp-content/uploads/2019/03/egusi-soup-fried.jpg"
     },
     {
         id:2,
-        name:"small chops",
-        amount:1200,
-        link:"https://i0.wp.com/twelve03.online/wp-content/uploads/2019/03/small-chops-max.png?fit=800%2C800&ssl=1"
+        name:"Chicken and small-chops",
+        amount:2200,
+        link:"https://waracake.com/wp-content/uploads/2017/04/Small-Chops-Basic-Pack-For-50-635955544532678923.jpeg"
     },
     {
         id:3,
-        name:"small chops and zobo",
+        name:"Shawama",
         amount:2200,
-        link:"https://i0.wp.com/01shawarma.com/wp-content/uploads/2019/10/WhatsApp_Image_2019-05-22_at_11-removebg.png?resize=410%2C512&ssl=1"
+        link:"https://img.freepik.com/premium-photo/shawarma-with-meat-vegetables-white-background-isolate-generative-ai_74760-4695.jpg?w=1380"
     },
     {
         id:4,
-        name:"Shawama",
-        amount:2240,
-        link:"https://img.freepik.com/premium-psd/shawarma-with-meat-vegetables-transparent-background_812337-2642.jpg?w=2000"
+        name:"Coca-cola",
+        amount:1000,
+        link:"https://c8.alamy.com/comp/F8Y1D9/can-of-coca-cola-on-a-bed-of-ice-over-a-white-background-F8Y1D9.jpg"
     },
     {
         id:5,
         name:"Buger",
-        amount:1015,
+        amount:2015,
         link:"https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbGlmZW9mcGl4MDAwMDEtaW1hZ2VfMS1renhsdXd3ci5wbmc.png?s=jdN-wM-e-Qc1ELab988RQ1uEJQw6qRiVkWhEBhs2MMI"
     },
     {
         id:6,
         name:"Jollof rice",
-        amount:1400,
+        amount:2400,
         link:"https://www.seekpng.com/png/detail/910-9105399_thinking-about-a-good-meal-jollof-rice.png"
     },
     {
         id:7,
         name:"Rice and stew",
-        amount:1850,
+        amount:3850,
         link:"https://e7.pngegg.com/pngimages/647/784/png-clipart-jollof-rice-asado-middle-eastern-cuisine-food-pinchitos-menu-comida-food-recipe.png"
     },
     {
         id:8,
         name:"Yam Porridge and fish",
-        amount:1560,
-        link:"https://todaysbukka.com/wp-content/uploads/2020/01/242.png"
+        amount:2560,
+        link:"https://nigerianmeal.com/wp-content/uploads/2018/11/3-Yam-Porridge-Recipe.jpg"
     },
     {
         id:9,
@@ -62,8 +62,8 @@ const foods =[
     {
         id:11,
         name:"Pizza",
-        amount:6550,
-        link:"https://clipart-library.com/image_gallery2/Pizza-PNG-Picture-1.png"
+        amount:9550,
+        link:"https://thumbs.dreamstime.com/z/fresh-tasty-pizza-white-background-clipping-path-included-85746388.jpg?w=992"
     }
 ]
 //simple react snippet react developer tools
