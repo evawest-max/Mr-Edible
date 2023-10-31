@@ -1,0 +1,32 @@
+
+#vendorcard-container{
+    background-color: white;
+    color: darkgreen;
+    font-family: Raleway; 
+    border-radius: 20px;
+    margin: 15px;
+}
+#vendor-title{
+    padding-top: 20px;
+}
+#vendor-secondDIv img{
+    width: 240px;
+}
+#vendor-about{
+    margin: 0px 5px;
+}
+#vendor-button{
+    background-color: orange;
+    color: white;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+#vendor-rating div{
+    color: gold;
+}
+#vendor-rating{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

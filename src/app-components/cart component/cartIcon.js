@@ -1,11 +1,18 @@
-import mdi_cart from "./mdi_cart.svg"
+import {HiMiniShoppingCart} from "react-icons/hi2"
+import { Link } from "react-router-dom"
+import { useContext } from "react"
+import { Cartcontext } from "../context folder/appContext"
 
 function CartIcon(props){
+    const cart=useContext(Cartcontext)
     return(
-        <div className="cartContainer">
-            <img  src={mdi_cart} alt="cart"/>
-            <p className="carttext">{props.countt}</p>
-        </div>
+        
+            <Link className="cartContainer" to="/cart">
+                <HiMiniShoppingCart/>
+                <p className="carttext">{props.countt}</p>
+            </Link>
+            
+        
     )
 }
 export default CartIcon

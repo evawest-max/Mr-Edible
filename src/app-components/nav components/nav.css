@@ -1,356 +1,179 @@
 
-    .navcontainer-mobile{
-        color: #FFF;
-        display: flex;
-        flex-direction: row;
-        background-color: rgb(16, 13, 26);
-        position: fixed;
-        z-index: 1;
-        width: 1100px;
-    }
-    .navcontainer-mobile nav ul{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        gap: 10px;
-        padding: 0px 20px;
-        
-        margin-top: 40px;
-    }
-    .navcontainer-mobile nav{
-        margin-top: 5px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.everything{
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+    background-color: white;
+}
+.Sign-menu div{
+    position: relative;
+}
+.nav-transparent-background{
+    position: absolute;
+    margin-right: 20px;
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.2;
+}
+.navcontainer-mobile{
+    color: black;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    z-index: 3;
+    right: 10px;
+}
+.navcontainer-mobile nav ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10px;
+    padding: 0px 60px;
+    margin-top: 40px;  
+}
+
+
+.navcontainer-mobile nav ul a{
+    color: darkblue;
+    list-style: none;
+    text-decoration: none;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+    animation: fade-slide-left 1s ease-in-out forwards;
+    color: white;
+    margin: 30px 0px;
+    text-align: center;
+}
+.navcontainer-mobile nav ul a.active{
+    background-color: orange;
+    border-radius: 5px;
+    padding: 2px 10px;
+    color: white;
+}
+.menubutton-mobile{
+    align-self: end;
+    margin-right: 0px;
+    margin-top: 10px;
+    font-size: 25px;
+    color: rgb(1, 61, 1);
+    animation: fade-slide-right 1s cubic-bezier(0,1,0,1) forwards;
+}
+.Sign-menu nav ul div {
+    align-items: center;
+    display: flex;
+    margin: 80px 0px;
+    flex-direction: column;
+    width: 200px;
+   
+}
+.Sign-menu nav .menubutton-mobile{
+    color: white;
+    right: 10px;
+}
+.Sign-menu nav {
+    position: fixed;
+    background: radial-gradient(61.32% 53.53% at 33.80% 48.98%, rgb(1, 61, 1), #01000A 100%);
+    animation: fade-slide-right ease-in-out forwards;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    right: 0px;
+    top: 0px;   
+}
+
+.navcontainer{
+    color: black;
+    display: none;
+    flex-direction: row;
+    margin: 0px 200px;
+    width: 580px;
+}
+
+.logo{
+    width: 80px;
+    height: 80px;
+    margin-right: 172;
+    cursor: pointer;
+}
+.login-container{
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: self-start;
+    font-size: 16px;
+    color: rgb(1, 61, 1);
     
-    .navcontainer-mobile nav ul a{
-        color: white;
-        list-style: none;
-        text-decoration: none;
-        text-align: center;
-        font-family: Raleway;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        cursor: pointer;
-    }
-    .navcontainer-mobile nav ul a.active{
-        background-color: orange;
-        border-radius: 5px;
-        padding: 2px 10px;
-        color: darkblue;
-    }
-    .menubutton-mobile{
-        width: 24px;
-        height: 24px;
-        margin-left: 270px;
-        margin-top: 5px;
-    }
+}
+.login-container a{
+    text-decoration: none;
+}
+.login-container div{
+    margin-top: 10px;
+    color: darkblue;
+    font-size: 23px;
+}
+.login-container p{
+    margin-top: 10px;
+    font-size: 16px;
+    color: darkblue;
+    font-weight: 800px;
     
-
-
-
-    .navcontainer{
-        color: #FFF;
-        display: none;
-        flex-direction: row;
-        background-color: rgb(12, 3, 37);
-        position: fixed;
-        z-index: 100;
-        width: 1100px;
-        
-    }
-    .navcontainer nav{
-        margin-left: 0px;
-    }
-    .navcontainer nav ul{
-        display: flex;
-        justify-content: space-evenly;
-        gap: 10px;
-        padding: 0px 20px
-    }
-    .navcontainer nav ul a{
-        color: white;
-        list-style: none;
-        text-decoration: none;
-        text-align: center;
-        font-family: Raleway;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        cursor: pointer;
-    }
-
-    .navcontainer nav ul a.active{
-        background-color: orange;
-        border-radius: 5px;
-        padding: 2px 10px;
-        color: darkblue;
-    }
-    .navcontainer nav ul a:hover{
-        border: 2px solid;
-        background-color: rgb(244, 196, 108);
-        border-radius: 5px;
-        padding: 0.5px 5px;
-        color: darkblue;
-    }
-    .logo{
-        width: 60px;
-        height: 60px;
-        margin-right: 172;
-        cursor: pointer;
-    }
+}
 
 
 
 
 @media screen and (min-width:390px){
-    
-    .navcontainer-mobile{
-        color: #FFF;
-        display: flex;
-        flex-direction: row;
-        background-color: rgb(16, 13, 26);
-        position: fixed;
-        z-index: 1;
-        width: 388px;
-    }
-    .navcontainer-mobile nav ul{
-        display: flex;
-        flex-direction: column;
-        padding: 0px 20px;
-        margin-top: 40px;
-    }
-    .navcontainer-mobile nav{
-        margin-top: 5px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 310px;
-        z-index: 2;
-    }
-    
-    .navcontainer-mobile nav ul a{
-        color: white;
-        list-style: none;
-        text-decoration: none;
-        text-align: center;
-        font-family: Raleway;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        cursor: pointer;
-    }
-    .navcontainer-mobile nav ul a.active{
-        background-color: orange;
-        border-radius: 5px;
-        padding: 2px 10px;
-        color: darkblue;
-    }
-    .menubutton-mobile{
-        width: 24px;
-        height: 24px;
-        margin-left: 270px;
-        margin-top: 5px;
-    }
-    
 
-    .navcontainer{
-        color: #FFF;
-        display: none;
-        flex-direction: row;
-        background-color: rgb(12, 3, 37);
-        position: fixed;
-        z-index: 100;
-        width: 1100px;
-        
-        
-    }
-    .navcontainer nav{
-        margin-left: 0px;
-    }
-    .navcontainer nav ul{
-        display: flex;
-        justify-content: space-evenly;
-        gap: 10px;
-        padding: 0px 20px
-    }
-    .navcontainer nav ul a{
-        color: white;
-        list-style: none;
-        text-decoration: none;
-        text-align: center;
-        font-family: Raleway;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        cursor: pointer;
-    }
-
-    .navcontainer nav ul a.active{
-        background-color: orange;
-        border-radius: 5px;
-        padding: 2px 10px;
-        color: darkblue;
-    }
-    .navcontainer nav ul a:hover{
-        border: 2px solid;
-        background-color: rgb(244, 196, 108);
-        border-radius: 5px;
-        padding: 0.5px 5px;
-        color: darkblue;
-    }
-    .logo{
-        width: 60px;
-        height: 60px;
-        margin-right: 172;
-        cursor: pointer;
-    }
-    
 }
 
 @media screen and (min-width:540px){
-    .navcontainer-mobile{
-        color: #FFF;
-        display: flex;
-        flex-direction: row;
-        background-color: rgb(16, 13, 26);
-        position: fixed;
-        z-index: 1;
-        width: 540px;
     }
-    .navcontainer-mobile nav ul{
-        display: flex;
-        flex-direction: column;
-        padding: 0px 20px;
-        margin-top: 40px;
-    }
-    .navcontainer-mobile nav{
-        margin-top: 5px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 430px;
-        z-index: 2;
-    }
-    
-    .navcontainer-mobile nav ul a{
-        color: white;
-        list-style: none;
-        text-decoration: none;
-        text-align: center;
-        font-family: Raleway;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        cursor: pointer;
-    }
-    .navcontainer-mobile nav ul a.active{
-        background-color: orange;
-        border-radius: 5px;
-        padding: 2px 10px;
-        color: darkblue;
-    }
-    .menubutton-mobile{
-        width: 24px;
-        height: 24px;
-        margin-left: 410px;
-        margin-top: 5px;
-    }
-    
-
-    .navcontainer{
-        color: #FFF;
-        display: none;
-        flex-direction: row;
-        background-color: rgb(12, 3, 37);
-        position: fixed;
-        z-index: 100;
-        width: 1100px;
-        
-        
-    }
-    .navcontainer nav{
-        margin-left: 0px;
-    }
-    .navcontainer nav ul{
-        display: flex;
-        justify-content: space-evenly;
-        gap: 10px;
-        padding: 0px 20px
-    }
-    .navcontainer nav ul a{
-        color: white;
-        list-style: none;
-        text-decoration: none;
-        text-align: center;
-        font-family: Raleway;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        cursor: pointer;
-    }
-
-    .navcontainer nav ul a.active{
-        background-color: orange;
-        border-radius: 5px;
-        padding: 2px 10px;
-        color: darkblue;
-    }
-    .navcontainer nav ul a:hover{
-        border: 2px solid;
-        background-color: rgb(244, 196, 108);
-        border-radius: 5px;
-        padding: 0.5px 5px;
-        color: darkblue;
-    }
-    .logo{
-        width: 60px;
-        height: 60px;
-        margin-right: 172;
-        cursor: pointer;
-    }
-}
 
 @media screen and (min-width:900px){
+    .everything{
+        display: flex;
+        justify-content: center;
+        position: sticky;
+        top: 0px;
+        z-index: 1;
+        background-color: white;
+    }
     .navcontainer-mobile{
         display: none;
+        animation: slide 0.5s forwards;
+        animation-delay: 2s;
+        -webkit-animation: slide-out 2s forwards;
     }
+
     .navcontainer{
-        color: #FFF;
+        color: black;
         display: flex;
         flex-direction: row;
-        padding-left: 300px;
-        padding-right: 254px;
-        padding-top: 0px;
-        background-color: rgb(12, 3, 37);
-        position: fixed;
-        z-index: 100;
-        width: 1100px;
-    }
-    .navcontainer nav{
-        margin-left: 179px;
+        justify-content: center;
+        margin: 0px 200px;
     }
     .navcontainer nav ul{
         display: flex;
         justify-content: space-evenly;
-        gap: 50px;
-        padding: 0px 20px
+        gap: 30px;
+        padding: 0px 20px;
     }
     .navcontainer nav ul a{
-        color: white;
+        color: rgb(1, 61, 1);
         list-style: none;
         text-decoration: none;
         text-align: center;
         font-family: Raleway;
-        font-size: 15px;
+        font-size: 18px;
         font-style: normal;
         font-weight: 600;
         line-height: normal;
@@ -363,17 +186,39 @@
         padding: 2px 10px;
         color: darkblue;
     }
-    .navcontainer nav ul a:hover{
-        border: 2px solid;
+    .navcontainer nav ul a:hover{ 
         background-color: rgb(244, 196, 108);
-        border-radius: 5px;
-        padding: 2px 10px;
-        color: darkblue;
+        padding: 2px 10px; 
     }
     .logo{
         width: 80px;
         height: 80px;
         margin-right: 172;
+        cursor: pointer;
+    }
+    .login-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: self-start;
+        font-size: 16px;
+        color: darkblue; 
+    }
+    .login-container a p{
+        text-decoration: none;
+        color: darkgreen;
+    }
+    .login-container div{
+        margin-top: 10px;
+        color: rgb(1, 61, 1);
+        font-size: 23px;
+        cursor: pointer;
+    }
+    .login-container p{
+        margin-top: 10px;
+        font-size: 16px;
+        color: darkblue;
+        font-weight: 800px;
         cursor: pointer;
     }
 }

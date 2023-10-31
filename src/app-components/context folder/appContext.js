@@ -2,7 +2,10 @@ import React, { createContext } from 'react'
 import { useState } from 'react'
 
 let cartproducts=[]
+let changes=false
 export const Cartcontext= createContext({
+  casechange:changes,
+  changeINdex:0,
   totalItemInCart:0,
   items:cartproducts,
   getproductquantity:()=>{},
@@ -11,10 +14,18 @@ export const Cartcontext= createContext({
   removeOneFromCart:()=>{}, 
   deleteFromCart:()=>{},
   getTotalCart:()=>{},
+  changeZ:()=>{},
 })
 
 
 function Cartprovider({children}) {
+
+  const [indexState, setindexState]=useState({ zIndex:"2" })
+  function changeZ(){
+    changes=!changes
+    changes? setindexState({ zIndex:"0" }):setindexState({zIndex:"1"})
+  }
+
   const [totalCart, settotalCart]=useState(cartproducts.reduce((total, item)=>{
     return total+(item.price*item.quantity)
   },0))
@@ -43,7 +54,7 @@ function Cartprovider({children}) {
         cartproducts.map(
           product=>
           {if (product.id === id){
-           return {id:product.id, price:product.price, name:product.name, image:product.image, quantity:product.quantity+1}
+           return {...product, quantity:product.quantity+1}
           }else {return product}}
         ) 
     
@@ -88,6 +99,9 @@ function Cartprovider({children}) {
   }
 
   const contextvalue={
+    casechange:changes,
+    changeINdex:indexState,
+    increaseIndex:true,
     items:cartproducts,
     totalItemInCart:totalCart,
     getproductquantity,
@@ -95,7 +109,8 @@ function Cartprovider({children}) {
     additem,
     removeOneFromCart,
     deleteFromCart,
-    getTotalCart
+    getTotalCart,
+    changeZ
   }
 
   return (

@@ -2,6 +2,9 @@ import { useState } from "react";
 import "./Foodsection.css";
 import { Cartcontext } from "../context folder/appContext";
 import { useContext } from "react";
+import {BsStar} from "react-icons/bs"
+import {CiStar} from "react-icons/ci"
+
 
 
  export let checkout=[]
@@ -37,15 +40,17 @@ import { useContext } from "react";
         //props.toggle=true
         
     }
-    
+    //let star=props.star===3?<CiStar/>:<div><CiStar/><CiStar/><CiStar/><CiStar/></div> 
     return(
-        <div>
+       
             <div className="food-item"  >
                 <img src={props.image} alt="rice"/>
-                <p >{props.name}<br/>₦{props.price}</p>
+                <p className="food-name">{props.name}</p>
+                <p className="food-price"><del>{props.oldprice}</del> ₦{props.price}</p>
+                <div>{props.stars}</div>
                 {buttonState}
             </div>
-        </div>
+        
     )
 }
 export default Fooditem

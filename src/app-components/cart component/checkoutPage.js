@@ -2,7 +2,7 @@ import "./checkoutpage.css";
 import backArrow from "./back arrow.svg"
 //import mredible from "./mrEdible.PNG"
 //import { Cartcontext } from "../context folder/appContext";
-
+import {BiArrowBack} from "react-icons/bi"
 import { useState} from "react";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 import { Link } from "react-router-dom";
@@ -26,9 +26,9 @@ export default function Cartitem() {
     payment_options: "card,mobilemoney,ussd",
     customer: {
       email: email,
-      phone_number: phone,
+      phone_number: phone.toString(),
       name: name,
-      location: location
+      location: location.toString()
       //amount:cart.totalItemInCart
     },
     customizations: {
@@ -43,7 +43,7 @@ export default function Cartitem() {
   return (
     <div className="App">
     <div className="cart-back-arrow">
-        <Link to="/cart"><img src={backArrow} alt="back arrow"/></Link>
+        <Link to="/cart"><BiArrowBack/></Link>
             <h4 className="goback">Back to cart</h4>
     </div> 
       <div className="containers">
@@ -82,8 +82,8 @@ export default function Cartitem() {
           onClick={() =>
             handleFlutterPayment({
               callback: (response) => {
-                alert("Thank you, your purchase was successfull and our delivery agent will be intouch with you soon")
-                console.log(response);
+                response?alert("Thank you, transction successfull. Our delivery agent will be in touch with you soon"):alert("Transction unsuccessful, please try again.")
+                //console.log(response);
                 closePaymentModal();
               },
               onClose: () => {},

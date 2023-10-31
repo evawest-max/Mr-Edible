@@ -9,9 +9,9 @@ import removeBTN from "./x button.svg"
 import ItemQuantity from "./itemQuantity"
 import { Cartcontext } from "../context folder/appContext"
 import { Link } from "react-router-dom"
-import { Navbar } from "../nav components/nav"
 import { useContext } from "react"
 import { reduceNumberOnCart } from "../search component/searchBar"
+import {BiArrowBack} from "react-icons/bi"
 
 export let changeAddToCart=false
 export let checkoutpagetotal=0
@@ -92,13 +92,12 @@ function Cart(){
     checkoutpagetotal=subtotal
     
     return(
-        <div>
-        <Navbar/>
-        <div className="cartdisplay-container">
-                <Link to="/"><div className="cart-transprent-background"></div></Link>
+    
+            <div id="cart-parent">
+                    <Link to="/"><div className="cart-transprent-background"></div></Link>
                 <div className="cartdisplay-items-container">
                     <div className="cart-back-arrow">
-                        <Link to="/"><img  src={backArrow} alt="back arrow"/></Link> 
+                        <Link to="/"><BiArrowBack/></Link> 
                         <h4 className="goback">Continue shopping</h4>
                     </div>
                     <div>
@@ -143,13 +142,10 @@ function Cart(){
                         </div>
                     </div>
                     <Link to="/checkoutpage"><button  className="checkoutButton">Proceed to checkout</button></Link>
-                    <div className="cart-toggle-container">
-                        <img className="cart-toggle-cart-in" src={checkoutcart} alt="cart"/>
-                        <Link to="/checkoutpage"><img className="cart-toggle-checkout-out" src={location} alt="location"/></Link>
-                    </div>
+                    
                 </div>
             </div>
-            </div>
+    
     )
 }
 export default Cart

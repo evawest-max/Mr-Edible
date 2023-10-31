@@ -7,9 +7,16 @@ import AliceCarousel from "react-alice-carousel";
 
 
 
+
+
 function Foodsection() { 
+  
+
+  
+  
+  
   return (
-    
+
       <div className="advertcontainer">
         <AliceCarousel>
           <Link to="/special"><p><img className="advert-img" src={specialadverts[0].link} alt="advert" /></p></Link>
