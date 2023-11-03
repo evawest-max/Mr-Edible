@@ -4,7 +4,9 @@
     
 }
 
-
+.signup-title{
+    color:white
+}
 .signup{
     align-items: center;
     background-color: #ededfa;
@@ -51,6 +53,9 @@
 }
 
 @media screen and (min-width:900px){
+    .signup-title{
+        color:darkgreen
+    }
     .signup{
         /* align-items: center; */
         

@@ -67,6 +67,148 @@
     background: #FA9807;
     cursor: pointer;
 }
+@media screen and (min-width:200px){
+    .advertcontainer{
+        padding-top: 0px;
+        animation: fade-slide-top .7s ease-in-out forwards;
+    }
+    .advert-img{
+        width: 100%;
+        object-fit: cover;
+        height: 180px;
+        cursor: pointer;
+        animation: fade-in 2s ease-in-out forwards;
+    }
+    .food-container{
+        display: grid;
+        grid-gap: 12px;
+        grid-template-columns: repeat(auto-fill, minmax(120px,1fr)); 
+        margin: 20px 35px;
+    }
+    .food-item{
+        width: fit-content;
+        height: fit-content;
+        border-radius: 10px;
+        font-family: Raleway;
+        text-align: center;
+        transition: all 1s ease-in-out;
+        background-color: darkgreen;
+        box-shadow: 0px 0px 10px 3px lightblue;
+        animation: fade-slide-right 1s ease-in-out forwards;
+    }
+    .food-item div{
+        color: gold;
+    }
+    .food-item:hover{
+        transform: scale(5.2);
+        box-shadow: 0px 0px 10px 3px lightblue;
+    }
+    .food-item img{
+        width: 220px;
+        height: 180px;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+    .food-name{
+        color: white;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        width: 135px;
+    }
+    .food-price{
+        color: white;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .food-button{
+        width: 220px;
+        height: 28px;
+        border-radius: 5px;
+        color: white;
+        font-weight: 800;
+        background: #FA9807;
+        cursor: pointer;
+    }
+}
+@media screen and (min-width:300px){
+    .advertcontainer{
+        padding-top: 0px;
+        animation: fade-slide-top .7s ease-in-out forwards;
+    }
+    .advert-img{
+        width: 100%;
+        object-fit: cover;
+        height: 180px;
+        cursor: pointer;
+        animation: fade-in 2s ease-in-out forwards;
+    }
+    .food-container{
+        display: grid;
+        grid-gap: 12px;
+        grid-template-columns: repeat(auto-fill, minmax(120px,1fr)); 
+        margin: 20px 35px;
+    }
+    .food-item{
+        width: fit-content;
+        height: fit-content;
+        border-radius: 10px;
+        font-family: Raleway;
+        text-align: center;
+        transition: all 1s ease-in-out;
+        background-color: darkgreen;
+        box-shadow: 0px 0px 10px 3px lightblue;
+        animation: fade-slide-right 1s ease-in-out forwards;
+    }
+    .food-item div{
+        color: gold;
+    }
+    .food-item:hover{
+        transform: scale(5.2);
+        box-shadow: 0px 0px 10px 3px lightblue;
+    }
+    .food-item img{
+        width: 140px;
+        height: 100px;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+    .food-name{
+        color: white;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        width: 135px;
+    }
+    .food-price{
+        color: white;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .food-button{
+        width: 140px;
+        height: 28px;
+        border-radius: 5px;
+        color: white;
+        font-weight: 800;
+        background: #FA9807;
+        cursor: pointer;
+    }
+}
 
 @media screen and (min-width:390px){
     .advertcontainer{
@@ -156,8 +298,9 @@
         grid-template-columns: repeat(auto-fill, minmax(190px,1fr));
         justify-content: space-evenly;
         align-self: center;
-        margin: 10px 42px;
+        margin: 10px 0px;
         width: 100%;  
+        align-content: center;
     }
     .food-item{
         width: fit-content;

@@ -7,7 +7,7 @@ function CartIcon(props){
     const cart=useContext(Cartcontext)
     return(
         
-            <Link className="cartContainer" to="/cart">
+            <Link style={cart.changeINdex} className="cartContainer" to="/cart">
                 <HiMiniShoppingCart/>
                 <p className="carttext">{props.countt}</p>
             </Link>

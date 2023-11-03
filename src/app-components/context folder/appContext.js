@@ -1,9 +1,14 @@
 import React, { createContext } from 'react'
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import {RiLoginBoxFill} from "react-icons/ri"
+import users from '../signup/usersData'
 
 let cartproducts=[]
 let changes=false
 export const Cartcontext= createContext({
+  currentUser: 0,
+  loginIcon:0,
   casechange:changes,
   changeINdex:0,
   totalItemInCart:0,
@@ -15,6 +20,8 @@ export const Cartcontext= createContext({
   deleteFromCart:()=>{},
   getTotalCart:()=>{},
   changeZ:()=>{},
+  switchToUser:()=>{},
+  signout:()=>{},
 })
 
 
@@ -97,8 +104,43 @@ function Cartprovider({children}) {
     )
     console.log(totalCart)
   }
+  const [loginIcon, setloginIcon]= useState(
+    <div className="login-container">
+      <div><RiLoginBoxFill/></div>
+      <NavLink to="/login-page">
+      <p>SIGN IN/SIGN UP</p>
+      </NavLink>
+    </div>)
+
+  let [userloggedin, setuserloggedin]=useState({})
+  let userloggedindisplay={}
+
+  function switchToUser(index){
+    setuserloggedin({...users[index], password:"*******"})
+    userloggedindisplay={...users[index], password:"*******"}
+    setloginIcon(
+      <div className="login-container">
+        <div><RiLoginBoxFill/></div>
+        <NavLink to="/user-profile">
+        <p>{userloggedindisplay.name}</p>
+        </NavLink>
+      </div>)
+  }
+
+  function signout(){
+    setuserloggedin({})
+    setloginIcon(
+      <div className="login-container">
+        <div><RiLoginBoxFill/></div>
+        <NavLink to="/login-page">
+        <p>SIGN IN/SIGN UP</p>
+        </NavLink>
+      </div>)
+  }
 
   const contextvalue={
+    currentUser: userloggedin,
+    loginIcon:loginIcon,
     casechange:changes,
     changeINdex:indexState,
     increaseIndex:true,
@@ -110,7 +152,9 @@ function Cartprovider({children}) {
     removeOneFromCart,
     deleteFromCart,
     getTotalCart,
-    changeZ
+    changeZ,
+    switchToUser,
+    signout,
   }
 
   return (

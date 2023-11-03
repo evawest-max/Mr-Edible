@@ -17,7 +17,7 @@ function Vendors(){
         let star=data.rating===1?<AiFillStar/>:data.rating===2?<div><AiFillStar/><AiFillStar/></div>:data.rating===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
             return(
                 <div key={index} >
-                    <VendorCard name={data.name} image={data.image} rating={star}/>
+                    <VendorCard name={data.name} image={data.image} rating={star} about={data.about} vendorPage={data.vendorPage}/>
                 </div>
             )
     })
@@ -31,7 +31,7 @@ function Vendors(){
             let star=data.rating===1?<AiFillStar/>:data.rating===2?<div><AiFillStar/><AiFillStar/></div>:data.rating===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
             return(
                 <div key={index} >
-                    <VendorCard name={data.name} image={data.image} rating={star}/>
+                    <VendorCard name={data.name} image={data.image} rating={star} about={data.about} vendorPage={data.vendorPage} />
                 </div>
             )
         })

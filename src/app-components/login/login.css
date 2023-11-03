@@ -2,6 +2,12 @@
     align-items: center;
     background: radial-gradient(61.32% 53.53% at 33.80% 48.98%, rgb(1, 61, 1), #01000A 100%);
 }
+.login-title{
+    color: white;
+}
+.signinalert{
+    color: rgba(0, 255, 0, 0.858);
+}
 #login-Form-container{
     display: flex;
     flex-direction: column;
@@ -54,6 +60,9 @@
         align-items: center;
         border: 3px solid;
         background: radial-gradient(61.32% 53.53% at 33.80% 48.98%, rgb(1, 61, 1), #01000A 100%);
+    }
+    .login-title{
+        color: darkgreen;
     }
     #login-Form-container{
         display: flex;

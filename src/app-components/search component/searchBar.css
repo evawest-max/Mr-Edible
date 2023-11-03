@@ -5,8 +5,9 @@
 .SearchbarContainer{
     text-align: center;
     position: sticky;
-    top: 50px;
+    top: 55px;
     z-index: 200;
+    
 }
 
 .SearchbarContainer input{
@@ -15,7 +16,7 @@
     border-radius: 5px;
     background-color: wheat;
     color: darkgreen;
-    padding: 0px 10px;    border: none;
+    padding: 0px 10px;
 }
 .SearchbarContainer input:focus{
     outline: none;
@@ -33,7 +34,7 @@
     .SearchbarContainer{
         text-align: center;
         position: sticky;
-        top: 50px;
+        top: 55px;
         z-index: 200;
     }
     .SearchbarContainer input{
@@ -54,7 +55,7 @@
     .SearchbarContainer{
         text-align: center;
         position: sticky;
-        top: 50px;
+        top: 55px;
         z-index: 200;
         
     }
@@ -70,6 +71,7 @@
     .fiterandfoodcontainer{
         display: flex;
         flex-direction: column;
+        justify-content: center;
     }
     
 }
@@ -82,12 +84,12 @@
     .SearchbarContainer{
         text-align: center;
         position: sticky;
-        top: 50px;
+        top: 55px;
         z-index: 4;
     }
     .SearchbarContainer input{
         width: 472px;
-        height: 20px;
+        height: 25px;
         border-radius: 5px;
         background-color: wheat;
         color: darkblue;

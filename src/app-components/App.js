@@ -14,11 +14,13 @@ import Notfound from './notfound/notfound';
 import SearchBar from './search component/searchBar';
 import { createBrowserRouter,  Route, createRoutesFromElements, RouterProvider} from 'react-router-dom';
 import Signup from './signup/signup';
+import UserProfile from './login/userProfile/user-profile';
 
 const router=createBrowserRouter(
   createRoutesFromElements(
       <Route path="/" element={<Appsection/>}>
-        <Route index element={<SearchBar/>}/>
+        <Route index element={<Vendors/>}/>
+        <Route path='/mrEdible' element={<SearchBar/>}></Route>
         <Route path='/checkoutpage' element={<CheckoutPage/>}></Route>
         <Route path='/cart' element={<Cart/>}></Route>
         <Route path='/special' element={<SpecialOrders/>}></Route>
@@ -26,6 +28,7 @@ const router=createBrowserRouter(
         <Route path='/vendors' element={<Vendors/>}></Route> 
         <Route path='/login-page' element={<LoginPage/>}></Route>  
         <Route path='/signup-page' element={<Signup/>}></Route> 
+        <Route path='/user-profile' element={<UserProfile/>}></Route> 
         <Route path='*' element={<Notfound/>} />    
       </Route>
   )

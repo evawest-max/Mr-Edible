@@ -32,9 +32,8 @@ function Navbar() {
           <ul>
           <div>
             <NavLink to="/vendors">Food Vendors</NavLink>
-            <NavLink to="/special"><FcOnlineSupport/>         Special Order</NavLink>
+            <NavLink to="/special"><FcOnlineSupport/>Special Order</NavLink>
             <NavLink to="/track">Track Order</NavLink>
-            <NavLink to="/login-page">SIGN IN</NavLink>
           </div>
           </ul>
       </nav>
@@ -46,33 +45,13 @@ function Navbar() {
     console.log(cart.changeINdex)
     newMenuState(<div className="menubutton-mobile" onClick={openMenu}><GiHamburgerMenu/></div>)
   }
-  const [loginIcon, setloginIcon]= useState(
-        <div className="login-container">
-          <div><RiLoginBoxFill/></div>
-          <NavLink to="/login-page">
-          <p onClick={swicthToSignup}>SIGN IN</p>
-          </NavLink>
-        </div>)
-  function swicthToSignup(){
-    setloginIcon(<div className="login-container">
-    <div><RiLoginBoxFill/></div>
-    <NavLink to="/signup-page">
-    <p onClick={swicthToSignin}>Signup</p>
-    </NavLink>
-  </div>)
-  }
-  function swicthToSignin(){
-    setloginIcon(<div className="login-container">
-    <div><RiLoginBoxFill/></div>
-    <NavLink to="/login-page">
-    <p onClick={swicthToSignup}>Signin</p>
-    </NavLink>
-  </div>)
-  }
+  
+ 
+  
   return (
     
     <div className="everything">
-        <NavLink to="/"><img className="logo" src={mrEdible} alt="logo" /></NavLink>
+        <img className="logo" src={mrEdible} alt="logo" />
       <div className="navcontainer">
         <nav>
           <ul>
@@ -83,7 +62,7 @@ function Navbar() {
         </nav> 
       </div>
       
-      {loginIcon}
+      {cart.loginIcon}
       
 
       <div className="navcontainer-mobile">

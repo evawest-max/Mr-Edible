@@ -1,26 +1,105 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import "./signup.css"
 import { NavLink } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
+import users from './usersData'
 
 function Signup() {
+
+    let nameref=useRef()
+    let phoneref=useRef()
+    let emailref=useRef()
+    let createpasswordref=useRef()
+    let confirmpasswordref=useRef()
+    
+
+    const [alerttext, setalerttext]=useState()
+    const [alerttextcolor, setalerttextcolor]=useState()
+    const [namebordercolor, setnamebordercolor]=useState()
+    const [phonenumberbordercolor, setphonenumberbordercolor]=useState()
+    const [emailbordercolor, setemailbordercolor]=useState()
+    const [createpasswordbordercolor, setcreatepasswordbordercolor]=useState()
+    const [confirmpasswordbordercolor, setconfirmpasswordbordercolor]=useState()
+
+    let userexist=false
+    const registerUser= ()=>{
+      for (let i=0; i<users.length; i++){
+        if (users[i].email === emailref.current.value){
+          userexist=true
+        }
+      } 
+
+        if (nameref.current.value.length>3){
+          if (phoneref.current.value.length===11){
+            if (!userexist){
+              if (emailref.current.value.includes("@") && !userexist){
+                if (createpasswordref.current.value===confirmpasswordref.current.value && confirmpasswordref.current.value.length>=6){
+                  if (confirmpasswordref.current.value.includes(",")||confirmpasswordref.current.value.includes("@") ||confirmpasswordref.current.value.includes("#") ||confirmpasswordref.current.value.includes("$")||confirmpasswordref.current.value.includes("%")){
+                    users.push({
+                      id:users[users.length-1].id+1,
+                      name:nameref.current.value,
+                      email:emailref.current.value,
+                      password:createpasswordref.current.value
+                    })
+                    setnamebordercolor({border: "2px solid green"})
+                    setphonenumberbordercolor({border: "2px solid green"})
+                    setemailbordercolor({border: "2px solid green"})
+                    setcreatepasswordbordercolor({border: "2px solid green"})
+                    setconfirmpasswordbordercolor({border: "2px solid green"})
+                    setalerttextcolor({color: "lime"})
+                    setalerttext("Sign up successfull")
+                    userexist=false
+                  }else {
+                    setalerttextcolor({color: "red"})
+                    setconfirmpasswordbordercolor({border: "2px solid red"})
+                    setalerttext("password must include one of this symbols', @ # $ %'")
+                  }
+                }else{
+                  setalerttextcolor({color: "red"})
+                  setemailbordercolor({border: "2px solid red"})
+                  setalerttext("password do not match or shorter than 6 characters")
+                }
+              }else{
+                setalerttextcolor({color: "red"})
+                setemailbordercolor({border: "2px solid red"})
+                setalerttext("email is incorrect 'include @'")
+              }
+            }else{
+              setalerttextcolor({color: "red"})
+              setemailbordercolor({border: "2px solid red"})
+              setalerttext("User already exist")
+            }
+          }else{
+            setalerttextcolor({color: "red"})
+            setphonenumberbordercolor({border: "2px solid red"})
+            setalerttext("invalid phone number, 11 numbers only!")
+          }
+        }else{
+          setalerttextcolor({color: "red"})
+          setnamebordercolor({border: "2px solid red"})
+          setalerttext("Fullname must be longer than 3 letters.")
+        }
+        
+    }
+
   return (
     <div id='signup-container'>
         <div id='signup-Form-container'>
-            <h3 className='signup-title'>SIGN UP</h3>
+            <h3 className='signup-title'>CREATE AN ACCOUNT</h3>
+            <p style={alerttextcolor}>{alerttext}</p>
             <form className='signup-form'>
                 <label>Full Name</label>
-                <input type='text' placeholder='John Smith'/><br/>
+                <input style={namebordercolor} ref={nameref} type='text' placeholder='John Smith'/><br/>
                 <label>Phone number</label>
-                <input type='phonenumber' placeholder='07030000000'/><br/>
+                <input style={phonenumberbordercolor} ref={phoneref} type='phonenumber' placeholder='07030000000'/><br/>
                 <label>E-mail</label>
-                <input type='email' placeholder='example@yahoo.com'/><br/>
+                <input style={emailbordercolor} ref={emailref} type='email' placeholder='example@yahoo.com'/><br/>
                 <label>Create Password</label>
-                <input type='password' placeholder='********'/><br/>
+                <input style={createpasswordbordercolor} ref={createpasswordref} type='password' placeholder='********'/><br/>
                 <label>Confirm Password</label>
-                <input type='password' placeholder='********'/><br/>
+                <input style={confirmpasswordbordercolor} ref={confirmpasswordref} type='password' placeholder='********'/><br/>
             </form>
-            <button className='signup-button'><strong>SIGN UP</strong></button>
+            <button onClick={registerUser} className='signup-button'><strong>SIGN UP</strong></button>
             
             <h5 className='sign-up-button'>
               <p>I already Have an account?</p>

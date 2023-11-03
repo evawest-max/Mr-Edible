@@ -94,10 +94,10 @@ function Cart(){
     return(
     
             <div id="cart-parent">
-                    <Link to="/"><div className="cart-transprent-background"></div></Link>
+                    <Link to="/mrEdible"><div className="cart-transprent-background"></div></Link>
                 <div className="cartdisplay-items-container">
                     <div className="cart-back-arrow">
-                        <Link to="/"><BiArrowBack/></Link> 
+                        <Link to="/mrEdible"><BiArrowBack/></Link> 
                         <h4 className="goback">Continue shopping</h4>
                     </div>
                     <div>
