@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import "./signup.css"
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import users from './usersData'
 
@@ -21,26 +21,139 @@ function Signup() {
     const [createpasswordbordercolor, setcreatepasswordbordercolor]=useState()
     const [confirmpasswordbordercolor, setconfirmpasswordbordercolor]=useState()
 
+    function validatename(){
+      if (nameref.current.value.length<4){
+          setalerttextcolor({color: "red"})
+          setnamebordercolor({border: "2px solid red"})
+          setalerttext("Fullname must be longer than 4 letters.")
+      }else{
+        setnamebordercolor({border: "2px solid green"})
+        setalerttext("")
+      }
+    }
+    function validatePhonenumber(){
+      if (phoneref.current.value.length!==11){
+        setalerttextcolor({color: "red"})
+        setphonenumberbordercolor({border: "2px solid red"})
+        setalerttext("invalid phone number, 11 numbers only!")
+      }else if(phoneref.current.value.length===11){
+        setphonenumberbordercolor({border: "2px solid green"})
+        setalerttext("")
+      }
+    }
+    function validateEmail(){
+      if (!emailref.current.value.includes("@") ){
+        setalerttextcolor({color: "red"})
+        setemailbordercolor({border: "2px solid red"})
+        setalerttext("email is incorrect 'include @'")
+      }else{
+        setemailbordercolor({border: "2px solid green"})
+        setalerttext("")
+      }
+    }
+    function validateCreatePassword(){
+      if (createpasswordref.current.value.includes(",")||createpasswordref.current.value.includes("@") ||createpasswordref.current.value.includes("#") ||createpasswordref.current.value.includes("$")||createpasswordref.current.value.includes("%") && createpasswordref.current.value.length>=6){
+        setcreatepasswordbordercolor({border: "2px solid green"})
+        setalerttext("")
+      }else{
+        setalerttextcolor({color: "red"})
+        setcreatepasswordbordercolor({border: "2px solid red"})
+        setalerttext("password must include one of this symbols', @ # $ %' and longer than 6 characters")
+      }
+    }
+
     let userexist=false
+    // const registerUser= ()=>{
+    //   for (let i=0; i<users.length; i++){
+    //     if (users[i].email === emailref.current.value){
+    //       userexist=true
+    //     }
+    //   } 
+
+    //     if (nameref.current.value.length>3){
+    //       if (phoneref.current.value.length===11){
+    //         if (!userexist){
+    //           if (emailref.current.value.includes("@") && !userexist){
+    //             if (createpasswordref.current.value===confirmpasswordref.current.value && confirmpasswordref.current.value.length>=6){
+    //               if (confirmpasswordref.current.value.includes(",")||confirmpasswordref.current.value.includes("@") ||confirmpasswordref.current.value.includes("#") ||confirmpasswordref.current.value.includes("$")||confirmpasswordref.current.value.includes("%")){
+    //                 users.push({
+    //                   id:users[users.length-1].id+1,
+    //                   name:nameref.current.value,
+    //                   email:emailref.current.value,
+    //                   password:createpasswordref.current.value
+    //                 })
+    //                 setnamebordercolor({border: "2px solid green"})
+    //                 setphonenumberbordercolor({border: "2px solid green"})
+    //                 setemailbordercolor({border: "2px solid green"})
+    //                 setcreatepasswordbordercolor({border: "2px solid green"})
+    //                 setconfirmpasswordbordercolor({border: "2px solid green"})
+    //                 setalerttextcolor({color: "lime"})
+    //                 setalerttext("Sign up successfull")
+    //                 userexist=false
+    //               }else {
+    //                 setalerttextcolor({color: "red"})
+    //                 setconfirmpasswordbordercolor({border: "2px solid red"})
+    //                 setalerttext("password must include one of this symbols', @ # $ %'")
+    //               }
+    //             }else{
+    //               setalerttextcolor({color: "red"})
+    //               setemailbordercolor({border: "2px solid red"})
+    //               setalerttext("password do not match or shorter than 6 characters")
+    //             }
+    //           }else{
+    //             setalerttextcolor({color: "red"})
+    //             setemailbordercolor({border: "2px solid red"})
+    //             setalerttext("email is incorrect 'include @'")
+    //           }
+    //         }else{
+    //           setalerttextcolor({color: "red"})
+    //           setemailbordercolor({border: "2px solid red"})
+    //           setalerttext("User already exist")
+    //         }
+    //       }else{
+    //         setalerttextcolor({color: "red"})
+    //         setphonenumberbordercolor({border: "2px solid red"})
+    //         setalerttext("invalid phone number, 11 numbers only!")
+    //       }
+    //     }else{
+    //       setalerttextcolor({color: "red"})
+    //       setnamebordercolor({border: "2px solid red"})
+    //       setalerttext("Fullname must be longer than 3 letters.")
+    //     }
+        
+    // }
+    
+
     const registerUser= ()=>{
       for (let i=0; i<users.length; i++){
         if (users[i].email === emailref.current.value){
           userexist=true
         }
       } 
-
-        if (nameref.current.value.length>3){
+        if (nameref.current.value.length>4){
           if (phoneref.current.value.length===11){
             if (!userexist){
               if (emailref.current.value.includes("@") && !userexist){
                 if (createpasswordref.current.value===confirmpasswordref.current.value && confirmpasswordref.current.value.length>=6){
                   if (confirmpasswordref.current.value.includes(",")||confirmpasswordref.current.value.includes("@") ||confirmpasswordref.current.value.includes("#") ||confirmpasswordref.current.value.includes("$")||confirmpasswordref.current.value.includes("%")){
-                    users.push({
+                    let newuser={
                       id:users[users.length-1].id+1,
                       name:nameref.current.value,
                       email:emailref.current.value,
-                      password:createpasswordref.current.value
-                    })
+                      phonenumber:phoneref.current.value,
+                      password : confirmpasswordref.current.value,
+                    }
+                    if(localStorage.getItem('mredibleaccount')!==null){
+                      let stringusers=localStorage.getItem('mredibleaccount')
+                      let objectusers=JSON.parse(stringusers)
+                      objectusers.push(newuser)
+                      localStorage.setItem('mredibleaccount', JSON.stringify(objectusers))
+                    }else{
+                      users.push(newuser)
+                      localStorage.setItem('mredibleaccount',JSON.stringify(users))
+                    }
+                    console.log(users)
+                    
                     setnamebordercolor({border: "2px solid green"})
                     setphonenumberbordercolor({border: "2px solid green"})
                     setemailbordercolor({border: "2px solid green"})
@@ -89,13 +202,13 @@ function Signup() {
             <p style={alerttextcolor}>{alerttext}</p>
             <form className='signup-form'>
                 <label>Full Name</label>
-                <input style={namebordercolor} ref={nameref} type='text' placeholder='John Smith'/><br/>
+                <input style={namebordercolor} onBlur={validatename} ref={nameref} type='text' placeholder='John Smith'/><br/>
                 <label>Phone number</label>
-                <input style={phonenumberbordercolor} ref={phoneref} type='phonenumber' placeholder='07030000000'/><br/>
+                <input style={phonenumberbordercolor} onBlur={validatePhonenumber} ref={phoneref} type='phonenumber' placeholder='07030000000'/><br/>
                 <label>E-mail</label>
-                <input style={emailbordercolor} ref={emailref} type='email' placeholder='example@yahoo.com'/><br/>
+                <input style={emailbordercolor}onBlur={validateEmail} ref={emailref} type='email' placeholder='example@yahoo.com'/><br/>
                 <label>Create Password</label>
-                <input style={createpasswordbordercolor} ref={createpasswordref} type='password' placeholder='********'/><br/>
+                <input style={createpasswordbordercolor}onBlur={validateCreatePassword} ref={createpasswordref} type='password' placeholder='********'/><br/>
                 <label>Confirm Password</label>
                 <input style={confirmpasswordbordercolor} ref={confirmpasswordref} type='password' placeholder='********'/><br/>
             </form>

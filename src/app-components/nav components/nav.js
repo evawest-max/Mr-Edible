@@ -7,15 +7,15 @@ import "./nav.css";
 import { useState } from "react";
 import {GiHamburgerMenu} from "react-icons/gi"
 import {IoMdClose} from "react-icons/io"
-import {RiLoginBoxFill} from "react-icons/ri"
+// import {RiLoginBoxFill} from "react-icons/ri"
 import {FcOnlineSupport} from "react-icons/fc"
 import { useContext } from "react";
 import { Cartcontext } from "../context folder/appContext";
 
 //import CartIcon from "../cart component/cartIcon";
 
-let signup="sign in"
-let signstate=true
+// let signup="sign in"
+// let signstate=true
 function Navbar() {
   const cart=useContext(Cartcontext)
 
@@ -31,9 +31,9 @@ function Navbar() {
         <div className="menubutton-mobile" style={{}} onClick={menuclose}><IoMdClose/></div>
           <ul>
           <div>
-            <NavLink to="/vendors">Food Vendors</NavLink>
-            <NavLink to="/special"><FcOnlineSupport/>Special Order</NavLink>
-            <NavLink to="/track">Track Order</NavLink>
+            <NavLink onClick={menuclose} to="/vendors">Food Vendors</NavLink>
+            <NavLink onClick={menuclose} to="/special"><FcOnlineSupport/>Special Order</NavLink>
+            <NavLink onClick={menuclose} to="/track">Track Order</NavLink>
           </div>
           </ul>
       </nav>

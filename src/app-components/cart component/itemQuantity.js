@@ -5,20 +5,20 @@ import { useContext } from "react"
 
 function ItemQuantity(props){
     const cart=useContext(Cartcontext)
-    cart.items.filter((product)=>{
-        return product.id===props.id
-    })
-    let quantity=cart.items.find(product=> product.id===props.id)?.quantity
-    let [quantitys, newQuantitys]=useState(quantity)
-            function increaseQuantitys(){
-                newQuantitys(cart.items.find(product=> product.id===props.id)?.quantity+1)
-                cart.addOneToCart(props.id, props.price)   
-            }
-            function decreaseQuantitys(){
-                newQuantitys(cart.items.find(product=> product.id===props.id)?.quantity-1)
-                quantitys>1&&cart.removeOneFromCart(props.id, props.price)
-                quantitys<2&&newQuantitys(1)
-            }
+    
+    let [quantitys, newQuantitys]=useState(props.quantity)
+    
+    function increaseQuantitys(){
+        cart.increaseProductQuantity(props.id, props.price)   
+        let count=props.quantity+1
+        newQuantitys(count)
+    }
+    function decreaseQuantitys(){
+        quantitys>1&&cart.decreaseProductQuantity(props.id, props.price)
+        let count=props.quantity-1
+        newQuantitys(count)
+        quantitys<2&&newQuantitys(1)
+    }
 
     return (
         <div className="increaseCartNumb">
