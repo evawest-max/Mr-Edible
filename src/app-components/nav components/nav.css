@@ -143,7 +143,7 @@
 @media screen and (min-width:900px){
     .everything{
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly;
         position: sticky;
         top: 0px;
         z-index: 1;
@@ -160,16 +160,22 @@
         color: black;
         display: flex;
         flex-direction: row;
-        justify-content: center;
-        margin: 0px 200px;
+        justify-content: space-evenly;
+        gap: 50px;
+        margin-top: 10px;
+        height: fit-content;
+        width: fit-content;
+        min-width: 350px;
     }
     .navcontainer nav ul{
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-around;
         gap: 30px;
         padding: 0px 20px;
+        border: 3px solid rgb(9, 255, 0);
+        width: fit-content;
     }
-    .navcontainer nav ul a{
+    .navcontainer nav a{
         color: rgb(1, 61, 1);
         list-style: none;
         text-decoration: none;
@@ -180,17 +186,11 @@
         font-weight: 600;
         line-height: normal;
         cursor: pointer;
+        min-width: 200px;
+        margin: 0px 5px;
     }
-
-    .navcontainer nav ul a.active{
-        background-color: orange;
-        border-radius: 5px;
-        padding: 2px 10px;
-        color: darkblue;
-    }
-    .navcontainer nav ul a:hover{ 
+    .navcontainer nav a:hover{ 
         background-color: rgb(244, 196, 108);
-        padding: 2px 10px; 
     }
     .logo{
         width: 80px;

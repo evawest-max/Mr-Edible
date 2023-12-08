@@ -54,11 +54,11 @@ function Navbar() {
         <img className="logo" src={mrEdible} alt="logo" />
       <div className="navcontainer">
         <nav>
-          <ul>
+          
             <NavLink to="/vendors">Food Vendors</NavLink>
             <NavLink to="/special">Special Order</NavLink>
             <NavLink to="/track">Track Order</NavLink>
-          </ul>
+          
         </nav> 
       </div>
       

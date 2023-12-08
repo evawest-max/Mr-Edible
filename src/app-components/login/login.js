@@ -87,7 +87,7 @@ function LoginPage() {
             
             <h5 className='sign-up-button'>
               <p>I dont Have an account?</p>
-              <div><NavLink to="/signup-page">SIGN UP</NavLink></div>
+              <div><Link to="/signup-page">SIGN UP</Link></div>
             </h5>
           </div>
         </div>

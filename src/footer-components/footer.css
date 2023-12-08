@@ -36,21 +36,28 @@
     font-weight: 700;
     line-height: normal;
 }
-.quick-links input{
+/* .quick-links input{
     width: 230px;
     height: 20px;
     border-radius: 8px;
     background: #FFF;
     padding-right: 0px;
     border: none;
-}
+} */
 .quick-links img{
     width: 20px;
 }
+.subscribe-container{
+    border: 3px solid;
+    display: flex;
+}
+.footer-input{
+    padding-right: 45px;
+    width: 100%;
+    border: none;
+}
 .footer-button{
-    position: absolute;
     background-color: #FA9807;
-    right: 33px;
     border-radius: 5px;
     padding: 5px 10px;
     font-family: Raleway;
@@ -113,21 +120,28 @@
         font-weight: 700;
         line-height: normal;
     }
-    .quick-links input{
+    /* .quick-links input{
         width: 230px;
         height: 20px;
         border-radius: 8px;
         background: #FFF;
         padding-right: 0px;
         border: none;
-    }
+    } */
     .quick-links img{
         width: 20px;
     }
+    .subscribe-container{
+        border: 3px solid;
+        display: flex;
+    }
+    .footer-input{
+        padding-right: 55px;
+        width: 100%;
+        border: none;
+    }
     .footer-button{
-        position: absolute;
         background-color: #FA9807;
-        right: 33px;
         border-radius: 5px;
         padding: 5px 10px;
         font-family: Raleway;
@@ -191,21 +205,28 @@
         font-weight: 700;
         line-height: normal;
     }
-    .quick-links input{
+    /* .quick-links input{
         width: 403px;
         height: 20px;
         border-radius: 8px;
         background: #FFF;
         padding-right: 0px;
         border: none;
-    }
+    } */
     .quick-links img{
         width: 20px;
     }
+    .subscribe-container{
+        border: 3px solid;
+        display: flex;
+    }
+    .footer-input{
+        padding-right: 65px;
+        width: 100%;
+        border: none;
+    }
     .footer-button{
-        position: absolute;
         background-color: #FA9807;
-        right: 33px;
         border-radius: 5px;
         padding: 5px 10px;
         font-family: Raleway;
@@ -233,7 +254,7 @@
 @media screen and (min-width:900px){
     .container{
         background: #070917;
-        width: 1426px;
+        /* width: 1426px; */
         margin: auto;
         margin-top: 56px;
         border: 5px solid;
@@ -269,27 +290,35 @@
         font-weight: 700;
         line-height: normal;
     }
-    .quick-links input{
+    /* .quick-links input{
         width: 2000px;
         height: 40px;
         border-radius: 8px;
         background: #FFF;
         padding-right: 0px;
-    }
+    } */
     .quick-links img{
         width: 30px;
     }
-    .footer-input{
+    /* .footer-input{
         max-width: 526.138px;
         max-height: 29px;
         border-radius: 8px;
         background: #FFF;
         padding-right: 360px;
+    } */
+    .subscribe-container{
+        border: 3px solid;
+        display: flex;
+    }
+    .footer-input{
+        padding-right: 40px;
+        width: 100%;
+        border: none;
+        outline: none;
     }
     .footer-button{
-        position: absolute;
         background-color: #FA9807;
-        right: 280px;
         border-radius: 5px;
         padding: 7px 20px;
         font-family: Raleway;

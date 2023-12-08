@@ -51,8 +51,11 @@
     
     font-size: 40px;
 }
-.sign-up-button{
+/* .sign-up-button{
     color: blue;
+} */
+.sign-up-button div a{
+    color: rgb(248, 125, 248);
 }
 .login-container img{
     border-radius: 100%;

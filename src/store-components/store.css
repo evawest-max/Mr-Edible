@@ -22,14 +22,14 @@ h1{
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    width: 300px;
+    /* width: 300px; */
 }
 .store{
     display: flex;
     justify-content: center;
     background-color: black;
     color:  #FFF;
-    width: 135px;
+    /* width: 135px; */
     padding: 0px 10px;
     gap: 2px;
     font-family: Raleway;

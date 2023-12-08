@@ -148,21 +148,23 @@ function Signup() {
         <div id='signup-Form-container'>
             <h3 className='signup-title'>CREATE AN ACCOUNT</h3>
             <p style={alerttextcolor}>{alerttext}</p>
-            <form className='signup-form'>
-                <label>Full Name</label>
-                <input style={namebordercolor} onBlur={validatename} ref={nameref} type='text' placeholder='John Smith'/><br/>
-                <label>Phone number</label>
-                <input style={phonenumberbordercolor} onBlur={validatePhonenumber} ref={phoneref} type='phonenumber' placeholder='07030000000'/><br/>
-                <label>E-mail</label>
-                <input style={emailbordercolor}onBlur={validateEmail} ref={emailref} type='email' placeholder='example@yahoo.com'/><br/>
-                <label>Passport</label>
-                <input ref={passportref} type='file' onChange={onimagechange}/><br/>
-                <label>Create Password</label>
-                <input style={createpasswordbordercolor}onBlur={validateCreatePassword} ref={createpasswordref} type='password' placeholder='********'/><br/>
-                <label>Confirm Password</label>
-                <input style={confirmpasswordbordercolor} ref={confirmpasswordref} type='password' placeholder='********'/><br/>
-            </form>
-            <button onClick={registerUser} className='signup-button'><strong>SIGN UP</strong></button>
+            <div className='inputAndButtondiv'>
+              <form className='signup-form'>
+                  <label>Full Name</label>
+                  <input style={namebordercolor} onBlur={validatename} ref={nameref} type='text' placeholder='John Smith'/><br/>
+                  <label>Phone number</label>
+                  <input style={phonenumberbordercolor} onBlur={validatePhonenumber} ref={phoneref} type='phonenumber' placeholder='07030000000'/><br/>
+                  <label>E-mail</label>
+                  <input style={emailbordercolor}onBlur={validateEmail} ref={emailref} type='email' placeholder='example@yahoo.com'/><br/>
+                  <label>Passport</label>
+                  <input className='RegisterationImageName' ref={passportref} type='file' onChange={onimagechange}/><br/>
+                  <label>Create Password</label>
+                  <input style={createpasswordbordercolor}onBlur={validateCreatePassword} ref={createpasswordref} type='password' placeholder='********'/><br/>
+                  <label>Confirm Password</label>
+                  <input style={confirmpasswordbordercolor} ref={confirmpasswordref} type='password' placeholder='********'/><br/>
+              </form>
+              <button onClick={registerUser} className='signup-button'><strong>SIGN UP</strong></button>
+            </div>
             
             <h5 className='sign-up-button'>
               <p>I already Have an account?</p>

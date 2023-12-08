@@ -27,7 +27,7 @@ function Footer(){
                             <a href="https://api.Whatsapp.com/send?phone=2347032397184&text=I%27m+having+an+issue+can+you+please+help+me+resolve+it"><img src={whatsapp} alt="whats app"/></a>
                             
                         </div>
-                        <div >
+                        <div className="subscribe-container">
                             <input className="footer-input" type="text" placeholder="Email address"/>
                             <button className="footer-button"><b>Subcribe</b></button>
                         </div>
