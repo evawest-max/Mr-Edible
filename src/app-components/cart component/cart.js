@@ -1,95 +1,62 @@
 import { useEffect, useState } from "react"
 import "./cart.css"
-import backArrow from "./back arrow.svg"
-import location from "./location.svg"
-import checkoutcart from "./cart-checkout.svg"
-import { checkout} from "../Food component/food item"
-import foods from "../Food component/foods"
+// import backArrow from "./back arrow.svg"
+// import location from "./location.svg"
+// import productsIDInTheCartListcart from "./cart-productsIDInTheCartList.svg"
+// import { productsIDInTheCartList} from "../Food component/food item"
+// import foods from "../Food component/foods"
 import removeBTN from "./x button.svg"
 import ItemQuantity from "./itemQuantity"
-import { Cartcontext } from "../context folder/appContext"
+import { Cartcontext, productsIDInTheCartList } from "../context folder/appContext"
 import { Link } from "react-router-dom"
 import { useContext } from "react"
-import { reduceNumberOnCart } from "../search component/searchBar"
 import {BiArrowBack} from "react-icons/bi"
 
 export let changeAddToCart=false
-export let checkoutpagetotal=0
+export let productsIDInTheCartListpagetotal=0
 
 function Cart(){
     let deleveryfee=0
     const tax=5
-    
-    
     const cart=useContext(Cartcontext)
-    
-    let filteredFoodItems= foods.filter((i)=>{
-        return checkout.includes(i.id)
-    })
-    filteredFoodItems.reverse()
-
-    filteredFoodItems.forEach(element => {
+    productsIDInTheCartList.forEach(element => {
         deleveryfee+=1000
     });
-
+    
     const [subtotal, newsubtotal]=useState(cart.totalItemInCart+deleveryfee+tax)
     useEffect(()=>{
         newsubtotal(cart.totalItemInCart+deleveryfee+tax)
     },[cart.totalItemInCart, deleveryfee])
     
-
-    const [foodState, newfoodState]=useState(filteredFoodItems.map((item, index)=>{    
-        function removeFromCart(){
-            reduceNumberOnCart()  
-            cart.deleteFromCart(item.id) 
-            let indexs=    checkout.findIndex(checkindex)
-                function checkindex(checkouts){
-                    return checkouts===item.id
-                }
-                checkout.splice(indexs,1)
-        }
-        return(
-            <div key={index} className="foodcartMapped">
-                <ItemQuantity id={item.id} price={item.amount}/>
-                <div className="foodcartInfomation">
-                    <img className="foodcartMappedImage" src={item.link} alt="food"/>
-                    <p>{item.name}</p>
-                    <p className="foodcartMappedAmount">₦{item.amount}</p>
-                    <img onClick={removeFromCart} className="Xbutton" src={removeBTN} alt="remove button"/>
-                </div>
-            </div>
-        ) 
-    })
-    )
-
+    
+    const [foodState, newfoodState]=useState("cart is emptys")
+    
+    productsIDInTheCartList.reverse()
     useEffect(()=>{
-        newfoodState(filteredFoodItems.map((item, index)=>{    
+        if (productsIDInTheCartList.length===0){
+            newfoodState("cart is empty")
+        }
+        else{newfoodState(productsIDInTheCartList.map((item, index)=>{    
             function removeFromCart(){  
-                reduceNumberOnCart()
-                cart.deleteFromCart(item.id) 
-                let indexs=    checkout.findIndex(checkindex)
-                    function checkindex(checkouts){
-                        return checkouts===item.id
-                    }
-                    checkout.splice(indexs,1)
-                    filteredFoodItems.pop()
+                cart.deleteFromCartList(item.id) 
             }
             return(
                 <div key={index} className="foodcartMapped">
-                    <ItemQuantity id={item.id} price={item.amount}/>
+                    <ItemQuantity id={item.id} price={item.price} quantity={item.quantity}/>
                     <div className="foodcartInfomation">
-                        <img className="foodcartMappedImage" src={item.link} alt="food"/>
+                        <img className="foodcartMappedImage" src={item.image} alt="food"/>
                         <p>{item.name}</p>
-                        <p className="foodcartMappedAmount">₦{item.amount}</p>
+                        <p className="foodcartMappedAmount">₦{item.price}</p>
                         <img onClick={removeFromCart} className="Xbutton" src={removeBTN} alt="remove button"/>
                     </div>
                 </div>
             ) 
         }))
-        checkoutpagetotal=subtotal
+        productsIDInTheCartListpagetotal=subtotal
+    }
     },[cart.items])
 
-    checkoutpagetotal=subtotal
+    // productsIDInTheCartListpagetotal=subtotal
     
     return(
     

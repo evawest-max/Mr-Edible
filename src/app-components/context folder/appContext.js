@@ -1,112 +1,132 @@
-import React, { createContext } from 'react'
+import React, { createContext, useEffect } from 'react'
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink, json } from 'react-router-dom'
 import {RiLoginBoxFill} from "react-icons/ri"
+import { FaUserCircle } from "react-icons/fa";
 import users from '../signup/usersData'
 
-let cartproducts=[]
+export let productsIDInTheCartList=[]
 let changes=false
 export const Cartcontext= createContext({
+  signinsuccessful:false,
+  
+  numberOfItemsInCart:0,
   currentUser: 0,
   loginIcon:0,
   casechange:changes,
   changeINdex:0,
   totalItemInCart:0,
-  items:cartproducts,
+  items:productsIDInTheCartList,
   getproductquantity:()=>{},
-  addOneToCart:()=>{},
-  additem:()=>{},
-  removeOneFromCart:()=>{}, 
-  deleteFromCart:()=>{},
+  increaseProductQuantity:()=>{},
+  addItemsToCartList:()=>{},
+  decreaseProductQuantity:()=>{}, 
+  deleteFromCartList:()=>{},
   getTotalCart:()=>{},
   changeZ:()=>{},
   switchToUser:()=>{},
   signout:()=>{},
+  deleteUserAccount:()=>{},
 })
 
 
 function Cartprovider({children}) {
-
+  
+  const [numberOfItemsInCart, setnumberOfItemsInCart]=useState(localStorage.getItem("mredible_cart")!==null? JSON.parse(localStorage.getItem("mredible_cart")).length:0)
   const [indexState, setindexState]=useState({ zIndex:"2" })
   function changeZ(){
     changes=!changes
     changes? setindexState({ zIndex:"0" }):setindexState({zIndex:"1"})
   }
 
-  const [totalCart, settotalCart]=useState(cartproducts.reduce((total, item)=>{
+  const [totalCart, settotalCart]=useState(productsIDInTheCartList.reduce((total, item)=>{
     return total+(item.price*item.quantity)
   },0))
 
   function getproductquantity(id){
-    const quantity=cartproducts.find(product=> product.id===id)?.quantity
-    
+    const quantity=productsIDInTheCartList.find(product=> product.id===id)?.quantity
     if(quantity===undefined){
       return 0;
     }
     return quantity
   }
 
-  function additem(id, price, name, image){
+  function addItemsToCartList(id, price, name, image){
     const quantity=getproductquantity(id)
     if (quantity===0){
-        cartproducts=[...cartproducts, {id:id, price:price, name:name, image:image,quantity:1}]
+        productsIDInTheCartList=[{id:id, price:price, name:name, image:image, quantity:1}, ...productsIDInTheCartList ]
       }else{console.log("item already exist in cart")}
     getTotalCart() 
+    localStorage.setItem("mredible_cart", JSON.stringify(productsIDInTheCartList))
+    if (localStorage.getItem("mredible_cart")!==null){
+      setnumberOfItemsInCart(JSON.parse(localStorage.getItem("mredible_cart")).length)
+    }
+    else{
+      setnumberOfItemsInCart(0)
+    }
   }
 
-  function addOneToCart(id, price, name, image){
-    //const quantity=getproductquantity(id)
-    
-      cartproducts=
-        cartproducts.map(
-          product=>
-          {if (product.id === id){
-           return {...product, quantity:product.quantity+1}
-          }else {return product}}
-        ) 
-    
-      console.log(cartproducts)
-      getTotalCart()
+  function deleteFromCartList(id){
+    productsIDInTheCartList=productsIDInTheCartList.filter((product)=>{
+      return product.id!==id
+    })
+    console.log(productsIDInTheCartList)
+    productsIDInTheCartList.length<1?settotalCart(0):getTotalCart()
+    localStorage.setItem("mredible_cart", JSON.stringify(productsIDInTheCartList))
+    if (localStorage.getItem("mredible_cart")!==null){
+      setnumberOfItemsInCart(JSON.parse(localStorage.getItem("mredible_cart")).length)
+    }
+    else{
+      setnumberOfItemsInCart(0)
+    }
   }
 
-  function removeOneFromCart(id){
+  function increaseProductQuantity(id, price, name, image){
+    productsIDInTheCartList=productsIDInTheCartList.map(product=>{
+        if (product.id === id){
+         return {...product, quantity:product.quantity+1}
+        }else {return product}
+      }) 
+    console.log(productsIDInTheCartList)
+    getTotalCart()
+    localStorage.setItem("mredible_cart", JSON.stringify(productsIDInTheCartList))
+}
+
+  function decreaseProductQuantity(id){
     const quantity=getproductquantity(id)
-    
       if (quantity===1){
-        deleteFromCart(id)
+        deleteFromCartList(id)
       }else{
-        cartproducts=cartproducts.map((product)=>{
+        productsIDInTheCartList=productsIDInTheCartList.map((product)=>{
           if(product.id===id){
             product.quantity--
             return product
           }
           else{return product}
-        
         })
       }
-
-    console.log(cartproducts)
+    console.log(productsIDInTheCartList)
     getTotalCart()
-  }
-
-  function deleteFromCart(id){
-    cartproducts=cartproducts.filter((product)=>{
-      return product.id!==id
-    })
-    console.log(cartproducts)
-    cartproducts.length<1?settotalCart(0):getTotalCart()
+    localStorage.setItem("mredible_cart", JSON.stringify(productsIDInTheCartList))
   }
   
   function getTotalCart(){
-    settotalCart(cartproducts.reduce((total, product)=>{
+    settotalCart(productsIDInTheCartList.reduce((total, product)=>{
       return total+(product.price*product.quantity)
     },0)
     )
     console.log(totalCart)
   }
+
+  useEffect(()=>{
+    if (localStorage.getItem("mredible_cart")!==null){
+      productsIDInTheCartList=JSON.parse(localStorage.getItem("mredible_cart"))
+    }
+},[])
+  
   const [loginIcon, setloginIcon]= useState(
     <div className="login-container">
-      <div><RiLoginBoxFill/></div>
+      <div><FaUserCircle /></div>
       <NavLink to="/login-page">
       <p>SIGN IN/SIGN UP</p>
       </NavLink>
@@ -118,11 +138,17 @@ function Cartprovider({children}) {
   function switchToUser(index){
     setuserloggedin({...users[index], password:"*******"})
     userloggedindisplay={...users[index], password:"*******"}
+    
+    const stringofuser=JSON.stringify(userloggedindisplay)
+    localStorage.setItem("mredibleloggedinUser", stringofuser);
+    let existing = localStorage.getItem('mredibleloggedinUser')
+    existing=existing && JSON.parse(existing)
+
     setloginIcon(
       <div className="login-container">
-        <div><RiLoginBoxFill/></div>
+        <div><div><img src={existing.passport?existing.passport:"www.robohash.com/2"} width="20px" height="20px" alt='user pic'/></div></div>
         <NavLink to="/user-profile">
-        <p>{userloggedindisplay.name}</p>
+        <p>{existing.name}</p>
         </NavLink>
       </div>)
   }
@@ -131,15 +157,13 @@ function Cartprovider({children}) {
     setuserloggedin({})
     setloginIcon(
       <div className="login-container">
-        <div><RiLoginBoxFill/></div>
+        <div><FaUserCircle /></div>
         <NavLink to="/login-page">
         <p>SIGN IN/SIGN UP</p>
         </NavLink>
       </div>)
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   useEffect(() => {
     // useffect calls a keepuserloggedin() function to keep use signed in when the browser reloads
     keepuserloggedin()
@@ -153,9 +177,9 @@ function Cartprovider({children}) {
   console.log(userDataFromLocalStorage)
   setloginIcon(
     <div className="login-container">
-      <div><RiLoginBoxFill/></div>
+      <div><img src={userDataFromLocalStorage.passport} width="20px" height="20px" alt='user pic'/> </div>
       <Link to="/user-profile">
-      <p>{userDataFromLocalStorage.name}</p>
+      <p> {userDataFromLocalStorage.name}</p>
       </Link>
     </div>)
   }
@@ -177,34 +201,33 @@ function Cartprovider({children}) {
     localStorage.setItem('mredibleaccount', JSON.stringify(users))
     setloginIcon(
       <div className="login-container">
-        <div><RiLoginBoxFill/></div>
+        <div><FaUserCircle /></div>
         <NavLink to="/login-page">
         <p>SIGN IN/SIGN UP</p>
         </NavLink>
       </div>)
   }
 
-=======
->>>>>>> parent of c0e363a (fixed login route)
-=======
->>>>>>> parent of c0e363a (fixed login route)
   const contextvalue={
+    signinsuccessful:false,
+    numberOfItemsInCart:numberOfItemsInCart,
     currentUser: userloggedin,
     loginIcon:loginIcon,
     casechange:changes,
     changeINdex:indexState,
     increaseIndex:true,
-    items:cartproducts,
+    items:productsIDInTheCartList,
     totalItemInCart:totalCart,
     getproductquantity,
-    addOneToCart,
-    additem,
-    removeOneFromCart,
-    deleteFromCart,
+    increaseProductQuantity,
+    addItemsToCartList,
+    decreaseProductQuantity,
+    deleteFromCartList,
     getTotalCart,
     changeZ,
     switchToUser,
     signout,
+    deleteUserAccount,
   }
 
   return (

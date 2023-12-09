@@ -1,46 +1,26 @@
 import { useState } from "react";
 import "./Foodsection.css";
-import { Cartcontext } from "../context folder/appContext";
+import { Cartcontext} from "../context folder/appContext";
 import { useContext } from "react";
-import {BsStar} from "react-icons/bs"
-import {CiStar} from "react-icons/ci"
 
 
 
- export let checkout=[]
-
+//  export let checkout=[]
  function Fooditem(props){
     const cart= useContext(Cartcontext)
     
     const [buttonState, newbuttonState]= useState(<button onClick={addToCart} className="food-button">Add to cart</button>)
+
     function addToCart(){
-        let checkCheckout=checkout.includes(props.id)
-        if (checkCheckout){
-            console.log("id can not be added because it already exist")
-        }else{
-            props.addclickeds()
-            checkout.push(props.id)
-        }
         newbuttonState(<button onClick={removefromCart} className="food-button">Remove</button>)
-        console.log(checkout)
-        console.log(props.id)
-        cart.additem(props.id, props.price,props.name, props.image )
+        cart.addItemsToCartList(props.id, props.price,props.name, props.image )
     }
 
-    function removefromCart(){
-        props.removeclickeds()       
-            let indexs=    checkout.findIndex(checkindex)
-                function checkindex(checkouts){
-                    return checkouts===props.id
-                }
-                checkout.splice(indexs,1) 
-            //this function loops through the checkout array and and if the item in the checkout array march the item id, it removes it from the list
+    function removefromCart(){    
         newbuttonState(<button onClick={addToCart} className="food-button">Add to cart</button>)
-        cart.deleteFromCart(props.id)
-        //props.toggle=true
-        
+        cart.deleteFromCartList(props.id)
     }
-    //let star=props.star===3?<CiStar/>:<div><CiStar/><CiStar/><CiStar/><CiStar/></div> 
+
     return(
        
             <div className="food-item"  >
