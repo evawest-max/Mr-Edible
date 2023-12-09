@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import "./user-profile.css"
 import { Cartcontext } from '../../context folder/appContext'
 import { useContext } from 'react'
+<<<<<<< HEAD
 import { Link, NavLink } from 'react-router-dom'
 import users from '../../signup/usersData'
 import { FaBox } from "react-icons/fa6";
@@ -14,13 +15,16 @@ import { MdDeleteForever } from "react-icons/md";
 import { RiMessage2Fill } from "react-icons/ri";
 // import propic from "C:\\fakepath\\IMG_20230809_082548_707~2.jpg"
 
+=======
+import { NavLink } from 'react-router-dom'
+>>>>>>> parent of c0e363a (fixed login route)
 
 function UserProfile() {
     const cart= useContext(Cartcontext)
     function signout(){
-      localStorage.removeItem('mredibleloggedinUser')
         cart.signout()
     }
+<<<<<<< HEAD
     let user=cart.currentUser
 
     const [deleteButton, setdeleteButton]=useState(<button id='delete-button' onClick={switchDeletebutton}>Delete my account</button>)
@@ -168,6 +172,12 @@ function UserProfile() {
       </div>
         {/* <p id='profile-welcome'>Welcome:  <p id='profile-name'>{user.name} <br></br>{user.email},   {user.phonenumber}</p></p>
         <img src={user.passport} alt='user' height="50px" width="50px"/>
+=======
+    let uses=cart.currentUser
+  return (
+    <div className='profileContainer' >
+        <p id='profile-welcome'>Welcome:  <p id='profile-name'>{uses.name} <br></br>{uses.email},   {uses.phonenumber}</p></p>
+>>>>>>> parent of c0e363a (fixed login route)
         <div id='profile-links'>
           <div>
             <p>Orders:0</p>
@@ -182,8 +192,13 @@ function UserProfile() {
         <NavLink to="/login-page">
         <button id='sign-out-button' onClick={signout}>Sign out</button>
         </NavLink>
+<<<<<<< HEAD
         {deleteButton}
         {editButton} */}
+=======
+        <button id='delete-button'>Delete my account</button>
+        <button id='edit-button'>Edit my account</button>
+>>>>>>> parent of c0e363a (fixed login route)
     </div>
   )
 }

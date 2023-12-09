@@ -1,8 +1,8 @@
 import React from 'react'
 import "./vendor-card.css"
-// import mrEdible from "./mrEdible.PNG";
-import {NavLink } from 'react-router-dom';
-// import vendorsdata from './vendorDatabase';
+import mrEdible from "./mrEdible.PNG";
+import { Link, NavLink } from 'react-router-dom';
+import vendorsdata from './vendorDatabase';
 
 
 function VendorCard({name,image,rating, about, vendorPage}) {

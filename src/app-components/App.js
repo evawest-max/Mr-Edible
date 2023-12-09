@@ -18,7 +18,6 @@ import UserProfile from './login/userProfile/user-profile';
 import Fooditem from './Food component/food item';
 import Footer from '../footer-components/footer';
 
-
 const router=createBrowserRouter(
   createRoutesFromElements(
       <Route path="/" element={<Appsection/>}>

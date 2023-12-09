@@ -1,12 +1,13 @@
 import "./checkoutpage.css";
-// import backArrow from "./back arrow.svg"
+import backArrow from "./back arrow.svg"
 //import mredible from "./mrEdible.PNG"
 //import { Cartcontext } from "../context folder/appContext";
 import {BiArrowBack} from "react-icons/bi"
 import { useState} from "react";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 import { Link } from "react-router-dom";
-import { productsIDInTheCartListpagetotal } from "./cart";
+import Cart, { checkoutpagetotal } from "./cart";
+
 
 
 export default function Cartitem() {
@@ -20,7 +21,7 @@ export default function Cartitem() {
   const config = {
     public_key: "FLWPUBK_TEST-cb119a9a9127ae014d8a8ddd16e081da-X",
     tx_ref: Date.now(),
-    amount: productsIDInTheCartListpagetotal.toString(),
+    amount: checkoutpagetotal.toString(),
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
@@ -49,7 +50,7 @@ export default function Cartitem() {
         <input
           type="number"
           placeholder="Amount"
-          value={productsIDInTheCartListpagetotal.toString()}
+          value={checkoutpagetotal.toString()}
           //onchange={(e) => setAmount(cart.totalItemInCart.toString())}
         />
         <select 

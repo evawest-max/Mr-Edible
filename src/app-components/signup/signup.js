@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import "./signup.css"
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import users from './usersData'
 
@@ -28,65 +28,29 @@ function Signup() {
     const [createpasswordbordercolor, setcreatepasswordbordercolor]=useState()
     const [confirmpasswordbordercolor, setconfirmpasswordbordercolor]=useState()
 
-    function validatename(){
-      if (nameref.current.value.length<4){
-          setalerttextcolor({color: "red"})
-          setnamebordercolor({border: "2px solid red"})
-          setalerttext("Fullname must be longer than 4 letters.")
-      }else{
-        setnamebordercolor({border: "2px solid green"})
-        setalerttext("")
-      }
-    }
-    function validatePhonenumber(){
-      if (phoneref.current.value.length!==11){
-        setalerttextcolor({color: "red"})
-        setphonenumberbordercolor({border: "2px solid red"})
-        setalerttext("invalid phone number, 11 numbers only!")
-      }else if(phoneref.current.value.length===11){
-        setphonenumberbordercolor({border: "2px solid green"})
-        setalerttext("")
-      }
-    }
-    function validateEmail(){
-      if (!emailref.current.value.includes("@") ){
-        setalerttextcolor({color: "red"})
-        setemailbordercolor({border: "2px solid red"})
-        setalerttext("email is incorrect 'include @'")
-      }else{
-        setemailbordercolor({border: "2px solid green"})
-        setalerttext("")
-      }
-    }
-    function validateCreatePassword(){
-      if (createpasswordref.current.value.includes(",")||createpasswordref.current.value.includes("@") ||createpasswordref.current.value.includes("#") ||createpasswordref.current.value.includes("$")||createpasswordref.current.value.includes("%") && createpasswordref.current.value.length>=6){
-        setcreatepasswordbordercolor({border: "2px solid green"})
-        setalerttext("")
-      }else{
-        setalerttextcolor({color: "red"})
-        setcreatepasswordbordercolor({border: "2px solid red"})
-        setalerttext("password must include one of this symbols', @ # $ %' and longer than 6 characters")
-      }
-    }
-
     let userexist=false
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of c0e363a (fixed login route)
     const registerUser= ()=>{
       for (let i=0; i<users.length; i++){
         if (users[i].email === emailref.current.value){
           userexist=true
         }
       } 
-        if (nameref.current.value.length>4){
+
+        if (nameref.current.value.length>3){
           if (phoneref.current.value.length===11){
             if (!userexist){
               if (emailref.current.value.includes("@") && !userexist){
                 if (createpasswordref.current.value===confirmpasswordref.current.value && confirmpasswordref.current.value.length>=6){
                   if (confirmpasswordref.current.value.includes(",")||confirmpasswordref.current.value.includes("@") ||confirmpasswordref.current.value.includes("#") ||confirmpasswordref.current.value.includes("$")||confirmpasswordref.current.value.includes("%")){
-                    let newuser={
+                    users.push({
                       id:users[users.length-1].id+1,
                       name:nameref.current.value,
                       email:emailref.current.value,
+<<<<<<< HEAD
                       phonenumber:phoneref.current.value,
                       password : confirmpasswordref.current.value,
                       passport: URL.createObjectURL(file)
@@ -102,6 +66,10 @@ function Signup() {
                     }
                     console.log(users)
                     
+=======
+                      password:createpasswordref.current.value
+                    })
+>>>>>>> parent of c0e363a (fixed login route)
                     setnamebordercolor({border: "2px solid green"})
                     setphonenumberbordercolor({border: "2px solid green"})
                     setemailbordercolor({border: "2px solid green"})
@@ -148,6 +116,7 @@ function Signup() {
         <div id='signup-Form-container'>
             <h3 className='signup-title'>CREATE AN ACCOUNT</h3>
             <p style={alerttextcolor}>{alerttext}</p>
+<<<<<<< HEAD
             <div className='inputAndButtondiv'>
               <form className='signup-form'>
                   <label>Full Name</label>
@@ -166,6 +135,22 @@ function Signup() {
               <button onClick={registerUser} className='signup-button'><strong>SIGN UP</strong></button>
               </div>
 
+=======
+            <form className='signup-form'>
+                <label>Full Name</label>
+                <input style={namebordercolor} ref={nameref} type='text' placeholder='John Smith'/><br/>
+                <label>Phone number</label>
+                <input style={phonenumberbordercolor} ref={phoneref} type='phonenumber' placeholder='07030000000'/><br/>
+                <label>E-mail</label>
+                <input style={emailbordercolor} ref={emailref} type='email' placeholder='example@yahoo.com'/><br/>
+                <label>Create Password</label>
+                <input style={createpasswordbordercolor} ref={createpasswordref} type='password' placeholder='********'/><br/>
+                <label>Confirm Password</label>
+                <input style={confirmpasswordbordercolor} ref={confirmpasswordref} type='password' placeholder='********'/><br/>
+            </form>
+            <button onClick={registerUser} className='signup-button'><strong>SIGN UP</strong></button>
+            
+>>>>>>> parent of c0e363a (fixed login route)
             <h5 className='sign-up-button'>
               <p>I already Have an account?</p>
               <div><NavLink to="/login-page">SIGN IN</NavLink></div>
