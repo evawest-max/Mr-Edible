@@ -140,6 +140,7 @@ function Cartprovider({children}) {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   useEffect(() => {
     // useffect calls a keepuserloggedin() function to keep use signed in when the browser reloads
     keepuserloggedin()
@@ -184,6 +185,8 @@ function Cartprovider({children}) {
       </div>)
   }
 
+=======
+>>>>>>> parent of c0e363a (fixed login route)
 =======
 >>>>>>> parent of c0e363a (fixed login route)
   const contextvalue={

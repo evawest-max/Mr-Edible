@@ -30,7 +30,10 @@ function Signup() {
 
     let userexist=false
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of c0e363a (fixed login route)
 =======
 >>>>>>> parent of c0e363a (fixed login route)
     const registerUser= ()=>{
@@ -51,6 +54,7 @@ function Signup() {
                       name:nameref.current.value,
                       email:emailref.current.value,
 <<<<<<< HEAD
+<<<<<<< HEAD
                       phonenumber:phoneref.current.value,
                       password : confirmpasswordref.current.value,
                       passport: URL.createObjectURL(file)
@@ -66,6 +70,10 @@ function Signup() {
                     }
                     console.log(users)
                     
+=======
+                      password:createpasswordref.current.value
+                    })
+>>>>>>> parent of c0e363a (fixed login route)
 =======
                       password:createpasswordref.current.value
                     })

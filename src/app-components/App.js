@@ -15,8 +15,11 @@ import SearchBar from './search component/searchBar';
 import { createBrowserRouter,  Route, createRoutesFromElements, RouterProvider} from 'react-router-dom';
 import Signup from './signup/signup';
 import UserProfile from './login/userProfile/user-profile';
+<<<<<<< HEAD
 import Fooditem from './Food component/food item';
 import Footer from '../footer-components/footer';
+=======
+>>>>>>> parent of c0e363a (fixed login route)
 
 const router=createBrowserRouter(
   createRoutesFromElements(

@@ -3,6 +3,7 @@ import "./user-profile.css"
 import { Cartcontext } from '../../context folder/appContext'
 import { useContext } from 'react'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Link, NavLink } from 'react-router-dom'
 import users from '../../signup/usersData'
 import { FaBox } from "react-icons/fa6";
@@ -18,12 +19,16 @@ import { RiMessage2Fill } from "react-icons/ri";
 =======
 import { NavLink } from 'react-router-dom'
 >>>>>>> parent of c0e363a (fixed login route)
+=======
+import { NavLink } from 'react-router-dom'
+>>>>>>> parent of c0e363a (fixed login route)
 
 function UserProfile() {
     const cart= useContext(Cartcontext)
     function signout(){
         cart.signout()
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
     let user=cart.currentUser
 
@@ -178,6 +183,12 @@ function UserProfile() {
     <div className='profileContainer' >
         <p id='profile-welcome'>Welcome:  <p id='profile-name'>{uses.name} <br></br>{uses.email},   {uses.phonenumber}</p></p>
 >>>>>>> parent of c0e363a (fixed login route)
+=======
+    let uses=cart.currentUser
+  return (
+    <div className='profileContainer' >
+        <p id='profile-welcome'>Welcome:  <p id='profile-name'>{uses.name} <br></br>{uses.email},   {uses.phonenumber}</p></p>
+>>>>>>> parent of c0e363a (fixed login route)
         <div id='profile-links'>
           <div>
             <p>Orders:0</p>
@@ -193,8 +204,13 @@ function UserProfile() {
         <button id='sign-out-button' onClick={signout}>Sign out</button>
         </NavLink>
 <<<<<<< HEAD
+<<<<<<< HEAD
         {deleteButton}
         {editButton} */}
+=======
+        <button id='delete-button'>Delete my account</button>
+        <button id='edit-button'>Edit my account</button>
+>>>>>>> parent of c0e363a (fixed login route)
 =======
         <button id='delete-button'>Delete my account</button>
         <button id='edit-button'>Edit my account</button>
