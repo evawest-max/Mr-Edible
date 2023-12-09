@@ -16,10 +16,14 @@ import { createBrowserRouter,  Route, createRoutesFromElements, RouterProvider} 
 import Signup from './signup/signup';
 import UserProfile from './login/userProfile/user-profile';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Fooditem from './Food component/food item';
 import Footer from '../footer-components/footer';
 =======
 >>>>>>> parent of c0e363a (fixed login route)
+=======
+
+>>>>>>> parent of 5227dda (changed profile UI)
 
 const router=createBrowserRouter(
   createRoutesFromElements(
@@ -33,7 +37,7 @@ const router=createBrowserRouter(
         <Route path='/vendors' element={<Vendors/>}></Route> 
         <Route path='/login-page' element={<LoginPage/>}></Route>  
         <Route path='/signup-page' element={<Signup/>}></Route> 
-        <Route path='/user-profile' element={<UserProfile/>}></Route>  
+        <Route path='/user-profile' element={<UserProfile/>}></Route> 
         <Route path='*' element={<Notfound/>} />    
       </Route>
   )

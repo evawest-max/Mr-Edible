@@ -1,115 +1,6 @@
 .profileContainer{
-    display: flex;
-    justify-content: center;
-    /* text-align: center; */
+    text-align: center;
     color: darkgreen;
-    height:500px;
-    margin-top: 60px;
-    /* border: 3px solid blue; */
-    width: 100%;
-}
-.profileContainertwo{
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
-    /* text-align: center;
-    color: darkgreen;
-    height:500px;
-    margin-top: 60px;
-    /* border: 3px solid blue; */
-    /* width: 100%; */ 
-}
-.profile-toggle{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgb(249, 243, 235);
-    /* height: 100%; */
-    /* width: fit-content; */
-    /* min-width: 270px; */
-}
-.profile-toggle-information{
-    /* margin: 10px; */
-    font-size: 16px;
-    font-weight: bold;
-    /* max-width: 200px; */
-}
-.profile-toggle-information img{
-    border-radius: 100%;
-    width: 100px;
-}
-.information-email{
-    /* border: 3px solid red; */
-    text-overflow:ellipsis;
-    /* width: fit-content; */
-}
-.profile-toggle-container{
-    text-align: left;
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    justify-self: left;
-    /* max-width: fit-content; */
-}
-.profile-toggle-container p{
-    align-self: left;
-    margin: 10px 10px;
-    cursor: pointer;
-}
-.passport_update img{
-    border-radius: 100%;
-    /* min-width: 100px; */
-    max-width: 50px;
-    max-height: 50px;
-}
-#update-photo-button{
-    padding: 0px 10px;
-    height: 30px;
-    margin: 4px;
-    border-radius: 10px;
-    background-color: green;
-    color: white;
-}
-.edit-form-container{
-    /* border: 3px solid red; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-.edit-form-container form{
-    width: 100%;
-    text-align: left;
-}
-.edit-form-container form label{
-    font-size: 16px;
-    justify-self: left;
-}
-.edit-form-container form input{
-    /* width: 100%; */
-    height: 40px;
-    text-align: left;
-    margin-bottom: 10px;
-    width: 100%;
-    border-radius: 10px;
-}
-#update-button{
-    background-color: green;
-    color: white;
-    padding: 5px 0px;
-    width: 100%;
-    font-weight: bolder;
-    border-radius: 5px;
-}
-
-.passport_update{
-    /* border: 3px solid green; */
-    display: flex;
-    width: 100%;
-}
-.passport_update div{
-    width: fit-content;
-    /* border: 3px solid green; */
 }
 #profile-welcome{
     font-size: 24px;
@@ -131,19 +22,24 @@
 #sign-out-button{
     background-color: orange;
     color: white;
-    padding: 5px 20px;
+    padding: 10px;
     margin: 0px 10px;
     font-weight: bolder;
     border-radius: 10px;
-    margin-bottom: 5px;
 }
-
+#edit-button{
+    background-color: green;
+    color: white;
+    padding: 10px;
+    margin: 5px 10px;
+    font-weight: bolder;
+    border-radius: 10px;
+}
 #delete-button{
     background-color: red;
     color: white;
-    padding: 5px 20px;
+    padding: 10px;
     margin: 0px 10px;
     font-weight: bolder;
     border-radius: 10px;
-    margin-bottom: 5px;
 }

@@ -2,7 +2,6 @@ import React, { createContext } from 'react'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import {RiLoginBoxFill} from "react-icons/ri"
-import { FaUserCircle } from "react-icons/fa";
 import users from '../signup/usersData'
 
 let cartproducts=[]
@@ -107,7 +106,7 @@ function Cartprovider({children}) {
   }
   const [loginIcon, setloginIcon]= useState(
     <div className="login-container">
-      <div><FaUserCircle /></div>
+      <div><RiLoginBoxFill/></div>
       <NavLink to="/login-page">
       <p>SIGN IN/SIGN UP</p>
       </NavLink>
@@ -121,7 +120,7 @@ function Cartprovider({children}) {
     userloggedindisplay={...users[index], password:"*******"}
     setloginIcon(
       <div className="login-container">
-        <div><div><img src={existing.passport?existing.passport:"www.robohash.com/2"} width="20px" height="20px" alt='user pic'/></div></div>
+        <div><RiLoginBoxFill/></div>
         <NavLink to="/user-profile">
         <p>{userloggedindisplay.name}</p>
         </NavLink>
@@ -132,7 +131,7 @@ function Cartprovider({children}) {
     setuserloggedin({})
     setloginIcon(
       <div className="login-container">
-        <div><FaUserCircle /></div>
+        <div><RiLoginBoxFill/></div>
         <NavLink to="/login-page">
         <p>SIGN IN/SIGN UP</p>
         </NavLink>
@@ -154,9 +153,9 @@ function Cartprovider({children}) {
   console.log(userDataFromLocalStorage)
   setloginIcon(
     <div className="login-container">
-      <div><img src={userDataFromLocalStorage.passport} width="20px" height="20px" alt='user pic'/> </div>
+      <div><RiLoginBoxFill/></div>
       <Link to="/user-profile">
-      <p> {userDataFromLocalStorage.name}</p>
+      <p>{userDataFromLocalStorage.name}</p>
       </Link>
     </div>)
   }
@@ -178,7 +177,7 @@ function Cartprovider({children}) {
     localStorage.setItem('mredibleaccount', JSON.stringify(users))
     setloginIcon(
       <div className="login-container">
-        <div><FaUserCircle /></div>
+        <div><RiLoginBoxFill/></div>
         <NavLink to="/login-page">
         <p>SIGN IN/SIGN UP</p>
         </NavLink>

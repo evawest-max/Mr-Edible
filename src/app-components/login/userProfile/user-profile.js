@@ -6,15 +6,6 @@ import { useContext } from 'react'
 <<<<<<< HEAD
 import { Link, NavLink } from 'react-router-dom'
 import users from '../../signup/usersData'
-import { FaBox } from "react-icons/fa6";
-import { CgProfile } from "react-icons/cg";
-import { FcLike } from "react-icons/fc";
-import { IoSettings } from "react-icons/io5";
-import { MdForwardToInbox } from "react-icons/md";
-import { PiSignOutBold } from "react-icons/pi";
-import { MdDeleteForever } from "react-icons/md";
-import { RiMessage2Fill } from "react-icons/ri";
-// import propic from "C:\\fakepath\\IMG_20230809_082548_707~2.jpg"
 
 =======
 import { NavLink } from 'react-router-dom'
@@ -104,54 +95,9 @@ function UserProfile() {
     function cancelEdit(){
       setEditButton((<button onClick={editaccount} id='edit-button'>Edit my account</button>))
     }
-    const [content, setcontent]=useState(<div>This is were you will find your messages we send you.<br/>your inbox is empty now</div>)
-    const gotoinbox=()=>{
-      setcontent(<div>This is were you will find your messages <RiMessage2Fill /> we send you.<br/>your inbox is empty now</div>)
-    }
-    const gotoOrders=()=>{
-      setcontent(<div>this are are your order history</div>)
-    }
-    const gotofavourites=()=>{
-      setcontent(<div>this are are your order favourities</div>)
-    }
-    const gotoSettings=()=>{
-      setcontent(<div>change your settings</div>)
-    }
-    function onimagechange(e){
-
-    }
-
-    function gotoProfile(){
-      console.log(user.passport)
-    setcontent(<div>
-      <div></div>
-      <div className='passport_update'>
-        <img src={user.passport} alt='user'/>
-        <div>
-          <p>upload a new photo</p>
-          <input type='file' onChange={onimagechange}/><br/>
-        <button id='update-photo-button'>Update</button>
-        </div>
-      </div>
-      <div className='edit-form-container'>
-        <p><strong>Change user information here </strong></p>
-        <form >
-          <label>Fullname name</label><br/>
-          <input type='text' ref={nameref} placeholder='John Smith' required id='editInput'/><br/>
-          <label>Email</label><br/>
-          <input type='text' ref={nameref} placeholder='JohnSmith@yahoo.com' required id='editInput'/><br/>
-          <label>Address</label><br/>
-          <input type='text' ref={nameref} placeholder='NO 2 pipeline, nigeria' required id='editInput'/><br/>
-          <label>Phonenumber</label><br/>
-          <input type='number' ref={phoneref} Placeholder='Phonenumber' required id='editInput'/><br/>
-        <button onClick={saveNewUserData} id='update-button'>Update information</button>
-        </form>
-      </div>
-    </div>)
-    }
-    
   return (
     <div className='profileContainer' >
+<<<<<<< HEAD
       <div className='profileContainertwo'>
         <div className='profile-toggle'>
           <div className='profile-toggle-information'>
@@ -189,6 +135,9 @@ function UserProfile() {
     <div className='profileContainer' >
         <p id='profile-welcome'>Welcome:  <p id='profile-name'>{uses.name} <br></br>{uses.email},   {uses.phonenumber}</p></p>
 >>>>>>> parent of c0e363a (fixed login route)
+=======
+        <p id='profile-welcome'>Welcome:  <p id='profile-name'>{user.name} <br></br>{user.email},   {user.phonenumber}</p></p>
+>>>>>>> parent of 5227dda (changed profile UI)
         <div id='profile-links'>
           <div>
             <p>Orders:0</p>
@@ -206,6 +155,7 @@ function UserProfile() {
 <<<<<<< HEAD
 <<<<<<< HEAD
         {deleteButton}
+<<<<<<< HEAD
         {editButton} */}
 =======
         <button id='delete-button'>Delete my account</button>
@@ -215,6 +165,9 @@ function UserProfile() {
         <button id='delete-button'>Delete my account</button>
         <button id='edit-button'>Edit my account</button>
 >>>>>>> parent of c0e363a (fixed login route)
+=======
+        {editButton}
+>>>>>>> parent of 5227dda (changed profile UI)
     </div>
   )
 }
