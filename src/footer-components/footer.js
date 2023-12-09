@@ -20,7 +20,7 @@ function Footer(){
                 <div>
                     <h4 className="link-title">Contact Us</h4>
                     <div className="quick-links">
-                        <p>contact@mredible.com</p>
+                        <p>Contact@mredible.com</p>
                         <div className="footer-image">
                             <img src={facebook} alt="facebook"/>
                             <img src={instagram} alt="instagram"/>
