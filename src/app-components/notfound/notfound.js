@@ -8,7 +8,7 @@ function Notfound(){
             
             <div className="notfound-container">
                 <h1>This page was not found</h1>
-                <p>Please click on <Link to="/" className="notfoundLink">Home Page</Link> to go back to home page</p>
+                <p>Please click on <Link to="/">Home Page</Link> to go back to home page</p>
             </div>
         </div>
     )

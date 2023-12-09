@@ -1,0 +1,110 @@
+.searchcontainer{
+    background-color: white;
+    position: relative;
+}
+.SearchbarContainer{
+    text-align: center;
+    position: sticky;
+    top: 55px;
+    z-index: 200;
+    
+}
+
+.SearchbarContainer input{
+    width: 180px;
+    height: 20px;
+    border-radius: 5px;
+    background-color: wheat;
+    color: darkgreen;
+    padding: 0px 10px;
+}
+.SearchbarContainer input:focus{
+    outline: none;
+    /* animation: fade-slide-top .7s ease-in-out forwards; */
+}
+
+.fiterandfoodcontainer{
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (min-width:390px){
+    .searchcontainer{
+        background: white;
+    }
+    .SearchbarContainer{
+        text-align: center;
+        position: sticky;
+        top: 55px;
+        z-index: 200;
+    }
+    .SearchbarContainer input{
+        width: 200px;
+        height: 20px;
+        border-radius: 5px;
+        background-color: wheat;
+        color: darkgreen;
+        padding: 0px 10px;
+        border: none;
+    }
+}
+
+@media screen and (min-width:540px){
+    .searchcontainer{
+        background: white;
+    }
+    .SearchbarContainer{
+        text-align: center;
+        position: sticky;
+        top: 55px;
+        z-index: 200;
+        
+    }
+    .SearchbarContainer input{
+        width: 400px;
+        height: 20px;
+        border-radius: 5px;
+        background-color: wheat;
+        color: darkblue;
+        padding: 0px 10px;
+        border: none;
+    }
+    .fiterandfoodcontainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+}
+
+@media screen and (min-width:900px){
+    .searchcontainer{
+        background: white;
+        position: relative;
+    }
+    .SearchbarContainer{
+        text-align: center;
+        position: sticky;
+        top: 55px;
+        z-index: 4;
+    }
+    .SearchbarContainer input{
+        width: 472px;
+        height: 25px;
+        border-radius: 5px;
+        background-color: wheat;
+        color: darkblue;
+        padding: 0px 10px;
+        border: none;
+        top: 60px;
+        
+    }
+    .fiterandfoodcontainer{
+        display: flex;
+        flex-direction: row;
+        margin-top: 60px;
+    }
+}
+
+
+
+

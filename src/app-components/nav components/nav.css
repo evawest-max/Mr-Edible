@@ -165,16 +165,16 @@
         margin-top: 10px;
         height: fit-content;
         width: fit-content;
-        min-width: 350px;
+        min-width: 376px;
     }
-    .navcontainer nav ul{
+    /* .navcontainer nav ul{
         display: flex;
         justify-content: space-around;
         gap: 30px;
         padding: 0px 20px;
         border: 3px solid rgb(9, 255, 0);
         width: fit-content;
-    }
+    } */
     .navcontainer nav a{
         color: rgb(1, 61, 1);
         list-style: none;

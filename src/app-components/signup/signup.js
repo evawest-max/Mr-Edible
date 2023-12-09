@@ -164,8 +164,8 @@ function Signup() {
                   <input style={confirmpasswordbordercolor} ref={confirmpasswordref} type='password' placeholder='********'/><br/>
               </form>
               <button onClick={registerUser} className='signup-button'><strong>SIGN UP</strong></button>
-            </div>
-            
+              </div>
+
             <h5 className='sign-up-button'>
               <p>I already Have an account?</p>
               <div><NavLink to="/login-page">SIGN IN</NavLink></div>

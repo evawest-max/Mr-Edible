@@ -69,30 +69,33 @@ function LoginPage() {
   }
 
   return (
-    <div>
-        <div className='login'>
-          <div id='login-Form-container'>
-            <h3 className='login-title'>SIGN IN</h3>
-            <p style={alertcolor} className='signinalert'>{loginAlert}</p>
-            <form className='login-form'>
-              <label>E-mail</label>
-              <input onBlur={validateEmail} style={emailbordercolor} ref={emailRef} type='email' placeholder='example@yahoo.com'/><br/>
-              <label>Password</label>
-              <input onBlur={validateEmailAndPassword} style={passwordbordercolor} ref={passwardRef} type='password' placeholder='********'/>
-            </form>
-            <p className='login-forgot-password'>Forgot password?</p>
-            <Link onClick={submitlogin} to={signinsuccessful && '/user-profile'}><button className='login-button' ><strong>SIGN IN</strong></button></Link>
-            <p className='login-options'>Or sign in using</p>
-            <div className='login-option-picture'><FcGoogle/></div>
-            
-            <h5 className='sign-up-button'>
-              <p>I dont Have an account?</p>
-              <div><Link to="/signup-page">SIGN UP</Link></div>
-            </h5>
-          </div>
+    
+    <div className='login'>
+      <div id='login-Form-container'>
+        <h3 className='login-title'>SIGN IN</h3>
+        <p style={alertcolor} className='signinalert'>{loginAlert}</p>
+        <div className='loginFormAndButton'>
+          <form className='login-form'>
+            <label>E-mail</label>
+            <input onBlur={validateEmail} style={emailbordercolor} ref={emailRef} type='email' placeholder='example@yahoo.com'/><br/>
+            <label>Password</label>
+            <input onBlur={validateEmailAndPassword} style={passwordbordercolor} ref={passwardRef} type='password' placeholder='********'/>
+          </form>
+          <p className='login-forgot-password'>Forgot password?</p>
+          <Link onClick={submitlogin} to={signinsuccessful && '/user-profile'}><button className='login-button'><strong>SIGN IN</strong></button></Link>
         </div>
         
+        <p className='login-options'>Or sign in using</p>
+        <div className='login-option-picture'><FcGoogle/></div>
+        
+        <h5 className='sign-up-button'>
+          <p>I dont Have an account?</p>
+          <div><NavLink to="/signup-page">SIGN UP</NavLink></div>
+        </h5>
+      </div>
     </div>
+        
+    
     
   )
 }
