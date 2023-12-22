@@ -1,9 +1,9 @@
 import React, { createContext, useEffect } from 'react'
 import { useState } from 'react'
-import { Link, NavLink, json } from 'react-router-dom'
-import {RiLoginBoxFill} from "react-icons/ri"
+import { Link, NavLink, } from 'react-router-dom'
+// import {RiLoginBoxFill} from "react-icons/ri"
 import { FaUserCircle } from "react-icons/fa";
-import users from '../signup/usersData'
+import users from '../../signup/usersData'
 
 export let productsIDInTheCartList=[]
 let changes=false
@@ -128,14 +128,14 @@ function Cartprovider({children}) {
     <div className="login-container">
       <div><FaUserCircle /></div>
       <NavLink to="/login-page">
-      <p>SIGN IN/SIGN UP</p>
+      <p>SIGN IN</p>
       </NavLink>
     </div>)
 
   let [userloggedin, setuserloggedin]=useState({})
   let userloggedindisplay={}
-
   function switchToUser(index){
+    let fullnameAb=''
     setuserloggedin({...users[index], password:"*******"})
     userloggedindisplay={...users[index], password:"*******"}
     
@@ -143,12 +143,19 @@ function Cartprovider({children}) {
     localStorage.setItem("mredibleloggedinUser", stringofuser);
     let existing = localStorage.getItem('mredibleloggedinUser')
     existing=existing && JSON.parse(existing)
-
+    
+    let username= existing.name.split('')
+    username.map((item, index)=>{
+        if (item===' '){
+            fullnameAb=(username[0]+'.'+username[index+1]).toLocaleUpperCase()
+        }
+    })
+    
     setloginIcon(
       <div className="login-container">
         <div><div><img src={existing.passport?existing.passport:"www.robohash.com/2"} width="20px" height="20px" alt='user pic'/></div></div>
         <NavLink to="/user-profile">
-        <p>{existing.name}</p>
+        <p className='login-name-on-navbar'>{fullnameAb}</p>
         </NavLink>
       </div>)
   }
@@ -159,7 +166,7 @@ function Cartprovider({children}) {
       <div className="login-container">
         <div><FaUserCircle /></div>
         <NavLink to="/login-page">
-        <p>SIGN IN/SIGN UP</p>
+        <p>SIGN IN</p>
         </NavLink>
       </div>)
   }
@@ -170,16 +177,23 @@ function Cartprovider({children}) {
  }, []);
 
  function keepuserloggedin(){
+  let fullnameAb=''
   if (localStorage.getItem('mredibleloggedinUser') !== null){
   let userDataFromLocalStorage=JSON.parse(localStorage.getItem('mredibleloggedinUser'))
   userloggedindisplay=userDataFromLocalStorage
   setuserloggedin(userDataFromLocalStorage)
   console.log(userDataFromLocalStorage)
+    let username= userDataFromLocalStorage.name.split('')
+    username.map((item, index)=>{
+        if (item===' '){
+            fullnameAb=(username[0]+'.'+username[index+1]).toLocaleUpperCase()
+        }
+    })
   setloginIcon(
     <div className="login-container">
       <div><img src={userDataFromLocalStorage.passport} width="20px" height="20px" alt='user pic'/> </div>
       <Link to="/user-profile">
-      <p> {userDataFromLocalStorage.name}</p>
+      <p className='login-name-on-navbar'> {fullnameAb}</p>
       </Link>
     </div>)
   }
@@ -203,7 +217,7 @@ function Cartprovider({children}) {
       <div className="login-container">
         <div><FaUserCircle /></div>
         <NavLink to="/login-page">
-        <p>SIGN IN/SIGN UP</p>
+        <p>SIGN IN</p>
         </NavLink>
       </div>)
   }

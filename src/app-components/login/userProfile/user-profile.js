@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import "./user-profile.css"
-import { Cartcontext } from '../../context folder/appContext'
+import { Cartcontext } from '../../Mr edible store/context folder/appContext'
 import { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import users from '../../signup/usersData'

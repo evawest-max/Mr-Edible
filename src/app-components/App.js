@@ -1,22 +1,21 @@
 import './App.css';
 import Appsection from './app componets';
-import Cart from './cart component/cart';
-//import CartIcon from './cart component/cartIcon';
-import CheckoutPage from './cart component/checkoutPage';
-import Cartprovider from './context folder/appContext';
+import Cart from './Mr edible store/cart component/cart';
+import CheckoutPage from './Mr edible store/cart component/checkoutPage';
+import Cartprovider from './Mr edible store/context folder/appContext';
 import LoginPage from './login/login';
-//import Cartprovider from './context folder/appContext';
 
 import SpecialOrders from './navigation/specialOrder';
 import TrackOrder from './navigation/trackOrder';
 import Vendors from './navigation/vendors';
 import Notfound from './notfound/notfound';
-import SearchBar from './search component/searchBar';
+import SearchBar from './Mr edible store/search component/searchBar';
 import { createBrowserRouter,  Route, createRoutesFromElements, RouterProvider} from 'react-router-dom';
 import Signup from './signup/signup';
 import UserProfile from './login/userProfile/user-profile';
-import Fooditem from './Food component/food item';
-import Footer from '../footer-components/footer';
+import SmileCakesSearchBar from './smile cakes/smile cakes search component/smile cakes searchBar';
+import SmileCakesCart from './smile cakes/smile cakes cart component/smile cakes cart';
+import SmileCakesCartprovider from './smile cakes/smile cartContext/smileCartContext';
 
 
 const router=createBrowserRouter(
@@ -32,6 +31,10 @@ const router=createBrowserRouter(
         <Route path='/login-page' element={<LoginPage/>}></Route>  
         <Route path='/signup-page' element={<Signup/>}></Route> 
         <Route path='/user-profile' element={<UserProfile/>}></Route>  
+        
+        <Route path='/smile-cakes' element={<SmileCakesSearchBar/>}></Route>
+        <Route path='/smile-cakes-cart' element={<SmileCakesCart/>}></Route>
+
         <Route path='*' element={<Notfound/>} />    
       </Route>
   )
@@ -39,7 +42,9 @@ const router=createBrowserRouter(
 function App() {
   return (
       <Cartprovider>
-        <RouterProvider router={router}/>
+        <SmileCakesCartprovider>
+          <RouterProvider router={router}/>
+        </SmileCakesCartprovider>
       </Cartprovider>
   );
 }

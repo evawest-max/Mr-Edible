@@ -329,7 +329,7 @@
         text-align: center;
         color: #FFF;
         font-family: Raleway;
-        font-size: 16px;
+        font-size: 14px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -337,7 +337,7 @@
         margin-bottom: 10px;
     }
     .copyright-para img{
-        width: 20px;
+        width: 16px;
         margin: 0px 10px;
     }
 }

@@ -1,24 +1,19 @@
 import { useEffect, useState } from "react"
 import "./cart.css"
-// import backArrow from "./back arrow.svg"
-// import location from "./location.svg"
-// import productsIDInTheCartListcart from "./cart-productsIDInTheCartList.svg"
-// import { productsIDInTheCartList} from "../Food component/food item"
-// import foods from "../Food component/foods"
 import removeBTN from "./x button.svg"
 import ItemQuantity from "./itemQuantity"
-import { Cartcontext, productsIDInTheCartList } from "../context folder/appContext"
 import { Link } from "react-router-dom"
 import { useContext } from "react"
 import {BiArrowBack} from "react-icons/bi"
+import { SmileCartcontext, productsIDInTheCartList} from "../smile cartContext/smileCartContext"
 
 export let changeAddToCart=false
 export let productsIDInTheCartListpagetotal=0
 
-function Cart(){
+function SmileCakesCart(){
     let deleveryfee=0
     const tax=5
-    const cart=useContext(Cartcontext)
+    const cart=useContext(SmileCartcontext)
     productsIDInTheCartList.forEach(element => {
         deleveryfee+=1000
     });
@@ -59,12 +54,12 @@ function Cart(){
     // productsIDInTheCartListpagetotal=subtotal
     
     return(
-    
+        
             <div id="cart-parent">
-                    <Link to="/mrEdible"><div className="cart-transprent-background"></div></Link>
+                    <Link to="/smile-cakes"><div className="cart-transprent-background"></div></Link>
                 <div className="cartdisplay-items-container">
                     <div className="cart-back-arrow">
-                        <Link to="/mrEdible"><BiArrowBack/></Link> 
+                        <Link to="/smile-cakes"><BiArrowBack/></Link> 
                         <h4 className="goback">Continue shopping</h4>
                     </div>
                     <div>
@@ -112,7 +107,7 @@ function Cart(){
                     
                 </div>
             </div>
-    
+      
     )
 }
-export default Cart
+export default SmileCakesCart

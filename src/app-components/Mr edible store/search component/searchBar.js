@@ -9,13 +9,15 @@ import FoodFilter from "../Food component/food filter/foodFilter"
 import {AiFillStar} from "react-icons/ai";
 // import Cart from "../cart component/cart"
 import { useContext } from "react"
-import { Cartcontext} from "../context folder/appContext"
+import { Cartcontext } from "../context folder/appContext"
+
 
 
 
 
 
 function SearchBar(){
+    const car=useContext(Cartcontext)
     const cart=useContext(Cartcontext)
     let [itemsInDatabase, newItemsInDatabase]=useState(foods.map((items, index)=>{ 
         let star=items.star===1?<AiFillStar/>:items.star===2?<div><AiFillStar/><AiFillStar/></div>:items.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:items.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:items.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
@@ -132,7 +134,7 @@ function SearchBar(){
                 <input onChange={findFood} ref={inputRef} type="text" placeholder="I am searching for..."/>
             </div>
             
-             
+
             <Foodsection/>
             <div className="fiterandfoodcontainer">
                 <FoodFilter filterbyratings={filterbyratings} filterbyratings2={filterbyratings2} filterbyratings3={filterbyratings3} filterbyratings4={filterbyratings4} filterbyratings5={filterbyratings5}

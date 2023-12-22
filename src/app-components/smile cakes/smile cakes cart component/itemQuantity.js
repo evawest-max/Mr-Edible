@@ -1,10 +1,11 @@
 import { useState } from "react"
-import { Cartcontext } from "../context folder/appContext"
+// import { Cartcontext } from "../../Mr edible store/context folder/appContext"
 import { useContext } from "react"
+import { SmileCartcontext } from "../smile cartContext/smileCartContext"
 
 
 function ItemQuantity(props){
-    const cart=useContext(Cartcontext)
+    const cart=useContext(SmileCartcontext)
     
     let [quantitys, newQuantitys]=useState(props.quantity)
     
@@ -21,11 +22,13 @@ function ItemQuantity(props){
     }
 
     return (
-        <div className="increaseCartNumb">
-            <p onClick={increaseQuantitys} className="increaseBtn">+</p>
-            <p className="increaseNumb">{quantitys}</p>
-            <p onClick={decreaseQuantitys} className="increaseBtn">-</p>
-        </div>
+        
+            <div className="increaseCartNumb">
+                <p onClick={increaseQuantitys} className="increaseBtn">+</p>
+                <p className="increaseNumb">{quantitys}</p>
+                <p onClick={decreaseQuantitys} className="increaseBtn">-</p>
+            </div>
+        
     )
 }
 

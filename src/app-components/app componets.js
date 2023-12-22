@@ -6,7 +6,6 @@ function Appsection() {
     return (
       <div className='app'>
           <Navbar/>
-          
 
           <main>
             <Outlet/>

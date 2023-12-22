@@ -1,21 +1,22 @@
 import { useRef, useState } from "react"
 import "./searchBar.css"
-import Foodsection from "../Food component/Foodsection"
-import foods from "../Food component/foods"
-import Fooditem from "../Food component/food item"
-import CartIcon from "../cart component/cartIcon"
+import Foodsection from "../smile cakes Food component/Foodsection"
+import foods from "../smile cakes Food component/foods"
+import Fooditem from "../smile cakes Food component/food item"
+import CartIcon from "../smile cakes cart component/cartIcon"
 // import { Link } from "react-router-dom"
-import FoodFilter from "../Food component/food filter/foodFilter"
+import FoodFilter from "../smile cakes Food component/food filter/foodFilter"
 import {AiFillStar} from "react-icons/ai";
 // import Cart from "../cart component/cart"
 import { useContext } from "react"
-import { Cartcontext} from "../context folder/appContext"
+import { Cartcontext } from "../../Mr edible store/context folder/appContext"
 
 
 
 
 
-function SearchBar(){
+
+function SmileCakesSearchBar(){
     const cart=useContext(Cartcontext)
     let [itemsInDatabase, newItemsInDatabase]=useState(foods.map((items, index)=>{ 
         let star=items.star===1?<AiFillStar/>:items.star===2?<div><AiFillStar/><AiFillStar/></div>:items.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:items.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:items.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
@@ -125,6 +126,7 @@ function SearchBar(){
     // fillter ny 
 
     return(
+        
         <div className="searchcontainer">
             
             <CartIcon/>
@@ -132,7 +134,7 @@ function SearchBar(){
                 <input onChange={findFood} ref={inputRef} type="text" placeholder="I am searching for..."/>
             </div>
             
-             
+
             <Foodsection/>
             <div className="fiterandfoodcontainer">
                 <FoodFilter filterbyratings={filterbyratings} filterbyratings2={filterbyratings2} filterbyratings3={filterbyratings3} filterbyratings4={filterbyratings4} filterbyratings5={filterbyratings5}
@@ -144,6 +146,7 @@ function SearchBar(){
                 </div>
             </div>
         </div>
+        
     )
 }
-export default SearchBar
+export default SmileCakesSearchBar

@@ -6,7 +6,7 @@ let vendorsdata=[
         image:"https://www.clipartmax.com/png/middle/96-964969_smile-cake-shop-logo-dairy-free-cake-shop-logo.png",
         rating: 4,
         about:"Our 🎂cakes & desserts are made from scratch using the finest of ingredients. We place a premium on how it tastes😊 inside as well as what it looks like on the outside.",
-        vendorPage:"/ghj",
+        vendorPage:"/smile-cakes",
     },
     {
         id:1,

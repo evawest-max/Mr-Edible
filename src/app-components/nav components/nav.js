@@ -10,7 +10,7 @@ import {IoMdClose} from "react-icons/io"
 // import {RiLoginBoxFill} from "react-icons/ri"
 import {FcOnlineSupport} from "react-icons/fc"
 import { useContext } from "react";
-import { Cartcontext } from "../context folder/appContext";
+import { Cartcontext } from "../Mr edible store/context folder/appContext";
 
 //import CartIcon from "../cart component/cartIcon";
 

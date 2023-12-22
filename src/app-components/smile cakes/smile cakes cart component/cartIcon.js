@@ -1,13 +1,16 @@
 import {HiMiniShoppingCart} from "react-icons/hi2"
 import { Link } from "react-router-dom"
 import { useContext } from "react"
-import { Cartcontext } from "../context folder/appContext"
+
+import { SmileCartcontext } from "../smile cartContext/smileCartContext"
 
 function CartIcon(){
-    const cart=useContext(Cartcontext)
+    const cart=useContext(SmileCartcontext)
+
+    // style={cart.changeINdex}
     return(
         
-            <Link style={cart.changeINdex} className="cartContainer" to="/cart">
+            <Link  className="cartContainer" to="/smile-cakes-cart">
                 <HiMiniShoppingCart/>
                 <p className="carttext">{cart.numberOfItemsInCart}</p>
             </Link>

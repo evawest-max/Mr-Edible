@@ -6,7 +6,7 @@ import {BiArrowBack} from "react-icons/bi"
 import { useState} from "react";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 import { Link } from "react-router-dom";
-import { productsIDInTheCartListpagetotal } from "./cart";
+import { productsIDInTheCartListpagetotal } from "./smile cakes cart";
 
 
 export default function Cartitem() {
