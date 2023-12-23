@@ -18,24 +18,24 @@
 
 .vendor-input{
     height: 8%;
-    width: 40%;
+    width: 55%;
     border-radius: 50px;
-    font-size: large;
+    font-size: x-small;
     font-weight: bold;
-    /* padding: 50px; */
+    padding-right: 32px;
     position: absolute;
     top: 20%;
     left: 10%;
     color: darkgreen;
     background-color: white;
-    outline: solid green;
+    outline: 2px solid green;
 }
 .vendorSearchIcon{
     position: absolute;
     top: 20%;
-    left: 50%;
+    left: 58%;
     color: green;
-    font-size: 150%;
+    font-size: 80%;
 }
 .searchbar-image-container h3{
     top: 5%;
@@ -46,13 +46,13 @@
     /* width: 40%; */
     /* border: 3px solid red; */
     font-weight: 100%;
-    font-size: 100%;
+    font-size: 45%;
 }
 .vendor-card-container{
     /* border: 5px solid yellow; */
     display: grid;
     grid-gap: 40px;
-    grid-template-columns: repeat(auto-fill, minmax(100px,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(50px,1fr));
     justify-content: space-evenly;
     padding: 10px 10px;
     width: 100%;
@@ -60,7 +60,327 @@
     overflow: scroll;
     scroll-behavior: smooth;
 }
+@media screen and (min-width:250px){    
+    .vendorContainer{
+        color: white;
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 20px;
+        background: radial-gradient(61.32% 53.53% at 33.80% 48.98%, rgb(1, 61, 1), #01000A 100%);
+    }
+    .searchbar-image-container{
+        position: relative;
+        width: 100%;
+        /* border: 3px solid red; */
+    }
+    .searchbar-image-container img{
+        /* position: relative; */
+        width: 100%;
+    }
+
+    .vendor-input{
+        height: 8%;
+        width: 55%;
+        border-radius: 50px;
+        font-size: small;
+        font-weight: bold;
+        padding-right: 32px;
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        color: darkgreen;
+        background-color: white;
+        outline: solid green;
+    }
+    .vendorSearchIcon{
+        position: absolute;
+        top: 20%;
+        left: 58%;
+        color: green;
+        font-size: 100%;
+    }
+    .searchbar-image-container h3{
+        top: 5%;
+        left: 5%;
+        position: absolute;
+        color: gold;
+        /* height: 10%; */
+        /* width: 40%; */
+        /* border: 3px solid red; */
+        font-weight: 70%;
+        font-size: 70%;
+    }
+    .vendor-card-container{
+        /* border: 5px solid yellow; */
+        display: grid;
+        grid-gap: 40px;
+        grid-template-columns: repeat(auto-fill, minmax(90px,1fr));
+        justify-content: space-evenly;
+        padding: 10px 10px;
+        width: 100%;
+        height: 500px;
+        overflow: scroll;
+        scroll-behavior: smooth;
+    }
+}
+@media screen and (min-width:390px){   
+    .vendorContainer{
+        color: white;
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 20px;
+        background: radial-gradient(61.32% 53.53% at 33.80% 48.98%, rgb(1, 61, 1), #01000A 100%);
+    }
+    .searchbar-image-container{
+        position: relative;
+        width: 100%;
+        /* border: 3px solid red; */
+    }
+    .searchbar-image-container img{
+        /* position: relative; */
+        width: 100%;
+    }
+
+    .vendor-input{
+        height: 8%;
+        width: 55%;
+        border-radius: 50px;
+        font-size: large;
+        font-weight: bold;
+        padding-right: 32px;
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        color: darkgreen;
+        background-color: white;
+        outline: solid green;
+    }
+    .vendorSearchIcon{
+        position: absolute;
+        top: 20%;
+        left: 58%;
+        color: green;
+        font-size: 140%;
+    }
+    .searchbar-image-container h3{
+        top: 5%;
+        left: 5%;
+        position: absolute;
+        color: gold;
+        /* height: 10%; */
+        /* width: 40%; */
+        /* border: 3px solid red; */
+        font-weight: 100%;
+        font-size: 100%;
+    }
+    .vendor-card-container{
+        /* border: 5px solid yellow; */
+        display: grid;
+        grid-gap: 40px;
+        grid-template-columns: repeat(auto-fill, minmax(90px,1fr));
+        justify-content: space-evenly;
+        padding: 10px 10px;
+        width: 100%;
+        height: 500px;
+        overflow: scroll;
+        scroll-behavior: smooth;
+    }
+}
+@media screen and (min-width:540px){   
+    .vendorContainer{
+        color: white;
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 20px;
+        background: radial-gradient(61.32% 53.53% at 33.80% 48.98%, rgb(1, 61, 1), #01000A 100%);
+    }
+    .searchbar-image-container{
+        position: relative;
+        width: 100%;
+        /* border: 3px solid red; */
+    }
+    .searchbar-image-container img{
+        /* position: relative; */
+        width: 100%;
+    }
+
+    .vendor-input{
+        height: 8%;
+        width: 55%;
+        border-radius: 50px;
+        font-size: large;
+        font-weight: bold;
+        padding-right: 32px;
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        color: darkgreen;
+        background-color: white;
+        outline: solid green;
+    }
+    .vendorSearchIcon{
+        position: absolute;
+        top: 20%;
+        left: 58%;
+        color: green;
+        font-size: 180%;
+    }
+    .searchbar-image-container h3{
+        top: 5%;
+        left: 5%;
+        position: absolute;
+        color: gold;
+        /* height: 10%; */
+        /* width: 40%; */
+        /* border: 3px solid red; */
+        font-weight: 100%;
+        font-size: 130%;
+    }
+    .vendor-card-container{
+        /* border: 5px solid yellow; */
+        display: grid;
+        grid-gap: 40px;
+        grid-template-columns: repeat(auto-fill, minmax(100px,1fr));
+        justify-content: space-evenly;
+        padding: 10px 10px;
+        width: 100%;
+        height: 500px;
+        overflow: scroll;
+        scroll-behavior: smooth;
+    }
+}
+@media screen and (min-width:700px){   
+    .vendorContainer{
+        color: white;
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 20px;
+        background: radial-gradient(61.32% 53.53% at 33.80% 48.98%, rgb(1, 61, 1), #01000A 100%);
+    }
+    .searchbar-image-container{
+        position: relative;
+        width: 100%;
+        /* border: 3px solid red; */
+    }
+    .searchbar-image-container img{
+        /* position: relative; */
+        width: 100%;
+    }
+
+    .vendor-input{
+        height: 8%;
+        width: 55%;
+        border-radius: 50px;
+        font-size: 30px;
+        font-weight: 250%;
+        padding-right: 32px;
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        color: darkgreen;
+        background-color: white;
+        outline: solid green;
+    }
+    .vendorSearchIcon{
+        position: absolute;
+        top: 20%;
+        left: 58%;
+        color: green;
+        font-size: 250%;
+    }
+    .searchbar-image-container h3{
+        top: 5%;
+        left: 5%;
+        position: absolute;
+        color: gold;
+        /* height: 10%; */
+        /* width: 40%; */
+        /* border: 3px solid red; */
+        font-weight: 100%;
+        font-size: 130%;
+    }
+    .vendor-card-container{
+        /* border: 5px solid yellow; */
+        display: grid;
+        grid-gap: 40px;
+        grid-template-columns: repeat(auto-fill, minmax(100px,1fr));
+        justify-content: space-evenly;
+        padding: 10px 10px;
+        width: 100%;
+        height: 500px;
+        overflow: scroll;
+        scroll-behavior: smooth;
+    }
+}
 @media screen and (min-width:900px){
+    .vendorContainer{
+        
+        color: white;
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 20px;
+        background: radial-gradient(61.32% 53.53% at 33.80% 48.98%, rgb(1, 61, 1), #01000A 100%);
+    }
+
+    .searchbar-image-container{
+        position: relative;
+        width: 100%;
+        /* border: 3px solid red; */
+    }
+    .searchbar-image-container img{
+        /* position: relative; */
+        width: 100%;
+        animation-name: fade-slide-left;
+        animation-duration: 2s;
+    }
+    
+    .vendor-input{
+        height: 8%;
+        width: 40%;
+        border-radius: 50px;
+        font-size: 25px;
+        position: absolute;
+        padding-right: 70px;
+        top: 20%;
+        left: 10%;
+        color: darkgreen;
+        background-color: white;
+        outline: solid green;
+    }
+    .vendorSearchIcon{
+        position: absolute;
+        top: 20%;
+        left: 43%;
+        color: green;
+        font-size: 55px;
+    }
+    .searchbar-image-container h3{
+        top: 5%;
+        left: 5%;
+        position: absolute;
+        color: gold;
+        /* border: 3px solid red; */
+        font-weight: 100%;
+        font-size: 200%;
+    }
+    .vendor-instruction-container{
+        font-size: 20px;
+    }
+    .vendor-card-container{
+        /* border: 5px solid yellow; */
+        display: grid;
+        grid-gap: 40px;
+        grid-template-columns: repeat(auto-fill, minmax(100px,1fr));
+        justify-content: space-evenly;
+        padding: 10px 10px;
+        overflow: scroll;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    
+}
+@media screen and (min-width:1245px){
     .vendorContainer{
         display: flex;
         color: white;
@@ -69,16 +389,6 @@
         padding-bottom: 20px;
         background: radial-gradient(61.32% 53.53% at 33.80% 48.98%, rgb(1, 61, 1), #01000A 100%);
     }
-    /* .vendor-input{
-        height: 20px;
-        width: 300px;
-        border-radius: 5px;
-        padding-left: 5px;
-        position: sticky;
-        top: 60px;
-        background-color: wheat;
-        outline: none;
-    } */
 
     .searchbar-image-container{
         position: relative;
@@ -94,10 +404,11 @@
     
     .vendor-input{
         height: 8%;
-        width: 40%;
+        width: 50%;
         border-radius: 50px;
         font-size: large;
         position: absolute;
+        padding-right: 80px;
         top: 20%;
         left: 10%;
         color: darkgreen;
@@ -118,7 +429,7 @@
         color: gold;
         /* border: 3px solid red; */
         font-weight: 100%;
-        font-size: 200%;
+        font-size: 170%;
     }
     .vendor-instruction-container{
         font-size: 20px;
