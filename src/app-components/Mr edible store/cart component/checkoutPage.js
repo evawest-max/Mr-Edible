@@ -1,16 +1,17 @@
 import "./checkoutpage.css";
 // import backArrow from "./back arrow.svg"
 //import mredible from "./mrEdible.PNG"
-//import { Cartcontext } from "../context folder/appContext";
+import { useContext } from "react";
+import { Cartcontext } from "../context folder/appContext";
 import {BiArrowBack} from "react-icons/bi"
 import { useState} from "react";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 import { Link } from "react-router-dom";
-import { productsIDInTheCartListpagetotal } from "./cart";
+import Cart, { productsIDInTheCartListpagetotal } from "./cart";
 
 
 export default function Cartitem() {
-  //const cart=useContext(Cartcontext)
+  const cart=useContext(Cartcontext)
   //const [amount, setAmount] = useState(0);
   const [location,setlocation]=useState("")
   const [email, setEmail] = useState("");
@@ -81,7 +82,10 @@ export default function Cartitem() {
           onClick={() =>
             handleFlutterPayment({
               callback: (response) => {
-                response?alert("Thank you, transction successfull. Our delivery agent will be in touch with you soon"):alert("Transction unsuccessful, please try again.")
+                if(response){
+                  alert("Thank you, transction successfull. Our delivery agent will be in touch with you soon")
+                  cart.addToOrders()
+                }else{alert("Transction unsuccessful, please try again.")}
                 //console.log(response);
                 closePaymentModal();
               },

@@ -17,6 +17,7 @@ export const Cartcontext= createContext({
   changeINdex:0,
   totalItemInCart:0,
   items:productsIDInTheCartList,
+  orders:0,
   getproductquantity:()=>{},
   increaseProductQuantity:()=>{},
   addItemsToCartList:()=>{},
@@ -27,6 +28,7 @@ export const Cartcontext= createContext({
   switchToUser:()=>{},
   signout:()=>{},
   deleteUserAccount:()=>{},
+  addToOrders:()=>{}
 })
 
 
@@ -118,9 +120,72 @@ function Cartprovider({children}) {
     console.log(totalCart)
   }
 
+  // let userOrders=[]
+  let [itemsInOrders, setitemsInOrders]=useState("Your history is empty"
+    // localStorage.getItem("mredibleloggedinUser")!==null && JSON.parse(localStorage.getItem("mredibleloggedinUser")).orderedItems.map((item, index)=>{
+    //       return (
+    //         <div key={index} className="ordered-food-item"  >
+    //         <img src={item.image} alt="rice"/>
+    //         <p className="ordered-food-name">{item.name}</p>
+    //         <p className="ordered-food-price"><del>{item.oldprice}</del> ₦{item.price}</p>
+    //         </div>
+    //       )
+    //     })  
+  )
+  function addToOrders(){
+    
+    if (localStorage.getItem("mredibleloggedinUser")!==null){
+      let loggedinuser=JSON.parse(localStorage.getItem('mredibleloggedinUser'))
+      if (loggedinuser.orderedItems){
+        loggedinuser={...loggedinuser, orderedItems: (loggedinuser.orderedItems).concat(productsIDInTheCartList)}
+        localStorage.setItem("mredibleloggedinUser", JSON.stringify(loggedinuser));
+      }
+      else{
+        loggedinuser={...loggedinuser, orderedItems: productsIDInTheCartList}
+      localStorage.setItem("mredibleloggedinUser", JSON.stringify(loggedinuser));
+      }
+      
+    }
+
+    setitemsInOrders(
+      JSON.parse(localStorage.getItem("mredibleloggedinUser")).orderedItems.map((item, index)=>{
+        return (
+          <div key={index} className="ordered-food-item"  >
+          <img src={item.image} alt="rice"/>
+          <p className="ordered-food-name">{item.name}</p>
+          <p className="ordered-food-price"><del>{item.oldprice}</del> ₦{item.price}</p>
+          </div>
+        )
+      })
+    )
+    
+  }
+
   useEffect(()=>{
     if (localStorage.getItem("mredible_cart")!==null){
       productsIDInTheCartList=JSON.parse(localStorage.getItem("mredible_cart"))
+    }
+    if (localStorage.getItem("mredibleloggedinUser")!==null){
+      let loggedinuser=JSON.parse(localStorage.getItem('mredibleloggedinUser'))
+      if (loggedinuser.orderedItems&&loggedinuser.orderedItems.length>=1){
+        setitemsInOrders(
+          JSON.parse(localStorage.getItem("mredibleloggedinUser")).orderedItems.map((item, index)=>{
+            return (
+              <div key={index} className="ordered-food-item"  >
+              <img src={item.image} alt="rice"/>
+              <p className="ordered-food-name">{item.name}</p>
+              <p className="ordered-food-price"><del>{item.oldprice}</del> ₦{item.price}</p>
+              </div>
+            )
+          })
+        )
+      }
+      else{
+        setitemsInOrders(
+          "empty"
+        )
+      }
+      
     }
 },[])
   
@@ -232,6 +297,7 @@ function Cartprovider({children}) {
     increaseIndex:true,
     items:productsIDInTheCartList,
     totalItemInCart:totalCart,
+    orders:itemsInOrders,
     getproductquantity,
     increaseProductQuantity,
     addItemsToCartList,
@@ -242,6 +308,7 @@ function Cartprovider({children}) {
     switchToUser,
     signout,
     deleteUserAccount,
+    addToOrders,
   }
 
   return (

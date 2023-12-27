@@ -42,4 +42,5 @@ let vendorsdata=[
     },
 ]
 
+
 export default vendorsdata

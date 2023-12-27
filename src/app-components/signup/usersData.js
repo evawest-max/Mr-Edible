@@ -5,7 +5,8 @@ let users=[
         email:"ebuoluwaakinwumi@gmail.com",
         password:"1234567ebu",
         phonenumber: "07032397184",
-        passport:"C:\\fakepath\\IMG_20230809_082548_707~2.jpg"
+        passport:"C:\\fakepath\\IMG_20230809_082548_707~2.jpg",
+        orderedItems:[]
     },
     {
         id:1,
@@ -13,7 +14,8 @@ let users=[
         email:"akinwumi@gmail.com",
         password:"34567ebu",
         phonenumber: "07032397184",
-        passport:""
+        passport:"",
+        orderedItems:[],
     },
     {
         id:2,
@@ -21,7 +23,8 @@ let users=[
         email:"ebuoluwa@gmail.com",
         password:"12367ebu",
         phonenumber: "07032397184",
-        passport:""
+        passport:"",
+        orderedItems:[]
     },
     {
         id:3,
@@ -29,7 +32,8 @@ let users=[
         email:"oluwaakinwumi@gmail.com",
         password:"123457ebu",
         phonenumber: "07032397184",
-        passport:""
+        passport:"",
+        orderedItems:[]
     },
     {
         id:4,
@@ -37,7 +41,8 @@ let users=[
         email:"ebuoluwaakin@gmail.com",
         password:"124567ebu",
         phonenumber: "07032397184",
-        passport:""
+        passport:"",
+        orderedItems:[]
     },
 ]
 

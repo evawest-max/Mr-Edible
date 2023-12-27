@@ -1,64 +1,77 @@
 .profileContainer{
-    display: flex;
-    justify-content: center;
-    /* text-align: center; */
     color: darkgreen;
-    height:500px;
-    margin-top: 60px;
-    /* border: 3px solid blue; */
-    width: 100%;
+    margin: 5px 10px;
 }
-.profileContainertwo{
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
-    /* text-align: center;
-    color: darkgreen;
-    height:500px;
-    margin-top: 60px;
-    /* border: 3px solid blue; */
-    /* width: 100%; */ 
-}
+
 .profile-toggle{
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: rgb(249, 243, 235);
-    /* height: 100%; */
-    /* width: fit-content; */
-    /* min-width: 270px; */
 }
 .profile-toggle-information{
-    /* margin: 10px; */
-    font-size: 16px;
     font-weight: bold;
-    /* max-width: 200px; */
+    display: flex;
 }
 .profile-toggle-information img{
+    border: 1px solid orange;
     border-radius: 100%;
     width: 100px;
 }
+.information-name{
+    /* border: 3px solid red; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .information-email{
     /* border: 3px solid red; */
-    text-overflow:ellipsis;
-    /* width: fit-content; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.information-phoneNumb{
+    /* border: 3px solid red; */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .profile-toggle-container{
-    text-align: left;
-    align-self: center;
     display: flex;
-    flex-direction: column;
-    justify-self: left;
-    /* max-width: fit-content; */
+    /* border: 3px solid red; */
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    box-shadow: -5px -0.1px 10px 2px rgb(170, 242, 178);
+    z-index: 1;
 }
-.profile-toggle-container p{
-    align-self: left;
-    margin: 10px 10px;
+.profile-toggle-container div{
     cursor: pointer;
+    /* border: 3px solid yellow; */
+    width: 100%;
+    height: fit-content;
 }
+.profile-toggle-container div:hover{
+    color: orange;
+}
+.profile-toggle-container a{
+    cursor: pointer;
+    /* border: 3px solid yellow; */
+    text-decoration: none;
+    width: 100%;
+}
+#buttom-toggle-icons{
+    font-size: 130%;
+}
+.profile-toggle-container div p{
+    cursor: pointer;
+    /* border: 3px solid green; */
+    text-align: center;
+    font-size: 55%;
+    margin: 5px 0px;
+}
+
 .passport_update img{
     border-radius: 100%;
-    /* min-width: 100px; */
     max-width: 50px;
     max-height: 50px;
 }
@@ -96,7 +109,7 @@
 #update-button{
     background-color: green;
     color: white;
-    padding: 5px 0px;
+    padding: 10px 0px;
     width: 100%;
     font-weight: bolder;
     border-radius: 5px;
@@ -119,24 +132,7 @@
     justify-content: center;
     background-color: orange;
 }
-#profile-name{
-    font-size: 16px;
-}
-#profile-links{
-    
-}
-#profile-links div{
 
-}
-#sign-out-button{
-    background-color: orange;
-    color: white;
-    padding: 5px 20px;
-    margin: 0px 10px;
-    font-weight: bolder;
-    border-radius: 10px;
-    margin-bottom: 5px;
-}
 
 #delete-button{
     background-color: red;
@@ -146,4 +142,11 @@
     font-weight: bolder;
     border-radius: 10px;
     margin-bottom: 5px;
+}
+
+@media screen and (min-width:900px){
+    .profileContainer{
+        color: darkgreen;
+        margin: 5px 200px;
+    }
 }
