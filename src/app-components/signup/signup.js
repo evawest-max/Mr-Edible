@@ -157,7 +157,7 @@ function Signup() {
                   <label>E-mail</label>
                   <input style={emailbordercolor}onBlur={validateEmail} ref={emailref} type='email' placeholder='example@yahoo.com'/><br/>
                   <label>Passport</label>
-                  <input className='RegisterationImageName' ref={passportref} type='file' onChange={onimagechange}/><br/>
+                  <input className='RegisterationImageName' ref={passportref} type='file' accept='image/*' onChange={onimagechange}/><br/>
                   <label>Create Password</label>
                   <input style={createpasswordbordercolor}onBlur={validateCreatePassword} ref={createpasswordref} type='password' placeholder='********'/><br/>
                   <label>Confirm Password</label>

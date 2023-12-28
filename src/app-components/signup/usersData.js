@@ -6,7 +6,8 @@ let users=[
         password:"1234567ebu",
         phonenumber: "07032397184",
         passport:"C:\\fakepath\\IMG_20230809_082548_707~2.jpg",
-        orderedItems:[]
+        orderedItems:[],
+        address:"27 iguruta road, rumukurusi"
     },
     {
         id:1,
@@ -16,6 +17,7 @@ let users=[
         phonenumber: "07032397184",
         passport:"",
         orderedItems:[],
+        address:"27 iguruta road, rumukurusi"
     },
     {
         id:2,
@@ -24,7 +26,8 @@ let users=[
         password:"12367ebu",
         phonenumber: "07032397184",
         passport:"",
-        orderedItems:[]
+        orderedItems:[],
+        address:"27 iguruta road, rumukurusi"
     },
     {
         id:3,
@@ -33,7 +36,8 @@ let users=[
         password:"123457ebu",
         phonenumber: "07032397184",
         passport:"",
-        orderedItems:[]
+        orderedItems:[],
+        address:"27 iguruta road, rumukurusi"
     },
     {
         id:4,
@@ -42,7 +46,8 @@ let users=[
         password:"124567ebu",
         phonenumber: "07032397184",
         passport:"",
-        orderedItems:[]
+        orderedItems:[],
+        address:"27 iguruta road, rumukurusi"
     },
 ]
 

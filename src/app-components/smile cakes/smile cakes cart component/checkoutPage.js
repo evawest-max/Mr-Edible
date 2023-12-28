@@ -1,16 +1,17 @@
 import "./checkoutpage.css";
 // import backArrow from "./back arrow.svg"
 //import mredible from "./mrEdible.PNG"
-//import { Cartcontext } from "../context folder/appContext";
+import { useContext } from "react";
 import {BiArrowBack} from "react-icons/bi"
 import { useState} from "react";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 import { Link } from "react-router-dom";
 import { productsIDInTheCartListpagetotal } from "./smile cakes cart";
+import { SmileCartcontext } from "../smile cartContext/smileCartContext";
 
 
 export default function Cartitem() {
-  //const cart=useContext(Cartcontext)
+  const cart=useContext(SmileCartcontext)
   //const [amount, setAmount] = useState(0);
   const [location,setlocation]=useState("")
   const [email, setEmail] = useState("");
@@ -31,8 +32,8 @@ export default function Cartitem() {
       //amount:cart.totalItemInCart
     },
     customizations: {
-      title: "Mr Edible",
-      description: "Payment for items in cart",
+      title: "smile Cakes",
+      description: "Payment for items in your Smile cart",
       logo: "https://s3.amazonaws.com/logos.brandpa.com/images/0996ece46a850625a585854e651c4c0c.png",
     },
   };
@@ -42,7 +43,7 @@ export default function Cartitem() {
   return (
     <div className="App">
     <div className="cart-back-arrow">
-        <Link to="/cart"><BiArrowBack/></Link>
+        <Link to="/smile-cakes-cart"><BiArrowBack/></Link>
             <h4 className="goback">Back to cart</h4>
     </div> 
       <div className="containers">
@@ -81,8 +82,10 @@ export default function Cartitem() {
           onClick={() =>
             handleFlutterPayment({
               callback: (response) => {
-                response?alert("Thank you, transction successfull. Our delivery agent will be in touch with you soon"):alert("Transction unsuccessful, please try again.")
-                //console.log(response);
+                if(response){
+                  alert("Thank you, transction successfull. Our delivery agent will be in touch with you soon")
+                  cart.addToOrders()
+                }else{alert("Transction unsuccessful, please try again.")}
                 closePaymentModal();
               },
               onClose: () => {},

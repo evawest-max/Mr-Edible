@@ -121,17 +121,7 @@ function Cartprovider({children}) {
   }
 
   // let userOrders=[]
-  let [itemsInOrders, setitemsInOrders]=useState("Your history is empty"
-    // localStorage.getItem("mredibleloggedinUser")!==null && JSON.parse(localStorage.getItem("mredibleloggedinUser")).orderedItems.map((item, index)=>{
-    //       return (
-    //         <div key={index} className="ordered-food-item"  >
-    //         <img src={item.image} alt="rice"/>
-    //         <p className="ordered-food-name">{item.name}</p>
-    //         <p className="ordered-food-price"><del>{item.oldprice}</del> ₦{item.price}</p>
-    //         </div>
-    //       )
-    //     })  
-  )
+  let [itemsInOrders, setitemsInOrders]=useState("Your history is empty")
   function addToOrders(){
     
     if (localStorage.getItem("mredibleloggedinUser")!==null){
@@ -199,20 +189,21 @@ function Cartprovider({children}) {
 
   let [userloggedin, setuserloggedin]=useState({})
   let userloggedindisplay={}
+
   function switchToUser(index){
     let fullnameAb=''
     setuserloggedin({...users[index], password:"*******"})
     userloggedindisplay={...users[index], password:"*******"}
     
-    const stringofuser=JSON.stringify(userloggedindisplay)
-    localStorage.setItem("mredibleloggedinUser", stringofuser);
-    let existing = localStorage.getItem('mredibleloggedinUser')
-    existing=existing && JSON.parse(existing)
+    // const stringofuser=JSON.stringify(userloggedindisplay)
+    localStorage.setItem("mredibleloggedinUser", JSON.stringify(userloggedindisplay));
+    // let existing = localStorage.getItem('mredibleloggedinUser')
+    let existing=localStorage.getItem('mredibleloggedinUser') && JSON.parse(localStorage.getItem('mredibleloggedinUser')).name.split('')
     
-    let username= existing.name.split('')
-    username.map((item, index)=>{
+    // let username= existing.name.split('')
+    existing.map((item, index)=>{
         if (item===' '){
-            fullnameAb=(username[0]+'.'+username[index+1]).toLocaleUpperCase()
+            fullnameAb=(existing[0]+'.'+existing[index+1]).toLocaleUpperCase()
         }
     })
     
@@ -248,8 +239,8 @@ function Cartprovider({children}) {
   userloggedindisplay=userDataFromLocalStorage
   setuserloggedin(userDataFromLocalStorage)
   console.log(userDataFromLocalStorage)
-    let username= userDataFromLocalStorage.name.split('')
-    username.map((item, index)=>{
+    let username= userDataFromLocalStorage.name
+    username.split('').map((item, index)=>{
         if (item===' '){
             fullnameAb=(username[0]+'.'+username[index+1]).toLocaleUpperCase()
         }

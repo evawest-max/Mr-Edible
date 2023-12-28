@@ -2,15 +2,15 @@ import { useState } from "react";
 import "./Foodsection.css";
 import { useContext } from "react";
 import { SmileCartcontext } from "../smile cartContext/smileCartContext";
-import {HiMiniShoppingCart} from "react-icons/hi2"
 import { MdRemoveShoppingCart } from "react-icons/md";
+import { FaCartPlus } from "react-icons/fa6";
 
 
 //  export let checkout=[]
  function Fooditem(props){
     const cart= useContext(SmileCartcontext)
     
-    const [buttonState, newbuttonState]= useState(<button onClick={addToCart} className="food-button">Add to cart <HiMiniShoppingCart/></button>)
+    const [buttonState, newbuttonState]= useState(<button onClick={addToCart} className="food-button">Add to cart <FaCartPlus/></button>)
 
     function addToCart(){
         console.log('you clicked me')
@@ -19,7 +19,7 @@ import { MdRemoveShoppingCart } from "react-icons/md";
     }
 
     function removefromCart(){    
-        newbuttonState(<button onClick={addToCart} className="food-button">Add to cart <HiMiniShoppingCart/></button>)
+        newbuttonState(<button onClick={addToCart} className="food-button">Add to cart <FaCartPlus/></button>)
         cart.deleteFromCartList(props.id)
     }
 

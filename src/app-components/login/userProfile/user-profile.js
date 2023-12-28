@@ -12,20 +12,22 @@ import { MdForwardToInbox } from "react-icons/md";
 import { PiSignOutBold } from "react-icons/pi";
 import { MdDeleteForever } from "react-icons/md";
 import { RiMessage2Fill } from "react-icons/ri";
-import Cart from '../../Mr edible store/cart component/cart'
+// import Cart from '../../Mr edible store/cart component/cart'
 import { useEffect } from 'react'
+import { SmileCartcontext } from '../../smile cakes/smile cartContext/smileCartContext'
 // import propic from "C:\\fakepath\\IMG_20230809_082548_707~2.jpg"
 
 
 function UserProfile() {
     const cart= useContext(Cartcontext)
+    const smilecart=useContext(SmileCartcontext)
     function signout(){
       localStorage.removeItem('mredibleloggedinUser')
         cart.signout()
     }
     let user=cart.currentUser
 
-    const [deleteButton, setdeleteButton]=useState(<button id='delete-button' onClick={switchDeletebutton}>Delete my account</button>)
+    const [deleteButton, setdeleteButton]=useState(<button id='delete-button' onClick={switchDeletebutton}><MdDeleteForever />Delete my account</button>)
     function switchDeletebutton(){
       setdeleteButton(<div>
         <h3>Are you sure? <br/>if you delete account all your records will be lost for ever.</h3>
@@ -44,7 +46,7 @@ function UserProfile() {
       })
     }
     function switchBackToDeletebutton(){
-      setdeleteButton(<button id='delete-button' onClick={switchDeletebutton}>Delete my account</button>)
+      setdeleteButton(<button id='delete-button' onClick={switchDeletebutton}><MdDeleteForever />Delete my account</button>)
     }
 
     const [namebordercolors, setnamebordercolors]=useState()
@@ -77,7 +79,7 @@ function UserProfile() {
     function saveNewUserData(){
       if (nameref.current.value.length>4){
         if (phoneref.current.value.length===11){
-          users.map((item)=>{
+          users.map((item, index)=>{
             let check=JSON.parse(localStorage.getItem('mredibleloggedinUser'))
             if (item.id===check.id){
               item.name=nameref.current.value
@@ -86,6 +88,7 @@ function UserProfile() {
               reset()
               setEditButton(<button onClick={editaccount} id='edit-button'>Edit my account</button>)
               localStorage.setItem('mredibleaccount', JSON.stringify(users))
+              localStorage.setItem("mredibleloggedinUser", JSON.stringify(users[index]))
             }
           })
           alert("Update successfull")
@@ -105,14 +108,15 @@ function UserProfile() {
       setcontent(<div>This is were you will find your messages <RiMessage2Fill /> we send you.<br/>your inbox is empty now</div>)
     }
     const gotoOrders=()=>{
-      setcontent(<h4>This are your order history<div className='ordered-container'>{cart.orders}</div></h4>)
+      setcontent(<h4>This are your order history<div className='ordered-container'> {smilecart.Smileorders}</div></h4>)
     }
     const gotofavourites=()=>{
       setcontent(<div>This is where you will find your order favourities</div>)
     }
     const gotoSettings=()=>{
       setcontent(<div>
-                  <button id='delete-button' onClick={switchDeletebutton}><MdDeleteForever />Delete my account</button>
+                  {deleteButton}
+                  {/* <button id='delete-button' onClick={switchDeletebutton}><MdDeleteForever />Delete my account</button> */}
                 </div>)
     }
     function onimagechange(e){
@@ -123,7 +127,7 @@ function UserProfile() {
       console.log(user.passport)
     setcontent(<div>
       <div className='passport_update'>
-        <img src={user.passport} alt='user'/>
+        <img src={userimageurl} alt='user'/>
         <div>
           <p>upload a new photo</p>
           <input type='file' onChange={onimagechange}/><br/>
@@ -137,9 +141,9 @@ function UserProfile() {
           <label>Fullname name</label><br/>
           <input type='text' ref={nameref} placeholder='John Smith' required id='editInput'/><br/>
           <label>Email</label><br/>
-          <input type='text' ref={adressessref} placeholder='JohnSmith@yahoo.com' required id='editInput'/><br/>
+          <input type='text'  placeholder='JohnSmith@yahoo.com' required id='editInput'/><br/>
           <label>Address</label><br/>
-          <input type='text'  placeholder='NO 2 pipeline, nigeria' required id='editInput'/><br/>
+          <input type='text' ref={adressessref} placeholder='NO 2 pipeline, nigeria' required id='editInput'/><br/>
           <label>Phonenumber</label><br/>
           <input type='number' ref={phoneref} Placeholder='Phonenumber' required id='editInput'/><br/>
         <button onClick={saveNewUserData} id='update-button'>Update information</button>
@@ -147,19 +151,21 @@ function UserProfile() {
       </div>
     </div>)
     }
-    const [userimage,setuserimage]=useState(<img src={user.passport} alt='user' />)
+    
+    const [userimageurl,setuserimageurl]=useState(user.passport)
     useEffect(() => {
-      setuserimage(<img src={user.passport} alt='user' />)
+      setuserimageurl(user.passport)
     }, [])
     
   return (
     <div className='profileContainer' >
         <div className='profile-toggle'>
           <div className='profile-toggle-information'>
-            {userimage}
+          <img src={userimageurl} alt='user' />
             <div>
               <p className='information-name'>Welcome {user.name}</p>
               <p className='information-email'>{user.email}</p>
+              <p className='information-phoneNumb'>{user.address}</p>
               <p className='information-phoneNumb'>{user.phonenumber}</p>
             </div>
           </div>

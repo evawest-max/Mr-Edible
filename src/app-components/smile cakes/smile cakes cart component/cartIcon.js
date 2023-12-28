@@ -6,11 +6,13 @@ import { SmileCartcontext } from "../smile cartContext/smileCartContext"
 
 function CartIcon(){
     const cart=useContext(SmileCartcontext)
-
+    function calculateCart(){
+        cart.getTotalCart()
+    }
     // style={cart.changeINdex}
     return(
-        
-            <Link  className="cartContainer" to="/smile-cakes-cart">
+            
+            <Link onClick={calculateCart} className="cartContainer" to="/smile-cakes-cart">
                 <HiMiniShoppingCart/>
                 <p className="carttext">{cart.numberOfItemsInCart}</p>
             </Link>

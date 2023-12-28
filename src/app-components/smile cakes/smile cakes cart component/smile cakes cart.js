@@ -53,6 +53,7 @@ function SmileCakesCart(){
 
     // productsIDInTheCartListpagetotal=subtotal
     
+    
     return(
         
             <div id="cart-parent">
@@ -103,7 +104,7 @@ function SmileCakesCart(){
                             <p className="cart-amount-tittle">₦{subtotal}</p>
                         </div>
                     </div>
-                    <Link to="/checkoutpage"><button  className="checkoutButton">Proceed to checkout</button></Link>
+                    <Link to="/smile-cakes-checkoutpage"><button className="checkoutButton">Proceed to checkout</button></Link>
                     
                 </div>
             </div>
