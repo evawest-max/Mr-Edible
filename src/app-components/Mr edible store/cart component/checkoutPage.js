@@ -84,7 +84,7 @@ export default function Cartitem() {
               callback: (response) => {
                 if(response){
                   alert("Thank you, transction successfull. Our delivery agent will be in touch with you soon")
-                  cart.addToOrders()
+                  // cart.addToOrders()
                 }else{alert("Transction unsuccessful, please try again.")}
                 //console.log(response);
                 closePaymentModal();

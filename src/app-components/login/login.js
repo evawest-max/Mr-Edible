@@ -5,7 +5,11 @@ import { Cartcontext } from '../Mr edible store/context folder/appContext'
 import {FcGoogle} from "react-icons/fc"
 import { Link, NavLink } from 'react-router-dom'
 import users from '../signup/usersData'
-
+import { signInWithEmailAndPassword, signInWithEmailLink, signInWithPopup } from 'firebase/auth'
+import { auth, provider } from '../../firebase/firebase config'
+import { get, getDatabase, ref, update } from 'firebase/database'
+import { getAuth, sendEmailVerification } from "firebase/auth";
+import { uploadBytes, ref as storageRef, getStorage, getDownloadURL } from 'firebase/storage'
 
 
 function LoginPage() {
@@ -19,53 +23,113 @@ function LoginPage() {
   const [alertcolor, setalertcolor]=useState({})
   const [emailbordercolor, setemailbordercolor]=useState({border: "1px solid darkorange"})
   const [passwordbordercolor, setpasswordbordercolor]=useState({border: "1px solid darkorange"})
+  const [buttonState, setButtonState]=useState("SIGN IN")
 
   function validateEmail(){
-    for (let i=0; i<users.length; i++){
-      const checkone=emailRef.current.value.includes("@"&&"com")
-      const checktwo=users[i].email===emailRef.current.value.toLocaleLowerCase()
-      if (checkone && checktwo){
-        setemailbordercolor({border: "2px solid green"})
-        setloginAlert("")
-      }else if (!emailRef.current.value.includes("@"&&".com")){
+      if (!emailRef.current.value.includes("@")&& !emailRef.current.value.includes(".")){
         setemailbordercolor({border: "2px solid red"})
         setalertcolor({color:"red"})
-        setloginAlert("user does not exist")
+        setloginAlert("Email must include '@'")
       }
+      if (emailRef.current.value.includes("@")&& emailRef.current.value.includes(".")){
+        setemailbordercolor({border: "none"})
+        setalertcolor({color:"red"})
+        setloginAlert("")
+      }
+  }
+  const [signinsuccessful, setsigninsuccessful]=useState(false)
+  const storage= getStorage()
+  async function submitloginWithGoogle(){
+    try{
+      const userCredential=await signInWithPopup(auth, provider)
+      console.log(userCredential)
+      const user=userCredential.user
+      
+      if (user.emailVerified){
+        setemailbordercolor({border: "none"})
+        setpasswordbordercolor({border: "none"})
+        setalertcolor({color:"green"})
+        const serverimageref= storageRef(getStorage(), `customer passport/${user.uid}`)
+        await getDownloadURL(serverimageref)
+        .then(url=>{console.log(url.exist())})   
+        .catch(()=>{
+          fetch(user.photoURL).then(res => {
+            return res.blob();
+          }).then(blob => {
+              //uploading blob to firebase storage
+               uploadBytes(serverimageref, blob).then((snapshot) => {
+                  console.log('Uploaded a blob or file!');
+                }).catch((error)=>{console.log(error)});
+          }).catch(error=>{
+            alert("the image was not uploaded.")
+          })
+
+        })
+        
+        await update(ref(getDatabase(), "users/"+ user.uid),{
+          last_login:new Date().toLocaleString(),
+          email:user.email,
+          id:user.uid,
+          name:user.displayName,
+          passport:`customer passport/ ${user.uid}`,
+        }).then(()=>{
+          cart.switchToUser(user.uid)
+        })
+        
+        setloginAlert("Sign in successfull!")
+        console.log("login successfull")
+       
+      }else{
+        setalertcolor({color:"red"})
+        setloginAlert(<p>account not verified<button>resend verification link</button></p>)
+      }
+    }catch(error){
+      setalertcolor({color:"red"})
+      setloginAlert(error.message)
       
     }
   }
-  const [signinsuccessful, setsigninsuccessful]=useState(false)
-  
-  function validateEmailAndPassword(){
-    for (let i=0; i<users.length; i++){
-      if (users[i].email===emailRef.current.value){
-        if(users[i].password===passwardRef.current.value){
-          setsigninsuccessful(true)
-        }
-      } 
+
+  async function submitlogin(){
+    setButtonState("Loading...")
+    try{
+      const userCredential=await signInWithEmailAndPassword(auth, emailRef.current.value, passwardRef.current.value)
+      console.log(userCredential)
+      const user=userCredential.user
+      if (user.emailVerified===true){
+        setemailbordercolor({border: "none"})
+        setpasswordbordercolor({border: "none"})
+        setalertcolor({color:"green"})
+        await update(ref(getDatabase(), "users/"+ userCredential.uid),{
+          last_login:new Date().toLocaleString(),
+        })
+        cart.switchToUser(user.uid)
+        setloginAlert("Sign in successfull!")
+        setButtonState("SIGN IN")
+        console.log("login successfull")
+      }else{
+        setalertcolor({color:"red"})
+        setloginAlert(<p>account not verified<button onClick={resendVerificationLink}>resend verification link</button></p>)
+        setButtonState("SIGN IN")
+      }
+    }catch(error){
+      setemailbordercolor({border: "2px solid red"})
+      setalertcolor({color:"red"})
+      setloginAlert(error.message)
+      setButtonState("SIGN IN")
     }
   }
-
-  function submitlogin(){
-    for (let i=0; i<users.length; i++){
-      if (users[i].email===emailRef.current.value){
-        if(users[i].password===passwardRef.current.value){
-          setalertcolor({color:"green"})
-          setemailbordercolor({border: "2px solid green"})
-          setpasswordbordercolor({border: "2px solid green"})
-          console.log("login successfull")
-          setloginAlert("Sign in successfull!")
-          cart.switchToUser(i)
-        }else{
-          setalertcolor({color:"red"})
-          setemailbordercolor({border: "2px solid green"})
-          setpasswordbordercolor({border: "2px solid red"})
-          setloginAlert("Wrong password!")
-        }
-      } 
-    }
-    
+  function resendVerificationLink(){
+    const auth = getAuth();
+    sendEmailVerification(auth.currentUser)
+      .then(() => {
+        setalertcolor({color:"green"})
+        setloginAlert("Verification link sent")
+      })
+      .catch((error)=>{
+        setalertcolor({color:"red"})
+        setloginAlert("Verification link not sent"+error.message)
+      });
   }
 
   return (
@@ -79,14 +143,14 @@ function LoginPage() {
             <label>E-mail</label>
             <input onBlur={validateEmail} style={emailbordercolor} ref={emailRef} type='email' placeholder='example@yahoo.com'/><br/>
             <label>Password</label>
-            <input onBlur={validateEmailAndPassword} style={passwordbordercolor} ref={passwardRef} type='password' placeholder='********'/>
+            <input style={passwordbordercolor} ref={passwardRef} type='password' placeholder='********'/>
           </form>
-          <p className='login-forgot-password'>Forgot password?</p>
-          <Link onClick={submitlogin} to={signinsuccessful && '/user-profile'}><button className='login-button'><strong>SIGN IN</strong></button></Link>
+          <p className='login-forgot-password'><Link to="/reset-profile">Forgot password?</Link></p>
+          <Link onClick={submitlogin} to={signinsuccessful && '/user-profile'}><button className='login-button'><strong>{buttonState}</strong></button></Link>
         </div>
         
         <p className='login-options'>Or sign in using</p>
-        <div className='login-option-picture'><FcGoogle/></div>
+        <div className='login-option-picture' onClick={submitloginWithGoogle}><FcGoogle/></div>
         
         <h5 className='sign-up-button'>
           <p>I dont Have an account?</p>

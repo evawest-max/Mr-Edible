@@ -34,7 +34,7 @@
     border-radius: 5px;
 }
 .login-forgot-password{
-    color: white;
+    color: rgb(248, 125, 248);
 }
 .login-options{
     color: white;
@@ -102,7 +102,7 @@
         text-align: left;
     }
     .login-forgot-password{
-        color: darkgreen;
+        color: rgb(248, 125, 248);
     }
     .login-options{
         color: darkgreen;

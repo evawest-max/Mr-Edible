@@ -15,17 +15,42 @@ import { RiMessage2Fill } from "react-icons/ri";
 // import Cart from '../../Mr edible store/cart component/cart'
 import { useEffect } from 'react'
 import { SmileCartcontext } from '../../smile cakes/smile cartContext/smileCartContext'
+import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
+import { getDatabase, onValue, update, ref as refDatabase} from 'firebase/database'
 // import propic from "C:\\fakepath\\IMG_20230809_082548_707~2.jpg"
 
 
 function UserProfile() {
     const cart= useContext(Cartcontext)
-    const smilecart=useContext(SmileCartcontext)
+    // const smilecart=useContext(SmileCartcontext)
     function signout(){
-      localStorage.removeItem('mredibleloggedinUser')
-        cart.signout()
+      if (localStorage.getItem("mredibleloggedinUser")!==null){
+        localStorage.removeItem('mredibleloggedinUser')
+          cart.signout()
+      }
     }
-    let user=cart.currentUser
+    let [user, setuser]=useState(cart.currentUser)
+
+    useEffect(() => {
+      setuser(JSON.parse(localStorage.getItem('mredibleloggedinUser')))
+      getDownloadURL(ref(getStorage(), `customer passport/${JSON.parse(localStorage.getItem('mredibleloggedinUser')).id}`))
+          .then((url) => {
+            // `url` is the download URL for 'images/stars.jpg'
+            setuserimageurl(url)
+            // alert('Uploaded a blob or file!');
+            // console.log(url)
+            
+          })
+          .catch((error) => {
+            // Handle any errors
+            console.log(error)
+          });
+      // if (localStorage.getItem('mredibleloggedinUser') !== null){
+      //   setuser(JSON.parse(localStorage.getItem('mredibleloggedinUser')))
+      //   setuserimageurl(JSON.parse(localStorage.getItem('mredibleloggedinUser')).imageurl)
+      // }
+    }, [])
+    
 
     const [deleteButton, setdeleteButton]=useState(<button id='delete-button' onClick={switchDeletebutton}><MdDeleteForever />Delete my account</button>)
     function switchDeletebutton(){
@@ -38,124 +63,153 @@ function UserProfile() {
       </div>)
     }
     function deleteAccount(){
-      users.map((item, index)=>{
-        if (item.id===cart.currentUser.id){
-          cart.deleteUserAccount(index)
-          localStorage.removeItem('mredibleloggedinUser')
-        }
-      })
+      if (localStorage.getItem('mredibleloggedinUser') !== null){
+        cart.deleteUserAccount(JSON.parse(localStorage.getItem('mredibleloggedinUser')).id)
+      }
     }
     function switchBackToDeletebutton(){
       setdeleteButton(<button id='delete-button' onClick={switchDeletebutton}><MdDeleteForever />Delete my account</button>)
     }
 
-    const [namebordercolors, setnamebordercolors]=useState()
-    const [phonenumberbordercolors, setphonenumberbordercolors]=useState()
+    // const [namebordercolors, setnamebordercolors]=useState()
+    // const [phonenumberbordercolors, setphonenumberbordercolors]=useState()
   
 
     const nameref=useRef()
     const phoneref=useRef()
     const adressessref=useRef()
-    const [editButton, setEditButton]=useState(<button onClick={editaccount} id='edit-button'>Edit my account</button>)
-    function editaccount(){
-      setEditButton(<div className='edit-form-container'>
-        <h6><strong>Edit my profile</strong></h6>
-        <p>Ensure name is more than 3 letters <br/> and phonenumber is 11 digits </p>
-        <form >
-          <label>New name</label><br/>
-          <input type='text' ref={nameref} placeholder='your new name' required id='editInput'/><br/>
-          <label>New phonenumber</label><br/>
-          <input type='number' ref={phoneref} Placeholder='Phonenumber' required id='editInput'/><br/>
-        </form>
-        <button onClick={saveNewUserData} id='edit-button'>Save</button>
-        <button onClick={cancelEdit} id='edit-button'>Cancel</button>
-      </div>)
+    let passportref=useRef()
+    const [editButton, setEditButton]=useState("Update information")
+    
+    const [file, setfile]=useState()
+    const [uploadButton, setuploadbutton]=useState("UPLOAD")
+    function onimagechange(e){
+      // console.log(e.target.files)
+      setfile(e.target.files[0])
     }
-    function reset(){
-      setEditButton(<button onClick={editaccount} id='edit-button'>Edit my account</button>)
+    
+    async function updatePhoto(){
+      setuploadbutton("Uploading")
+      const storage= ref(getStorage(), "customer passport/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).id)
+      await deleteObject(storage).then(() => {
+        // File deleted successfully
+        uploadBytes(storage, file).then((snapshot) => {
+        // console.log(snapshot.metadata.timeCreated)
+        getDownloadURL(ref(getStorage(), `customer passport/${JSON.parse(localStorage.getItem('mredibleloggedinUser')).id}`))
+          .then((url) => {
+            // `url` is the download URL for 'images/stars.jpg'
+            setuserimageurl(url)
+            alert('Uploaded a blob or file!');
+            // console.log(url)
             
+          })
+          .catch((error) => {
+            // Handle any errors
+            console.log(error)
+          });
+      });
+      }).catch((error) => {
+        // Uh-oh, an error occurred!
+        console.log(error)
+      });
+      
+      setuploadbutton("UPLOAD")
     }
     
     function saveNewUserData(){
       if (nameref.current.value.length>4){
         if (phoneref.current.value.length===11){
-          users.map((item, index)=>{
-            let check=JSON.parse(localStorage.getItem('mredibleloggedinUser'))
-            if (item.id===check.id){
-              item.name=nameref.current.value
-              item.phonenumber=phoneref.current.value
-              item.address=adressessref.current.value
-              reset()
-              setEditButton(<button onClick={editaccount} id='edit-button'>Edit my account</button>)
-              localStorage.setItem('mredibleaccount', JSON.stringify(users))
-              localStorage.setItem("mredibleloggedinUser", JSON.stringify(users[index]))
-            }
-          })
-          alert("Update successfull")
+          if (localStorage.getItem("mredibleloggedinUser")!==null){
+            setEditButton("loading...")
+            update(refDatabase(getDatabase(), "users/"+  JSON.parse(localStorage.getItem('mredibleloggedinUser')).id),{
+              last_profile_update:new Date().toLocaleString(),
+              name:nameref.current.value,
+              phonenumber:phoneref.current.value,
+              address:adressessref.current.value
+            }).then(()=>{
+              setEditButton("Update Information")
+              alert("Update successfull")
+            }).catch((error=>{setEditButton("Update Information");alert(error.message)}))
+          }
         }else{
           alert("please makesure phone number is equal to 11 numbers")
         }
       }else{
-        console.log('it is working')
+        // console.log('it is working')
         alert("please makesure name is more than 4 letters")
       }
     }
-    function cancelEdit(){
-      setEditButton((<button onClick={editaccount} id='edit-button'>Edit my account</button>))
-    }
-    const [content, setcontent]=useState(<div>kindly use the Profile menu at the bottom of your screen </div>)
+    
+
+    const [inboxDisplay, setInboxDisplay]=useState({display:"none"})
+    const [orderDisplay, setOrderDisplay]=useState({display:"none"})
+    const [favouritiesDisplay, setFavouritiesDisplay]=useState({display:"none"})
+    const [settingsDisplay, setSettingsDisplay]=useState({display:"none"})
+    const [profileDisplay, setProfileDisplay]=useState({display:"none"})
+
     const gotoinbox=()=>{
-      setcontent(<div>This is were you will find your messages <RiMessage2Fill /> we send you.<br/>your inbox is empty now</div>)
+      setInboxDisplay({display:"flex"})
+      setOrderDisplay({display:"none"})
+      setFavouritiesDisplay({display:"none"})
+      setSettingsDisplay({display:"none"})
+      setProfileDisplay({display:"none"})
+
     }
     const gotoOrders=()=>{
-      setcontent(<h4>This are your order history<div className='ordered-container'> {smilecart.Smileorders}</div></h4>)
+      setInboxDisplay({display:"none"})
+      setOrderDisplay({display:"flex"})
+      setFavouritiesDisplay({display:"none"})
+      setSettingsDisplay({display:"none"})
+      setProfileDisplay({display:"none"})
     }
     const gotofavourites=()=>{
-      setcontent(<div>This is where you will find your order favourities</div>)
+      setInboxDisplay({display:"none"})
+      setOrderDisplay({display:"none"})
+      setFavouritiesDisplay({display:"flex"})
+      setSettingsDisplay({display:"none"})
+      setProfileDisplay({display:"none"})
     }
     const gotoSettings=()=>{
-      setcontent(<div>
-                  {deleteButton}
-                  {/* <button id='delete-button' onClick={switchDeletebutton}><MdDeleteForever />Delete my account</button> */}
-                </div>)
-    }
-    function onimagechange(e){
-
-    }
-
-    function gotoProfile(){
-      console.log(user.passport)
-    setcontent(<div>
-      <div className='passport_update'>
-        <img src={userimageurl} alt='user'/>
-        <div>
-          <p>upload a new photo</p>
-          <input type='file' onChange={onimagechange}/><br/>
-        <button id='update-photo-button'>Update</button>
-        </div>
-      </div>
-
-      <div className='edit-form-container'>
-        <p><strong>Change user information here </strong></p>
-        <form >
-          <label>Fullname name</label><br/>
-          <input type='text' ref={nameref} placeholder='John Smith' required id='editInput'/><br/>
-          <label>Email</label><br/>
-          <input type='text'  placeholder='JohnSmith@yahoo.com' required id='editInput'/><br/>
-          <label>Address</label><br/>
-          <input type='text' ref={adressessref} placeholder='NO 2 pipeline, nigeria' required id='editInput'/><br/>
-          <label>Phonenumber</label><br/>
-          <input type='number' ref={phoneref} Placeholder='Phonenumber' required id='editInput'/><br/>
-        <button onClick={saveNewUserData} id='update-button'>Update information</button>
-        </form>
-      </div>
-    </div>)
+      setInboxDisplay({display:"none"})
+      setOrderDisplay({display:"none"})
+      setFavouritiesDisplay({display:"none"})
+      setSettingsDisplay({display:"flex"})
+      setProfileDisplay({display:"none"})
     }
     
-    const [userimageurl,setuserimageurl]=useState(user.passport)
-    useEffect(() => {
-      setuserimageurl(user.passport)
-    }, [])
+    function gotoProfile(){
+      setInboxDisplay({display:"none"})
+      setOrderDisplay({display:"none"})
+      setFavouritiesDisplay({display:"none"})
+      setSettingsDisplay({display:"none"})
+      setProfileDisplay({display:"flex"})
+    }
+    
+    const [userimageurl,setuserimageurl]=useState("")
+    
+    const storage = getStorage();
+      getDownloadURL(ref(storage, `${user.passport}`))
+        .then((url) => {
+          // `url` is the download URL for 'images/stars.jpg'
+          setuserimageurl(url)
+          // console.log(url)
+          
+        })
+        .catch((error) => {
+          // Handle any errors
+        });
+        
+      if (localStorage.getItem("mredibleloggedinUser")!==null){
+        let loggedinuser=JSON.parse(localStorage.getItem('mredibleloggedinUser'))
+        const db = getDatabase();
+        const userRef = refDatabase(db, "users/"+ loggedinuser.id );
+        onValue(userRef, (snapshot) => {
+          const data = snapshot.val();
+          // console.log(data)
+          localStorage.setItem("mredibleloggedinUser", JSON.stringify(data))
+          // updateStarCount(postElement, data);
+        });
+      }
     
   return (
     <div className='profileContainer' >
@@ -169,7 +223,42 @@ function UserProfile() {
               <p className='information-phoneNumb'>{user.phonenumber}</p>
             </div>
           </div>
-          
+
+          <div style={inboxDisplay}>This is were you will find your messages <RiMessage2Fill /> we send you.<br/>your inbox is empty now</div>
+          <div style={orderDisplay}> 
+              This are your order history
+              <div className='ordered-container'> {cart.orders}
+              </div>
+          </div>
+          <div style={favouritiesDisplay}>This is where you will find your order favourities</div>
+          <div style={settingsDisplay}>
+                  {deleteButton}
+          </div>
+          <div style={profileDisplay}>
+            <div >
+              <div className='passport_update'>
+                <img src={userimageurl} alt='user'/>
+                <div>
+                  <p>upload a new photo</p>
+                  <input ref={passportref} type='file' accept='image/*' onChange={onimagechange}/><br/>
+                <button id='update-photo-button' onClick={updatePhoto}>{uploadButton}</button>
+                </div>
+              </div>
+
+              <div className='edit-form-container'>
+                <p><strong>Update user information here </strong></p>
+                <form >
+                  <label>Fullname name</label><br/>
+                  <input type='text' ref={nameref} placeholder='John Smith' required id='editInput'/><br/>
+                  <label>Address</label><br/>
+                  <input type='text' ref={adressessref} placeholder='NO 2 pipeline, nigeria' required id='editInput'/><br/>
+                  <label>Phonenumber</label><br/>
+                  <input type='number' ref={phoneref} Placeholder='Phonenumber' required id='editInput'/><br/>
+                <button onClick={saveNewUserData} id='update-button'>{editButton}</button>
+                </form>
+              </div>
+            </div>
+          </div>
           <div className='profile-toggle-container'>
             <div onClick={gotoinbox}>
               <p id='buttom-toggle-icons'><MdForwardToInbox /></p>
@@ -198,29 +287,8 @@ function UserProfile() {
               </div>
             </Link>
           </div>
-        <div>
-          <br/>
-          {content}
-        </div>
+        
       </div>
-        {/* <p id='profile-welcome'>Welcome:  <p id='profile-name'>{user.name} <br></br>{user.email},   {user.phonenumber}</p></p>
-        <img src={user.passport} alt='user' height="50px" width="50px"/>
-        <div id='profile-links'>
-          <div>
-            <p>Orders:0</p>
-          </div>
-          <div>
-            <p>Pending disputes:0</p>
-          </div>
-          <div>
-            <p>Promo Code:None</p>
-          </div>
-        </div>
-        <NavLink to="/login-page">
-        <button id='sign-out-button' onClick={signout}>Sign out</button>
-        </NavLink>
-        {deleteButton}
-        {editButton} */}
     </div>
   )
 }

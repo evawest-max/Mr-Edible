@@ -1,3 +1,4 @@
+/*
 .searchcontainer{
     background-color: white;
     position: relative;
@@ -21,7 +22,7 @@
 .SearchbarContainer input:focus{
     outline: none;
     /* animation: fade-slide-top .7s ease-in-out forwards; */
-}
+/* }
 
 .fiterandfoodcontainer{
     display: flex;
@@ -80,6 +81,11 @@
     .searchcontainer{
         background: white;
         position: relative;
+        background-image: url("backdrop.jpg");
+        background-repeat: repeat-y;
+        background-repeat: repeat-x;
+        background-position: right top;
+
     }
     .SearchbarContainer{
         text-align: center;
@@ -103,7 +109,7 @@
         flex-direction: row;
         margin-top: 60px;
     }
-}
+} */
 
 
 

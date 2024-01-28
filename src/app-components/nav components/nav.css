@@ -5,7 +5,9 @@
     position: sticky;
     top: 0px;
     z-index: 1;
-    background-color: white;
+    background: transparent;
+    /* background-color: rgba(255, 255, 255, 0.364);
+    backdrop-filter: blur(0px); */
 }
 .Sign-menu div{
     position: relative;
@@ -25,6 +27,7 @@
     position: fixed;
     z-index: 3;
     right: 10px;
+    height: 40px;
 }
 .navcontainer-mobile nav ul{
     display: flex;
@@ -95,6 +98,7 @@
     flex-direction: row;
     margin: 0px 200px;
     width: 580px;
+    
 }
 
 .logo{
@@ -102,31 +106,55 @@
     height: 80px;
     margin-right: 172;
     cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 2px 3px 5px  rgba(0, 0, 0, 0.45);
+
 }
 .login-container{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: self-start;
+    justify-content: center;
+    /* align-items: self-start; */
     font-size: 16px;
     color: rgb(1, 61, 1);
     margin-top: 39px;
     margin-right: 30px;
-    height: 18px;
+    height: 28px;
+    /* border: 3px soli red; */
+    padding: 0px 20px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
 }
 .login-container a{
+    margin: 5px;
     text-decoration: none;
+    height: fit-content;
+    width: fit-content;
+    height: fit-content;
+    /* border: 3px solid red; */
 }
 .login-container div{
-    margin-top: 0px;
+    margin: 5px;
     color: darkgreen;
     font-size: 12px;
+    /* border: 3px solid red; */
+    height: fit-content;
 }
-.login-container p{
-    margin-top: 0px;
+.login-container div img{
+    /* margin: 0px;
+    color: darkgreen;
+    font-size: 12px;
+    border: 3px solid red;
+    height: fit-content; */
+} 
+.login-container a p{
+    margin: 0px;
     font-size: 12px;
     color: darkgreen;
-    font-weight: 800px;  
+    font-weight: 800px;
+    /* border: 3px solid red; */
+    height: fit-content;  
 }
 .login-name-on-navbar{
     font-weight: bolder;
@@ -149,7 +177,7 @@
         position: sticky;
         top: 0px;
         z-index: 1;
-        background-color: white;
+        /* background-color: white; */
     }
     .navcontainer-mobile{
         display: none;
@@ -169,14 +197,14 @@
         width: fit-content;
         min-width: 376px;
     }
-    /* .navcontainer nav ul{
-        display: flex;
-        justify-content: space-around;
-        gap: 30px;
-        padding: 0px 20px;
-        border: 3px solid rgb(9, 255, 0);
-        width: fit-content;
-    } */
+    .navcontainer nav{
+        background-color: white;
+        padding: 15px 20px;
+        border-radius: 20px;
+        /* border: 3px solid rgb(9, 255, 0); */
+        box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
+        
+    }
     .navcontainer nav a{
         color: rgb(1, 61, 1);
         list-style: none;
@@ -190,44 +218,56 @@
         cursor: pointer;
         min-width: 200px;
         margin: 0px 8px;
+        border-radius: 20px;
+        padding: 10px;
     }
     .navcontainer nav a:hover{ 
         background-color: rgb(244, 196, 108);
     }
     .logo{
-        width: 80px;
-        height: 80px;
-        margin-right: 172;
+        width: 60px;
+        height: 60px;
+        margin-bottom: 20px;
+        margin-top: 5px;
         cursor: pointer;
+        box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
+        border-radius: 50%;
+
     }
     .login-container{
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        align-items: self-start;
+        justify-content: center;
+        /* align-items: self-start; */
         font-size: 16px;
         color: darkblue;
         margin-top: 10px;
         margin-right: 0px;
-        height: 30px;  
+        height: 53px; 
+        background-color: white;
+        padding: 15px 20px;
+        border-radius: 20px;
+        /* border: 3px solid red;  */
+        box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
+
     }
-    .login-container a p{
+    .login-container a {
         text-decoration: none;
         color: darkgreen;
-        
+        margin-top: 0px;
+        font-size: 16px;
+        font-weight: 800px;
+        cursor: pointer;   
+        /* border: 3px solid rgb(140, 0, 255);  */
     }
     .login-container div{
         margin-top: 0px;
         color: rgb(1, 61, 1);
-        font-size: 23px;
+        font-size: 20px;
         cursor: pointer;
-    }
-    .login-container p{
-        margin-top: 0px;
-        font-size: 16px;
-        color: darkgreen;
-        font-weight: 800px;
-        cursor: pointer;   
+        /* border: 3px solid rgb(166, 255, 0);  */
+        width: fit-content;
+        height: fit-content;
     }
     .login-name-on-navbar{
         font-weight: bolder;

@@ -57,7 +57,9 @@ function Cart(){
     },[cart.items])
 
     // productsIDInTheCartListpagetotal=subtotal
-
+    function tests(){
+        cart.addToOrders()
+    }
     
     return(
     
@@ -74,7 +76,7 @@ function Cart(){
                     </div>
                     <div>
                         <input className="promo-input" type="text" placeholder="Promo code"/>
-                        <button className="promo-button">Apply code</button>
+                        <button className="promo-button" onClick={tests}>Apply code</button>
                     </div>
                     <div className="amount-main-container">
                         <div className="amount-title-container">
@@ -109,7 +111,7 @@ function Cart(){
                             <p className="cart-amount-tittle">₦{subtotal}</p>
                         </div>
                     </div>
-                    <Link to="/checkoutpage"><button  className="checkoutButton">Proceed to checkout</button></Link>
+                    <Link to="/checkoutpage"><button className="checkoutButton">Proceed to checkout</button></Link>
                     
                 </div>
             </div>

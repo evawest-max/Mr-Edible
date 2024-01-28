@@ -3,6 +3,13 @@ import "./signup.css"
 import { Link, NavLink } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import users from './usersData'
+import { child, equalTo, get, getDatabase, onValue, orderByChild, orderByValue, push, query, ref, set, update } from 'firebase/database'
+import { getStorage, ref as storageRef, uploadBytes} from 'firebase/storage'
+import { auth, database } from '../../firebase/firebase config'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, sendEmailVerification } from "firebase/auth";
+
+
 
 function Signup() {
 
@@ -27,6 +34,7 @@ function Signup() {
     const [emailbordercolor, setemailbordercolor]=useState()
     const [createpasswordbordercolor, setcreatepasswordbordercolor]=useState()
     const [confirmpasswordbordercolor, setconfirmpasswordbordercolor]=useState()
+    const [buttonState, setButtonState]=useState("SIGN UP")
 
     function validatename(){
       if (nameref.current.value.length<4){
@@ -59,61 +67,83 @@ function Signup() {
       }
     }
     function validateCreatePassword(){
-      if (createpasswordref.current.value.includes(",")||createpasswordref.current.value.includes("@") ||createpasswordref.current.value.includes("#") ||createpasswordref.current.value.includes("$")||createpasswordref.current.value.includes("%") && createpasswordref.current.value.length>=6){
+      if (createpasswordref.current.value.includes(",")||createpasswordref.current.value.includes("!") ||createpasswordref.current.value.includes("@") ||createpasswordref.current.value.includes("#") ||createpasswordref.current.value.includes("$")||createpasswordref.current.value.includes("%") && createpasswordref.current.value.length>=6){
         setcreatepasswordbordercolor({border: "2px solid green"})
         setalerttext("")
       }else{
         setalerttextcolor({color: "red"})
         setcreatepasswordbordercolor({border: "2px solid red"})
-        setalerttext("password must include one of this symbols', @ # $ %' and longer than 6 characters")
+        setalerttext("password must include one of this symbols', @ ! # $ %' and longer than 6 characters")
       }
     }
 
-    let userexist=false
 
-    const registerUser= ()=>{
-      for (let i=0; i<users.length; i++){
-        if (users[i].email === emailref.current.value){
-          userexist=true
-        }
-      } 
+    const db = getDatabase();
+    const storage= getStorage()
+
+    async function registerUser (){
+      setButtonState("Loading...")
+      // const newPostKey = push(child(ref(db), 'users/')).key;
+      
         if (nameref.current.value.length>4){
           if (phoneref.current.value.length===11){
-            if (!userexist){
-              if (emailref.current.value.includes("@") && !userexist){
+            
+              if (emailref.current.value.includes("@")){
                 if (createpasswordref.current.value===confirmpasswordref.current.value && confirmpasswordref.current.value.length>=6){
-                  if (confirmpasswordref.current.value.includes(",")||confirmpasswordref.current.value.includes("@") ||confirmpasswordref.current.value.includes("#") ||confirmpasswordref.current.value.includes("$")||confirmpasswordref.current.value.includes("%")){
-                    let newuser={
-                      id:users[users.length-1].id+1,
-                      name:nameref.current.value,
-                      email:emailref.current.value,
-                      phonenumber:phoneref.current.value,
-                      password : confirmpasswordref.current.value,
-                      passport: URL.createObjectURL(file)
-                    }
-                    if(localStorage.getItem('mredibleaccount')!==null){
-                      let stringusers=localStorage.getItem('mredibleaccount')
-                      let objectusers=JSON.parse(stringusers)
-                      objectusers.push(newuser)
-                      localStorage.setItem('mredibleaccount', JSON.stringify(objectusers))
-                    }else{
-                      users.push(newuser)
-                      localStorage.setItem('mredibleaccount',JSON.stringify(users))
-                    }
-                    console.log(users)
+                  if (confirmpasswordref.current.value.includes(",")||confirmpasswordref.current.value.includes("!")||confirmpasswordref.current.value.includes("@") ||confirmpasswordref.current.value.includes("#") ||confirmpasswordref.current.value.includes("$")||confirmpasswordref.current.value.includes("%")){
                     
-                    setnamebordercolor({border: "2px solid green"})
-                    setphonenumberbordercolor({border: "2px solid green"})
-                    setemailbordercolor({border: "2px solid green"})
-                    setcreatepasswordbordercolor({border: "2px solid green"})
-                    setconfirmpasswordbordercolor({border: "2px solid green"})
-                    setalerttextcolor({color: "lime"})
-                    setalerttext("Sign up successfull")
-                    userexist=false
+                    try{
+                      const userCredential=await createUserWithEmailAndPassword(auth, emailref.current.value, createpasswordref.current.value)
+                      console.log(userCredential)
+                      const user = userCredential.user
+                      const postData={
+                        id:user.uid,
+                        name:nameref.current.value,
+                        passport:`customer passport/ ${user.uid}`,
+                        password:confirmpasswordref.current.value,
+                        phonenumber:phoneref.current.value,
+                        email:emailref.current.value,
+                        ediblePoints:0,
+                      }
+                      await set(ref(db,"users/"+user.uid, ), postData).then(() => {
+                        
+                        console.log('Update success')
+                      })
+                      
+                      const serverimageref= storageRef(storage, `customer passport/ ${user.uid}`)
+                      await uploadBytes(serverimageref, file).then((snapshot) => {
+                          console.log('Uploaded a blob or file!');
+                        }).catch((error)=>{console.log(error)});
+                      
+                        
+                        await sendEmailVerification(auth.currentUser)
+                          .then(() => {
+                            // Email verification sent!
+                            // ...
+                          })
+                          .catch((error)=>{
+                            setalerttext("Email verification not sent."+error.message)
+                          });
+                      setnamebordercolor({border: "2px solid green"})
+                      setphonenumberbordercolor({border: "2px solid green"})
+                      setemailbordercolor({border: "2px solid green"})
+                      setcreatepasswordbordercolor({border: "2px solid green"})
+                      setconfirmpasswordbordercolor({border: "2px solid green"})
+                      setalerttextcolor({color: "lime"})
+                      setalerttext("Sign up successfull! Email verification link has been sent to your mail.")
+                      setButtonState("SIGN UP")
+                    }catch (error){
+                      setalerttextcolor({color: "red"})
+                      setemailbordercolor({border: "2px solid red"})
+                      setalerttext(error.message)
+                      setButtonState("SIGN UP")
+                      console.log(error.message)
+                    }
+                    
                   }else {
                     setalerttextcolor({color: "red"})
                     setconfirmpasswordbordercolor({border: "2px solid red"})
-                    setalerttext("password must include one of this symbols', @ # $ %'")
+                    setalerttext("password must include one of this symbols', @ ! # $ %'")
                   }
                 }else{
                   setalerttextcolor({color: "red"})
@@ -125,11 +155,6 @@ function Signup() {
                 setemailbordercolor({border: "2px solid red"})
                 setalerttext("email is incorrect 'include @'")
               }
-            }else{
-              setalerttextcolor({color: "red"})
-              setemailbordercolor({border: "2px solid red"})
-              setalerttext("User already exist")
-            }
           }else{
             setalerttextcolor({color: "red"})
             setphonenumberbordercolor({border: "2px solid red"})
@@ -143,12 +168,35 @@ function Signup() {
         
     }
 
+    const [signupCustomerDisplay, setSignupCustomerDisplay]=useState({display: "block"})
+    const [signupVendorDisplay, setSignupVendorDisplay]=useState({display: "none"})
+
+    const [signupCustomerDisplayButton, setSignupCustomerDisplayButton]=useState({background:"green", color:"white", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px", padding:"10px"})
+    const [signupVendorDisplayButton, setSignupVendorDisplayButton]=useState({background:"none", borderRadius:"10px", padding:"10px"})
+
+    function switchToCustomerSignup(){
+      setSignupCustomerDisplay({display: "block"})
+      setSignupVendorDisplay({display: "none"})
+      setSignupCustomerDisplayButton({background:"green", color:"white", borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px", padding:"10px"})
+      setSignupVendorDisplayButton({background:"none"})
+    }
+    function switchToVendorSignup(){
+      setSignupVendorDisplay({display: "block"})
+      setSignupCustomerDisplay({display: "none"})
+      setSignupVendorDisplayButton({background:"green", color:"white",borderTopRightRadius:"10px", borderBottomRightRadius:"10px", padding:"10px"})
+      setSignupCustomerDisplayButton({background:"none"})
+    }
+
   return (
     <div id='signup-container'>
         <div id='signup-Form-container'>
             <h3 className='signup-title'>CREATE AN ACCOUNT</h3>
+            <div style={{border:"1px solid green", width:"fit-content", borderRadius:"15px", height:"fit-content", margin:"auto"}}>
+              <button style={signupCustomerDisplayButton} onClick={switchToCustomerSignup}>CUSTOMER</button>
+              <button style={signupVendorDisplayButton} onClick={switchToVendorSignup}>VENDOR</button>
+            </div>
             <p style={alerttextcolor}>{alerttext}</p>
-            <div className='inputAndButtondiv'>
+            <div className='inputAndButtondiv' style={signupCustomerDisplay}>
               <form className='signup-form'>
                   <label>Full Name</label>
                   <input style={namebordercolor} onBlur={validatename} ref={nameref} type='text' placeholder='John Smith'/><br/>
@@ -162,8 +210,42 @@ function Signup() {
                   <input style={createpasswordbordercolor}onBlur={validateCreatePassword} ref={createpasswordref} type='password' placeholder='********'/><br/>
                   <label>Confirm Password</label>
                   <input style={confirmpasswordbordercolor} ref={confirmpasswordref} type='password' placeholder='********'/><br/>
+                  <p><input style={confirmpasswordbordercolor} ref={confirmpasswordref} required type='checkbox' placeholder='********'/>i have read and i accept all the <Link to="www.facebook.com">terms and conditions</Link> </p>
+
               </form>
-              <button onClick={registerUser} className='signup-button'><strong>SIGN UP</strong></button>
+              <button onClick={registerUser} className='signup-button'><strong>{buttonState}</strong></button>
+            </div>
+
+              <div className='inputAndButtondiv' style={signupVendorDisplay}>
+              <form className='signup-form'>
+                  <label>Full Name</label>
+                  <input style={namebordercolor} onBlur={validatename} ref={nameref} type='text' placeholder='John Smith'/><br/>
+                  <label>Bussiness Name</label>
+                  <input style={namebordercolor} onBlur={validatename} ref={nameref} type='text' placeholder='John Smith'/><br/>
+                  <label>Phone number</label>
+                  <input style={phonenumberbordercolor} onBlur={validatePhonenumber} ref={phoneref} type='phonenumber' placeholder='07030000000'/><br/>
+                  <label>E-mail</label>
+                  <input style={emailbordercolor}onBlur={validateEmail} ref={emailref} type='email' placeholder='example@yahoo.com'/><br/>
+                  <label>Head Office Address</label>
+                  <input style={namebordercolor} onBlur={validatename} ref={nameref} type='text' placeholder='John Smith'/><br/>
+                  <label>Account number</label>
+                  <input style={namebordercolor} onBlur={validatename} ref={nameref} type='text' placeholder='John Smith'/><br/>
+                  <label>Account name</label>
+                  <input style={namebordercolor} onBlur={validatename} ref={nameref} type='text' placeholder='John Smith'/><br/>
+                  <label>Bank</label>
+                  <input style={namebordercolor} onBlur={validatename} ref={nameref} type='text' placeholder='John Smith'/><br/>
+                  <label>Passport</label>
+                  <input className='RegisterationImageName' ref={passportref} type='file' accept='image/*' onChange={onimagechange}/><br/>
+                  <label>Bussiness logo</label>
+                  <input className='RegisterationImageName' ref={passportref} type='file' accept='image/*' onChange={onimagechange}/><br/>
+                  <label>Create Password</label>
+                  <input style={createpasswordbordercolor}onBlur={validateCreatePassword} ref={createpasswordref} type='password' placeholder='********'/><br/>
+                  <label>Confirm Password</label>
+                  <input style={confirmpasswordbordercolor} ref={confirmpasswordref} type='password' placeholder='********'/><br/>
+
+                    <p><input style={confirmpasswordbordercolor} ref={confirmpasswordref} required type='checkbox' placeholder='********'/>i have read and i accept all the <Link to="www.facebook.com">terms and conditions</Link> </p>
+              </form>
+              <button onClick={registerUser} className='signup-button'><strong>{buttonState}</strong></button>
               </div>
 
             <h5 className='sign-up-button'>

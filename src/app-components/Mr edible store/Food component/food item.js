@@ -14,7 +14,7 @@ import { MdRemoveShoppingCart } from "react-icons/md";
 
     function addToCart(){
         newbuttonState(<button onClick={removefromCart} className="food-button">Remove <MdRemoveShoppingCart /></button>)
-        cart.addItemsToCartList(props.id, props.price,props.name, props.image )
+        cart.addItemsToCartList(props.id, props.price,props.name, props.image, props.vendorName )
     }
 
     function removefromCart(){    

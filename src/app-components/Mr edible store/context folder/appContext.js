@@ -1,9 +1,12 @@
-import React, { createContext, useEffect } from 'react'
+import React, { createContext, useEffect, useLayoutEffect } from 'react'
 import { useState } from 'react'
 import { Link, NavLink, } from 'react-router-dom'
 // import {RiLoginBoxFill} from "react-icons/ri"
 import { FaUserCircle } from "react-icons/fa";
 import users from '../../signup/usersData'
+import { child, get, getDatabase, onValue, push, ref, remove, set, update } from 'firebase/database';
+import { getDownloadURL,ref as refStorage, getStorage, deleteObject } from 'firebase/storage';
+import { deleteUser, getAuth } from 'firebase/auth';
 
 export let productsIDInTheCartList=[]
 let changes=false
@@ -33,7 +36,8 @@ export const Cartcontext= createContext({
 
 
 function Cartprovider({children}) {
-  
+  let regID=null
+  let [imageUrl, setimageUrl]= useState("")
   const [numberOfItemsInCart, setnumberOfItemsInCart]=useState(localStorage.getItem("mredible_cart")!==null? JSON.parse(localStorage.getItem("mredible_cart")).length:0)
   const [indexState, setindexState]=useState({ zIndex:"2" })
   function changeZ(){
@@ -53,10 +57,10 @@ function Cartprovider({children}) {
     return quantity
   }
 
-  function addItemsToCartList(id, price, name, image){
+  function addItemsToCartList(id, price, name, image, vendorName){
     const quantity=getproductquantity(id)
     if (quantity===0){
-        productsIDInTheCartList=[{id:id, price:price, name:name, image:image, quantity:1}, ...productsIDInTheCartList ]
+        productsIDInTheCartList=[{id:id, price:price, name:name, image:image, vendorName:vendorName, quantity:1}, ...productsIDInTheCartList ]
       }else{console.log("item already exist in cart")}
     getTotalCart() 
     localStorage.setItem("mredible_cart", JSON.stringify(productsIDInTheCartList))
@@ -121,50 +125,89 @@ function Cartprovider({children}) {
   }
 
   // let userOrders=[]
-  let [itemsInOrders, setitemsInOrders]=useState("Your history is empty")
-  function addToOrders(){
-    
-    if (localStorage.getItem("mredibleloggedinUser")!==null){
-      let loggedinuser=JSON.parse(localStorage.getItem('mredibleloggedinUser'))
-      if (loggedinuser.orderedItems){
-        loggedinuser={...loggedinuser, orderedItems: (loggedinuser.orderedItems).concat(productsIDInTheCartList)}
-        localStorage.setItem("mredibleloggedinUser", JSON.stringify(loggedinuser));
-      }
-      else{
-        loggedinuser={...loggedinuser, orderedItems: productsIDInTheCartList}
-      localStorage.setItem("mredibleloggedinUser", JSON.stringify(loggedinuser));
-      }
-      
-    }
+  function package_recieved(){
 
-    setitemsInOrders(
-      JSON.parse(localStorage.getItem("mredibleloggedinUser")).orderedItems.map((item, index)=>{
-        return (
-          <div key={index} className="ordered-food-item"  >
-          <img src={item.image} alt="rice"/>
-          <p className="ordered-food-name">{item.name}</p>
-          <p className="ordered-food-price"><del>{item.oldprice}</del> ₦{item.price}</p>
-          </div>
-        )
-      })
-    )
-    
+    update(ref(getDatabase(), "users/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).id+"/order_history/"+"--NoQUEJZrqrRgijJr28B"), {delivery_pending:false})
   }
+  
+  
+  let [itemsInOrders, setitemsInOrders]=useState(JSON.parse(localStorage.getItem('mredibleloggedinUser'))&& JSON.parse(localStorage.getItem('mredibleloggedinUser')).order_history ? Object.values(JSON.parse(localStorage.getItem('mredibleloggedinUser')).order_history).map((item, index)=>{
+    // function package_recieved(){
+    //   update(ref(getDatabase(), "users/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).id+"/order_history"+"/"+item), {delivery_pending:false})
+    // }  
+    return (
+              <div key={index} className="ordered-food-item"  >
+              <img src={item.image} alt="rice"/>
+              <p className="ordered-food-name">{item.vendorName}</p>
+              <p className="ordered-food-name">{item.name}</p>
+              <p className="ordered-food-price">₦{item.price}</p>
+              <p className="ordered-food-name">{item.date}</p>
+              {item.delivery_pending? <button onClick={package_recieved()}>i have Recieved package</button>:<p>transaction successfull!</p>}
+              </div>
+            )
+      })  : "Empty")     
 
+  async function addToOrders(){
+    const userCartItems= productsIDInTheCartList.map(item=>{
+      return {...item,   date:new Date().toLocaleString()}
+    })
+    let loggedinuser=JSON.parse(localStorage.getItem('mredibleloggedinUser'))
+    userCartItems.map(item=>{
+      const newPostKey = push(child(ref(getDatabase()), "users/"+ loggedinuser.id+"/order_history" ));
+      // item.id:newPostKey;
+      const newPostKeys = push(ref(getDatabase()), 'posts').key;
+      const postdata={...item, ids:newPostKeys, delivery_pending:true}
+      console.log(postdata)
+      set(newPostKey, postdata)
+    })
+  
+    if (localStorage.getItem("mredibleloggedinUser")!==null){
+      let loggedinuser=JSON.parse(localStorage.getItem('mredibleloggedinUser')).order_history
+      
+      if (loggedinuser){
+          setitemsInOrders(
+            Object.values(loggedinuser).map((item, index)=>{
+              // function package_recieved(){
+              //   update(ref(getDatabase(), "users/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).id+"/order_history/"+item), {delivery_pending:false})
+              // }
+              return (
+                <div key={index} className="ordered-food-item"  >
+                <img src={item.image} alt="rice"/>
+                <p className="ordered-food-name">{item.vendorName}</p>
+                <p className="ordered-food-name">{item.name}</p>
+                <p className="ordered-food-price">₦{item.price}</p>
+                <p className="ordered-food-name">{item.date}</p>
+                {item.delivery_pending? <button onClick={package_recieved(item.ids)}>i have Recieved package</button>:<p>transaction successfull!</p>}
+                </div>
+              )
+            })
+          )
+        }
+      }
+  }
+  
   useEffect(()=>{
     if (localStorage.getItem("mredible_cart")!==null){
       productsIDInTheCartList=JSON.parse(localStorage.getItem("mredible_cart"))
     }
     if (localStorage.getItem("mredibleloggedinUser")!==null){
-      let loggedinuser=JSON.parse(localStorage.getItem('mredibleloggedinUser'))
-      if (loggedinuser.orderedItems&&loggedinuser.orderedItems.length>=1){
+      let loggedinuser=JSON.parse(localStorage.getItem('mredibleloggedinUser')).order_history
+      
+      if (loggedinuser){
         setitemsInOrders(
-          JSON.parse(localStorage.getItem("mredibleloggedinUser")).orderedItems.map((item, index)=>{
+          Object.values(loggedinuser).map((item, index)=>{
+            // console.log(item)
+            // function package_recieved(id){
+            //   update(ref(getDatabase(), "users/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).id+"/order_history/"+id), {delivery_pending:false})
+            // }
             return (
               <div key={index} className="ordered-food-item"  >
               <img src={item.image} alt="rice"/>
+              <p className="ordered-food-name">{item.vendorName}</p>
               <p className="ordered-food-name">{item.name}</p>
-              <p className="ordered-food-price"><del>{item.oldprice}</del> ₦{item.price}</p>
+              <p className="ordered-food-price">₦{item.price}</p>
+              <p className="ordered-food-name">{item.date}</p>
+              {item.delivery_pending? <button onClick={package_recieved(item.ids)}>i have Recieved package</button>:<p>transaction successfull!</p>}
               </div>
             )
           })
@@ -188,32 +231,51 @@ function Cartprovider({children}) {
     </div>)
 
   let [userloggedin, setuserloggedin]=useState({})
-  let userloggedindisplay={}
+  
+  function storeuserid(id){
+    regID=id
+  }
 
-  function switchToUser(index){
-    let fullnameAb=''
-    setuserloggedin({...users[index], password:"*******"})
-    userloggedindisplay={...users[index], password:"*******"}
+  async function switchToUser(userid){
     
-    // const stringofuser=JSON.stringify(userloggedindisplay)
-    localStorage.setItem("mredibleloggedinUser", JSON.stringify(userloggedindisplay));
-    // let existing = localStorage.getItem('mredibleloggedinUser')
-    let existing=localStorage.getItem('mredibleloggedinUser') && JSON.parse(localStorage.getItem('mredibleloggedinUser')).name.split('')
-    
-    // let username= existing.name.split('')
-    existing.map((item, index)=>{
-        if (item===' '){
-            fullnameAb=(existing[0]+'.'+existing[index+1]).toLocaleUpperCase()
-        }
-    })
-    
-    setloginIcon(
-      <div className="login-container">
-        <div><div><img src={existing.passport?existing.passport:"www.robohash.com/2"} width="20px" height="20px" alt='user pic'/></div></div>
-        <NavLink to="/user-profile">
-        <p className='login-name-on-navbar'>{fullnameAb}</p>
-        </NavLink>
-      </div>)
+    storeuserid(userid)
+    try{
+      const data=await get(ref(getDatabase(), "users/"+userid))
+      setuserloggedin(data.val())
+      console.log(data.val().name.split(''))
+      let fullnameAb=data.val().name.split('')
+      fullnameAb.map((item, index)=>{
+            if (item===' '){
+              if(fullnameAb[index+1]){
+                fullnameAb=`${fullnameAb[0]}. ${fullnameAb[index+1]}`.toLocaleUpperCase()
+                console.log(fullnameAb)
+              }
+            }
+        })
+        
+        const storage = getStorage();
+        let picUrl=''
+        
+      await getDownloadURL(refStorage(storage, `customer passport/${data.val().id}`))
+        .then((url) => {
+          // `url` is the download URL for 'images/stars.jpg'
+          setimageUrl(url)
+          console.log(url)
+          picUrl=url
+          
+        })
+       
+        localStorage.setItem('mredibleloggedinUser', JSON.stringify({...data.val(), imageaddress:imageUrl}))
+        setloginIcon(
+          <div className="login-container">
+          <div><div><img src={picUrl} width="20px" height="20px" alt='user pic'/></div></div>
+          <NavLink to="/user-profile">
+          <p className='login-name-on-navbar'>{fullnameAb}</p>
+          </NavLink>
+        </div>)
+    }catch(error){
+      alert(error.message)
+    }
   }
 
   function signout(){
@@ -227,55 +289,77 @@ function Cartprovider({children}) {
       </div>)
   }
 
+  
   useEffect(() => {
     // useffect calls a keepuserloggedin() function to keep use signed in when the browser reloads
     keepuserloggedin()
  }, []);
 
- function keepuserloggedin(){
+ async function keepuserloggedin(){
+  let ur=""
+  if (localStorage.getItem('mredibleloggedinUser') !== null){
+  await getDownloadURL(refStorage(getStorage(), `customer passport/${JSON.parse(localStorage.getItem('mredibleloggedinUser')).id}`))
+          .then((url) => {
+            ur=url
+          }).catch(error=>{alert(error)})
+  }       
   let fullnameAb=''
   if (localStorage.getItem('mredibleloggedinUser') !== null){
   let userDataFromLocalStorage=JSON.parse(localStorage.getItem('mredibleloggedinUser'))
-  userloggedindisplay=userDataFromLocalStorage
   setuserloggedin(userDataFromLocalStorage)
-  console.log(userDataFromLocalStorage)
     let username= userDataFromLocalStorage.name
     username.split('').map((item, index)=>{
         if (item===' '){
             fullnameAb=(username[0]+'.'+username[index+1]).toLocaleUpperCase()
         }
     })
+        
+      
   setloginIcon(
     <div className="login-container">
-      <div><img src={userDataFromLocalStorage.passport} width="20px" height="20px" alt='user pic'/> </div>
+      <div><img src={ur} width="20px" height="20px" alt='user pic'/> </div>
       <Link to="/user-profile">
       <p className='login-name-on-navbar'> {fullnameAb}</p>
       </Link>
     </div>)
   }
-  if (localStorage.getItem('mredibleaccount') !== null){
-    while(users.length>0){
-      users.pop()
-    }
-  let accountDataFromLocalStorage=localStorage.getItem('mredibleaccount')
-  let thedata=JSON.parse(accountDataFromLocalStorage)
-  thedata.forEach(element => {
-    users.push(element)
-  });
-  }
 }
 
   function deleteUserAccount(index){
-    users.splice(index, 1)
-    setuserloggedin({})
-    localStorage.setItem('mredibleaccount', JSON.stringify(users))
-    setloginIcon(
-      <div className="login-container">
-        <div><FaUserCircle /></div>
-        <NavLink to="/login-page">
-        <p>SIGN IN</p>
-        </NavLink>
-      </div>)
+    const auth = getAuth();
+      const user = auth.currentUser;
+
+      deleteUser(user).then(() => {
+        // User deleted.
+        const storage = getStorage();
+        const desertRef = refStorage(storage,`customer passport/ ${index}`);
+        deleteObject(desertRef).then(() => {
+          // File deleted successfully
+          setuserloggedin({})
+          if (localStorage.getItem('mredibleloggedinUser') !== null){
+            localStorage.removeItem('mredibleloggedinUser')
+          }
+        }).catch((error) => {
+          // Uh-oh, an error occurred!
+          console.log(error)
+        });
+        
+        remove(ref(getDatabase(),"users/"+index))
+        if (localStorage.getItem('mredibleloggedinUser') !== null){
+          localStorage.removeItem('mredibleloggedinUser')
+        }
+        setloginIcon(
+          <div className="login-container">
+            <div><FaUserCircle /></div>
+            <NavLink to="/login-page">
+            <p>SIGN IN</p>
+            </NavLink>
+          </div>)
+      }).catch((error) => {
+        // An error ocurred
+        // ...
+        alert ("An error occured account was not deleted")
+      });
   }
 
   const contextvalue={

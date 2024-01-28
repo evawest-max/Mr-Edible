@@ -10,6 +10,10 @@
     margin-left: -25px;
     z-index: 200;
     font-size: 20px;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: white;
+    padding: 5px;
 }
 .cartContainer p{
     font-size: 16px;
@@ -564,6 +568,10 @@ label{
         top: 10px;
         z-index: 200;
         font-size: 20px;
+        justify-content: center;
+        border-radius: 10px;
+        background-color: white;
+        padding: 5px;
     }
 }
 
@@ -580,6 +588,10 @@ label{
         margin-left: -25px;
         z-index: 200;
         font-size: 20px;
+        justify-content: center;
+        border-radius: 10px;
+        background-color: white;
+        padding: 5px;
     }
     
     .cartdisplay-items-container{

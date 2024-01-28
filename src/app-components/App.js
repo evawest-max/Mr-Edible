@@ -17,6 +17,7 @@ import SmileCakesSearchBar from './smile cakes/smile cakes search component/smil
 import SmileCakesCart from './smile cakes/smile cakes cart component/smile cakes cart';
 import SmileCakesCartprovider from './smile cakes/smile cartContext/smileCartContext';
 import Cartitem from './smile cakes/smile cakes cart component/checkoutPage';
+import ResetPassword from './login/reset-profile';
 
 
 const router=createBrowserRouter(
@@ -32,6 +33,7 @@ const router=createBrowserRouter(
         <Route path='/login-page' element={<LoginPage/>}></Route>  
         <Route path='/signup-page' element={<Signup/>}></Route> 
         <Route path='/user-profile' element={<UserProfile/>}></Route>  
+        <Route path='//reset-profile' element={<ResetPassword/>}></Route>  
         
         <Route path='/smile-cakes' element={<SmileCakesSearchBar/>}></Route>
         <Route path='/smile-cakes-cart' element={<SmileCakesCart/>}></Route>

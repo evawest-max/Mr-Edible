@@ -378,6 +378,11 @@
         justify-content: space-evenly;
         margin: 90px 80px;
         width: 100%;
+        background-image: url("backdrop.jpg");
+        background-repeat: repeat-y;
+        background-repeat: repeat-x;
+        background-position: right top;
+
     }
     .food-item{
         width: fit-content;

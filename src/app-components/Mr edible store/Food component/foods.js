@@ -7,7 +7,8 @@ const foods =[
         star:4,
         reviews:"(123 reviews)",
         category:"foods",
-        link:"https://c4.wallpaperflare.com/wallpaper/604/535/600/stalk-rice-meat-greens-wallpaper-preview.jpg"
+        link:"https://c4.wallpaperflare.com/wallpaper/604/535/600/stalk-rice-meat-greens-wallpaper-preview.jpg",
+        vendorName:"mr edible"
     },
     {
         id:1,
@@ -17,7 +18,8 @@ const foods =[
         star:2,
         reviews:"(123 reviews)",
         category:"foods",
-        link:"https://www.allnigerianrecipes.com/wp-content/uploads/2019/03/egusi-soup-fried.jpg"
+        link:"https://www.allnigerianrecipes.com/wp-content/uploads/2019/03/egusi-soup-fried.jpg",
+        vendorName:"mr edible"
     },
     {
         id:2,
@@ -27,7 +29,8 @@ const foods =[
         star:3,
         reviews:"(123 reviews)",
         category:"snacks",
-        link:"https://waracake.com/wp-content/uploads/2017/04/Small-Chops-Basic-Pack-For-50-635955544532678923.jpeg"
+        link:"https://waracake.com/wp-content/uploads/2017/04/Small-Chops-Basic-Pack-For-50-635955544532678923.jpeg",
+        vendorName:"mr edible"
     },
     {
         id:3,
@@ -37,7 +40,8 @@ const foods =[
         star:4,
         reviews:"(123 reviews)",
         category:"snacks",
-        link:"https://img.freepik.com/premium-photo/shawarma-with-meat-vegetables-white-background-isolate-generative-ai_74760-4695.jpg?w=1380"
+        link:"https://img.freepik.com/premium-photo/shawarma-with-meat-vegetables-white-background-isolate-generative-ai_74760-4695.jpg?w=1380",
+        vendorName:"mr edible"
     },
     {
         id:4,
@@ -47,7 +51,8 @@ const foods =[
         star:5,
         reviews:"(123 reviews)",
         category:"drinks",
-        link:"https://c8.alamy.com/comp/F8Y1D9/can-of-coca-cola-on-a-bed-of-ice-over-a-white-background-F8Y1D9.jpg"
+        link:"https://c8.alamy.com/comp/F8Y1D9/can-of-coca-cola-on-a-bed-of-ice-over-a-white-background-F8Y1D9.jpg",
+        vendorName:"mr edible"
     },
     {
         id:5,
@@ -57,7 +62,8 @@ const foods =[
         star:4,
         reviews:"(123 reviews)",
         category:"snacks",
-        link:"https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbGlmZW9mcGl4MDAwMDEtaW1hZ2VfMS1renhsdXd3ci5wbmc.png?s=jdN-wM-e-Qc1ELab988RQ1uEJQw6qRiVkWhEBhs2MMI"
+        link:"https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbGlmZW9mcGl4MDAwMDEtaW1hZ2VfMS1renhsdXd3ci5wbmc.png?s=jdN-wM-e-Qc1ELab988RQ1uEJQw6qRiVkWhEBhs2MMI",
+        vendorName:"mr edible"
     },
     {
         id:6,
@@ -67,7 +73,8 @@ const foods =[
         star:2,
         reviews:"(123 reviews)",
         category:"foods",
-        link:"https://www.seekpng.com/png/detail/910-9105399_thinking-about-a-good-meal-jollof-rice.png"
+        link:"https://www.seekpng.com/png/detail/910-9105399_thinking-about-a-good-meal-jollof-rice.png",
+        vendorName:"mr edible"
     },
     {
         id:7,
@@ -77,7 +84,8 @@ const foods =[
         star:3,
         reviews:"(123 reviews)",
         category:"foods",
-        link:"https://e7.pngegg.com/pngimages/647/784/png-clipart-jollof-rice-asado-middle-eastern-cuisine-food-pinchitos-menu-comida-food-recipe.png"
+        link:"https://e7.pngegg.com/pngimages/647/784/png-clipart-jollof-rice-asado-middle-eastern-cuisine-food-pinchitos-menu-comida-food-recipe.png",
+        vendorName:"mr edible"
     },
     {
         id:8,
@@ -87,7 +95,8 @@ const foods =[
         star:3,
         reviews:"(123 reviews)",
         category:"foods",
-        link:"https://nigerianmeal.com/wp-content/uploads/2018/11/3-Yam-Porridge-Recipe.jpg"
+        link:"https://nigerianmeal.com/wp-content/uploads/2018/11/3-Yam-Porridge-Recipe.jpg",
+        vendorName:"mr edible"
     },
     {
         id:9,
@@ -97,7 +106,8 @@ const foods =[
         star:3,
         reviews:"(123 reviews)",
         category:"foods",
-        link:"https://www.localguidesconnect.com/t5/image/serverpage/image-id/568546i82F2981F95328F47/image-size/large?v=v2&px=999"
+        link:"https://www.localguidesconnect.com/t5/image/serverpage/image-id/568546i82F2981F95328F47/image-size/large?v=v2&px=999",
+        vendorName:"mr edible"
     },
     {
         id:11,
@@ -107,7 +117,8 @@ const foods =[
         star:5,
         reviews:"(123 reviews)",
         category:"snacks",
-        link:"https://thumbs.dreamstime.com/z/fresh-tasty-pizza-white-background-clipping-path-included-85746388.jpg?w=992"
+        link:"https://thumbs.dreamstime.com/z/fresh-tasty-pizza-white-background-clipping-path-included-85746388.jpg?w=992",
+        vendorName:"mr edible"
     },
     
 ]
