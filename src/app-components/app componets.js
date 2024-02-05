@@ -5,7 +5,7 @@ import { Navbar } from './nav components/nav';
 function Appsection() {
     return (
       <div className='app'>
-          <Navbar/>
+          <div  className='fixed-nav'><Navbar/></div>
 
           <main>
             <Outlet/>

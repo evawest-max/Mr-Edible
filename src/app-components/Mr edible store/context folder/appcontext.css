@@ -1,0 +1,106 @@
+.loggedin-user-container{
+    display: flex;
+    justify-content: space-between;
+    /* border: 3px solid red; */
+    margin-top: 37px;
+    height: 20px;
+    border-radius: 50px;
+    box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
+    background-color: white;
+    margin-right: 35px;
+    padding: 0px 10px;
+}
+.loggedin-user-container img{
+    margin: auto 0px;
+    border-radius: 50%;
+    width: 50%;
+}
+.loggedin-user-container a{
+    text-decoration: none;
+    font-size: 50%;
+    font-weight: bold;
+    margin: auto 0px;
+    color: darkgreen;
+}
+
+.login-container{
+    display: flex;
+    justify-content: space-between;
+    /* border: 3px solid red; */
+    margin-top: 37px;
+    height: 30px;
+    border-radius: 50px;
+    box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
+    background-color: white;
+    margin-right: 35px;
+    padding: 0px 10px;
+}
+.login-container div{
+    margin: auto 0px;
+    border-radius: 50%;
+    /* width: 100%; */
+}
+.login-container a{
+    text-decoration: none;
+    font-size: 100%;
+    font-weight: bolder;
+    margin: auto 0px;
+    color: darkgreen;
+}
+
+
+@media screen and (min-width:900px){
+
+    .loggedin-user-container{
+        display: flex;
+        justify-content: space-between;
+        /* border: 3px solid red; */
+        margin: auto 0px;
+        height: 30px;
+        border-radius: 20px;
+        box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
+        background-color: white;
+        margin-right: 0px;
+        padding: 0px 10px;
+        height: 50px;
+    }
+    .loggedin-user-container img{
+        margin: auto 0px;
+        border-radius: 50%;
+        width: 100%;
+    }
+    .loggedin-user-container a{
+        text-decoration: none;
+        font-size: 100%;
+        font-weight: bolder;
+        margin: auto 0px;
+        color: darkgreen;
+    }
+    
+    .login-container{
+        display: flex;
+        justify-content: space-between;
+        /* border: 3px solid red; */
+        margin: auto 0px;
+        height: 30px;
+        border-radius: 20px;
+        box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
+        background-color: white;
+        margin-right: 0px;
+        padding: 0px 10px;
+        height: 50px;
+    }
+    .login-container div{
+        margin: auto 0px;
+        border-radius: 50%;
+        /* width: 100%; */
+    }
+    .login-container a{
+        text-decoration: none;
+        font-size: 100%;
+        font-weight: bolder;
+        margin: auto 0px;
+        color: darkgreen;
+    }
+    
+}

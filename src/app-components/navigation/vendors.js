@@ -41,14 +41,9 @@ function Vendors(){
     }
     return(
         <div className="vendorContainer">
-            <div className="searchbar-image-container">
-                <img src="https://cdn.dribbble.com/users/1288384/screenshots/2938087/bahamas_food_delivery_app.gif" alt="animation" />
-                <h3> WE ARE RATED<IoIosStar /><IoIosStar /><IoIosStar /><IoIosStar /><IoIosStar /></h3>
-                <input onChange={findvendor} ref={inputvalue} className="vendor-input" type="Text" placeholder='Search for vendor '/>
-                <FaSearch className="vendorSearchIcon"/>
-            </div>
-            <div className="home-page-vendor-container">
-                <div className="vendor-instruction-container"><TiArrowDownThick/> click on image to visit online store</div>
+            <div className="vendorContainer2">
+                <input onChange={findvendor} type="text" placeholder="Search" ref={inputvalue}/>
+                <div className="vendor-instruction-container"><TiArrowDownThick/> click on vendor logo to visit online store</div>
                 <div className="vendor-card-container">
                     {vendor}
                 </div>

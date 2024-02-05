@@ -9,17 +9,14 @@ function VendorCard({name,image,rating, about, vendorPage}) {
     return (
         <div id='vendorcard-container'>
             
-            <div id='vendor-secondDIv'>
+            {/* <div id='vendor-secondDIv'> */}
                 <NavLink to={vendorPage}>
                     <img src={image} alt='vendor_image'/>
                 </NavLink>
-                <div id='vendor-thirdDIv'>
                     {/* <p id='vendor-about'>{about}</p> */}
-                    <div id='vendor-rating'><p></p><div>{rating}</div></div>
+                    <div id='vendor-rating'>{rating}</div>
                     {/* <button id='vendor-button'>Visit online store</button> */}
-                    
-                </div>
-            </div>
+            {/* </div> */}
         </div>
     )
 }

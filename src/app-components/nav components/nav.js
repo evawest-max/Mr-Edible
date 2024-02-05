@@ -51,7 +51,7 @@ function Navbar() {
   return (
     
     <div className="everything">
-        <img className="logo" src={mrEdible} alt="logo" />
+        <NavLink to="/"><img className="logo" src={mrEdible} alt="logo" /></NavLink>
       <div className="navcontainer">
         <nav>
           

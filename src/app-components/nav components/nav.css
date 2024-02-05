@@ -8,6 +8,7 @@
     background: transparent;
     /* background-color: rgba(255, 255, 255, 0.364);
     backdrop-filter: blur(0px); */
+    box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
 }
 .Sign-menu div{
     position: relative;
@@ -102,62 +103,13 @@
 }
 
 .logo{
-    width: 80px;
-    height: 80px;
+    width: 55px;
+    height: 55px;
     margin-right: 172;
     cursor: pointer;
     border-radius: 50%;
     box-shadow: 2px 3px 5px  rgba(0, 0, 0, 0.45);
-
-}
-.login-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    /* align-items: self-start; */
-    font-size: 16px;
-    color: rgb(1, 61, 1);
-    margin-top: 39px;
-    margin-right: 30px;
-    height: 28px;
-    /* border: 3px soli red; */
-    padding: 0px 20px;
-    border-radius: 20px;
-    background-color: white;
-    box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
-}
-.login-container a{
-    margin: 5px;
-    text-decoration: none;
-    height: fit-content;
-    width: fit-content;
-    height: fit-content;
-    /* border: 3px solid red; */
-}
-.login-container div{
-    margin: 5px;
-    color: darkgreen;
-    font-size: 12px;
-    /* border: 3px solid red; */
-    height: fit-content;
-}
-.login-container div img{
-    /* margin: 0px;
-    color: darkgreen;
-    font-size: 12px;
-    border: 3px solid red;
-    height: fit-content; */
-} 
-.login-container a p{
-    margin: 0px;
-    font-size: 12px;
-    color: darkgreen;
-    font-weight: 800px;
-    /* border: 3px solid red; */
-    height: fit-content;  
-}
-.login-name-on-navbar{
-    font-weight: bolder;
+    margin: auto 0px;
 }
 
 
@@ -177,6 +129,7 @@
         position: sticky;
         top: 0px;
         z-index: 1;
+        /* border: 3px solid red; */
         /* background-color: white; */
     }
     .navcontainer-mobile{
@@ -187,17 +140,19 @@
     }
 
     .navcontainer{
+        /* border: 3px solid red; */
         color: black;
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        gap: 50px;
-        margin-top: 10px;
+        gap: 5%;
+        margin: auto 10px;
         height: fit-content;
         width: fit-content;
         min-width: 376px;
     }
     .navcontainer nav{
+        /* border: 3px solid rgb(6, 210, 251); */
         background-color: white;
         padding: 15px 20px;
         border-radius: 20px;
@@ -206,68 +161,24 @@
         
     }
     .navcontainer nav a{
+        /* border: 3px solid rgb(15, 238, 3); */
         color: rgb(1, 61, 1);
         list-style: none;
         text-decoration: none;
         text-align: center;
         font-family: Raleway;
-        font-size: 18px;
+        font-size: 100%;
         font-style: normal;
         font-weight: 600;
         line-height: normal;
         cursor: pointer;
-        min-width: 200px;
+        /* min-width: 200px; */
         margin: 0px 8px;
         border-radius: 20px;
         padding: 10px;
     }
     .navcontainer nav a:hover{ 
         background-color: rgb(244, 196, 108);
-    }
-    .logo{
-        width: 60px;
-        height: 60px;
-        margin-bottom: 20px;
-        margin-top: 5px;
-        cursor: pointer;
-        box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
-        border-radius: 50%;
-
-    }
-    .login-container{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        /* align-items: self-start; */
-        font-size: 16px;
-        color: darkblue;
-        margin-top: 10px;
-        margin-right: 0px;
-        height: 53px; 
-        background-color: white;
-        padding: 15px 20px;
-        border-radius: 20px;
-        /* border: 3px solid red;  */
-        box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
-
-    }
-    .login-container a {
-        text-decoration: none;
-        color: darkgreen;
-        margin-top: 0px;
-        font-size: 16px;
-        font-weight: 800px;
-        cursor: pointer;   
-        /* border: 3px solid rgb(140, 0, 255);  */
-    }
-    .login-container div{
-        margin-top: 0px;
-        color: rgb(1, 61, 1);
-        font-size: 20px;
-        cursor: pointer;
-        /* border: 3px solid rgb(166, 255, 0);  */
-        width: fit-content;
-        height: fit-content;
     }
     .login-name-on-navbar{
         font-weight: bolder;

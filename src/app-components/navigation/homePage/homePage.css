@@ -1,0 +1,372 @@
+.homepage-image-container{
+    position: relative;
+    width: 100%;
+}
+.homepage-image-container div{
+    display: flex;
+    position: absolute;
+    margin: 0px 0%;
+    /* width: 50%; */
+    /* border: 3px solid red; */
+    top: 70%;
+    left: 5%;
+    /* gap: 5%; */
+
+}
+.homepage-image-container h3{
+    top: 30%;
+    left: 5%;
+    position: absolute;
+    color: gold;
+    /* border: 3px solid red; */
+    font-weight: 100%;
+    font-size: 100%;
+}
+.homepage-image-container h3 span{
+    color: darkgreen;
+    /* border: 3px solid red; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* font-weight: 100%; */
+    /* font-size: 50%; */
+}
+.homepage-image-container img{
+    width: 100%;
+    /* height: 120vh; */
+    animation-name: fade-slide-left;
+    animation-duration: 2s;
+}
+.homepage-Btn-1{
+    color: rgb(1, 61, 1);
+        list-style: none;
+        text-decoration: none;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 60%;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        cursor: pointer;
+        /* min-width: 200px; */
+        margin: 0px 4px;
+        border-radius: 20px;
+        padding: 5px 10px;
+        height: fit-content;
+        background-color: white;
+}
+.homepage-Btn-2{
+    color: rgb(1, 61, 1);
+        list-style: none;
+        text-decoration: none;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 60%;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        cursor: pointer;
+        /* min-width: 200px; */
+        margin: 0px 4px;
+        border-radius: 20px;
+        padding: 5px 10px;
+        height: fit-content;
+        background-color: white;
+}
+.homepage-Btn-3{
+    text-decoration: none;
+    color: rgb(1, 61, 1);
+        list-style: none;
+        text-decoration: none;
+        text-align: center;
+        font-family: Raleway;
+        font-size: 60%;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        cursor: pointer;
+        /* min-width: 200px; */
+        margin: 0px 4px;
+        border-radius: 20px;
+        padding: 5px 10px;
+        height: fit-content;
+        background-color: white;
+}
+
+@media screen and (min-width:636px){
+    .homepage-image-container{
+        position: relative;
+        width: 100%;
+    }
+    .homepage-image-container div{
+        display: flex;
+        position: absolute;
+        margin: 0px 0%;
+        /* width: 50%; */
+        /* border: 3px solid red; */
+        top: 70%;
+        left: 5%;
+        /* gap: 5%; */
+    
+    }
+    .homepage-image-container h3{
+        top: 30%;
+        left: 5%;
+        position: absolute;
+        color: gold;
+        /* border: 3px solid red; */
+        font-weight: 100%;
+        font-size: 110%;
+    }
+    .homepage-image-container h3 span{
+        color: darkgreen;
+        /* border: 3px solid red; */
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        /* font-weight: 100%; */
+        /* font-size: 50%; */
+    }
+    .homepage-image-container img{
+        width: 100%;
+        /* height: 120vh; */
+        animation-name: fade-slide-left;
+        animation-duration: 2s;
+    }
+    .homepage-Btn-1{
+        color: rgb(1, 61, 1);
+            list-style: none;
+            text-decoration: none;
+            text-align: center;
+            font-family: Raleway;
+            font-size: 80%;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            cursor: pointer;
+            /* min-width: 200px; */
+            margin: 0px 8px;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: white;
+    }
+    .homepage-Btn-2{
+        color: rgb(1, 61, 1);
+            list-style: none;
+            text-decoration: none;
+            text-align: center;
+            font-family: Raleway;
+            font-size: 80%;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            cursor: pointer;
+            /* min-width: 200px; */
+            margin: 0px 8px;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: white;
+    }
+    .homepage-Btn-3{
+        text-decoration: none;
+        color: rgb(1, 61, 1);
+            list-style: none;
+            text-decoration: none;
+            text-align: center;
+            font-family: Raleway;
+            font-size: 80%;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            cursor: pointer;
+            /* min-width: 200px; */
+            margin: 0px 8px;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: white;
+    }
+}
+
+@media screen and (min-width:636px){
+    .homepage-image-container{
+        position: relative;
+        width: 100%;
+    }
+    .homepage-image-container div{
+        display: flex;
+        position: absolute;
+        margin: 0px 0%;
+        /* width: 50%; */
+        /* border: 3px solid red; */
+        top: 70%;
+        left: 5%;
+        /* gap: 5%; */
+    
+    }
+    .homepage-image-container h3{
+        top: 30%;
+        left: 5%;
+        position: absolute;
+        color: gold;
+        /* border: 3px solid red; */
+        font-weight: 100%;
+        font-size: 200%;
+    }
+    .homepage-image-container h3 span{
+        color: darkgreen;
+        /* border: 3px solid red; */
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: 100%;
+        font-size: 100%;
+    }
+    .homepage-image-container img{
+        width: 100%;
+        /* height: 120vh; */
+        animation-name: fade-slide-left;
+        animation-duration: 2s;
+    }
+    .homepage-Btn-1{
+        color: rgb(1, 61, 1);
+            list-style: none;
+            text-decoration: none;
+            text-align: center;
+            font-family: Raleway;
+            font-size: 100%;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            cursor: pointer;
+            /* min-width: 200px; */
+            margin: 0px 8px;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: white;
+    }
+    .homepage-Btn-2{
+        color: rgb(1, 61, 1);
+            list-style: none;
+            text-decoration: none;
+            text-align: center;
+            font-family: Raleway;
+            font-size: 100%;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            cursor: pointer;
+            /* min-width: 200px; */
+            margin: 0px 8px;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: white;
+    }
+    .homepage-Btn-3{
+        text-decoration: none;
+        color: rgb(1, 61, 1);
+            list-style: none;
+            text-decoration: none;
+            text-align: center;
+            font-family: Raleway;
+            font-size: 100%;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            cursor: pointer;
+            /* min-width: 200px; */
+            margin: 0px 8px;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: white;
+    }  
+}
+
+@media screen and (min-width:900px){
+    
+    .homepage-image-container{
+        position: relative;
+        width: 100%;
+    }
+    .homepage-image-container div{
+        display: flex;
+        position: absolute;
+        margin: 0px 0%;
+        /* width: 50%; */
+        /* border: 3px solid red; */
+        top: 70%;
+        left: 5%;
+        /* gap: 5%; */
+    
+    }
+    .homepage-image-container h3{
+        top: 30%;
+        left: 5%;
+        position: absolute;
+        color: gold;
+        /* border: 3px solid red; */
+        font-weight: 100%;
+        font-size: 300%;
+    }
+    .homepage-image-container h3 span{
+        color: darkgreen;
+        /* border: 3px solid red; */
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: 100%;
+        font-size: 100%;
+    }
+    .homepage-image-container img{
+        width: 100%;
+        /* height: 120vh; */
+        animation-name: fade-slide-left;
+        animation-duration: 2s;
+    }
+    .homepage-Btn-1{
+        color: rgb(1, 61, 1);
+            list-style: none;
+            text-decoration: none;
+            text-align: center;
+            font-family: Raleway;
+            font-size: 150%;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            cursor: pointer;
+            /* min-width: 200px; */
+            margin: 0px 8px;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
+    }
+    .homepage-Btn-2{
+        color: rgb(1, 61, 1);
+            list-style: none;
+            text-decoration: none;
+            text-align: center;
+            font-family: Raleway;
+            font-size: 150%;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            cursor: pointer;
+            /* min-width: 200px; */
+            margin: 0px 8px;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
+    }
+    .homepage-Btn-3{
+        text-decoration: none;
+        color: rgb(1, 61, 1);
+            list-style: none;
+            text-decoration: none;
+            text-align: center;
+            font-family: Raleway;
+            font-size: 150%;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            cursor: pointer;
+            /* min-width: 200px; */
+            margin: 0px 8px;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
+    }
+}

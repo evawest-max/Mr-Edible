@@ -1,12 +1,12 @@
 import React, { createContext, useEffect, useLayoutEffect } from 'react'
 import { useState } from 'react'
 import { Link, NavLink, } from 'react-router-dom'
-// import {RiLoginBoxFill} from "react-icons/ri"
 import { FaUserCircle } from "react-icons/fa";
 import users from '../../signup/usersData'
 import { child, get, getDatabase, onValue, push, ref, remove, set, update } from 'firebase/database';
 import { getDownloadURL,ref as refStorage, getStorage, deleteObject } from 'firebase/storage';
 import { deleteUser, getAuth } from 'firebase/auth';
+import "./appcontext.css"
 
 export let productsIDInTheCartList=[]
 let changes=false
@@ -267,11 +267,9 @@ function Cartprovider({children}) {
        
         localStorage.setItem('mredibleloggedinUser', JSON.stringify({...data.val(), imageaddress:imageUrl}))
         setloginIcon(
-          <div className="login-container">
-          <div><div><img src={picUrl} width="20px" height="20px" alt='user pic'/></div></div>
-          <NavLink to="/user-profile">
-          <p className='login-name-on-navbar'>{fullnameAb}</p>
-          </NavLink>
+          <div className="loggedin-user-container">
+          <img src={picUrl} width="20px" height="20px" alt='user pic'/>
+          <NavLink to="/user-profile">{fullnameAb}</NavLink>
         </div>)
     }catch(error){
       alert(error.message)
@@ -283,9 +281,7 @@ function Cartprovider({children}) {
     setloginIcon(
       <div className="login-container">
         <div><FaUserCircle /></div>
-        <NavLink to="/login-page">
-        <p>SIGN IN</p>
-        </NavLink>
+        <NavLink to="/login-page">SIGN IN</NavLink>
       </div>)
   }
 
@@ -316,11 +312,9 @@ function Cartprovider({children}) {
         
       
   setloginIcon(
-    <div className="login-container">
-      <div><img src={ur} width="20px" height="20px" alt='user pic'/> </div>
-      <Link to="/user-profile">
-      <p className='login-name-on-navbar'> {fullnameAb}</p>
-      </Link>
+    <div className="loggedin-user-container">
+      <img src={ur} width="20px" height="20px" alt='user pic'/>
+      <Link to="/user-profile">{fullnameAb}</Link>
     </div>)
   }
 }

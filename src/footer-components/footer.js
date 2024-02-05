@@ -35,7 +35,7 @@ function Footer(){
                     </div>
                 </div>
             </div>
-            <p className="copyright-para"><img src={copyright} alt="copyright"/> 2023 Ebunolwa Akinwumi. All Rights reserved</p>
+            <p className="copyright-para"><span><img src={copyright} alt="copyright"/></span> 2023 Ebunolwa Akinwumi. All Rights reserved</p>
         </div>
     )
 }

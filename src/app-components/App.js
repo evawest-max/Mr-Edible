@@ -18,12 +18,14 @@ import SmileCakesCart from './smile cakes/smile cakes cart component/smile cakes
 import SmileCakesCartprovider from './smile cakes/smile cartContext/smileCartContext';
 import Cartitem from './smile cakes/smile cakes cart component/checkoutPage';
 import ResetPassword from './login/reset-profile';
+import Homepage from './navigation/homePage/homePage';
 
 
 const router=createBrowserRouter(
   createRoutesFromElements(
       <Route path="/" element={<Appsection/>}>
-        <Route index element={<Vendors/>}/>
+        <Route index element={<Homepage/>}/>
+        <Route path='/vendors' element={<Vendors/>}></Route>
         <Route path='/mrEdible' element={<SearchBar/>}></Route>
         <Route path='/checkoutpage' element={<CheckoutPage/>}></Route>
         <Route path='/cart' element={<Cart/>}></Route>
