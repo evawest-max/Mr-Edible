@@ -9,9 +9,9 @@
   height: 100vh;
     /* background: radial-gradient(61.32% 53.53% at 33.80% 48.98%, rgb(1, 61, 1), #01000A 100%); */
 }
-.vendorContainer2{
-    /* border: 2px solid rgb(0, 255, 140); */
-}
+/* .vendorContainer2{
+    border: 2px solid rgb(0, 255, 140);
+} */
 .vendor-card-container{
     /* border: 5px solid yellow; */
     display: grid;

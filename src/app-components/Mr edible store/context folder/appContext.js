@@ -1,9 +1,9 @@
-import React, { createContext, useEffect, useLayoutEffect } from 'react'
+import React, { createContext, useEffect,} from 'react'
 import { useState } from 'react'
 import { Link, NavLink, } from 'react-router-dom'
 import { FaUserCircle } from "react-icons/fa";
-import users from '../../signup/usersData'
-import { child, get, getDatabase, onValue, push, ref, remove, set, update } from 'firebase/database';
+// import users from '../../signup/usersData'
+import { child, get, getDatabase, push, ref, remove, set, update } from 'firebase/database';
 import { getDownloadURL,ref as refStorage, getStorage, deleteObject } from 'firebase/storage';
 import { deleteUser, getAuth } from 'firebase/auth';
 import "./appcontext.css"

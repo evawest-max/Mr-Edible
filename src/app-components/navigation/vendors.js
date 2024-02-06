@@ -4,14 +4,14 @@ import VendorCard from "../vendor/vendor-card";
 import vendorsdata from "../vendor/vendorDatabase";
 import "./navigation.css";
 import {AiFillStar} from "react-icons/ai";
-import { useContext } from "react";
-import { Cartcontext } from "../Mr edible store/context folder/appContext"
+// import { useContext } from "react";
+// import { Cartcontext } from "../Mr edible store/context folder/appContext"
 import { TiArrowDownThick } from "react-icons/ti";
-import { FaSearch } from "react-icons/fa";
-import { IoIosStar } from "react-icons/io";
+// import { FaSearch } from "react-icons/fa";
+// import { IoIosStar } from "react-icons/io";
 
 function Vendors(){
-    let cart=useContext(Cartcontext)
+    // let cart=useContext(Cartcontext)
     let sortedvendor= vendorsdata.sort( (a,b)=>{
             return b.rating-a.rating
          })

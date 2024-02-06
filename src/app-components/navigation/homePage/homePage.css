@@ -143,6 +143,7 @@
             padding: 10px 10px;
             height: fit-content;
             background-color: white;
+            box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
     }
     .homepage-Btn-2{
         color: rgb(1, 61, 1);
@@ -161,6 +162,7 @@
             padding: 10px 10px;
             height: fit-content;
             background-color: white;
+            box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
     }
     .homepage-Btn-3{
         text-decoration: none;
@@ -180,5 +182,6 @@
             padding: 10px 10px;
             height: fit-content;
             background-color: white;
+            box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
     }
 }

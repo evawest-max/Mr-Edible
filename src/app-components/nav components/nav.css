@@ -67,7 +67,8 @@
     margin-right: 0px;
     margin-top: 10px;
     font-size: 25px;
-    color: rgb(1, 61, 1);
+    background-color: white;
+    color: rgb(52, 52, 52);
     animation: fade-slide-right 1s cubic-bezier(0,1,0,1) forwards;
 }
 .Sign-menu nav ul div {
