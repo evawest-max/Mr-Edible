@@ -10,6 +10,8 @@ import "./homePage.css";
 // import { FaSearch } from "react-icons/fa";
 import { IoIosStar } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
+import { MdPlayCircle } from "react-icons/md";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 function Homepage(){
 
@@ -18,8 +20,8 @@ function Homepage(){
             <div className="homepage-text-btn-container">
                 <h3> Welcome to Mr Edible Food<br/> market place <br/><span>WE ARE RATED<IoIosStar /><IoIosStar /><IoIosStar /><IoIosStar /><IoIosStar /></span></h3>
                 <div>
-                    <NavLink to="vendors" className="homepage-Btn-1">Start shoping </NavLink>
-                    <Link to="https://www.youtube.com/channel/UCblfN9rFw3yW1P64VThsgnw" className="homepage-Btn-2">Teach me how to</Link>
+                    <NavLink to="vendors" className="homepage-Btn-1">Order <span><MdKeyboardDoubleArrowRight style={{fontSize:"20px", padding:"0px"}}/></span></NavLink>
+                    <Link to="https://www.youtube.com/channel/UCblfN9rFw3yW1P64VThsgnw" className="homepage-Btn-2"><MdPlayCircle style={{fontSize:"15px"}} />  How to order</Link>
                     <NavLink className="homepage-Btn-3">FAQ</NavLink>
                 </div>
             </div>

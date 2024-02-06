@@ -32,8 +32,8 @@ function Navbar() {
           <ul>
           <div>
             <NavLink onClick={menuclose} to="/vendors">Food Vendors</NavLink>
-            <NavLink onClick={menuclose} to="/special"><FcOnlineSupport/>Special Order</NavLink>
-            <NavLink onClick={menuclose} to="/track">Track Order</NavLink>
+            <NavLink onClick={menuclose} to="/special"><FcOnlineSupport/>Contact</NavLink>
+            <NavLink onClick={menuclose} to="/track">Services</NavLink>
           </div>
           </ul>
       </nav>
@@ -56,8 +56,8 @@ function Navbar() {
         <nav>
           
             <NavLink to="/vendors">Food Vendors</NavLink>
-            <NavLink to="/special">Special Order</NavLink>
-            <NavLink to="/track">Track Order</NavLink>
+            <NavLink to="/special">Contact</NavLink>
+            <NavLink to="/track">Services</NavLink>
           
         </nav> 
       </div>
