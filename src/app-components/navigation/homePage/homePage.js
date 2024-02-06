@@ -15,12 +15,13 @@ function Homepage(){
 
     return(
         <div className="homepage-image-container">
-            <img src="https://images.squarespace-cdn.com/content/v1/54a43027e4b0e8454930051c/1544213616126-XGR35ABBUG5IUG883TZ3/JEDI-Beginnings1.gif" alt="animation" />
-            <h3> <span>Welcome to My Edible Food<br/> market place</span> <br/>WE ARE RATED<IoIosStar /><IoIosStar /><IoIosStar /><IoIosStar /><IoIosStar /></h3>
-            <div>
-                <NavLink to="vendors" className="homepage-Btn-1">Start shoping </NavLink>
-                <NavLink to="vendors" className="homepage-Btn-2">Teach me how to</NavLink>
-                <NavLink to="vendors" className="homepage-Btn-3">FAQ</NavLink>
+            <div className="homepage-text-btn-container">
+                <h3> Welcome to My Edible Food<br/> market place <br/><span>WE ARE RATED<IoIosStar /><IoIosStar /><IoIosStar /><IoIosStar /><IoIosStar /></span></h3>
+                <div>
+                    <NavLink to="vendors" className="homepage-Btn-1">Start shoping </NavLink>
+                    <NavLink to="vendors" className="homepage-Btn-2">Teach me how to</NavLink>
+                    <NavLink to="vendors" className="homepage-Btn-3">FAQ</NavLink>
+                </div>
             </div>
         </div>
     )
