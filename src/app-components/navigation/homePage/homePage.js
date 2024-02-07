@@ -12,6 +12,7 @@ import { IoIosStar } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
 import { MdPlayCircle } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { FcFaq } from "react-icons/fc";
 
 function Homepage(){
 
@@ -20,9 +21,9 @@ function Homepage(){
             <div className="homepage-text-btn-container">
                 <h3> Welcome to Mr Edible Food<br/> market place <br/><span>WE ARE RATED<IoIosStar /><IoIosStar /><IoIosStar /><IoIosStar /><IoIosStar /></span></h3>
                 <div>
-                    <NavLink to="vendors" className="homepage-Btn-1">Order <span><MdKeyboardDoubleArrowRight style={{fontSize:"20px", padding:"0px"}}/></span></NavLink>
-                    <Link to="https://www.youtube.com/channel/UCblfN9rFw3yW1P64VThsgnw" className="homepage-Btn-2"><MdPlayCircle style={{fontSize:"15px"}} />  How to order</Link>
-                    <NavLink className="homepage-Btn-3">FAQ</NavLink>
+                    <NavLink to="vendors" className="homepage-Btn-1">Order <span><MdKeyboardDoubleArrowRight style={{fontSize:"200%"}}/></span></NavLink>
+                    <Link to="https://www.youtube.com/channel/UCblfN9rFw3yW1P64VThsgnw" className="homepage-Btn-2"><MdPlayCircle style={{fontSize:"200%"}} />  How to order</Link>
+                    <NavLink className="homepage-Btn-3"><FcFaq style={{fontSize:"200%"}}/> FAQ</NavLink>
                 </div>
             </div>
         </div>

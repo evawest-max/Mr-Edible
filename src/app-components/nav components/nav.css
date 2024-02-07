@@ -63,13 +63,16 @@
     color: white;
 }
 .menubutton-mobile{
-    align-self: end;
+    /* align-self: end; */
     margin-right: 0px;
     margin-top: 10px;
     font-size: 25px;
     background-color: white;
+    border-radius: 5px;
     color: rgb(52, 52, 52);
     animation: fade-slide-right 1s cubic-bezier(0,1,0,1) forwards;
+    display: flex;
+    justify-content: center;
 }
 .Sign-menu nav ul div {
     align-items: center;
@@ -173,7 +176,6 @@
         font-weight: 600;
         line-height: normal;
         cursor: pointer;
-        /* min-width: 200px; */
         margin: 0px 8px;
         border-radius: 20px;
         padding: 10px;

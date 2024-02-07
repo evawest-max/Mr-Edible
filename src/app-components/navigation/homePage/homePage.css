@@ -50,6 +50,15 @@
         padding: 5px 10px;
         height: fit-content;
         background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
+}
+.homepage-Btn-1 span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .homepage-Btn-2{
     color: rgb(1, 61, 1);
@@ -68,6 +77,10 @@
         padding: 5px 10px;
         height: fit-content;
         background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
 }
 .homepage-Btn-3{
     text-decoration: none;
@@ -87,6 +100,10 @@
         padding: 5px 10px;
         height: fit-content;
         background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
 }
 
 
@@ -143,7 +160,19 @@
             padding: 10px 10px;
             height: fit-content;
             background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
+    }
+    .homepage-Btn-1:hover{ 
+        background-color: rgb(1, 61, 1);
+        color: white;
+    }
+    .homepage-Btn-1 span{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .homepage-Btn-2{
         color: rgb(1, 61, 1);
@@ -162,7 +191,14 @@
             padding: 10px 10px;
             height: fit-content;
             background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
+    }
+    .homepage-Btn-2:hover{ 
+        background-color: rgb(1, 61, 1);
+        color: white;
     }
     .homepage-Btn-3{
         text-decoration: none;
@@ -182,6 +218,13 @@
             padding: 10px 10px;
             height: fit-content;
             background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
+    }
+    .homepage-Btn-3:hover{ 
+        background-color: rgb(1, 61, 1);
+        color: white;
     }
 }
