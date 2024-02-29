@@ -7,8 +7,8 @@ function CartIcon(){
     const cart=useContext(Cartcontext)
     return(
         
-            <Link style={cart.changeINdex} className="cartContainer" to="/cart">
-                <HiMiniShoppingCart/>
+            <Link  className="cartContainer" to="/cart">
+                <div><HiMiniShoppingCart/></div>
                 <p className="carttext">{cart.numberOfItemsInCart}</p>
             </Link>
             

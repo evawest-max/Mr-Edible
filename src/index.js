@@ -12,7 +12,7 @@ root.render(
   <React.StrictMode>
     
     <App/>
-    <Store/>
+    {/* <Store/> */}
     <Footer/>
   </React.StrictMode>
 );

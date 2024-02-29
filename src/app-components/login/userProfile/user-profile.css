@@ -8,15 +8,19 @@
     flex-direction: column;
     justify-content: center;
     background-color: rgb(249, 243, 235);
+    padding-top: 80px;
 }
 .profile-toggle-information{
     font-weight: bold;
     display: flex;
+    gap: 20px;
+    border: 1px solid orange;
 }
 .profile-toggle-information img{
-    border: 1px solid orange;
+    border: 1px solid darkgreen;
     border-radius: 100%;
     width: 100px;
+    margin-left: 5px;
 }
 .information-name{
     /* border: 3px solid red; */

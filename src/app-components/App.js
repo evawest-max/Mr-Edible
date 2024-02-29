@@ -19,6 +19,13 @@ import SmileCakesCartprovider from './smile cakes/smile cartContext/smileCartCon
 import Cartitem from './smile cakes/smile cakes cart component/checkoutPage';
 import ResetPassword from './login/reset-profile';
 import Homepage from './navigation/homePage/homePage';
+import AdminRoot from './login/admin/admin-Root/adminRoot';
+import Overview from './login/admin/admin overview/overview';
+import Payment from './login/admin/payments/payment';
+import Properties from './login/admin/Properties/properties';
+import Schedules from './login/admin/Schedules/schedules';
+import Users from './login/admin/users/users';
+import Settings from './login/admin/settings/settings';
 
 
 const router=createBrowserRouter(
@@ -35,12 +42,20 @@ const router=createBrowserRouter(
         <Route path='/login-page' element={<LoginPage/>}></Route>  
         <Route path='/signup-page' element={<Signup/>}></Route> 
         <Route path='/user-profile' element={<UserProfile/>}></Route>  
-        <Route path='//reset-profile' element={<ResetPassword/>}></Route>  
-        
+        <Route path='//reset-profile' element={<ResetPassword/>}></Route>    
         <Route path='/smile-cakes' element={<SmileCakesSearchBar/>}></Route>
         <Route path='/smile-cakes-cart' element={<SmileCakesCart/>}></Route>
         <Route path='/smile-cakes-checkoutpage' element={<Cartitem/>}></Route>
-
+        <Route path='admin-page' element={<AdminRoot/>}>
+          <Route index element={<Overview/>}/>
+          <Route path='overview' element={<Overview/>}/>
+          <Route path='payments' element={<Payment/>}/>
+          <Route path='properties' element={<Properties/>}/>
+          <Route path='schedules' element={<Schedules/>}/>
+          <Route path='settings' element={<Settings/>}/> 
+          <Route path='users' element={<Users/>}/>
+        </Route>
+        
         <Route path='*' element={<Notfound/>} />    
       </Route>
   )

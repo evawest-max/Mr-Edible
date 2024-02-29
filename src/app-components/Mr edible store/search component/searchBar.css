@@ -1,26 +1,26 @@
 .searchcontainer{
     background-color: white;
-    position: relative;
+    /* position: relative; */
+    /* border: 3px solid red; */
 }
-.SearchbarContainer{
+.vendor-SearchbarContainer{
     text-align: center;
-    position: sticky;
-    top: 55px;
-    z-index: 200;
-    
+    margin-top: 1px;
+    /* border: 1px solid green; */
 }
 
-.SearchbarContainer input{
+.vendor-SearchbarContainer input{
+    /* border: 1px solid green; */
     width: 180px;
     height: 25px;
     border-radius: 10px;
-    background-color: white;
+    /* background-color: white; */
     color: darkgreen;
     padding: 0px 10px;
-    box-shadow: 2px 3px 5px  rgba(0, 0, 0, 0.45);
+    box-shadow: 2px 3px 9px  rgba(0, 0, 0, 0.45);
 }
 .SearchbarContainer input:focus{
-    outline: none;
+    /* outline: none; */
     /* animation: fade-slide-top .7s ease-in-out forwards; */
 }
 
@@ -81,15 +81,18 @@
 @media screen and (min-width:900px){
     .searchcontainer{
         background: white;
-        position: relative;
+        /* position: relative; */
     }
-    .SearchbarContainer{
+    .vendor-SearchbarContainer{
         text-align: center;
-        position: sticky;
+        /* position: sticky; */
         top: 75px;
-        z-index: 4;
+        /* z-index: 4; */
+        /* border: 1px solid green; */
     }
-    .SearchbarContainer input{
+    .vendor-SearchbarContainer input{
+        /* border: 1px solid red; */
+        text-align: center;
         width: 400px;
         height: 25px;
         border-radius: 10px;
@@ -104,6 +107,7 @@
         display: flex;
         flex-direction: row;
         margin-top: 60px;
+        
     }
 }
 

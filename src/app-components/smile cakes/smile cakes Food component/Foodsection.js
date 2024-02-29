@@ -22,7 +22,7 @@ function Foodsection() {
           <Link to="/special"><p><img className="advert-img" src={specialadverts[0].link} alt="advert" /></p></Link>
           <Link to="/special"><p><img className="advert-img" src={specialadverts[2].link} alt="advert" /></p></Link>
           <Link to="/special"><p><img className="advert-img" src={specialadverts[3].link} alt="advert" /></p></Link>
-          <Link to="/special"><p><img className="advert-img" src={specialadverts[4].link} alt="advert" /></p></Link>
+          {/* <Link to="/special"><p><img className="advert-img" src={specialadverts[4].link} alt="advert" /></p></Link> */}
         </AliceCarousel>
       </div> 
     

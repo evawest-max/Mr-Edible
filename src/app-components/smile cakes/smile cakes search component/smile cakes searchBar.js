@@ -129,13 +129,13 @@ function SmileCakesSearchBar(){
         
         <div className="searchcontainer">
             
+            <Foodsection/>
             <CartIcon/>
-            <div className="SearchbarContainer" style={cart.changeINdex}>
+            <div className="vendor-SearchbarContainer" style={cart.changeINdex}>
                 <input onChange={findFood} ref={inputRef} type="text" placeholder="I am searching for..."/>
             </div>
             
 
-            <Foodsection/>
             <div className="fiterandfoodcontainer">
                 <FoodFilter filterbyratings={filterbyratings} filterbyratings2={filterbyratings2} filterbyratings3={filterbyratings3} filterbyratings4={filterbyratings4} filterbyratings5={filterbyratings5}
                     filterbyprice1000={filterbyprice1000} filterbyprice1000_4000={filterbyprice1000_4000} filterbypriceOver4000={filterbypriceOver4000}

@@ -4,31 +4,47 @@
     display: flex;
     flex-direction: row;
     position: fixed;
-    top: 10px;
+    top: 15px;
     left: 80%;
-    width: 50px;
+    max-width: 30px;
     margin-left: -25px;
-    z-index: 200;
-    font-size: 20px;
+    z-index: 1;
+    /* font-size: 10px; */
     justify-content: center;
     border-radius: 10px;
     background-color: white;
-    padding: 5px;
-}
-.cartContainer p{
-    font-size: 16px;
-}
+    padding: 3px;
+    box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
 
+    /* border: 3px solid red; */
+}
+.cartContainer div{
+    /* border: 3px solid red; */
+    display: flex;
+    justify-content: center;
+    font-size: 17px;
+}
 
 .carttext{
+    /* border: 3px solid red; */
     margin: 0px;
-    text-align: center;
+    /* text-align: center; */
     font-family: Raleway;
-    font-size: 10px;
-    font-style: normal;
-    font-weight: normal;
-    line-height: normal;
-    text-decoration-line: none;
+    font-size: 12px;
+    position: absolute;
+    top: -9px;
+    right: -5px;
+    padding: 2.5px;
+    min-width:19px ;
+    text-align: center;
+    /* font-style: normal; */
+    /* font-weight: normal; */
+    /* line-height: normal; */
+    /* text-decoration-line: none; */
+    /* border: 3px solid red; */
+    color: white;
+    background-color: darkgreen;
+    border-radius: 50%;
 }
 
 
@@ -293,20 +309,22 @@ label{
 @media screen and (min-width:390px){
     
     
-    .cartContainer img{
+    /* .cartContainer img{
         width: 15px;
         height: 15px;
-    }
-    .carttext{
-        margin: 0px;
-        text-align: center;
-        font-family: Raleway;
-        font-size: 10px;
-        font-style: normal;
-        font-weight: normal;
-        line-height: normal;
-        text-decoration-line: none;
-    }
+        border: 3px solid red;
+    } */
+    /* .carttext{ */
+        /* margin: 0px; */
+        /* text-align: center; */
+        /* font-family: Raleway; */
+        /* font-size: 10px; */
+        /* font-style: normal; */
+        /* font-weight: normal; */
+        /* line-height: normal; */
+        /* text-decoration-line: none; */
+        
+    /* } */
     
     
     .goback{
@@ -559,7 +577,7 @@ label{
 
 
 @media screen and (min-width:540px){
-    .cartContainer{
+    /* .cartContainer{
         color: rgb(1, 61, 1);
         text-decoration: none;
         display: flex;
@@ -572,7 +590,7 @@ label{
         border-radius: 10px;
         background-color: white;
         padding: 5px;
-    }
+    } */
 }
 
 @media screen and (min-width:900px){
@@ -582,7 +600,7 @@ label{
         display: flex;
         flex-direction: row;
         position: fixed;
-        top: 10px;
+        top: 15px;
         left: 76%;
         width: 50px;
         margin-left: -25px;

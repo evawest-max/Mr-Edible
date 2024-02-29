@@ -226,7 +226,7 @@ function UserProfile() {
 
           <div style={inboxDisplay}>This is were you will find your messages <RiMessage2Fill /> we send you.<br/>your inbox is empty now</div>
           <div style={orderDisplay}> 
-              This are your order history
+              <NavLink to="/admin-page">This are your order history</NavLink>
               <div className='ordered-container'> {cart.orders}
               </div>
           </div>

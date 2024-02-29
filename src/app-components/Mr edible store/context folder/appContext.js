@@ -42,7 +42,7 @@ function Cartprovider({children}) {
   const [indexState, setindexState]=useState({ zIndex:"2" })
   function changeZ(){
     changes=!changes
-    changes? setindexState({ zIndex:"0" }):setindexState({zIndex:"1"})
+    changes? setindexState({ zIndex:"0" }):setindexState({zIndex:"2"})
   }
 
   const [totalCart, settotalCart]=useState(productsIDInTheCartList.reduce((total, item)=>{

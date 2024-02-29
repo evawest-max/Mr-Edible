@@ -4,8 +4,8 @@ function SpecialOrders(){
     return(
         <div>
             
-            <div className="special">
-                <h2 >There are no special orders at the moment</h2>
+            <div  style={{marginTop:"55px"}}className="special">
+                <h2 >click on the Whats app icon at the footer</h2>
             </div>
         </div>
     )

@@ -1,0 +1,32 @@
+#overview-chart1-container{
+    display: flex;
+    flex-direction: row;
+    /* border: 3px solid; */
+    gap: 30px;
+    margin-top: 10px;
+}
+#overview-chart1-container div{
+    width: 100%;
+    margin: 20px;
+    &:hover{
+        transform: scale(1.05);
+    }
+}
+
+@media screen and (max-width: 974px) {
+    #overview-chart1-container{
+        display: flex;
+        flex-direction: column;
+        /* flex-direction: row; */
+        /* border: 3px solid gold; */
+        gap: 30px;
+        margin-top: 10px;
+    }
+    #overview-chart1-container div{
+        width: 100%;
+        margin: 20px;
+        &:hover{
+            transform: scale(1.05);
+        }
+    }
+}

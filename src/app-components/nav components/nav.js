@@ -9,6 +9,8 @@ import {GiHamburgerMenu} from "react-icons/gi"
 import {IoMdClose} from "react-icons/io"
 // import {RiLoginBoxFill} from "react-icons/ri"
 import {FcOnlineSupport} from "react-icons/fc"
+import { FaSellsy } from "react-icons/fa";
+import { FcAbout } from "react-icons/fc";
 import { useContext } from "react";
 import { Cartcontext } from "../Mr edible store/context folder/appContext";
 
@@ -19,31 +21,17 @@ import { Cartcontext } from "../Mr edible store/context folder/appContext";
 function Navbar() {
   const cart=useContext(Cartcontext)
 
-  const [menustate, newMenuState]=useState(<div className="menubutton-mobile" onClick={openMenu}><GiHamburgerMenu/></div>)
+  const [menustate, newMenuState]=useState({display: "none"})
   function openMenu(){
     cart.increaseIndex=true
     cart.changeZ()
     console.log(cart.changeINdex)
-    newMenuState(
-      <div>
-        <div onClick={menuclose} className="nav-transparent-background"></div>
-      <nav>
-        <div className="menubutton-mobile" style={{}} onClick={menuclose}><IoMdClose/></div>
-          <ul>
-          <div>
-            <NavLink onClick={menuclose} to="/vendors">Food Vendors</NavLink>
-            <NavLink onClick={menuclose} to="/special"><FcOnlineSupport/>Contact</NavLink>
-            <NavLink onClick={menuclose} to="/track">Services</NavLink>
-          </div>
-          </ul>
-      </nav>
-      </div>
-    )
+    newMenuState()
   }
   function menuclose(){
     cart.changeZ()
     console.log(cart.changeINdex)
-    newMenuState(<div className="menubutton-mobile" onClick={openMenu}><GiHamburgerMenu/></div>)
+    newMenuState({display: "none", background:"blue"})
   }
   
  
@@ -62,18 +50,32 @@ function Navbar() {
         </nav> 
       </div>
       
-      {cart.loginIcon}
+      <div id="loginIcon-visibility-desktop">{cart.loginIcon}</div>
       
 
-      <div className="navcontainer-mobile">
-        <div className="Sign-menu">
-          
-          {menustate}
-        </div>
+      {/* <div className="navcontainer-mobile">
+        <div className="Sign-menu"> */}
+          <div className="open-menubutton-mobile" onClick={openMenu}><GiHamburgerMenu/></div>
+        {/* </div>
+      </div> */}
+
+
+
+      <div style={menustate} id="menu-mobile-overall" onClick={menuclose}>
+        <div onClick={menuclose} className="nav-transparent-background"></div>
+        <nav>
+          <div id="close-menubutton-mobile" style={{}} onClick={menuclose}><IoMdClose/></div>
+            <ul>
+              <div>
+                <NavLink onClick={menuclose} to="/vendors"><FaSellsy />Food Vendors</NavLink>
+                <NavLink onClick={menuclose} to="/special"><FcOnlineSupport/>Contact</NavLink>
+                <NavLink onClick={menuclose} to="/track"><FcAbout />Services</NavLink>
+              </div>
+            </ul>
+              <div id="loginIcon-visibility-mobile">{cart.loginIcon}</div>
+        </nav>
       </div>
     </div>  
-      
-    
   );
 }
 

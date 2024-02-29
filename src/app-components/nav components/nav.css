@@ -1,23 +1,49 @@
-
+#loginIcon-visibility-desktop{
+    display: none;
+}
+#loginIcon-visibility-mobile{
+    display: flex;
+    margin: auto;
+    /* border: 3px solid yellow; */
+    width: fit-content;
+    height: fit-content;
+    animation: fade-slide-left 1s ease-in-out forwards;
+}
 .everything{
     display: flex;
     justify-content: space-between;
     position: sticky;
     top: 0px;
-    z-index: 1;
+    /* z-index: 200; */
     background: transparent;
-    /* background-color: rgba(255, 255, 255, 0.364);
-    backdrop-filter: blur(0px); */
-    /* box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45); */
 }
-.Sign-menu div{
-    position: relative;
+#menu-mobile-overall{
+    position: fixed;
+    /* border: 3px solid red; */
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+    /* z-index: 300; */
 }
+#close-menubutton-mobile{
+    margin-right: 20px;
+    margin-left: auto;
+    margin-top: 10px;
+    font-size: 25px;
+    background-color: white;
+    border-radius: 5px;
+    color: rgb(52, 52, 52);
+    animation: fade-slide-right 1s cubic-bezier(0,1,0,1) forwards;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+}
+
 .nav-transparent-background{
     position: absolute;
     margin-right: 20px;
     background-color: black;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     opacity: 0.2;
 }
@@ -26,11 +52,11 @@
     display: flex;
     flex-direction: row;
     position: fixed;
-    z-index: 3;
+    /* z-index: 3; */
     right: 10px;
     height: 40px;
 }
-.navcontainer-mobile nav ul{
+#menu-mobile-overall nav ul{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -40,7 +66,7 @@
 }
 
 
-.navcontainer-mobile nav ul a{
+#menu-mobile-overall nav ul a{
     color: darkgreen;
     list-style: none;
     text-decoration: none;
@@ -56,15 +82,15 @@
     margin: 30px 0px;
     text-align: center;
 }
-.navcontainer-mobile nav ul a.active{
+#menu-mobile-overall nav ul a.active{
     background-color: orange;
     border-radius: 5px;
     padding: 2px 10px;
     color: white;
 }
-.menubutton-mobile{
+.open-menubutton-mobile{
     /* align-self: end; */
-    margin-right: 0px;
+    margin-right: 20px;
     margin-top: 10px;
     font-size: 25px;
     background-color: white;
@@ -73,28 +99,31 @@
     animation: fade-slide-right 1s cubic-bezier(0,1,0,1) forwards;
     display: flex;
     justify-content: center;
+    height: fit-content;
 }
-.Sign-menu nav ul div {
+#menu-mobile-overall nav ul div {
     align-items: center;
     display: flex;
     margin: 80px 0px;
     flex-direction: column;
-    width: 200px;
+    width: 100%;
    
 }
-.Sign-menu nav .menubutton-mobile{
+/* .Sign-menu nav .menubutton-mobile{
     color: white;
     right: 10px;
-}
-.Sign-menu nav {
+} */
+#menu-mobile-overall nav {
     position: fixed;
     background: radial-gradient(61.32% 53.53% at 33.80% 48.98%, rgb(1, 61, 1), #01000A 100%);
     animation: fade-slide-right ease-in-out forwards;
     display: flex;
     flex-direction: column;
     height: 100vh;
+    width: 85%;
     right: 0px;
-    top: 0px;   
+    top: 0px; 
+    animation: fade-slide-right 1s cubic-bezier(0,1,0,1) forwards;  
 }
 
 .navcontainer{
@@ -103,7 +132,7 @@
     flex-direction: row;
     margin: 0px 200px;
     width: 580px;
-    
+    /* border: 3px solid red; */
 }
 
 .logo{
@@ -127,16 +156,19 @@
     }
 
 @media screen and (min-width:900px){
+    #loginIcon-visibility-desktop{
+        display: flex;
+    }
     .everything{
         display: flex;
         justify-content: space-evenly;
         position: sticky;
         top: 0px;
-        z-index: 1;
+        /* z-index: 1; */
         /* border: 3px solid red; */
         /* background-color: white; */
     }
-    .navcontainer-mobile{
+    .open-menubutton-mobile{
         display: none;
         animation: slide 0.5s forwards;
         animation-delay: 2s;

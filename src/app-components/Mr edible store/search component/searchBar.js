@@ -10,7 +10,7 @@ import {AiFillStar} from "react-icons/ai";
 // import Cart from "../cart component/cart"
 import { useContext } from "react"
 import { Cartcontext } from "../context folder/appContext"
-
+import { IoIosSearch } from "react-icons/io";
 
 
 
@@ -129,13 +129,14 @@ function SearchBar(){
     return(
         <div className="searchcontainer">
             
+            <Foodsection/>
             <CartIcon/>
-            <div className="SearchbarContainer" style={cart.changeINdex}>
-                <input onChange={findFood} ref={inputRef} type="text" placeholder="I am searching for..."/>
+            <div className="vendor-SearchbarContainer" >
+                <input onChange={findFood} ref={inputRef} type="text" placeholder="eg. rice and chicken"/>
+                <IoIosSearch/>
             </div>
             
 
-            <Foodsection/>
             <div className="fiterandfoodcontainer">
                 <FoodFilter filterbyratings={filterbyratings} filterbyratings2={filterbyratings2} filterbyratings3={filterbyratings3} filterbyratings4={filterbyratings4} filterbyratings5={filterbyratings5}
                     filterbyprice1000={filterbyprice1000} filterbyprice1000_4000={filterbyprice1000_4000} filterbypriceOver4000={filterbypriceOver4000}
