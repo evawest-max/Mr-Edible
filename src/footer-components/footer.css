@@ -2,7 +2,7 @@
     background: #070917;
     width: auto;
     margin: auto;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 .footer-container{
     display: flex;
@@ -10,8 +10,8 @@
     justify-content: center;
     color: white;
     margin-top: 30px;
-    margin-right: 40px;
-    margin-left: 40px;
+    margin-right: 4%;
+    margin-left: 4%;
 }
 .quick-links{
     margin-left: 0px;
@@ -50,9 +50,9 @@
 .subscribe-container{
     border: 3px solid;
     display: flex;
+    background-color: white;
 }
 .footer-input{
-    padding-right: 45px;
     width: 100%;
     border: none;
 }
@@ -136,7 +136,6 @@
         display: flex;
     }
     .footer-input{
-        padding-right: 55px;
         width: 100%;
         border: none;
     }
@@ -221,7 +220,6 @@
         display: flex;
     }
     .footer-input{
-        padding-right: 65px;
         width: 100%;
         border: none;
     }
@@ -312,7 +310,6 @@
         display: flex;
     }
     .footer-input{
-        padding-right: 40px;
         width: 100%;
         border: none;
         outline: none;
