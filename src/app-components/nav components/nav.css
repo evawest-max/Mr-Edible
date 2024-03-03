@@ -17,6 +17,7 @@
     /* z-index: 200; */
     background: transparent;
 }
+
 #menu-mobile-overall{
     position: fixed;
     /* border: 3px solid red; */
@@ -143,6 +144,7 @@
     border-radius: 50%;
     box-shadow: 2px 3px 5px  rgba(0, 0, 0, 0.45);
     margin: auto 0px;
+    margin-left: 10%;
 }
 
 

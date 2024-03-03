@@ -1,5 +1,5 @@
 #OverviewTodayCard-container{
-    background-color: blue;
+    background-color: orange;
     padding: 20px;
     margin: 5px;
     width: 100%;
@@ -22,7 +22,7 @@
 
 @media screen and (max-width: 319px) {
     #OverviewTodayCard-container{
-        background-color: blue;
+        background-color: orange;
         padding: 20px;
         margin: 5px auto;
         width: 50%;

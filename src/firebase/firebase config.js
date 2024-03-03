@@ -10,15 +10,25 @@ import { getMessaging } from "firebase/messaging";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCv3E4Q72f4GflrMIo6AIPFf5DVGjCBQXM",
+//   authDomain: "mr-edible.firebaseapp.com",
+//   databaseURL: "https://mr-edible-default-rtdb.firebaseio.com",
+//   projectId: "mr-edible",
+//   storageBucket: "mr-edible.appspot.com",
+//   messagingSenderId: "1016965203142",
+//   appId: "1:1016965203142:web:577a75d861000626d983c7",
+//   measurementId: "G-FXM96FNY1F"
+// };
 const firebaseConfig = {
-  apiKey: "AIzaSyCv3E4Q72f4GflrMIo6AIPFf5DVGjCBQXM",
-  authDomain: "mr-edible.firebaseapp.com",
-  databaseURL: "https://mr-edible-default-rtdb.firebaseio.com",
-  projectId: "mr-edible",
-  storageBucket: "mr-edible.appspot.com",
-  messagingSenderId: "1016965203142",
-  appId: "1:1016965203142:web:577a75d861000626d983c7",
-  measurementId: "G-FXM96FNY1F"
+  apiKey: "AIzaSyBY-_OrcVLsR4Cs8_Yt9gtFrYcf94FF0l4",
+  authDomain: "mr-edible-pro.firebaseapp.com",
+  databaseURL: "https://mr-edible-pro-default-rtdb.firebaseio.com",
+  projectId: "mr-edible-pro",
+  storageBucket: "mr-edible-pro.appspot.com",
+  messagingSenderId: "271918640757",
+  appId: "1:271918640757:web:54d049c5924a2bd111923c",
+  
 };
 
 // Initialize Cloud Storage and get a reference to the service

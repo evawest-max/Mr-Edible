@@ -15,9 +15,9 @@ export default function Overview() {
                 <div>
                     <h3>Assets</h3>
                     <div id='asset-card-main-container'>
-                        <AssetCards home=<FaHome />numb1="783" properties="Properties"/>
-                        <AssetCards pic=<IoPersonSharp /> numb2="562" landlords="Landlords"/>
-                        <AssetCards pic2= <HiMiniUsers/> numb3="3,674" tenants="Tenants"/>
+                        <AssetCards home=<FaHome />numb1="783" properties="Vendors"/>
+                        <AssetCards pic=<IoPersonSharp /> numb2="562" landlords="Customers"/>
+                        <AssetCards pic2= <HiMiniUsers/> numb3="3,674" tenants="food items"/>
                     </div>
                 </div>
             </div>

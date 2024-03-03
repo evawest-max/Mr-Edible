@@ -14,6 +14,7 @@ import { MdPlayCircle } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { FcFaq } from "react-icons/fc";
 import Store from "../../../store-components/store";
+import Footer from "../../../footer-components/footer";
 
 function Homepage(){
 
@@ -30,6 +31,7 @@ function Homepage(){
                 </div>
             </div>
             <Store/>
+            <Footer/>
         </div>
     )
 }

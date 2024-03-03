@@ -1,0 +1,21 @@
+#favourite-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 5px 3%;
+    margin-left: 0px;
+    /* margin-bottom: 0px; */
+    /* border: 3px solid rgb(34, 0, 255); */
+}
+
+@media screen and (min-width:900px){
+    #favourite-container{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 5px 3%;
+        margin-left: 15%;
+        /* margin-bottom: 0px; */
+        /* border: 3px solid rgb(34, 0, 255); */
+    }
+}

@@ -13,7 +13,7 @@ root.render(
     
     <App/>
     {/* <Store/> */}
-    <Footer/>
+    {/* <Footer/> */}
   </React.StrictMode>
 );
 

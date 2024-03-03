@@ -4,7 +4,7 @@
     box-shadow: 0px 0px 20px 2px gray;
     border-radius: 20px;
     margin: 10px;
-    max-width: 100px;
+    max-width: 300px;
     height: fit-content;
     border: 1px solid gray;
     &:hover{
@@ -23,6 +23,11 @@
 }
 #asset-card-text1{
     font-size: 100%;
+    text-align: center;
+}
+#asset-card-container h1{
+    font-size: 100%;
+    text-align: center;
 }
 #asset-card-container{
     font-size: 100%;
@@ -32,6 +37,7 @@
     background-color: greenyellow;
     border-radius: 5px;
     padding: 3px;
+    text-align: center;
 }
 
 @media screen and (max-width: 497px) {
@@ -41,10 +47,10 @@
         box-shadow: 0px 0px 20px 2px gray;
         border-radius: 20px;
         margin: 10px;
-        max-width: 30px;
+        /* max-width: 130px; */
         min-width: 50px;
-        max-height: 140px;
-        height: fit-content;
+        /* max-height: 140px; */
+        height: 190px;
         border: 1px solid gray;
         &:hover{
             transform: scale(1.05);
@@ -62,6 +68,7 @@
         /* font-size: 100%; */
         background-color: greenyellow;
     }
+    
     #asset-card-container h1{
         text-align: center;
         font-size: 100%;
@@ -69,6 +76,7 @@
     }
     #asset-card-text1{
         font-size: 100%;
+        text-align: center;
     }
     #asset-card-container{
         font-size: 80%;
@@ -78,6 +86,7 @@
         background-color: greenyellow;
         border-radius: 5px;
         padding: 3px;
+        text-align: center;
     }
 }
 
@@ -88,7 +97,7 @@
         box-shadow: 0px 0px 20px 2px gray;
         border-radius: 20px;
         margin: 10px;
-        max-width: 100%;
+        /* max-width: 100%; */
         min-width: 50px;
         max-height: 140px;
         height: fit-content;
@@ -112,18 +121,22 @@
     #asset-card-container h1{
         text-align: center;
         font-size: 100%;
-        
     }
     #asset-card-text1{
         font-size: 100%;
+        text-align: center;
     }
     #asset-card-container{
         font-size: 80%;
     }
     #asset-card-text2{
+        /* border: 3px solid red; */
         font-size: 70%;
         background-color: greenyellow;
         border-radius: 5px;
         padding: 3px;
+        text-align: center;
+        width: 70%;
+        margin: 0px auto;
     }
 }

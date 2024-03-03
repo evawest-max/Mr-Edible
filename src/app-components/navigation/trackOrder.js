@@ -1,4 +1,5 @@
 
+import Footer from "../../footer-components/footer";
 import "./navigation.css";
 function TrackOrder(){
     return(
@@ -7,6 +8,7 @@ function TrackOrder(){
             <div style={{marginTop:"55px"}} className="track">
                 <h2 >Coming soon...</h2>
             </div>
+            <Footer/>
         </div>
     )
 }

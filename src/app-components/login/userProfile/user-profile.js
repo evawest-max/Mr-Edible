@@ -1,9 +1,14 @@
 import React, { useRef, useState } from 'react'
 import "./user-profile.css"
+import "./user-orders.css"
+import "./user-inbox.css"
+import "./user-update-profile.css"
+import "./user-favourites.css"
+import "./user-settings.css"
 import { Cartcontext } from '../../Mr edible store/context folder/appContext'
 import { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import users from '../../signup/usersData'
+// import users from '../../signup/usersData'
 import { FaBox } from "react-icons/fa6";
 import { CgProfile } from "react-icons/cg";
 import { FcLike } from "react-icons/fc";
@@ -14,7 +19,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { RiMessage2Fill } from "react-icons/ri";
 // import Cart from '../../Mr edible store/cart component/cart'
 import { useEffect } from 'react'
-import { SmileCartcontext } from '../../smile cakes/smile cartContext/smileCartContext'
+// import { SmileCartcontext } from '../../smile cakes/smile cartContext/smileCartContext'
 import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
 import { getDatabase, onValue, update, ref as refDatabase} from 'firebase/database'
 // import propic from "C:\\fakepath\\IMG_20230809_082548_707~2.jpg"
@@ -215,7 +220,7 @@ function UserProfile() {
     <div className='profileContainer' >
         <div className='profile-toggle'>
           <div className='profile-toggle-information'>
-          <img src={userimageurl} alt='user' />
+            <img src={userimageurl} alt='user' />
             <div>
               <p className='information-name'>Welcome {user.name}</p>
               <p className='information-email'>{user.email}</p>
@@ -223,18 +228,18 @@ function UserProfile() {
               <p className='information-phoneNumb'>{user.phonenumber}</p>
             </div>
           </div>
+        <div>
+          <div style={inboxDisplay} id='inbox-container'>This is were you will find your messages <RiMessage2Fill /> we send you.<br/>your inbox is empty now</div>
 
-          <div style={inboxDisplay}>This is were you will find your messages <RiMessage2Fill /> we send you.<br/>your inbox is empty now</div>
-          <div style={orderDisplay}> 
-              <NavLink to="/admin-page">This are your order history</NavLink>
-              <div className='ordered-container'> {cart.orders}
-              </div>
+          <div style={orderDisplay} id='order-history-container'> 
+              <NavLink to="/admin-page"><h3>Resent orders</h3></NavLink>
+              <div className='ordered-container'> {cart.orders}</div>
           </div>
-          <div style={favouritiesDisplay}>This is where you will find your order favourities</div>
-          <div style={settingsDisplay}>
+          <div style={favouritiesDisplay} id='favourite-container'>This is where you will find your order favourities</div>
+          <div style={settingsDisplay} id='settings-container'>
                   {deleteButton}
           </div>
-          <div style={profileDisplay}>
+          <div style={profileDisplay} id='update-profile-container'>
             <div >
               <div className='passport_update'>
                 <img src={userimageurl} alt='user'/>
@@ -287,7 +292,7 @@ function UserProfile() {
               </div>
             </Link>
           </div>
-        
+        </div>
       </div>
     </div>
   )

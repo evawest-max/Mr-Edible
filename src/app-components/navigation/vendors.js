@@ -7,6 +7,7 @@ import {AiFillStar} from "react-icons/ai";
 // import { useContext } from "react";
 // import { Cartcontext } from "../Mr edible store/context folder/appContext"
 import { TiArrowDownThick } from "react-icons/ti";
+import Footer from "../../footer-components/footer";
 // import { FaSearch } from "react-icons/fa";
 // import { IoIosStar } from "react-icons/io";
 
@@ -40,14 +41,17 @@ function Vendors(){
         )
     }
     return(
-        <div className="vendorContainer">
-            <div className="vendorContainer2">
-                <input onChange={findvendor} type="text" placeholder="Search" ref={inputvalue}/>
-                <div className="vendor-instruction-container"><TiArrowDownThick/> click on vendor logo to visit online store</div>
-                <div className="vendor-card-container">
-                    {vendor}
+        <div>
+            <div className="vendorContainer">
+                <div className="vendorContainer2">
+                    <input onChange={findvendor} type="text" placeholder="Search" ref={inputvalue}/>
+                    <div className="vendor-instruction-container"><TiArrowDownThick/> click on vendor logo to visit online store</div>
+                    <div className="vendor-card-container">
+                        {vendor}
+                    </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }
