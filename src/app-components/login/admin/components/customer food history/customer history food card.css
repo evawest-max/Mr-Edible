@@ -1,0 +1,61 @@
+#admin-customer-food-item{
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    font-family: Raleway;
+    color: white;
+    text-align: center;
+    transition: transform .3s;
+    margin: 0px 5px;
+    background-color: darkgreen;
+    box-shadow: 0px 0px 10px 3px gray;
+}
+#admin-customer-food-item div{
+    color: gold;
+    padding-bottom: 5px;
+}
+#admin-customer-food-item:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px 3px rgb(2, 121, 22);
+    /* border: 0px solid; */
+    border-bottom: 10px;
+}
+#admin-customer-food-item img{
+    width: 190px;
+    height: 131px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    transition: transform .9s;
+}
+
+#admin-customer-food-item div{
+    margin-bottom: 0px;
+}
+
+#admin-customer-food-name{
+    color: white;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+#admin-customer-food-price{
+    color: white;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+#admin-customer-food-button{
+    width: 90%;
+    height: 33px;
+    border-radius: 10px;
+    background: #FA9807;
+    color: white;
+    font-weight: 900;
+    cursor: pointer;
+}

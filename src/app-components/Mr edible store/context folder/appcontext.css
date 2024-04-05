@@ -22,6 +22,7 @@
     font-weight: bold;
     margin: auto 0px;
     color: rgb(52, 52, 52);
+    min-width: fit-content;   
 }
 
 .login-container{
@@ -76,9 +77,11 @@
     .loggedin-user-container a{
         text-decoration: none;
         font-size: 100%;
-        font-weight: bolder;
+        font-weight: bold;
         margin: auto 0px;
         color: rgb(52, 52, 52);
+        /* border: 3px solid red; */
+        min-width: fit-content;
     }
     
     .login-container{
@@ -86,13 +89,13 @@
         justify-content: space-between;
         /* border: 3px solid red; */
         margin: auto 0px;
-        height: 30px;
         border-radius: 20px;
         box-shadow: 2px 3px 7px  rgba(0, 0, 0, 0.45);
         background-color: white;
         margin-right: 0px;
         padding: 0px 10px;
-        height: 50px;
+        height: 45px;
+        margin-top: 5px;
     }
     .login-container div{
         margin: auto 0px;
@@ -101,7 +104,7 @@
     }
     .login-container a{
         text-decoration: none;
-        font-size: 100%;
+        font-size: 80%;
         font-weight: bolder;
         margin: auto 0px;
         color: rgb(52, 52, 52);

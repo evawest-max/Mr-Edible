@@ -1,9 +1,15 @@
 .login{
     align-items: center;
     background: radial-gradient(61.32% 53.53% at 33.80% 48.98%, rgb(1, 61, 1), #01000A 100%);
+    padding: 50px 0px;
 }
 .login-title{
     color: white;
+    text-align: center;
+    /* padding-top: 50px; */
+}
+#loginToggle-container{
+    background-color: white;
 }
 .signinalert{
     color: rgba(0, 255, 0, 0.858);
@@ -16,6 +22,7 @@
 .loginFormAndButton{
     margin: 0px 30px;
 }
+
 .login-form{
     /* margin: 0px 30px; */
     display: flex;
@@ -33,7 +40,7 @@
     outline: none;
     border-radius: 5px;
 }
-.login-forgot-password{
+#login-forgot-passwords a{
     color: rgb(248, 125, 248);
 }
 .login-options{
@@ -42,8 +49,8 @@
 
 .login-option-picture{
     width: fit-content;
-    align-self: center;
-    
+    display: flex;
+    margin: auto;
     font-size: 40px;
 }
 .login-button{
@@ -54,7 +61,7 @@
     font-size: 18px;
     font-family: Raleway;
     padding: 5px 0px;
-    border-radius: 5px;
+    border-radius: 5px;  
 }
 .sign-up-button div a{
     color: rgb(248, 125, 248);
@@ -63,17 +70,20 @@
 @media screen and (min-width:900px){
     .login{
         display: flex;
+        flex-direction: column;
         justify-content: center;
         background: radial-gradient(61.32% 53.53% at 33.80% 48.98%, rgb(1, 61, 1), #01000A 100%);
     }
     .login-title{
-        color: darkgreen;
+        color: white;
+        margin-top:50px ;
     }
     #login-Form-container{
         display: flex;
         flex-direction: column;
         text-align: center;
         margin: 110px 0px;
+        margin-top: 20px;
         /* max-width: 90%; */
         min-width: 40%;
         background-color: white;
@@ -95,7 +105,7 @@
         padding: 10px 10px;
         text-align: left;
     }
-    .login-forgot-password{
+    #login-forgot-passwords {
         color: rgb(248, 125, 248);
     }
     .login-options{

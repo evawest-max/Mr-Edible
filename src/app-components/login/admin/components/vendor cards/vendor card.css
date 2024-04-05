@@ -1,0 +1,66 @@
+#vendor-card-container{
+    padding: 3%;
+    background-color: white;
+    box-shadow: 0px 0px 20px 2px gray;
+    border-radius: 20px;
+    margin: 10px;
+    max-width: 300px;
+    height: fit-content;
+    border: 1px solid gray;
+    &:hover{
+        transform: scale(1.05);
+    }
+}
+#vendor-card-container img{
+    width: 100%;
+    object-fit: cover;
+}
+#vendor-card-container h1{
+    font-size: 100%;
+    text-align: center;
+}
+#vendor-card-more-details{
+    font-size: 70%;
+    background-color: greenyellow;
+    border-radius: 5px;
+    padding: 3px;
+    text-align: center;
+}
+#vendor-activate-account-BTN{
+    background-color: rgb(4, 203, 4);
+    border-radius: 5px;
+    padding: 3px;
+    text-align: center;
+}
+#vendor-comment-btn-container{
+    display: flex;
+    justify-content: space-between;
+}
+#vendor-suspend-account-BTN{
+    background-color: orange;
+    border-radius: 5px;
+    padding: 3px 5px;
+    text-align: center;
+}
+#vendor-delete-Account{
+    background-color: red;
+    border-radius: 5px;
+    padding: 3px 5px;
+    text-align: center;
+}
+
+@media screen and (max-width: 497px) {
+    #vendor-card-container{
+        padding: 4%;
+        background-color: white;
+        box-shadow: 0px 0px 20px 2px gray;
+        border-radius: 20px;
+        margin: 10px;
+        max-width: 300px;
+        height: fit-content;
+        border: 1px solid gray;
+        &:hover{
+            transform: scale(1.05);
+        }
+    }
+}

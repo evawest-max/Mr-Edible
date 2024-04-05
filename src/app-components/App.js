@@ -22,10 +22,20 @@ import Homepage from './navigation/homePage/homePage';
 import AdminRoot from './login/admin/admin-Root/adminRoot';
 import Overview from './login/admin/admin overview/overview';
 import Payment from './login/admin/payments/payment';
-import Properties from './login/admin/Properties/properties';
+import Properties from './login/admin/vendors/vendors';
 import Schedules from './login/admin/Schedules/schedules';
-import Users from './login/admin/users/users';
+import Users from './login/admin/customers/customers';
 import Settings from './login/admin/settings/settings';
+import VendorDetails from './login/admin/vendors/vendor details page/vendor details';
+import VendorsCardContainer from './login/admin/vendors/vendors';
+import CustomerRoot from './login/admin/customers/customer details page/customer root';
+import CustomerDetails from './login/admin/customers/customer details page/customer details';
+import VendorProfileOverview from './login/vendors/vendor overview/vendor overview';
+import VendorRoot from './login/vendors/vendor-Root/vendorRoot';
+import Notifications from './login/vendors/notifications/notifications';
+import VendorFoods from './login/vendors/vendor-foods/vendor-foods';
+import VendorUpload from './login/vendors/upload/upload';
+import VendorSettings from './login/vendors/settings/vendor-settings';
 
 
 const router=createBrowserRouter(
@@ -49,14 +59,27 @@ const router=createBrowserRouter(
         <Route path='admin-page' element={<AdminRoot/>}>
           <Route index element={<Overview/>}/>
           <Route path='overview' element={<Overview/>}/>
-          <Route path='payments' element={<Payment/>}/>
-          <Route path='properties' element={<Properties/>}/>
+          <Route path='vendorsCardContainer' element={<VendorRoot/>}>
+            <Route index element={<VendorsCardContainer/>}/>
+            <Route path='vendordetails' element={<VendorDetails/>}/>
+          </Route>
+          <Route path='customers' element={<CustomerRoot/>}>
+            <Route index element={<Users/>}/>
+            <Route path='customerdetails' element={<CustomerDetails/>}/>
+          </Route>
           <Route path='schedules' element={<Schedules/>}/>
           <Route path='settings' element={<Settings/>}/> 
-          <Route path='users' element={<Users/>}/>
         </Route>
-        
-        <Route path='*' element={<Notfound/>} />    
+        <Route path='Vendor-profile-Overview' element={<VendorRoot/>}>
+          <Route index element={<VendorProfileOverview/>}/>
+          <Route path='vendor-profile-Overview' element={<VendorProfileOverview/>}/> 
+          <Route path='vendor-Notifications' element={<Notifications/>}/> 
+          <Route path='vendor-foods' element={<VendorFoods/>}/> 
+          <Route path='Vendor-upload' element={<VendorUpload/>}/> 
+          <Route path='Vendor-settings' element={<VendorSettings/>}/> 
+        </Route>
+      
+        <Route path='*' element={<Notfound/>} /> 
       </Route>
   )
 )

@@ -3,13 +3,12 @@ import "./login.css"
 import { useContext } from 'react'
 import { Cartcontext } from '../Mr edible store/context folder/appContext'
 import {FcGoogle} from "react-icons/fc"
-import { Link, NavLink } from 'react-router-dom'
-import users from '../signup/usersData'
-import { signInWithEmailAndPassword, signInWithEmailLink, signInWithPopup } from 'firebase/auth'
+import { Link, NavLink, Navigate } from 'react-router-dom'
+import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { auth, provider } from '../../firebase/firebase config'
 import { get, getDatabase, ref, update } from 'firebase/database'
 import { getAuth, sendEmailVerification } from "firebase/auth";
-import { uploadBytes, ref as storageRef, getStorage, getDownloadURL } from 'firebase/storage'
+import Footer from '../../footer-components/footer'
 
 
 function LoginPage() {
@@ -18,102 +17,106 @@ function LoginPage() {
   const emailRef= useRef()
   const passwardRef=useRef()
 
-
   const [loginAlert, setloginAlert]=useState()
   const [alertcolor, setalertcolor]=useState({})
   const [emailbordercolor, setemailbordercolor]=useState({border: "1px solid darkorange"})
   const [passwordbordercolor, setpasswordbordercolor]=useState({border: "1px solid darkorange"})
   const [buttonState, setButtonState]=useState("SIGN IN")
-
-  function validateEmail(){
-      if (!emailRef.current.value.includes("@")&& !emailRef.current.value.includes(".")){
-        setemailbordercolor({border: "2px solid red"})
-        setalertcolor({color:"red"})
-        setloginAlert("Email must include '@'")
-      }
-      if (emailRef.current.value.includes("@")&& emailRef.current.value.includes(".")){
-        setemailbordercolor({border: "none"})
-        setalertcolor({color:"red"})
-        setloginAlert("")
-      }
-  }
-  const [signinsuccessful, setsigninsuccessful]=useState(false)
-  const storage= getStorage()
-  async function submitloginWithGoogle(){
+  
+  async function submitCustomerLoginWithGoogle(){
     try{
       const userCredential=await signInWithPopup(auth, provider)
       console.log(userCredential)
       const user=userCredential.user
-      
-      if (user.emailVerified){
-        setemailbordercolor({border: "none"})
-        setpasswordbordercolor({border: "none"})
-        setalertcolor({color:"green"})
-        const serverimageref= storageRef(getStorage(), `customer passport/${user.uid}`)
-        await getDownloadURL(serverimageref)
-        .then(url=>{console.log(url.exist())})   
-        .catch(()=>{
-          fetch(user.photoURL).then(res => {
-            return res.blob();
-          }).then(blob => {
-              //uploading blob to firebase storage
-               uploadBytes(serverimageref, blob).then((snapshot) => {
-                  console.log('Uploaded a blob or file!');
-                }).catch((error)=>{console.log(error)});
-          }).catch(error=>{
-            alert("the image was not uploaded.")
-          })
 
-        })
-        
-        await update(ref(getDatabase(), "users/"+ user.uid),{
-          last_login:new Date().toLocaleString(),
-          email:user.email,
-          id:user.uid,
-          name:user.displayName,
-          passport:`customer passport/ ${user.uid}`,
-        }).then(()=>{
-          cart.switchToUser(user.uid)
-        })
-        
-        setloginAlert("Sign in successfull!")
-        console.log("login successfull")
-       
-      }else{
-        setalertcolor({color:"red"})
-        setloginAlert(<p>account not verified<button>resend verification link</button></p>)
+      if (user.emailVerified){
+        const data=await get(ref(getDatabase(), "users/"+user.uid))
+        localStorage.setItem('mredibleloggedinUser', JSON.stringify({...data.val()}))
+      }
+      else{
+          setalertcolor({color:"red"})
+          setloginAlert(<p>User account not registered <Navigate to='/signup-page'/></p>)
+          setButtonState("SIGN IN")
+      }
+      
+      if (localStorage.getItem('mredibleloggedinUser') !== null){  
+        if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"){
+          cart.switchToUser(user.uid, 1)
+          setalertcolor({color:"green"})
+          setloginAlert("Sign in successfull!")
+          await update(ref(getDatabase(), "users/"+user.uid),{
+            last_login:new Date().toLocaleString(),
+          })
+        }
+        else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="vendor"){
+          cart.switchToUser(user.uid, 2)
+          setalertcolor({color:"green"})
+          setloginAlert("Sign in successfull!")
+          await update(ref(getDatabase(), "users/"+user.uid),{
+            last_login:new Date().toLocaleString(),
+          })
+        }
+        else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="admin"){
+          cart.switchToUser(user.uid, 3)
+          setalertcolor({color:"green"})
+          await update(ref(getDatabase(), "users/"+user.uid),{
+            last_login:new Date().toLocaleString(),
+          })
+        }
       }
     }catch(error){
       setalertcolor({color:"red"})
       setloginAlert(error.message)
-      
     }
   }
 
-  async function submitlogin(){
+  async function submitCustomerLogin(){
     setButtonState("Loading...")
     try{
       const userCredential=await signInWithEmailAndPassword(auth, emailRef.current.value, passwardRef.current.value)
-      console.log(userCredential)
+      // console.log(userCredential)
       const user=userCredential.user
       if (user.emailVerified===true){
-        setemailbordercolor({border: "none"})
-        setpasswordbordercolor({border: "none"})
-        setalertcolor({color:"green"})
-        await update(ref(getDatabase(), "users/"+ userCredential.uid),{
-          last_login:new Date().toLocaleString(),
-        })
-        cart.switchToUser(user.uid)
-        setloginAlert("Sign in successfull!")
-        setButtonState("SIGN IN")
-        console.log("login successfull")
-      }else{
-        setalertcolor({color:"red"})
-        setloginAlert(<p>account not verified<button onClick={resendVerificationLink}>resend verification link</button></p>)
-        setButtonState("SIGN IN")
+        const data=await get(ref(getDatabase(), "users/"+user.uid))
+        localStorage.setItem('mredibleloggedinUser', JSON.stringify({...data.val()}))
       }
+      else{
+          setalertcolor({color:"red"})
+          setloginAlert(<p>account not verified<button onClick={resendVerificationLink}>resend verification link</button></p>)
+          setButtonState("SIGN IN")
+        }
+      if (localStorage.getItem('mredibleloggedinUser') !== null){  
+        if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"){
+          cart.switchToUser(user.uid, 1)
+          setalertcolor({color:"green"})
+          setloginAlert("Sign in successfull!")
+          setButtonState("SIGN IN")
+          await update(ref(getDatabase(), "users/"+user.uid),{
+            last_login:new Date().toLocaleString(),
+          })
+        }
+        else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="vendor"){
+          cart.switchToUser(user.uid, 2)
+          setalertcolor({color:"green"})
+          setloginAlert("Sign in successfull!")
+          setButtonState("SIGN IN")
+          await update(ref(getDatabase(), "users/"+user.uid),{
+            last_login:new Date().toLocaleString(),
+          })
+        }
+        else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="admin"){
+          cart.switchToUser(user.uid, 3)
+          setalertcolor({color:"green"})
+          setButtonState("SIGN IN")
+          await update(ref(getDatabase(), "users/"+user.uid),{
+            last_login:new Date().toLocaleString(),
+          })
+        }
+      }
+
     }catch(error){
       setemailbordercolor({border: "2px solid red"})
+      setpasswordbordercolor({border: "2px solid red"})
       setalertcolor({color:"red"})
       setloginAlert(error.message)
       setButtonState("SIGN IN")
@@ -132,36 +135,38 @@ function LoginPage() {
       });
   }
 
-  return (
-    
+  return (    
+    <div>
     <div className='login'>
+      <h3 className='login-title'>SIGN-IN</h3>
       <div id='login-Form-container'>
-        <h3 className='login-title'>SIGN IN</h3>
         <p style={alertcolor} className='signinalert'>{loginAlert}</p>
         <div className='loginFormAndButton'>
           <form className='login-form'>
             <label>E-mail</label>
-            <input onBlur={validateEmail} style={emailbordercolor} ref={emailRef} type='email' placeholder='example@yahoo.com'/><br/>
+            <input style={emailbordercolor} ref={emailRef} type='email' placeholder='example@yahoo.com'/><br/>
             <label>Password</label>
             <input style={passwordbordercolor} ref={passwardRef} type='password' placeholder='********'/>
           </form>
-          <p className='login-forgot-password'><Link to="/reset-profile">Forgot password?</Link></p>
-          <Link onClick={submitlogin} to={signinsuccessful && '/user-profile'}><button className='login-button'><strong>{buttonState}</strong></button></Link>
+          <p id='login-forgot-passwords'><Link to="/reset-profile">Forgot password?</Link></p>
+          <button onClick={submitCustomerLogin} className='login-button'><strong>{buttonState}</strong></button>
         </div>
-        
+        {cart.authdata==="customer" &&  <Navigate to='/user-profile'/>}
+        {cart.authdata==="vendor" &&  <Navigate to='/Vendor-profile-Overview'/>}
+        {cart.authdata==="admin" &&  <Navigate to='/admin-page'/>}
         <p className='login-options'>Or sign in using</p>
-        <div className='login-option-picture' onClick={submitloginWithGoogle}><FcGoogle/></div>
+        <div className='login-option-picture' onClick={submitCustomerLoginWithGoogle}><FcGoogle/></div>
         
         <h5 className='sign-up-button'>
           <p>I dont Have an account?</p>
           <div><NavLink to="/signup-page">SIGN UP</NavLink></div>
         </h5>
-      </div>
+      </div> 
     </div>
-        
+    <Footer/>
+    </div> 
     
     
   )
 }
-
 export default LoginPage

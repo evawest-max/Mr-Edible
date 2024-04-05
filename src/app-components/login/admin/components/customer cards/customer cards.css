@@ -1,0 +1,66 @@
+#customer-card-container{
+    padding: 3%;
+    background-color: white;
+    box-shadow: 0px 0px 20px 2px gray;
+    border-radius: 20px;
+    margin: 10px;
+    max-width: 300px;
+    height: fit-content;
+    border: 1px solid gray;
+    &:hover{
+        transform: scale(1.05);
+    }
+}
+#customer-card-container img{
+    width: 100%;
+    object-fit: cover;
+}
+#customer-card-container h1{
+    font-size: 100%;
+    text-align: center;
+}
+#customer-card-more-details{
+    font-size: 70%;
+    background-color: greenyellow;
+    border-radius: 5px;
+    padding: 3px;
+    text-align: center;
+}
+#customer-activate-account-BTN{
+    background-color: rgb(4, 203, 4);
+    border-radius: 5px;
+    padding: 3px;
+    text-align: center;
+}
+#customer-comment-btn-container{
+    display: flex;
+    justify-content: space-between;
+}
+#customer-suspend-account-BTN{
+    background-color: orange;
+    border-radius: 5px;
+    padding: 3px 5px;
+    text-align: center;
+}
+#customer-delete-Account{
+    background-color: red;
+    border-radius: 5px;
+    padding: 3px 5px;
+    text-align: center;
+}
+
+@media screen and (max-width: 497px) {
+    #customer-card-container{
+        padding: 4%;
+        background-color: white;
+        box-shadow: 0px 0px 20px 2px gray;
+        border-radius: 20px;
+        margin: 10px;
+        max-width: 300px;
+        height: fit-content;
+        border: 1px solid gray;
+        &:hover{
+            transform: scale(1.05);
+        }
+    }
+}

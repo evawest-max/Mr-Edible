@@ -9,7 +9,7 @@ import { Bar, Line, Pie } from "react-chartjs-2";
         labels: labels,
         datasets: [
         {
-        label: "Monthly Registered Users",
+        label: "Yearly Registered Customers",
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgb(255, 99, 132)",
         data: [0, 10, 5, 2, 20, 30, 45],
@@ -22,7 +22,7 @@ import { Bar, Line, Pie } from "react-chartjs-2";
         labels: PrpopertyLabels,
         datasets: [
         {
-        label: "Monthly uploaded properties",
+        label: "Yearly Registered Vendors",
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgb(0,0,255)",
         data: [0, 10, 5, 2, 20, 30, 45],

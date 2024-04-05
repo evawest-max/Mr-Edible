@@ -1,0 +1,70 @@
+#admin-vendor-Detail-container{
+    display: flex;
+    flex-direction: row;
+    gap: 3%;
+    margin-top: 20px;
+}
+#admin-vendor-info-container{
+    width: 50%;
+    /* border: 3px solid red; */
+  }
+  #admin-vendor-info-container img{
+    width: 100%;
+    object-fit: contain;
+  }
+#admin-vendor-search-fooditem-container{
+    width: 100%;
+}
+#admin-vendor-search-fooditem-container input{
+    width: 50%;
+    height: 30px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+#admin-vendor-fooditem-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 15px;
+  width: 100%;
+  max-height: 100vh;
+  background-color: rgb(183, 182, 182);
+  overflow: scroll;
+  padding: 20px;
+  /* border: 3px solid red; */
+}
+
+@media screen and (max-width: 900px) {
+    #admin-vendor-Detail-container{
+        display: flex;
+        flex-direction: column;
+        gap: 3%;
+        margin-top: 20px;
+    }
+    #admin-vendor-info-container{
+        width: 100%;
+      }
+      #admin-vendor-info-container img{
+        width: 100%;
+        object-fit: contain;
+      }
+    #admin-vendor-search-fooditem-container{
+        width: 100%;
+    }
+    #admin-vendor-search-fooditem-container input{
+        width: 50%;
+        height: 30px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+    #admin-vendor-fooditem-container{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-gap: 15px;
+      width: 100%;
+      max-height: 100vh;
+      background-color: rgb(183, 182, 182);
+      overflow: scroll;
+      padding: 20px;
+      /* border: 3px solid red; */
+    }
+}

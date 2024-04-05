@@ -160,6 +160,9 @@
 @media screen and (min-width:900px){
     #loginIcon-visibility-desktop{
         display: flex;
+    /* border: 3px solid yellow; */
+        width: fit-content;
+        height: fit-content;
     }
     .everything{
         display: flex;

@@ -31,7 +31,7 @@
     color: gold;
 }
 .food-item:hover{
-    transform: scale(5.2);
+    transform: scale(1.05);
     box-shadow: 0px 0px 10px 3px rgb(2, 121, 22);
 }
 .food-item img{
@@ -83,7 +83,7 @@
     color: gold;
 }
 .ordered-food-item:hover{
-    transform: scale(5.2);
+    transform: scale(1.05);
     box-shadow: 0px 0px 10px 3px rgb(2, 121, 22);
 }
 .ordered-food-item img{
@@ -150,7 +150,7 @@
         color: gold;
     }
     .food-item:hover{
-        transform: scale(5.2);
+        transform: scale(1.05);
         box-shadow: 0px 0px 10px 3px rgb(2, 121, 22);
     }
     .food-item img{
@@ -202,7 +202,7 @@
         color: gold;
     } */
     .ordered-food-item:hover{
-        transform: scale(-1.9);
+        transform: scale(1.05);
         box-shadow: 0px 0px 10px 3px lightblue;
     }
     .ordered-food-item img{
@@ -270,7 +270,7 @@
         color: gold;
     }
     .food-item:hover{
-        transform: scale(5.2);
+        transform: scale(1.05);
         box-shadow: 0px 0px 10px 3px rgb(2, 121, 22);
     }
     .food-item img{
@@ -322,7 +322,7 @@
         color: gold;
     } */
     .ordered-food-item:hover{
-        transform: scale(-1.9);
+        transform: scale(1.05);
         box-shadow: 0px 0px 10px 3px lightblue;
     }
     .ordered-food-item img{
@@ -392,7 +392,7 @@
     .food-item:hover{
         transform: scale(1.05);
         box-shadow: 0px 0px 10px 3px rgb(2, 121, 22);;
-        border: 1px solid;
+        /* border: 1px solid; */
         border-bottom: 10px;
     }
     .food-item img{
@@ -440,9 +440,9 @@
         box-shadow: 0px 0px 10px 3px lightblue;
     }
     .ordered-food-item:hover{
-        transform: scale(-1.9);
+        transform: scale(1.05);
         box-shadow: 0px 0px 10px 3px lightblue;
-        border: 1px solid;
+        /* border: 1px solid; */
         border-bottom: 10px;
     }
     .ordered-food-item img{
@@ -517,7 +517,7 @@
     .food-item:hover{
         transform: scale(1.05);
         box-shadow: 0px 0px 10px 3px rgb(2, 121, 22);
-        border: 1px solid;
+        /* border: 1px solid; */
         border-bottom: 10px;
     }
     .food-item img{

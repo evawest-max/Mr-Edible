@@ -1,15 +1,16 @@
 .container{
     background: #070917;
     width: auto;
-    margin: auto;
-    margin-top: 25px;
+    /* margin: auto; */
+    /* margin-top: 25px; */
+    /* border: 3px solid red; */
 }
 .footer-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: white;
-    margin-top: 30px;
+    /* margin-top: 30px; */
     margin-right: 4%;
     margin-left: 4%;
 }
@@ -85,8 +86,8 @@
     .container{
         background: #070917;
         width: auto;
-        margin: auto;
-        margin-top: 30px;
+        /* margin: auto; */
+        /* margin-top: 30px; */
     }
     .footer-container{
         display: flex;
@@ -170,7 +171,7 @@
         background: #070917;
         width: auto;
         margin: auto;
-        margin-top: 30px;
+        /* margin-top: 30px; */
     }
     .footer-container{
         display: flex;
@@ -253,8 +254,8 @@
     .container{
         background: #070917;
         /* width: 1426px; */
-        margin: auto;
-        margin-top: 56px;
+        /* margin: auto; */
+        /* margin-top: 56px; */
         border: 5px solid;
     }
     .footer-container{

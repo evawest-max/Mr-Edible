@@ -4,9 +4,9 @@
     display: flex;
     justify-content: center;
 }
-
 .signup-title{
-    color:white
+    margin-top: 50px;
+    color: white;
 }
 .signup{
     align-items: center;
@@ -19,6 +19,7 @@
     width: 90%;
 }
 .inputAndButtondiv{
+    
     margin: 0px 30px;
 }
 .signup-form{
@@ -52,6 +53,13 @@
 .sign-up-button{
     color: White;
 }
+#sign-up-terms-and-Conditions{
+    color: white;
+}
+#sign-up-terms-and-Conditions a{
+    color: rgb(170, 170, 255);
+    text-decoration-color: rgb(70, 70, 255);
+}
 
 @media screen and (min-width:900px){
     .signup-title{
@@ -69,7 +77,7 @@
         align-content: center;
         justify-self: center;
         text-align: center;
-        margin: 10px 400px;
+        margin: 50px 400px;
         max-width: 700px;
         min-width: 500px;
         align-self: center;
@@ -107,5 +115,12 @@
     .sign-up-button div{
         color: blue;
         cursor: pointer;
+    }
+    #sign-up-terms-and-Conditions{
+        color: black;
+    }
+    #sign-up-terms-and-Conditions a{
+        color: rgb(70, 70, 255);
+        text-decoration-color: rgb(70, 70, 255);
     }
 }

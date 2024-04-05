@@ -1,6 +1,6 @@
 import React, { createContext, useEffect,} from 'react'
 import { useState } from 'react'
-import { Link, NavLink, } from 'react-router-dom'
+import { Link, NavLink, Navigate, } from 'react-router-dom'
 import { FaUserCircle } from "react-icons/fa";
 // import users from '../../signup/usersData'
 import { child, get, getDatabase, push, ref, remove, set, update } from 'firebase/database';
@@ -21,6 +21,7 @@ export const Cartcontext= createContext({
   totalItemInCart:0,
   items:productsIDInTheCartList,
   orders:0,
+  authdata:0,
   getproductquantity:()=>{},
   increaseProductQuantity:()=>{},
   addItemsToCartList:()=>{},
@@ -31,7 +32,8 @@ export const Cartcontext= createContext({
   switchToUser:()=>{},
   signout:()=>{},
   deleteUserAccount:()=>{},
-  addToOrders:()=>{}
+  addToOrders:()=>{},
+  changeAuthUser:()=>{}
 })
 
 
@@ -235,45 +237,56 @@ function Cartprovider({children}) {
   function storeuserid(id){
     regID=id
   }
+  let databasePath=null
+  let storagePath=null
+  let [authUser, setauthUser]=useState(null)
+  function changeAuthUser(){
+    setauthUser(null)
+  }
 
-  async function switchToUser(userid){
-    
-    storeuserid(userid)
-    try{
-      const data=await get(ref(getDatabase(), "users/"+userid))
-      setuserloggedin(data.val())
-      console.log(data.val().name.split(''))
-      let fullnameAb=data.val().name.split('')
-      fullnameAb.map((item, index)=>{
-            if (item===' '){
-              if(fullnameAb[index+1]){
-                fullnameAb=`${fullnameAb[0]}. ${fullnameAb[index+1]}`.toLocaleUpperCase()
-                console.log(fullnameAb)
-              }
-            }
-        })
-        
-        const storage = getStorage();
-        let picUrl=''
-        
-      await getDownloadURL(refStorage(storage, `customer passport/${data.val().id}`))
-        .then((url) => {
-          // `url` is the download URL for 'images/stars.jpg'
-          setimageUrl(url)
-          console.log(url)
-          picUrl=url
-          
-        })
-       
-        localStorage.setItem('mredibleloggedinUser', JSON.stringify({...data.val(), imageaddress:imageUrl}))
-        setloginIcon(
-          <div className="loggedin-user-container">
-          <img src={picUrl} width="20px" height="20px" alt='user pic'/>
-          <NavLink to="/user-profile">{fullnameAb}</NavLink>
-        </div>)
-    }catch(error){
-      alert(error.message)
+  async function switchToUser(userid, loginID){
+    const storage = getStorage();
+          let picUrl=''  
+    if (loginID===1){
+      setauthUser("customer")
+          await getDownloadURL(refStorage(storage, `customer passport/${userid}`))
+          .then((url) => {
+            picUrl=url
+            
+          })
     }
+    // loginID===1&&setauthUser("customer")
+    loginID===2&&setauthUser("vendor")
+    loginID===3&&setauthUser("admin")
+        let fullnameAb=JSON.parse(localStorage.getItem('mredibleloggedinUser')).name.split('')
+        fullnameAb.map((item, index)=>{
+              if (item===' '){
+                if(fullnameAb[index+1]){
+                  fullnameAb=`${fullnameAb[0]}. ${fullnameAb[index+1]}`.toLocaleUpperCase()
+                  console.log(fullnameAb)
+                }
+              }else if (!fullnameAb.includes(" ")){
+                fullnameAb= (fullnameAb[0]+fullnameAb[2]).toLocaleUpperCase()
+              }
+          })
+
+          // const storage = getStorage();
+          // let picUrl=''  
+          // getDownloadURL(refStorage(storage, `customer passport/${userid}`))
+          // .then((url) => {
+          //   // `url` is the download URL for 'images/stars.jpg'
+          //   // setimageUrl(url)
+          //   // console.log(url)
+          //   picUrl=url
+            
+          // })
+
+          setloginIcon(
+            <div className="loggedin-user-container">
+            <img src={picUrl} width="20px" height="20px" alt='user pic'/>
+            <NavLink to={JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"?"/user-profile":JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="vendor"?"/Vendor-profile-Overview":JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="admin"&&"admin-page"}>{fullnameAb}</NavLink>
+          </div>)
+          // setauthUser(null)
   }
 
   function signout(){
@@ -292,30 +305,37 @@ function Cartprovider({children}) {
  }, []);
 
  async function keepuserloggedin(){
-  let ur=""
+  let fullnameAb=null
   if (localStorage.getItem('mredibleloggedinUser') !== null){
-  await getDownloadURL(refStorage(getStorage(), `customer passport/${JSON.parse(localStorage.getItem('mredibleloggedinUser')).id}`))
+    fullnameAb=JSON.parse(localStorage.getItem('mredibleloggedinUser')).name.split('')
+    fullnameAb.map((item, index)=>{
+          if (item===' '){
+            if(fullnameAb[index+1]){
+              fullnameAb=`${fullnameAb[0]}. ${fullnameAb[index+1]}`.toLocaleUpperCase()
+              console.log(fullnameAb)
+            }
+          }else if (!fullnameAb.includes(" ")){
+            fullnameAb= (fullnameAb[0]+fullnameAb[2]).toLocaleUpperCase()
+          }
+      })
+      const storage = getStorage();
+      let picUrl=''  
+        if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"){
+          await getDownloadURL(refStorage(storage, `customer passport/${JSON.parse(localStorage.getItem('mredibleloggedinUser')).id}`))
           .then((url) => {
-            ur=url
-          }).catch(error=>{alert(error)})
-  }       
-  let fullnameAb=''
-  if (localStorage.getItem('mredibleloggedinUser') !== null){
-  let userDataFromLocalStorage=JSON.parse(localStorage.getItem('mredibleloggedinUser'))
-  setuserloggedin(userDataFromLocalStorage)
-    let username= userDataFromLocalStorage.name
-    username.split('').map((item, index)=>{
-        if (item===' '){
-            fullnameAb=(username[0]+'.'+username[index+1]).toLocaleUpperCase()
+            // `url` is the download URL for 'images/stars.jpg'
+            // setimageUrl(url)
+            // console.log(url)
+            picUrl=url
+            
+          })
         }
-    })
-        
-      
-  setloginIcon(
-    <div className="loggedin-user-container">
-      <img src={ur} width="20px" height="20px" alt='user pic'/>
-      <Link to="/user-profile">{fullnameAb}</Link>
-    </div>)
+
+          setloginIcon(
+            <div className="loggedin-user-container">
+            <img src={picUrl} width="20px" height="20px" alt='user pic'/>
+            <NavLink to={JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"?"/user-profile":JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="vendor"?"Vendor-profile-Overview":JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="admin"&&"admin-page"}>{fullnameAb}</NavLink>
+          </div>)
   }
 }
 
@@ -367,6 +387,7 @@ function Cartprovider({children}) {
     items:productsIDInTheCartList,
     totalItemInCart:totalCart,
     orders:itemsInOrders,
+    authdata:authUser,
     getproductquantity,
     increaseProductQuantity,
     addItemsToCartList,
@@ -378,6 +399,7 @@ function Cartprovider({children}) {
     signout,
     deleteUserAccount,
     addToOrders,
+    changeAuthUser,
   }
 
   return (

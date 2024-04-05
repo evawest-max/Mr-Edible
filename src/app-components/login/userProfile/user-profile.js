@@ -29,6 +29,7 @@ function UserProfile() {
     const cart= useContext(Cartcontext)
     // const smilecart=useContext(SmileCartcontext)
     function signout(){
+      cart.changeAuthUser()
       if (localStorage.getItem("mredibleloggedinUser")!==null){
         localStorage.removeItem('mredibleloggedinUser')
           cart.signout()
@@ -232,7 +233,7 @@ function UserProfile() {
           <div style={inboxDisplay} id='inbox-container'>This is were you will find your messages <RiMessage2Fill /> we send you.<br/>your inbox is empty now</div>
 
           <div style={orderDisplay} id='order-history-container'> 
-              <NavLink to="/admin-page"><h3>Resent orders</h3></NavLink>
+              <h3>Resent orders</h3>
               <div className='ordered-container'> {cart.orders}</div>
           </div>
           <div style={favouritiesDisplay} id='favourite-container'>This is where you will find your order favourities</div>

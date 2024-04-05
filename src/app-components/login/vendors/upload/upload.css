@@ -1,0 +1,31 @@
+.vendor-upload-App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .vendor-upload-form {
+    margin-top: 20px;
+  }
+  
+  .vendor-upload-label {
+    margin-right: 10px;
+  }
+  
+  .vendor-upload-input[type="file"] {
+    margin-bottom: 10px;
+  }
+  
+  .vendor-upload-button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #0adc34;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .vendor-upload-button:hover {
+    background-color: #03862a;
+  }
