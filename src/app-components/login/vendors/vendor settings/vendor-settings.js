@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import "./vendor-settings.css"
+import { getDatabase, onValue, ref, update } from 'firebase/database';
 
 export default function VendorSettings() {
   // Define state variables for each setting
@@ -18,7 +19,30 @@ export default function VendorSettings() {
     console.log('Phone number:', phoneNumber);
     console.log('Password:', deliveryFee);
     console.log('Is Admin:', isAdmin);
+
+    if(isAdmin){
+      const db=getDatabase();
+      const postData={
+        last_profile_update:new Date().toLocaleString(),
+        accountName:vendorname,
+        aboutUs:aboutUs,
+        deliveryFee:deliveryFee,
+        phonenumber:phoneNumber
+      }
+      update (ref(db,"users/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).id ), postData).then(() => {  
+        alert('Update successful')
+      })
+      .catch((error)=>{
+        alert(error)
+      })
+    }else{alert("check the box first")}
   };
+  const db = getDatabase();
+  const userdataref = ref(db, 'users/'+JSON.parse(localStorage.getItem('mredibleloggedinUser')).id);
+  onValue (userdataref,(snapshot) => {
+    const data = snapshot.val();
+    localStorage.setItem('mredibleloggedinUser', JSON.stringify(data))
+  });
   return (
     <div className="admin-settings">
       <h1>Vendor Settings</h1>
@@ -33,14 +57,14 @@ export default function VendorSettings() {
         </div>
         <div className="form-group">
           <label htmlFor="Phonenumber">Phone number:</label>
-          <input type="email" id="phonenumber" value={phoneNumber} onChange={(e) => setPhoneNUmber(e.target.value)} />
+          <input type="number" id="phonenumber" value={phoneNumber} onChange={(e) => setPhoneNUmber(e.target.value)} />
         </div>
         <div className="form-group">
           <label htmlFor="password">Delivery fee:</label>
           <input type="number" id="number" value={deliveryFee} onChange={(e) => setDeliveryFee(e.target.value)} />
         </div>
         <div className="form-group">
-          <label htmlFor="isAdmin">Is Vendor:</label>
+          <p htmlFor="isAdmin">check the box:</p>
           <input type="checkbox" id="isAdmin" checked={isAdmin} onChange={(e) => setIsAdmin(e.target.checked)} />
         </div>
         <button type="submit">Save Settings</button>

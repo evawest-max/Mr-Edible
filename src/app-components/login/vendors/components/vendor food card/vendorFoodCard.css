@@ -1,0 +1,52 @@
+.vendor-profile-food-item{
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    font-family: Raleway;
+    text-align: center;
+    transition: all 1s ease-in-out;
+    background-color: darkgreen;
+    box-shadow: 0px 0px 10px 3px gray;
+    animation: fade-slide-right 1s ease-in-out forwards;
+}
+.vendor-profile-food-item div{
+    color: gold;
+}
+.vendor-profile-food-item:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px 3px rgb(2, 121, 22);
+}
+.vendor-profile-food-item img{
+    width: 140px;
+    height: 100px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.vendor-profile-food-name{
+    color: white;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    width: 135px;
+}
+.vendor-profile-food-price{
+    color: white;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.vendor-profile-food-button{
+    width: 140px;
+    height: 28px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 800;
+    background: #FA9807;
+    cursor: pointer;
+}

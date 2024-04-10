@@ -1,0 +1,7 @@
+#vendors-food-item-grid-container{
+    display: grid;
+    grid-gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); 
+    margin: 20px 35px;
+    /* border: 3px solid red; */
+}

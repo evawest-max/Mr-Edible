@@ -244,19 +244,30 @@ function Cartprovider({children}) {
     setauthUser(null)
   }
 
-  async function switchToUser(userid, loginID){
+  async function switchToUser(userid, loginID,){
+    if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"||JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="vendor"||JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="admin"){
     const storage = getStorage();
           let picUrl=''  
     if (loginID===1){
       setauthUser("customer")
-          await getDownloadURL(refStorage(storage, `customer passport/${userid}`))
-          .then((url) => {
-            picUrl=url
-            
-          })
+      await getDownloadURL(refStorage(storage, `${JSON.parse(localStorage.getItem('mredibleloggedinUser')).passport}`))
+      .then((url) => {
+        picUrl=url 
+      })
+      .catch((error)=>{
+        console.log(error)
+        picUrl="https://robohash.org/fghj"
+      })
+    }
+    else if (loginID===2){
+      setauthUser("vendor")
+      await getDownloadURL(refStorage(storage, `${JSON.parse(localStorage.getItem('mredibleloggedinUser')).passport}`))
+      .then((url) => {
+        picUrl=url 
+      })
     }
     // loginID===1&&setauthUser("customer")
-    loginID===2&&setauthUser("vendor")
+    // loginID===2&&setauthUser("vendor")
     loginID===3&&setauthUser("admin")
         let fullnameAb=JSON.parse(localStorage.getItem('mredibleloggedinUser')).name.split('')
         fullnameAb.map((item, index)=>{
@@ -270,23 +281,19 @@ function Cartprovider({children}) {
               }
           })
 
-          // const storage = getStorage();
-          // let picUrl=''  
-          // getDownloadURL(refStorage(storage, `customer passport/${userid}`))
-          // .then((url) => {
-          //   // `url` is the download URL for 'images/stars.jpg'
-          //   // setimageUrl(url)
-          //   // console.log(url)
-          //   picUrl=url
-            
-          // })
-
           setloginIcon(
             <div className="loggedin-user-container">
             <img src={picUrl} width="20px" height="20px" alt='user pic'/>
             <NavLink to={JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"?"/user-profile":JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="vendor"?"/Vendor-profile-Overview":JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="admin"&&"admin-page"}>{fullnameAb}</NavLink>
           </div>)
           // setauthUser(null)
+    }else{
+      localStorage.removeItem('mredibleloggedinUser')
+      const user= getAuth().currentUser;
+      // const user= auth.currentUser
+      await user?.delete();
+      alert("please signup")
+    }
   }
 
   function signout(){
@@ -306,7 +313,9 @@ function Cartprovider({children}) {
 
  async function keepuserloggedin(){
   let fullnameAb=null
+  
   if (localStorage.getItem('mredibleloggedinUser') !== null){
+    if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"||JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="vendor"||JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="admin"){
     fullnameAb=JSON.parse(localStorage.getItem('mredibleloggedinUser')).name.split('')
     fullnameAb.map((item, index)=>{
           if (item===' '){
@@ -321,13 +330,18 @@ function Cartprovider({children}) {
       const storage = getStorage();
       let picUrl=''  
         if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"){
-          await getDownloadURL(refStorage(storage, `customer passport/${JSON.parse(localStorage.getItem('mredibleloggedinUser')).id}`))
+          await getDownloadURL(refStorage(storage, `${JSON.parse(localStorage.getItem('mredibleloggedinUser')).passport}`))
           .then((url) => {
-            // `url` is the download URL for 'images/stars.jpg'
-            // setimageUrl(url)
-            // console.log(url)
-            picUrl=url
-            
+            picUrl=url 
+          })
+          .catch((error)=>{
+            console.log(error)
+            picUrl="https://robohash.org/fghj"
+          })
+        }else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="vendor"){
+          await getDownloadURL(refStorage(storage, `${JSON.parse(localStorage.getItem('mredibleloggedinUser')).passport}`))
+          .then((url) => {
+            picUrl=url 
           })
         }
 
@@ -336,7 +350,14 @@ function Cartprovider({children}) {
             <img src={picUrl} width="20px" height="20px" alt='user pic'/>
             <NavLink to={JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"?"/user-profile":JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="vendor"?"Vendor-profile-Overview":JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="admin"&&"admin-page"}>{fullnameAb}</NavLink>
           </div>)
+          }else{
+            localStorage.removeItem('mredibleloggedinUser')
+            const user= getAuth().currentUser;
+            await user?.delete()
+            alert("please signup")
+          }
   }
+
 }
 
   function deleteUserAccount(index){

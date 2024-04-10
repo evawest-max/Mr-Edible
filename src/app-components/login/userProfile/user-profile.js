@@ -201,9 +201,10 @@ function UserProfile() {
           // console.log(url)
           
         })
-        .catch((error) => {
-          // Handle any errors
-        });
+        .catch((error)=>{
+          console.log(error)
+          setuserimageurl("https://robohash.org/fghj")
+        })
         
       if (localStorage.getItem("mredibleloggedinUser")!==null){
         let loggedinuser=JSON.parse(localStorage.getItem('mredibleloggedinUser'))

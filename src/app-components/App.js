@@ -35,7 +35,7 @@ import VendorRoot from './login/vendors/vendor-Root/vendorRoot';
 import Notifications from './login/vendors/notifications/notifications';
 import VendorFoods from './login/vendors/vendor-foods/vendor-foods';
 import VendorUpload from './login/vendors/upload/upload';
-import VendorSettings from './login/vendors/settings/vendor-settings';
+import VendorSettings from './login/vendors/vendor settings/vendor-settings';
 
 
 const router=createBrowserRouter(

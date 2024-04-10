@@ -11,6 +11,7 @@ import { LiaSignOutAltSolid } from "react-icons/lia";
 import { IoSunny } from "react-icons/io5";
 import { useContext } from 'react'
 import { Cartcontext } from '../../../Mr edible store/context folder/appContext';
+import { getDatabase, onValue, ref } from 'firebase/database';
 
 export default function VendorNav() {
   const cart= useContext(Cartcontext)
@@ -63,7 +64,12 @@ export default function VendorNav() {
       setUploadDisplay({background:"none"})
       setSettingsDisplay({background:"white", borderRadius: "10px", color: "black"})
     }
-    
+    const db = getDatabase();
+  const foodDataRef = ref(db, 'food items/'+JSON.parse(localStorage.getItem('mredibleloggedinUser')).name);
+  onValue (foodDataRef,(snapshot) => {
+    const data = snapshot.val();
+    localStorage.setItem('vendorsFoodItems', JSON.stringify(data))
+  }); 
 
   return (
       <div id='admin-nav-image-container'>

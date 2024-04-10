@@ -6,7 +6,7 @@ import {FcGoogle} from "react-icons/fc"
 import { Link, NavLink, Navigate } from 'react-router-dom'
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { auth, provider } from '../../firebase/firebase config'
-import { get, getDatabase, ref, update } from 'firebase/database'
+import { get, getDatabase, onValue, ref, update } from 'firebase/database'
 import { getAuth, sendEmailVerification } from "firebase/auth";
 import Footer from '../../footer-components/footer'
 
@@ -28,25 +28,44 @@ function LoginPage() {
       const userCredential=await signInWithPopup(auth, provider)
       console.log(userCredential)
       const user=userCredential.user
+      console.log(user)
 
       if (user.emailVerified){
         const data=await get(ref(getDatabase(), "users/"+user.uid))
         localStorage.setItem('mredibleloggedinUser', JSON.stringify({...data.val()}))
+        // const dataRef =ref(getDatabase(), "users/"+user.uid);
+        // onValue(dataRef, (snapshot) => {
+        //   const data = snapshot.val();;
+        //   localStorage.setItem('mredibleloggedinUser', JSON.stringify({...data}))
+        // });
       }
       else{
           setalertcolor({color:"red"})
-          setloginAlert(<p>User account not registered <Navigate to='/signup-page'/></p>)
+          setloginAlert(<p>User account not verified <button onClick={resendVerificationLink}>Resend Verification Link</button></p>)
           setButtonState("SIGN IN")
       }
       
-      if (localStorage.getItem('mredibleloggedinUser') !== null){  
-        if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"){
-          cart.switchToUser(user.uid, 1)
-          setalertcolor({color:"green"})
+      if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType=== null){  
+        await update(ref(getDatabase(), "users/"+user.uid),{
+          last_login:new Date().toLocaleString(),
+          id:user.uid,
+          name:user.displayName,
+          passport:`customer passport/ ${user.uid}`,
+          email:user.email,
+          accountType:"customer"
+        })
+        cart.switchToUser(user.uid, 1,)
+          setalertcolor({color:"blue"})
           setloginAlert("Sign in successfull!")
+      }
+      else if (localStorage.getItem('mredibleloggedinUser') !== null){  
+        if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"){
           await update(ref(getDatabase(), "users/"+user.uid),{
             last_login:new Date().toLocaleString(),
           })
+          cart.switchToUser(user.uid, 1)
+          setalertcolor({color:"green"})
+          setloginAlert("Sign in successfull!")
         }
         else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="vendor"){
           cart.switchToUser(user.uid, 2)
@@ -79,6 +98,11 @@ function LoginPage() {
       if (user.emailVerified===true){
         const data=await get(ref(getDatabase(), "users/"+user.uid))
         localStorage.setItem('mredibleloggedinUser', JSON.stringify({...data.val()}))
+        // const dataRef =ref(getDatabase(), "users/"+user.uid);
+        // onValue(dataRef, (snapshot) => {
+        //   const data = snapshot.val();;
+        //   localStorage.setItem('mredibleloggedinUser', JSON.stringify({...data}))
+        // });
       }
       else{
           setalertcolor({color:"red"})
