@@ -11,7 +11,7 @@ export default function VendorNotifications() {
       return (
         <div className="App">
           <header className="App-header">
-            <h1>Admin Notification Page</h1>
+            <h1>Vendor Notification Page</h1>
           </header>
           <div className="notification-container">
             <h2>Notifications</h2>

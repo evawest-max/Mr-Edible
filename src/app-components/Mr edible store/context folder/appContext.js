@@ -320,7 +320,7 @@ function Cartprovider({children}) {
     fullnameAb.map((item, index)=>{
           if (item===' '){
             if(fullnameAb[index+1]){
-              fullnameAb=`${fullnameAb[0]}. ${fullnameAb[index+1]}`.toLocaleUpperCase()
+              fullnameAb=`${fullnameAb[0]} .${fullnameAb[index+1]}`.toLocaleUpperCase()
               console.log(fullnameAb)
             }
           }else if (!fullnameAb.includes(" ")){

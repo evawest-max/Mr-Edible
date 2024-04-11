@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "./vendorFoodCard.css"
 import { getDownloadURL, ref as storageref, getStorage } from 'firebase/storage';
+import { getDatabase, ref, update } from 'firebase/database';
 
 export default function VendorFoodCard(props) {
     let [pics, setpics]=useState("")
@@ -16,6 +17,29 @@ export default function VendorFoodCard(props) {
           });
 
     }
+
+    
+    function setAvailable(){
+        const db=getDatabase();
+        const postData={
+            availability:true,
+            last_available:new Date().toLocaleString(),
+        }
+        update (ref(db,"food items/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).name+"/"+props.id, ), postData).then(() => {
+            alert('Update success')
+        })
+    }
+    function setUnavailable(){
+        const db=getDatabase();
+        const postData={
+            availability:false,
+            last_unavailable:new Date().toLocaleString(),
+        }
+        update (ref(db,"food items/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).name+"/"+props.id, ), postData).then(() => {
+            alert('Update success')
+        })
+    }
+
     const [deleteButton, setDeleteButton]=useState(<button className='vendor-profile-food-button' onClick={deleteItem}>Delete</button>)
     function deleteItem(){
         setDeleteButton(<div>
@@ -41,6 +65,7 @@ export default function VendorFoodCard(props) {
         <p className="vendor-profile-food-price"><del>{props.oldAmount}</del> ₦{props.amount}</p>
         {/* <div>{props.stars}</div> */}
         {deleteButton}
+        {props.availability?<button id='vendor-unavailable-BTN' onClick={setUnavailable }>Unavailable</button>:<button id='vendor-available-BTN' onClick={setAvailable}>Available</button>}
     </div>
   )
 }

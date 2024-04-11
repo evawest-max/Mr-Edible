@@ -43,10 +43,28 @@
 }
 .vendor-profile-food-button{
     width: 140px;
-    height: 28px;
+    height: 30px;
     border-radius: 5px;
     color: white;
     font-weight: 800;
     background: #FA9807;
+    cursor: pointer;
+}
+#vendor-unavailable-BTN{
+    width: 140px;
+    height: 30px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 800;
+    background: #fa072f;
+    cursor: pointer;
+}
+#vendor-available-BTN{
+    width: 140px;
+    height: 30px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 800;
+    background: #02dd0d;
     cursor: pointer;
 }
