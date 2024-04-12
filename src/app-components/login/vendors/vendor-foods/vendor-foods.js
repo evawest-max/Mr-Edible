@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "./vendor-foods.css"
 import VendorFoodCard from '../components/vendor food card/vendorFoodCard'
-import { getDatabase, ref, onValue, remove, set, update } from "firebase/database";
-import { getDownloadURL, ref as storageref, getStorage } from 'firebase/storage';
+import { getDatabase, ref, onValue, update } from "firebase/database";
+// import { getDownloadURL, ref as storageref, getStorage } from 'firebase/storage';
 
 export default function VendorFoods() {
   let food=[]
