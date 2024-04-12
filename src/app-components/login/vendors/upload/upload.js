@@ -65,16 +65,16 @@ export default function VendorUpload() {
         <input className='vendor-upload-input' type="file" id="upload" onChange={handleFileChange} />
 
         <label className='vendor-upload-label' htmlFor="name">Food Name Field:</label>
-        <input className='vendor-upload-input' type="text" id="name" value={foodName} onChange={(e) => setFoodName(e.target.value)} />
+        <input className='vendor-upload-input' type="text" id="name" value={foodName} placeholder='Rice and Chicken' onChange={(e) => setFoodName(e.target.value)} />
 
         <label className='vendor-upload-label' htmlFor="amount">Amount Field:</label>
-        <input className='vendor-upload-input' type="number" id="amount" value={amount} onChange={(e) => setAmount(e.target.value)} />
+        <input className='vendor-upload-input' type="number" id="amount" value={amount} placeholder='3500' onChange={(e) => setAmount(e.target.value)} />
 
         <label className='vendor-upload-label' htmlFor="oldAmount">Old Amount Field:</label>
-        <input className='vendor-upload-input' type="number" id="oldAmount" value={oldAmount} onChange={(e) => setOldAmount(e.target.value)} />
+        <input className='vendor-upload-input' type="number" id="oldAmount" value={oldAmount} placeholder='4000' onChange={(e) => setOldAmount(e.target.value)} />
 
         <label className='vendor-upload-label' htmlFor="aboutmeal">About meal:</label>
-        <textarea className='vendor-upload-input' id="aboutmeal" value={aboutMeal} onChange={(e) => setAboutMeal(e.target.value)} />
+        <textarea className='vendor-upload-input' id="aboutmeal" value={aboutMeal} placeholder='French rice with....' onChange={(e) => setAboutMeal(e.target.value)} />
 
         <div className="form-group">
           <p htmlFor="isAdmin">check the box:</p>

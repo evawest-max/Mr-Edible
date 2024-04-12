@@ -29,40 +29,30 @@ function LoginPage() {
       console.log(userCredential)
       const user=userCredential.user
       console.log(user)
-
-      if (user.emailVerified){
+      const postdata={
+        last_login:new Date().toLocaleString(),
+        id:user.uid,
+        name:user.displayName,
+        passport:`customer passport/ ${user.uid}`,
+        email:user.email,
+      }
+      await update(ref(getDatabase(), "users/"+user.uid),postdata)
+      const data=await get(ref(getDatabase(), "users/"+user.uid))
+      localStorage.setItem('mredibleloggedinUser', JSON.stringify({...data.val()}))
+      
+      if (localStorage.getItem('mredibleloggedinUser') !== null&&JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType!== null){  
+        const postdata={
+          accountType:"customer"
+        }
+        await update(ref(getDatabase(), "users/"+user.uid),postdata)
         const data=await get(ref(getDatabase(), "users/"+user.uid))
         localStorage.setItem('mredibleloggedinUser', JSON.stringify({...data.val()}))
-        // const dataRef =ref(getDatabase(), "users/"+user.uid);
-        // onValue(dataRef, (snapshot) => {
-        //   const data = snapshot.val();;
-        //   localStorage.setItem('mredibleloggedinUser', JSON.stringify({...data}))
-        // });
-      }
-      else{
-          setalertcolor({color:"red"})
-          setloginAlert(<p>User account not verified <button onClick={resendVerificationLink}>Resend Verification Link</button></p>)
-          setButtonState("SIGN IN")
-      }
-      
-      if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType=== null){  
-        await update(ref(getDatabase(), "users/"+user.uid),{
-          last_login:new Date().toLocaleString(),
-          id:user.uid,
-          name:user.displayName,
-          passport:`customer passport/ ${user.uid}`,
-          email:user.email,
-          accountType:"customer"
-        })
         cart.switchToUser(user.uid, 1,)
           setalertcolor({color:"blue"})
           setloginAlert("Sign in successfull!")
       }
       else if (localStorage.getItem('mredibleloggedinUser') !== null){  
         if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"){
-          await update(ref(getDatabase(), "users/"+user.uid),{
-            last_login:new Date().toLocaleString(),
-          })
           cart.switchToUser(user.uid, 1)
           setalertcolor({color:"green"})
           setloginAlert("Sign in successfull!")
@@ -71,16 +61,11 @@ function LoginPage() {
           cart.switchToUser(user.uid, 2)
           setalertcolor({color:"green"})
           setloginAlert("Sign in successfull!")
-          await update(ref(getDatabase(), "users/"+user.uid),{
-            last_login:new Date().toLocaleString(),
-          })
         }
         else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="admin"){
           cart.switchToUser(user.uid, 3)
           setalertcolor({color:"green"})
-          await update(ref(getDatabase(), "users/"+user.uid),{
-            last_login:new Date().toLocaleString(),
-          })
+          setloginAlert("Sign in successfull!")
         }
       }
     }catch(error){
@@ -111,30 +96,30 @@ function LoginPage() {
         }
       if (localStorage.getItem('mredibleloggedinUser') !== null){  
         if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"){
+          await update(ref(getDatabase(), "users/"+user.uid),{
+            last_login:new Date().toLocaleString(),
+          })
           cart.switchToUser(user.uid, 1)
           setalertcolor({color:"green"})
           setloginAlert("Sign in successfull!")
           setButtonState("SIGN IN")
+        }
+        else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="vendor"){
           await update(ref(getDatabase(), "users/"+user.uid),{
             last_login:new Date().toLocaleString(),
           })
-        }
-        else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="vendor"){
           cart.switchToUser(user.uid, 2)
           setalertcolor({color:"green"})
           setloginAlert("Sign in successfull!")
           setButtonState("SIGN IN")
+        }
+        else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="admin"){
           await update(ref(getDatabase(), "users/"+user.uid),{
             last_login:new Date().toLocaleString(),
           })
-        }
-        else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="admin"){
           cart.switchToUser(user.uid, 3)
           setalertcolor({color:"green"})
           setButtonState("SIGN IN")
-          await update(ref(getDatabase(), "users/"+user.uid),{
-            last_login:new Date().toLocaleString(),
-          })
         }
       }
 

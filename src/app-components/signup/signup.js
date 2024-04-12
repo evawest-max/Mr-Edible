@@ -216,6 +216,7 @@ function Signup() {
 
 
     let vendorNameref=useRef()
+    let vendorBussinessNameref=useRef()
     let vendorPhoneref=useRef()
     let vendorEmailref=useRef()
     let vendorcreatepasswordref=useRef()
@@ -251,6 +252,7 @@ function Signup() {
                       const postData={
                         id:vendor.uid,
                         name:vendorNameref.current.value,
+                        bussiness_name:vendorBussinessNameref.current.value,
                         passport:`customer passport/ ${vendor.uid}`,
                         password:vendorConfirmpasswordref.current.value,
                         phonenumber:vendorPhoneref.current.value,
@@ -260,7 +262,9 @@ function Signup() {
                         accountNumber: vendorAccountNumberRef.current.value,
                         bankName: vendorBankNameref.current.value,
                         ediblePoints:0,
-                        accountType:"vendor"
+                        accountType:"vendor",
+                        registeration_date_and_time:new Date().toLocaleString(),
+                        store_status:false
                       }
                       await set(ref(db,"users/"+vendor.uid, ), postData).then(() => {
                         
@@ -397,7 +401,7 @@ function Signup() {
                   <label>Full Name</label>
                   <input style={vendorNamebordercolor} onBlur={vendorValidatename} ref={vendorNameref} type='text' placeholder='John Smith' required/><br/>
                   <label>Bussiness Name</label>
-                  <input   ref={vendorNameref} type='text' placeholder='John Smith'/><br/>
+                  <input   ref={vendorBussinessNameref} type='text' placeholder='John Smith'/><br/>
                   <label>Phone number</label>
                   <input  onBlur={vendorValidatePhonenumber} ref={vendorPhoneref} type='phonenumber' placeholder='07030000000'/><br/>
                   <label>E-mail</label>

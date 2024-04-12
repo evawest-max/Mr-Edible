@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link, NavLink, Navigate, } from 'react-router-dom'
 import { FaUserCircle } from "react-icons/fa";
 // import users from '../../signup/usersData'
-import { child, get, getDatabase, push, ref, remove, set, update } from 'firebase/database';
+import { child, get, getDatabase, onValue, push, ref, remove, set, update } from 'firebase/database';
 import { getDownloadURL,ref as refStorage, getStorage, deleteObject } from 'firebase/storage';
 import { deleteUser, getAuth } from 'firebase/auth';
 import "./appcontext.css"
@@ -232,6 +232,13 @@ function Cartprovider({children}) {
       </NavLink>
     </div>)
 
+  if (localStorage.getItem('mredibleloggedinUser') !== null){
+    const dataRef =ref(getDatabase(), "users/"+`${JSON.parse(localStorage.getItem('mredibleloggedinUser')).id}`);
+    onValue(dataRef, (snapshot) => {
+      const data = snapshot.val();;
+      localStorage.setItem('mredibleloggedinUser', JSON.stringify({...data}))
+    });
+  }
   let [userloggedin, setuserloggedin]=useState({})
   
   function storeuserid(id){
@@ -265,7 +272,12 @@ function Cartprovider({children}) {
       .then((url) => {
         picUrl=url 
       })
+      .catch((error)=>{
+        console.log(error)
+        picUrl="https://robohash.org/fghj"
+      })
     }
+    
     // loginID===1&&setauthUser("customer")
     // loginID===2&&setauthUser("vendor")
     loginID===3&&setauthUser("admin")
@@ -288,10 +300,10 @@ function Cartprovider({children}) {
           </div>)
           // setauthUser(null)
     }else{
-      localStorage.removeItem('mredibleloggedinUser')
-      const user= getAuth().currentUser;
-      // const user= auth.currentUser
-      await user?.delete();
+      // localStorage.removeItem('mredibleloggedinUser')
+      // const user= getAuth().currentUser;
+      // // const user= auth.currentUser
+      // await user?.delete();
       alert("please signup")
     }
   }
@@ -343,6 +355,19 @@ function Cartprovider({children}) {
           .then((url) => {
             picUrl=url 
           })
+          .catch((error)=>{
+            console.log(error)
+            picUrl="https://robohash.org/fghj"
+          })
+        }else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="admin"){
+          await getDownloadURL(refStorage(storage, `${JSON.parse(localStorage.getItem('mredibleloggedinUser')).passport}`))
+          .then((url) => {
+            picUrl=url 
+          })
+          .catch((error)=>{
+            console.log(error)
+            picUrl="https://robohash.org/fghj"
+          })
         }
 
           setloginIcon(
@@ -351,9 +376,9 @@ function Cartprovider({children}) {
             <NavLink to={JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"?"/user-profile":JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="vendor"?"Vendor-profile-Overview":JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="admin"&&"admin-page"}>{fullnameAb}</NavLink>
           </div>)
           }else{
-            localStorage.removeItem('mredibleloggedinUser')
-            const user= getAuth().currentUser;
-            await user?.delete()
+            // localStorage.removeItem('mredibleloggedinUser')
+            // const user= getAuth().currentUser;
+            // await user?.delete()
             alert("please signup")
           }
   }
