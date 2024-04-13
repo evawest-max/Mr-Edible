@@ -1,5 +1,6 @@
 import React from 'react'
 import "./vendor overview.css"
+import VendorAssetCards from '../components/asset cards/vendorAssetCards'
 // import AssetCards from '../components/asset cards/assetCards'
 // import OverviewTodayCard from '../components/overviewtoday card/overviewTodayCard'
 // import LineChart from '../components/line chart/lineChart'
@@ -9,6 +10,15 @@ import "./vendor overview.css"
 // import { HiMiniUsers } from "react-icons/hi2";
 
 export default function VendorProfileOverview() {
+    let total=0
+    // if (localStorage.getItem("vendorsFoodItems")!==null){
+    //     let totalFoods=JSON.parse(localStorage.getItem("vendorsFoodItems"))
+    //     Object.values(totalFoods).map((item, index)=>{
+    //         total+=1
+    //     })
+
+    // }
+    console.log(total)
   return (
     <div id='admin-container-overview'>
        <div id='first-overview-container'>
@@ -16,6 +26,8 @@ export default function VendorProfileOverview() {
                 <div>
                     <h3>Assets</h3>
                     <div id='asset-card-main-container'>
+                        <VendorAssetCards foods/>
+                        <VendorAssetCards/>
                         {/* <AssetCards home=<GiSellCard /> numb1="783" properties="Vendors"/>
                         <AssetCards pic=<IoPersonSharp /> numb2="562" landlords="Customers"/>
                         <AssetCards pic2= <HiMiniUsers/> numb3="3,674" tenants="food items"/> */}

@@ -5,7 +5,7 @@ export default function VendorNotifications() {
     const [notifications, setNotifications] = useState([
         { id: 1, message: 'New user registered' },
         { id: 2, message: 'Server maintenance scheduled' },
-        { id: 3, message: 'Product out of stock' },
+        { id: 3, message: 'Pending delevery request' },
       ]);
     
       return (

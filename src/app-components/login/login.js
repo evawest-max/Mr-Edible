@@ -39,8 +39,8 @@ function LoginPage() {
       await update(ref(getDatabase(), "users/"+user.uid),postdata)
       const data=await get(ref(getDatabase(), "users/"+user.uid))
       localStorage.setItem('mredibleloggedinUser', JSON.stringify({...data.val()}))
-      
-      if (localStorage.getItem('mredibleloggedinUser') !== null&&JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType!== null){  
+      let person=JSON.parse(localStorage.getItem('mredibleloggedinUser'))
+      if (!person.hasOwnProperty('accountType')){  
         const postdata={
           accountType:"customer"
         }
@@ -51,23 +51,22 @@ function LoginPage() {
           setalertcolor({color:"blue"})
           setloginAlert("Sign in successfull!")
       }
-      else if (localStorage.getItem('mredibleloggedinUser') !== null){  
-        if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"){
-          cart.switchToUser(user.uid, 1)
-          setalertcolor({color:"green"})
-          setloginAlert("Sign in successfull!")
-        }
-        else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="vendor"){
-          cart.switchToUser(user.uid, 2)
-          setalertcolor({color:"green"})
-          setloginAlert("Sign in successfull!")
-        }
-        else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="admin"){
-          cart.switchToUser(user.uid, 3)
-          setalertcolor({color:"green"})
-          setloginAlert("Sign in successfull!")
-        }
+      else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="customer"){
+        cart.switchToUser(user.uid, 1)
+        setalertcolor({color:"green"})
+        setloginAlert("Sign in successfull!")
       }
+      else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="vendor"){
+        cart.switchToUser(user.uid, 2)
+        setalertcolor({color:"green"})
+        setloginAlert("Sign in successfull!")
+      }
+      else if (JSON.parse(localStorage.getItem('mredibleloggedinUser')).accountType==="admin"){
+        cart.switchToUser(user.uid, 3)
+        setalertcolor({color:"green"})
+        setloginAlert("Sign in successfull!")
+      }
+      
     }catch(error){
       setalertcolor({color:"red"})
       setloginAlert(error.message)

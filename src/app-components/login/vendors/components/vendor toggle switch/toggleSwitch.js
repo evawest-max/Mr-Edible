@@ -38,7 +38,7 @@ export default function ToggleSwitch() {
   
 
   return (
-    <div className="app" style={{textAlign: "center"}}>
+    <div  style={{textAlign: "center"}}>
       <h4>Shop Open/Close Toggle switch</h4>
       <ReactSwitch
         checked={checked}
