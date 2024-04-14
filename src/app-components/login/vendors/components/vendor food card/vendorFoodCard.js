@@ -17,28 +17,7 @@ export default function VendorFoodCard(props) {
           });
 
     }
-
     
-    function setAvailable(){
-        const db=getDatabase();
-        const postData={
-            availability:true,
-            last_available:new Date().toLocaleString(),
-        }
-        update (ref(db,"food items/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).name+"/"+props.id, ), postData).then(() => {
-            alert('Update success')
-        })
-    }
-    function setUnavailable(){
-        const db=getDatabase();
-        const postData={
-            availability:false,
-            last_unavailable:new Date().toLocaleString(),
-        }
-        update (ref(db,"food items/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).name+"/"+props.id, ), postData).then(() => {
-            alert('Update success')
-        })
-    }
 
     const [deleteButton, setDeleteButton]=useState(<button className='vendor-profile-food-button' onClick={deleteItem}>Delete</button>)
     function deleteItem(){
@@ -63,9 +42,9 @@ export default function VendorFoodCard(props) {
         <img src={pics} alt="rice"/>
         <p className="vendor-profile-food-name">{props.name}</p>
         <p className="vendor-profile-food-price"><del>{props.oldAmount}</del> ₦{props.amount}</p>
+        {props.switch}
         {/* <div>{props.stars}</div> */}
         {deleteButton}
-        {props.availability?<button id='vendor-unavailable-BTN' onClick={setUnavailable }>Unavailable</button>:<button id='vendor-available-BTN' onClick={setAvailable}>Available</button>}
     </div>
   )
 }

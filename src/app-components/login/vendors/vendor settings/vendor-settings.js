@@ -2,7 +2,8 @@ import React, { useRef, useState } from 'react'
 import "./vendor-settings.css"
 import { getDatabase, onValue, ref, update } from 'firebase/database';
 import { deleteObject, getDownloadURL, getStorage, ref as storageRef, uploadBytes} from 'firebase/storage';
-import ToggleSwitch from '../components/vendor toggle switch/toggleSwitch';
+import VendorShopToggleSwitch from '../components/vendor shop toggle switch/vendorShopToggleSwitch';
+
 
 export default function VendorSettings() {
   // Define state variables for each setting
@@ -183,7 +184,7 @@ export default function VendorSettings() {
     <div className="admin-settings">
       <h1>Vendor Settings</h1>
       <div>
-        <ToggleSwitch/>
+        <VendorShopToggleSwitch/>
       </div>
       <div className='passport_update'>
         <img src={userimageurl} alt='user'/>

@@ -2,7 +2,7 @@ import { getDatabase, ref, update } from 'firebase/database';
 import React, { useState } from 'react';
 import ReactSwitch from 'react-switch';
 
-export default function ToggleSwitch() {
+export default function VendorShopToggleSwitch() {
   const [checked, setChecked] = useState(JSON.parse(localStorage.getItem('mredibleloggedinUser')).store_status );
   const handleChange = async(val) => {
     setChecked(val)

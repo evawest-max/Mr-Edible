@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import "./vendor-foods.css"
 import VendorFoodCard from '../components/vendor food card/vendorFoodCard'
 import { getDatabase, ref, onValue, update } from "firebase/database";
+import ToggleSwitch from '../components/vendor shop toggle switch/vendorShopToggleSwitch';
+import VendorFoodToggleSwitch from '../components/vendor food toggle switch/vendorFoodToggleSwitch';
 // import { getDownloadURL, ref as storageref, getStorage } from 'firebase/storage';
 
 export default function VendorFoods() {
@@ -19,7 +21,7 @@ export default function VendorFoods() {
         })
         alert("item has been deleted")
       }
-      return <VendorFoodCard key={index} handler={handleClick} id={item.id} availability={item.availability} image={item.passport} name={item.name} amount={item.amount} oldAmount={item.oldAmount}/> 
+      return <VendorFoodCard key={index} switch=<VendorFoodToggleSwitch id={item.id}/> handler={handleClick} id={item.id} availability={item.availability} image={item.passport} name={item.name} amount={item.amount} oldAmount={item.oldAmount} /> 
     })
   )
 
