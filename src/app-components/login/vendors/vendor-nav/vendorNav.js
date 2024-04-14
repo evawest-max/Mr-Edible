@@ -79,7 +79,7 @@ export default function VendorNav() {
         <nav id='admin-nav'>
             <NavLink to="vendor-profile-overview" style={overviewDisplay} onClick={switchToOverview}><div><GrOverview /></div> <span>Overview</span></NavLink>
             {/* <NavLink to="payments"><div><MdPayments /></div> <span>Payments</span></NavLink> */}
-            <NavLink to="vendor-notifications" style={notificationsDisplay} onClick={switchToNotifications}><div><div style={{color:"gold"}}><MdNotificationsActive /></div></div> <span>Notifications</span></NavLink>
+            <NavLink to="vendor-notifications" style={notificationsDisplay} onClick={switchToNotifications}><div><div style={{color:"gold",fontSize:"85%"}}><MdNotificationsActive /></div></div> <span>Notifications</span></NavLink>
             <NavLink to="vendor-foods" style={foodsDisplay} onClick={switchToFoods}><div><IoFastFoodOutline /></div> <span>Foods</span></NavLink>
             <NavLink to="vendor-upload" style={uploadDisplay} onClick={switchToUpload}><div><FaUpload /></div><span>Upload</span> </NavLink>
             <NavLink to="vendor-settings" style={settingsDisplay} onClick={switchToSettings}><div><FiSettings /></div> <span>Settings</span></NavLink>
