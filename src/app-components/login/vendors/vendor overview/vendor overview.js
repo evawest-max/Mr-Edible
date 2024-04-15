@@ -84,8 +84,8 @@ export default function VendorProfileOverview() {
                     <h3>Overview today</h3>
                     <div id='vendor-today-first-card-container'>
                         <div>
-                            <h2>28</h2>
-                            <p>Pending order, 6 Notifications</p>
+                            <p>WE ARE <h2>{JSON.parse(localStorage.getItem('mredibleloggedinUser')).availability? "OPEN":"CLOSED"}</h2></p>
+                            
                         </div>
                     </div>
                     <div id='vendor-today-second-card-container'>
