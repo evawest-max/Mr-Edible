@@ -8,6 +8,8 @@ import { FaMoneyBillTrendUp } from "react-icons/fa6";
 // import LineChart from '../components/line chart/lineChart'
 import VendorLineChart from '../components/Vendor line chart/VendorlineChart';
 import { getDownloadURL, getStorage, ref as storageref  } from 'firebase/storage';
+import VendorOverviewTodayCard from '../components/Vendor overviewtoday card/vendoroverviewTodayCard';
+// import VendorOverviewTodayCard from '../components/Vendor overviewtoday card/vendorverviewTodayCard';
 // import { GiSellCard } from "react-icons/gi";
 // import { IoFastFoodSharp } from "react-icons/io5";
 // import { IoPersonSharp } from "react-icons/io5";
@@ -40,6 +42,7 @@ export default function VendorProfileOverview() {
     const bankName=JSON.parse(localStorage.getItem("mredibleloggedinUser")).bankName
     const accountNumber=JSON.parse(localStorage.getItem("mredibleloggedinUser")).accountNumber
     const mrEdiblePoints=JSON.parse(localStorage.getItem("mredibleloggedinUser")).ediblePoints
+    const aboutus=JSON.parse(localStorage.getItem("mredibleloggedinUser")).aboutUs
     const storage=getStorage()
     let [pic, setPic]=useState("https://robohash.org/fghj")
     let part=JSON.parse(localStorage.getItem('mredibleloggedinUser')).id
@@ -54,43 +57,45 @@ export default function VendorProfileOverview() {
   return (
     <div id='admin-container-overview'>
        <div id='first-overview-container'>
-            <div style={{marginTop:"50px"}}>
+            <div id='Vendors-personal-info'>
                 <img src={pic} alt='logo'/>
                 <h3>{bussinessName}</h3>
                 <p>{email}</p>
                 <p>{phoneNumber}</p>
                 <p>{address}</p>
-                <p>{bankName}</p>
-                <p>{accountNumber}</p>
-                <p>{mrEdiblePoints}</p>
+                <p>{bankName} {accountNumber}</p>
+                <p></p>
+                <p>Edible points: {mrEdiblePoints}</p>
                 
             </div>
-            <div id='admin-asset-overview'>
-                <div>
-                    <h3>Assets</h3>
-                    <div id='asset-card-main-container'>
-                        <VendorAssetCards food={totalFood} unavailableMeals={`${unavailableMeals} Unavailable Meals`} fooditems="Total number of Meals" icon=<GiMeal />/>
-                        <VendorAssetCards availabeFoods={availableFoods} unavailableMeals={`${unavailableMeals} Unavailable Meals`} availablefooditems=" Total number of Available Meals" icon=<GiMeal />/>
-                        <VendorAssetCards totalAMount={"3.5 Million"} unavailableMeals={"789 items sold"} totalRevenue="Total Revenew" icon=<FaMoneyBillTrendUp />/>
-                        {/* <AssetCards home=<GiSellCard /> numb1="783" properties="Vendors"/>
-                        <AssetCards pic=<IoPersonSharp /> numb2="562" landlords="Customers"/>
-                        <AssetCards pic2= <HiMiniUsers/> numb3="3,674" tenants="food items"/> */}
-                    </div>
-                </div>
-            </div>
-            <div id='overview-today-container'>
-                <h3>Overview today</h3>
-                <div id='today-first-card-container'>
-                    {/* <h1><IoFastFoodSharp /></h1> */}
+            <div>
+                <p id='vendor-about-us'><b><u>About Us:</u> </b>{aboutus}</p>
+                <div id='vendor-asset-overview'>
                     <div>
-                        <h2>28</h2>
-                        <p>New Food items</p>
+                        <h3>Assets</h3>
+                        <div id='vendor-asset-card-main-container'>
+                            <VendorAssetCards food={totalFood} unavailableMeals={`${unavailableMeals} Unavailable Meals`} fooditems="Total number of Meals" icon=<GiMeal />/>
+                            <VendorAssetCards availabeFoods={availableFoods} unavailableMeals={`${unavailableMeals} Unavailable Meals`} availablefooditems=" Total number of Available Meals" icon=<GiMeal />/>
+                            <VendorAssetCards totalAMount={"3.5 Million"} unavailableMeals={"789 items sold"} totalRevenue="Total Revenew" icon=<FaMoneyBillTrendUp />/>
+                        </div>
                     </div>
                 </div>
-                <div id='today-second-card-container'>
-                    {/* <OverviewTodayCard number1="160" text1="New Costomers"/>
-                    <OverviewTodayCard number2="10" text2="New Vendors"/> */}
+                <div id='vendor-overview-today-container'>
+                    <h3>Overview today</h3>
+                    <div id='vendor-today-first-card-container'>
+                        <div>
+                            <h2>28</h2>
+                            <p>Pending order, 6 Notifications</p>
+                        </div>
+                    </div>
+                    <div id='vendor-today-second-card-container'>
+                        <VendorOverviewTodayCard number1="28" text1="Pending order"/>
+                        <VendorOverviewTodayCard number1="6" text1="Notifications"/>
+                        {/* <OverviewTodayCard />
+                        <OverviewTodayCard number2="10" text2="New Vendors"/> */}
+                    </div>
                 </div>
+
             </div>
        </div> 
         <VendorLineChart/>

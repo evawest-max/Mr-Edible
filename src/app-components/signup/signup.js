@@ -264,7 +264,8 @@ function Signup() {
                         ediblePoints:0,
                         accountType:"vendor",
                         registeration_date_and_time:new Date().toLocaleString(),
-                        store_status:false
+                        store_status:false,
+                        aboutUs: "Empty"
                       }
                       await set(ref(db,"users/"+vendor.uid, ), postData).then(() => {
                         
