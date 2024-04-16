@@ -27,7 +27,7 @@ export default function VendorFoodToggleSwitch(props) {
       .catch((error)=>{
         alert(error)
       })
-      alert("closed")
+      // alert("closed")
     }else{
       const db=getDatabase();
       const postData={
@@ -39,7 +39,7 @@ export default function VendorFoodToggleSwitch(props) {
       .catch((error)=>{
         alert(error)
       })
-      alert("Open")
+      // alert("Open")
     }
 
   }

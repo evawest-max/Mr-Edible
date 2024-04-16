@@ -23,9 +23,9 @@ export default function VendorFoodCard(props) {
     function deleteItem(){
         setDeleteButton(<div>
             <p>Sure?</p>
-            <div>
-                <button onClick={confirmDelete}>yes</button>
-                <button onClick={cancleDelete}>cancle</button>
+            <div id='vendor-delete-btn-cntainer'>
+                <button id='vendor-confirm-delete' onClick={confirmDelete}>Yes</button>
+                <button id='vendor-cancle-delete' onClick={cancleDelete}>Cancel</button>
             </div>
         </div>)
     }

@@ -12,9 +12,16 @@ export default function VendorSettings() {
   const [phoneNumber, setPhoneNUmber] = useState('');
   const [deliveryFee, setDeliveryFee] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
+  const [buttonState, setButtonstate]=useState("Save")
+
+  function submit(sub){
+    sub&&setButtonstate("Loading...")
+    !sub&&setButtonstate("Save")
+  }
 
   // Function to handle form submission
   const handleSubmit = async(e) => {
+    submit(true)
     e.preventDefault();
     // You can implement logic to update settings here
 
@@ -36,6 +43,7 @@ export default function VendorSettings() {
         })
 
         // Reset fields after upload
+        submit(false)
         setTimeout(() => { 
           setUsername('');
           setAboutUs('');
@@ -57,6 +65,7 @@ export default function VendorSettings() {
         })
 
         // Reset fields after upload
+        submit(false)
         setTimeout(() => { 
           setUsername('');
           setIsAdmin(null);
@@ -75,6 +84,7 @@ export default function VendorSettings() {
         })
 
         // Reset fields after upload
+        submit(false)
         setTimeout(() => { 
           setAboutUs('');
           setIsAdmin(null);
@@ -93,6 +103,7 @@ export default function VendorSettings() {
         })
 
         // Reset fields after upload
+        submit(false)
         setTimeout(() => { 
           setPhoneNUmber('');
           setIsAdmin(null);
@@ -111,11 +122,13 @@ export default function VendorSettings() {
         })
 
         // Reset fields after upload
+        submit(false)
         setTimeout(() => { 
           setDeliveryFee('');
           setIsAdmin(null);
         }, 5000);
       }else{
+        submit(false)
         alert("You can only update all fields or just one field ");
         setUsername('');
         setAboutUs('');
@@ -123,7 +136,7 @@ export default function VendorSettings() {
         setDeliveryFee('')
         setIsAdmin(null);
       }
-    }else{alert("check the box first")}
+    }else{alert("check the box first");setButtonstate("Save")}
   };
 
   // listen for changes in the database
@@ -140,31 +153,34 @@ export default function VendorSettings() {
     let passportref=useRef()
     
     async function updatePhoto(){
+      if(isAdmin){
       setuploadbutton("Uploading");
-      const storage= storageRef(getStorage(), `customer passport/ ${JSON.parse(localStorage.getItem('mredibleloggedinUser')).id}`)
-      await deleteObject(storage).then(() => {
-        // File deleted successfully
-        uploadBytes(storage, file).then((snapshot) => {
-        // console.log(snapshot.metadata.timeCreated)
-        getDownloadURL(storageRef(getStorage(), `customer passport/${JSON.parse(localStorage.getItem('mredibleloggedinUser')).id}`))
-          .then((url) => {
-            // `url` is the download URL for 'images/stars.jpg'
-            setuserimageurl(url)
-            alert('Uploaded');
-            // console.log(url)
-            
-          })
-          .catch((error) => {
-            // Handle any errors
-            alert(error)
-          });
-      });
-      }).catch((error) => {
-        // Uh-oh, an error occurred!
-        console.log(error)
-      });
-      
-      setuploadbutton("UPLOAD")
+        const storage= storageRef(getStorage(), `customer passport/ ${JSON.parse(localStorage.getItem('mredibleloggedinUser')).id}`)
+        await deleteObject(storage).then(() => {
+          // File deleted successfully
+          uploadBytes(storage, file).then((snapshot) => {
+          // console.log(snapshot.metadata.timeCreated)
+          getDownloadURL(storageRef(getStorage(), `customer passport/${JSON.parse(localStorage.getItem('mredibleloggedinUser')).id}`))
+            .then((url) => {
+              // `url` is the download URL for 'images/stars.jpg'
+              setuserimageurl(url)
+              alert('Uploaded');
+              // console.log(url)
+              
+            })
+            .catch((error) => {
+              // Handle any errors
+              alert(error)
+            });
+        });
+        }).catch((error) => {
+          // Uh-oh, an error occurred!
+          console.log(error)
+        });
+        
+        setuploadbutton("UPLOAD")
+        setIsAdmin(null)
+      }else{alert("check the box first");setuploadbutton("UPLOAD")}
     }
 
     const storage = getStorage();
@@ -181,17 +197,22 @@ export default function VendorSettings() {
         })
 
   return (
-    <div className="admin-settings">
-      <h1>Vendor Settings</h1>
+    <div className="vendor-settings">
+      {/* <h1 id='vendor -heading'>Vendor Settings</h1> */}
       <div>
-        <VendorShopToggleSwitch/>
-      </div>
-      <div className='passport_update'>
-        <img src={userimageurl} alt='user'/>
         <div>
-          <p>upload a new photo</p>
-          <input ref={passportref}  type='file' accept='image/*' onChange={(e)=>setfile(e.target.files[0])}/><br/>
-        <button id='update-photo-button' onClick={updatePhoto}>{uploadButton}</button>
+          <VendorShopToggleSwitch/>
+        </div>
+        <div id='vendor-passport_update'>
+          <img src={userimageurl} alt='user'/>
+          <div>
+            <p>upload a new photo</p>
+            <input ref={passportref}  type='file' accept='image/*' onChange={(e)=>setfile(e.target.files[0])}/><br/>
+            <div className="form-group">
+              <p htmlFor="isAdmin"><input type="checkbox" id="isAdmin" checked={isAdmin} onChange={(e) => setIsAdmin(e.target.checked)} /> check the box </p>   
+            </div>
+          <button id='Vendor-update-photo-button' onClick={updatePhoto}>{uploadButton}</button>
+          </div>
         </div>
       </div>
 
@@ -202,7 +223,7 @@ export default function VendorSettings() {
         </div>
         <div className="form-group">
           <label htmlFor="aboutus">Abouut us:</label>
-          <textarea id="aboutus" value={aboutUs} placeholder='We are.....' onChange={(e) => setAboutUs(e.target.value)} />
+          <textarea value={aboutUs} placeholder='We are.....' onChange={(e) => setAboutUs(e.target.value)} />
         </div>
         <div className="form-group">
           <label htmlFor="Phonenumber">Phone number:</label>
@@ -213,10 +234,9 @@ export default function VendorSettings() {
           <input type="number" id="number" value={deliveryFee} placeholder='1000' onChange={(e) => setDeliveryFee(e.target.value)} />
         </div>
         <div className="form-group">
-          <p htmlFor="isAdmin">check the box:</p>
-          <input type="checkbox" id="isAdmin" checked={isAdmin} onChange={(e) => setIsAdmin(e.target.checked)} />
+          <p htmlFor="isAdmin"><input type="checkbox" id="isAdmin" checked={isAdmin} onChange={(e) => setIsAdmin(e.target.checked)} /> check the box </p>   
         </div>
-        <button type="submit">Save Settings</button>
+        <button id='vendor-update-btn' type="submit" onClick={submit}>{buttonState}</button>
       </form>
     </div>
   )

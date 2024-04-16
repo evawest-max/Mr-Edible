@@ -54,6 +54,7 @@ export default function VendorProfileOverview() {
         console.log(error)
         setPic("https://robohash.org/fghj")
     })
+
   return (
     <div id='admin-container-overview'>
        <div id='first-overview-container'>
@@ -84,7 +85,7 @@ export default function VendorProfileOverview() {
                     <h3>Overview today</h3>
                     <div id='vendor-today-first-card-container'>
                         <div>
-                            <p>WE ARE <h2>{JSON.parse(localStorage.getItem('mredibleloggedinUser')).availability? "OPEN":"CLOSED"}</h2></p>
+                            <p>WE ARE <h2>{JSON.parse(localStorage.getItem('mredibleloggedinUser')).store_status? "OPEN":"CLOSED"}</h2></p>
                             
                         </div>
                     </div>

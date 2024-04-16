@@ -10,6 +10,7 @@ export default function VendorUpload() {
   const [aboutMeal, setAboutMeal] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const [file, setFile] = useState(null);
+  const [buttonState, setButtonstate]=useState("Upload")
   
 
   const handleFileChange = (e) => {
@@ -19,6 +20,7 @@ export default function VendorUpload() {
   };
 
   const handleUpload = async () => {
+    setButtonstate("Uploading...")
     if(isAdmin){
       const db=getDatabase()
       const newPostKey = push(child(ref(db), 'posts')).key;
@@ -43,9 +45,10 @@ export default function VendorUpload() {
       .then((snapshot) => {
         alert('Upload Successfull');
       })
-      .catch((error)=>{console.log(error)});
+      .catch((error)=>{alert(error)});
 
       // Reset fields after upload
+      setButtonstate("Upload")
       setTimeout(() => { 
         setFoodName('');
         setAmount('');
@@ -53,7 +56,7 @@ export default function VendorUpload() {
         setAboutMeal('')
         setFile(null);
         setIsAdmin(null);
-      }, 5000);
+      }, 3000);
     }else{alert("check the box first")}
   };
   // const [buttonState, setButtonstate]=useState(<button className='vendor-upload-button' onClick={handleUpload}>Upload</button>)
@@ -81,7 +84,7 @@ export default function VendorUpload() {
           <input type="checkbox" id="isAdmin" checked={isAdmin} onChange={(e) => setIsAdmin(e.target.checked)} />
         </div>
         
-        <button className='vendor-upload-button' onClick={handleUpload}>Upload</button>
+        <button className='vendor-upload-button' onClick={handleUpload}>{buttonState}</button>
       </div>
     </div>
   )

@@ -1,11 +1,16 @@
 .vendor-upload-App {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px 0;
+  background-color: #ccc;
+  text-align: center;
   }
   
   .vendor-upload-form {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
   }
   
   .vendor-upload-label {
@@ -13,19 +18,31 @@
   }
   
   .vendor-upload-input[type="file"] {
-    margin-bottom: 10px;
+    margin-bottom: 30px;
   }
-  
-  .vendor-upload-button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #0adc34;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+  .vendor-upload-input[type="number"],
+  .vendor-upload-input[type="text"] {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
     border-radius: 4px;
   }
   
-  .vendor-upload-button:hover {
-    background-color: #03862a;
+  .vendor-upload-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: rgb(0, 186, 0);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
   }
+  
+  .vendor-upload-button:hover {
+    background-color: green;
+  }
+  
