@@ -4,10 +4,10 @@ import { Link, NavLink } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import { getDatabase, onValue, orderByChild, orderByValue, push, query, ref, set, update } from 'firebase/database'
 import { getStorage, ref as storageRef, uploadBytes} from 'firebase/storage'
-import { auth,} from '../../firebase/firebase config'
+import { auth,} from '../component/firebase component/firebase config'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { sendEmailVerification } from "firebase/auth";
-import Footer from '../../footer-components/footer'
+import Footer from '../component/footer-components/footer'
 
 
 

@@ -7,6 +7,7 @@ import { child, get, getDatabase, onValue, push, ref, remove, set, update } from
 import { getDownloadURL,ref as refStorage, getStorage, deleteObject } from 'firebase/storage';
 import { deleteUser, getAuth } from 'firebase/auth';
 import "./appcontext.css"
+import { storeName } from '../../component/vendor-component/vendor-card';
 
 export let productsIDInTheCartList=[]
 let changes=false
@@ -22,6 +23,7 @@ export const Cartcontext= createContext({
   items:productsIDInTheCartList,
   orders:0,
   authdata:0,
+  buissnessName:0,
   getproductquantity:()=>{},
   increaseProductQuantity:()=>{},
   addItemsToCartList:()=>{},
@@ -33,7 +35,8 @@ export const Cartcontext= createContext({
   signout:()=>{},
   deleteUserAccount:()=>{},
   addToOrders:()=>{},
-  changeAuthUser:()=>{}
+  changeAuthUser:()=>{},
+  forwardDetails:()=>{}
 })
 
 
@@ -187,6 +190,14 @@ function Cartprovider({children}) {
         }
       }
   }
+  let [companyName, setcompanyname]=useState(null)
+  function forwardDetails(name, image){
+    setcompanyname(name)
+    console.log("yes")
+  }
+  useEffect(()=>{
+    forwardDetails()
+  });
   
   useEffect(()=>{
     if (localStorage.getItem("mredible_cart")!==null){
@@ -434,6 +445,7 @@ function Cartprovider({children}) {
     totalItemInCart:totalCart,
     orders:itemsInOrders,
     authdata:authUser,
+    buissnessName:companyName,
     getproductquantity,
     increaseProductQuantity,
     addItemsToCartList,
@@ -446,6 +458,7 @@ function Cartprovider({children}) {
     deleteUserAccount,
     addToOrders,
     changeAuthUser,
+    forwardDetails,
   }
 
   return (

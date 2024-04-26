@@ -21,6 +21,10 @@
 #vendorcard-container a img:hover{
     transform: scale(0.9);
 }
+#vendor-card-name{
+    text-align: center;
+
+}
 #vendor-rating{
     position: absolute;
     color: gold;
@@ -30,5 +34,9 @@
 }
 #vendor-rating div :hover{
     transform: scale(0.9);
+}
+#vendor-Aboutus-button{
+    width: 100%;
+    background-color: orange;
 }
 

@@ -5,10 +5,10 @@ import { Cartcontext } from '../Mr edible store/context folder/appContext'
 import {FcGoogle} from "react-icons/fc"
 import { Link, NavLink, Navigate } from 'react-router-dom'
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
-import { auth, provider } from '../../firebase/firebase config'
+import { auth, provider } from '../component/firebase component/firebase config'
 import { get, getDatabase, onValue, ref, update } from 'firebase/database'
 import { getAuth, sendEmailVerification } from "firebase/auth";
-import Footer from '../../footer-components/footer'
+import Footer from '../component/footer-components/footer'
 
 
 function LoginPage() {

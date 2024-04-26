@@ -1,5 +1,5 @@
 
-import Footer from "../../footer-components/footer";
+import Footer from "../component/footer-components/footer";
 import "./navigation.css";
 function TrackOrder(){
     return(

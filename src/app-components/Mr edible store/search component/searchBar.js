@@ -11,18 +11,30 @@ import {AiFillStar} from "react-icons/ai";
 import { useContext } from "react"
 import { Cartcontext } from "../context folder/appContext"
 import { IoIosSearch } from "react-icons/io";
+import { child, get, getDatabase, onValue, ref } from "firebase/database"
 
 
 
 
 
-function SearchBar(){
-    const car=useContext(Cartcontext)
+ function SearchBar(props){
+    // const car=useContext(Cartcontext)
     const cart=useContext(Cartcontext)
-    let [itemsInDatabase, newItemsInDatabase]=useState(foods.map((items, index)=>{ 
+    let edFoods=[]
+  
+    for (const key in JSON.parse(localStorage.getItem("allVendorItem"))) {
+        if (String(key).toLocaleLowerCase() === cart.buissnessName){
+            Object.values(JSON.parse(localStorage.getItem("allVendorItem"))[key]).map((item)=>{
+                edFoods.push(item)
+            })
+        }
+    }
+
+    console.log(cart.buissnessName)
+    let [itemsInDatabase, newItemsInDatabase]=useState(edFoods.map((items, index)=>{ 
         let star=items.star===1?<AiFillStar/>:items.star===2?<div><AiFillStar/><AiFillStar/></div>:items.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:items.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:items.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
         return(
-            <Fooditem key={index}  id={items.id} image={items.link} name={items.name} price={items.amount} oldprice={items.oldAmount} stars={star} vendorName={items.vendorName}/>
+            <Fooditem key={index}  id={items.id} image={items.passport} name={items.name} price={items.amount} oldprice={items.oldAmount} stars={star} vendorName={items.vendorName}/>
         ) 
     }))
 
@@ -50,7 +62,7 @@ function SearchBar(){
         newItemsInDatabase(foods.map((item, index)=>{
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
             return(
-                <Fooditem key={item.id} id={item.id} image={item.link} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName}/>
+                <Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName}/>
             ) 
         }))
     }

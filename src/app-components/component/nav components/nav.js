@@ -12,7 +12,7 @@ import {FcOnlineSupport} from "react-icons/fc"
 import { FaSellsy } from "react-icons/fa";
 import { FcAbout } from "react-icons/fc";
 import { useContext } from "react";
-import { Cartcontext } from "../Mr edible store/context folder/appContext";
+import { Cartcontext } from "../../Mr edible store/context folder/appContext";
 
 //import CartIcon from "../cart component/cartIcon";
 

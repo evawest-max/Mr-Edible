@@ -13,10 +13,37 @@ import { Link, NavLink } from "react-router-dom";
 import { MdPlayCircle } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { FcFaq } from "react-icons/fc";
-import Store from "../../../store-components/store";
-import Footer from "../../../footer-components/footer";
+import Store from "../../component/store-components/store";
+import Footer from "../../component/footer-components/footer";
+import { getDatabase, onValue, ref } from "firebase/database";
 
 function Homepage(){
+    const db = getDatabase();
+    const starCountRef = ref(db, 'users/vendors');
+    onValue(starCountRef, (snapshot) => {
+        let list=[]
+        const data = snapshot.val();
+        for (const key in data) {
+            const element = data[key];
+
+                if(element.accountType==="vendor"){
+                    list.push(data)
+                    localStorage.setItem('vendors',JSON.stringify(list[0]));
+                }
+        }
+    });
+
+    const starCountRefs = ref(db, 'food items/');
+    onValue(starCountRefs, (snapshot) => {
+        // vendorsFoods=snapshot.val();
+        console.log(snapshot.val())
+        localStorage.setItem("allVendorItem", JSON.stringify(snapshot.val()))
+    //   if (snapshot.exists()) {
+    //     console.log('yes')
+    //   } else {
+    //     console.log('no')
+    // }
+    })
 
     return(
         <div>

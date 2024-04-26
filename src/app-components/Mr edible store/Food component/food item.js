@@ -4,6 +4,7 @@ import { Cartcontext} from "../context folder/appContext";
 import { useContext } from "react";
 import { FaCartPlus } from "react-icons/fa6";
 import { MdRemoveShoppingCart } from "react-icons/md";
+import { getDownloadURL, getStorage, ref } from "firebase/storage";
 
 
 //  export let checkout=[]
@@ -21,11 +22,24 @@ import { MdRemoveShoppingCart } from "react-icons/md";
         newbuttonState(<button onClick={addToCart} className="food-button">Add to cart <FaCartPlus/></button>)
         cart.deleteFromCartList(props.id)
     }
+    const [imageurl, setimageurl]=useState("https://robohash.org/ebu")
+    const storage = getStorage();
+    getDownloadURL(ref(storage, props.image))
+    .then((url) => {
+        // `url` is the download URL for 'images/stars.jpg'
+        setimageurl(url)
+        // alert(url)
+        console.log("URL is Correct")
+    })
+    .catch((error) => {
+        alert(error)
+        console.log("URL is wrong")
+    });
 
     return(
        
             <div className="food-item"  >
-                <img src={props.image} alt="rice"/>
+                <img src={imageurl} alt="rice"/>
                 <p className="food-name">{props.name}</p>
                 <p className="food-price"><del>{props.oldprice}</del> ₦{props.price}</p>
                 <div>{props.stars}</div>

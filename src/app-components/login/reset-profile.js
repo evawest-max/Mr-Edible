@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react'
 import "./login.css"
 import { sendPasswordResetEmail, } from 'firebase/auth'
-import { auth,} from '../../firebase/firebase config'
-import Footer from '../../footer-components/footer'
+import { auth,} from '../component/firebase component/firebase config'
+import Footer from '../component/footer-components/footer'
 
 
 function ResetPassword() {

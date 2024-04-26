@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './app-components/App';
-import Store from './store-components/store';
-import Footer from './footer-components/footer';
 
 
 
