@@ -21,16 +21,17 @@ import { child, get, getDatabase, onValue, ref } from "firebase/database"
     // const car=useContext(Cartcontext)
     const cart=useContext(Cartcontext)
     let edFoods=[]
+    console.log(localStorage.getItem("nameobject"))
   
     for (const key in JSON.parse(localStorage.getItem("allVendorItem"))) {
-        if (String(key).toLocaleLowerCase() === cart.buissnessName){
+        if (String(key).toLocaleLowerCase() === localStorage.getItem("nameobject").toLocaleLowerCase()){
             Object.values(JSON.parse(localStorage.getItem("allVendorItem"))[key]).map((item)=>{
                 edFoods.push(item)
             })
         }
     }
 
-    console.log(cart.buissnessName)
+    // console.log(cart.buissnessName)
     let [itemsInDatabase, newItemsInDatabase]=useState(edFoods.map((items, index)=>{ 
         let star=items.star===1?<AiFillStar/>:items.star===2?<div><AiFillStar/><AiFillStar/></div>:items.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:items.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:items.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
         return(

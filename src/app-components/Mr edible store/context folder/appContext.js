@@ -190,15 +190,11 @@ function Cartprovider({children}) {
         }
       }
   }
-  let [companyName, setcompanyname]=useState(null)
+  let companyName= "mredible"
   function forwardDetails(name, image){
-    setcompanyname(name)
-    console.log("yes")
-  }
-  useEffect(()=>{
-    forwardDetails()
-  });
-  
+    localStorage.setItem("nameobject", name)
+    
+  } 
   useEffect(()=>{
     if (localStorage.getItem("mredible_cart")!==null){
       productsIDInTheCartList=JSON.parse(localStorage.getItem("mredible_cart"))
@@ -209,10 +205,6 @@ function Cartprovider({children}) {
       if (loggedinuser){
         setitemsInOrders(
           Object.values(loggedinuser).map((item, index)=>{
-            // console.log(item)
-            // function package_recieved(id){
-            //   update(ref(getDatabase(), "users/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).id+"/order_history/"+id), {delivery_pending:false})
-            // }
             return (
               <div key={index} className="ordered-food-item"  >
               <img src={item.image} alt="rice"/>

@@ -21,7 +21,7 @@ export default function VendorFoodToggleSwitch(props) {
       const postData={
         availability:false
       }
-      await update (ref(db,"food items/"+JSON.parse(localStorage.getItem("mredibleloggedinUser")).name+"/" +props.id ), postData).then(() => {  
+      await update (ref(db,"food items/"+JSON.parse(localStorage.getItem("mredibleloggedinUser")).bussiness_name +"/" +props.id ), postData).then(() => {  
         // alert('Update successful')
       })
       .catch((error)=>{
@@ -33,7 +33,7 @@ export default function VendorFoodToggleSwitch(props) {
       const postData={
         availability:true
       }
-      await update (ref(db,"food items/"+JSON.parse(localStorage.getItem("mredibleloggedinUser")).name+"/"+props.id), postData).then(() => {  
+      await update (ref(db,"food items/"+JSON.parse(localStorage.getItem("mredibleloggedinUser")).bussiness_name+"/"+props.id), postData).then(() => {  
         // alert('Update successful')
       })
       .catch((error)=>{

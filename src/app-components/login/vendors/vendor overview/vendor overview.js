@@ -3,23 +3,16 @@ import "./vendor overview.css"
 import VendorAssetCards from '../components/asset cards/vendorAssetCards'
 import { GiMeal } from "react-icons/gi";
 import { FaMoneyBillTrendUp } from "react-icons/fa6";
-// import AssetCards from '../components/asset cards/assetCards'
-// import OverviewTodayCard from '../components/overviewtoday card/overviewTodayCard'
-// import LineChart from '../components/line chart/lineChart'
 import VendorLineChart from '../components/Vendor line chart/VendorlineChart';
 import { getDownloadURL, getStorage, ref as storageref  } from 'firebase/storage';
 import VendorOverviewTodayCard from '../components/Vendor overviewtoday card/vendoroverviewTodayCard';
-// import VendorOverviewTodayCard from '../components/Vendor overviewtoday card/vendorverviewTodayCard';
-// import { GiSellCard } from "react-icons/gi";
-// import { IoFastFoodSharp } from "react-icons/io5";
-// import { IoPersonSharp } from "react-icons/io5";
-// import { HiMiniUsers } from "react-icons/hi2";
+
 
 export default function VendorProfileOverview() {
     let totalFood=0
     let availableFoods=0
-    if (localStorage.getItem("vendorsFoodItems")!==null){
-        let totalFoodsInLocal=JSON.parse(localStorage.getItem("vendorsFoodItems"))
+    if (JSON.parse(localStorage.getItem("vendorsFoodItems"))!==null){
+        let totalFoodsInLocal= JSON.parse(localStorage.getItem("vendorsFoodItems"))
         for(let key in totalFoodsInLocal) {
             ++totalFood;
         }
@@ -28,11 +21,9 @@ export default function VendorProfileOverview() {
                     ++availableFoods
                 }
         });
-        
-
     }
     let unavailableMeals=totalFood-availableFoods
-    // console.log(totalFood)
+    let PendingOrder=0
 
 
     const bussinessName= JSON.parse(localStorage.getItem("mredibleloggedinUser")).bussiness_name
@@ -75,7 +66,7 @@ export default function VendorProfileOverview() {
                     <div>
                         <h3>Assets</h3>
                         <div id='vendor-asset-card-main-container'>
-                            <VendorAssetCards food={totalFood} unavailableMeals={`${unavailableMeals} Unavailable Meals`} fooditems="Total number of Meals" icon=<GiMeal />/>
+                            <VendorAssetCards food={totalFood} unavailableMeals={`${PendingOrder} Pending Orders`} fooditems="Total number of Meals" icon=<GiMeal />/>
                             <VendorAssetCards availabeFoods={availableFoods} unavailableMeals={`${unavailableMeals} Unavailable Meals`} availablefooditems=" Total number of Available Meals" icon=<GiMeal />/>
                             <VendorAssetCards totalAMount={"3.5 Million"} unavailableMeals={"789 items sold"} totalRevenue="Total Revenew" icon=<FaMoneyBillTrendUp />/>
                         </div>

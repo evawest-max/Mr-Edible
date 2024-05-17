@@ -14,7 +14,7 @@ export default function VendorFoods() {
     food.map((item, index)=>{
       async function handleClick(){
         const db=getDatabase()
-        await update(ref(db), "food items/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).name+"/"+item.id, {value:null}).then(()=>{
+        await update(ref(db), "food items/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).bussiness_name+"/"+item.id, {value:null}).then(()=>{
 
         }).catch((error)=>{
           alert(error)
@@ -27,7 +27,7 @@ export default function VendorFoods() {
 
   if (localStorage.getItem("mredibleloggedinUser")!==null){
     const db = getDatabase();
-    const userRef = ref(db, "food items/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).name );
+    const userRef = ref(db, "food items/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).bussiness_name );
     onValue(userRef, (snapshot) => {
       const data = snapshot.val();
       localStorage.setItem("vendorsFoodItems", JSON.stringify(data))

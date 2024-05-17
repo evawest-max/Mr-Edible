@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./upload.css"
-import { child, getDatabase, push, ref, update } from 'firebase/database';
+import { child, getDatabase, onValue, push, ref, update } from 'firebase/database';
 import { getStorage, ref as  storageRef, uploadBytes } from 'firebase/storage';
 
 export default function VendorUpload() {
@@ -29,18 +29,18 @@ export default function VendorUpload() {
         id:newPostKey,
         availability:true,
         name:foodName,
-        passport:"food image/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).name+"/"+newPostKey,
+        passport:"food image/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).bussiness_name+"/"+newPostKey,
         amount:amount,
         oldAmount:oldAmount,
         aboutMeal:aboutMeal,
         upload_date:new Date().toLocaleString(),
       }
-      await update (ref(db,"food items/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).name+"/"+newPostKey, ), postData).then(() => {
+      await update (ref(db,"food items/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).bussiness_name+"/"+newPostKey, ), postData).then(() => {
         
         console.log('Update success')
       })
       const storage=getStorage();
-      const serverimageref= storageRef(storage, "food image/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).name+"/"+newPostKey)
+      const serverimageref= storageRef(storage, "food image/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).bussiness_name+"/"+newPostKey)
       await uploadBytes(serverimageref, file)
       .then((snapshot) => {
         alert('Upload Successfull');
@@ -57,9 +57,21 @@ export default function VendorUpload() {
         setFile(null);
         setIsAdmin(null);
       }, 3000);
-    }else{alert("check the box first")}
+    }else{
+      alert("check the box first")
+      setButtonstate("Upload")
+    }
   };
-  // const [buttonState, setButtonstate]=useState(<button className='vendor-upload-button' onClick={handleUpload}>Upload</button>)
+
+  // if (localStorage.getItem("mredibleloggedinUser")!==null){
+  //   const db = getDatabase();
+  //   const userRef = ref(db, "food items/"+JSON.parse(localStorage.getItem('mredibleloggedinUser')).bussiness_name );
+  //   onValue(userRef, (snapshot) => {
+  //     const data = snapshot.val();
+  //     localStorage.setItem("vendorsFoodItems", JSON.stringify(data))
+  //   });
+  // }
+
   return (
     <div className="vendor-upload-App">
       <h1>Upload Food item</h1>

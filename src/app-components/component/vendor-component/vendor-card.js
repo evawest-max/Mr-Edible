@@ -27,9 +27,6 @@ function VendorCard({id, name,image,rating, about, vendorPage}) {
     
     function sendShopDetail(){
         cart.forwardDetails(name, image)
-        // storeName=name
-        // ring()
-        // console.log(name)
     }
     return (
         <div id='vendorcard-container'>
