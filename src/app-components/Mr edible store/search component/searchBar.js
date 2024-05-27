@@ -21,7 +21,7 @@ import { child, get, getDatabase, onValue, ref } from "firebase/database"
     // const car=useContext(Cartcontext)
     const cart=useContext(Cartcontext)
     let edFoods=[]
-    console.log(localStorage.getItem("nameobject"))
+    // console.log(localStorage.getItem("nameobject"))
   
     for (const key in JSON.parse(localStorage.getItem("allVendorItem"))) {
         if (String(key).toLocaleLowerCase() === localStorage.getItem("nameobject").toLocaleLowerCase()){
@@ -30,6 +30,7 @@ import { child, get, getDatabase, onValue, ref } from "firebase/database"
             })
         }
     }
+    console.log(edFoods)
 
     // console.log(cart.buissnessName)
     let [itemsInDatabase, newItemsInDatabase]=useState(edFoods.map((items, index)=>{ 
@@ -42,7 +43,7 @@ import { child, get, getDatabase, onValue, ref } from "firebase/database"
     let inputRef= useRef()
     
     function findFood(){
-        const filtereditemsInDatabase= foods.filter((items)=>{
+        const filtereditemsInDatabase= edFoods.filter((items)=>{
             return items.name.toLocaleLowerCase().includes(inputRef.current.value.toLocaleLowerCase())
         })
         console.log(filtereditemsInDatabase)

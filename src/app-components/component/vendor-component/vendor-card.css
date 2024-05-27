@@ -29,7 +29,7 @@
     position: absolute;
     color: gold;
     width: 100%;
-    bottom: 3px;
+    bottom: 1px;
     text-align: center;
 }
 #vendor-rating div :hover{

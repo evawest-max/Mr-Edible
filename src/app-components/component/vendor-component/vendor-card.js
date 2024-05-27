@@ -19,6 +19,7 @@ function VendorCard({id, name,image,rating, about, vendorPage}) {
     getDownloadURL(storageref(storage, `${image}`))
     .then((url) => {
         setPic(url )
+        // alert(url)
     })
     .catch((error)=>{
         console.log(error)

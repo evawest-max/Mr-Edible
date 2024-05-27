@@ -15,28 +15,56 @@ import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { FcFaq } from "react-icons/fc";
 import Store from "../../component/store-components/store";
 import Footer from "../../component/footer-components/footer";
-import { getDatabase, onValue, ref } from "firebase/database";
+import { child, get, getDatabase, onValue, ref, set } from "firebase/database";
 
 function Homepage(){
     const db = getDatabase();
-    const starCountRef = ref(db, 'users/vendors');
-    onValue(starCountRef, (snapshot) => {
+    const dbRef = ref(getDatabase()); 
+    get(child(dbRef, 'users/')).then((snapshot) => {
+    if (snapshot.exists()) {
+        
         let list=[]
         const data = snapshot.val();
-        for (const key in data) {
-            const element = data[key];
+        Object.values(data).map((item)=>{
+            if (item.accountType==='vendor'){
+                list.push(item)
+                localStorage.setItem('vendors',JSON.stringify(list));
+            }
+        })
+        // for (const key in data) {
+        //     const element = data[key];
 
-                if(element.accountType==="vendor"){
-                    list.push(data)
-                    localStorage.setItem('vendors',JSON.stringify(list[0]));
-                }
-        }
+        //         if(element.accountType==="vendor"){
+        //             list.push(data)
+        //             localStorage.setItem('vendors',JSON.stringify(list[0]));
+        //             console.log(list[0])
+        //         }
+        // }
+    } else {
+        console.log("No data available");
+    }
+    }).catch((error) => {
+    console.error(error);
     });
+
+    // const starCountRef = ref(db, 'users/vendors');
+    // onValue(starCountRef, (snapshot) => {
+    //     let list=[]
+    //     const data = snapshot.val();
+    //     for (const key in data) {
+    //         const element = data[key];
+
+    //             if(element.accountType==="vendor"){
+    //                 list.push(data)
+    //                 localStorage.setItem('vendors',JSON.stringify(list[0]));
+    //             }
+    //     }
+    // });
 
     const starCountRefs = ref(db, 'food items/');
     onValue(starCountRefs, (snapshot) => {
         // vendorsFoods=snapshot.val();
-        console.log(snapshot.val())
+        // console.log(snapshot.val())
         localStorage.setItem("allVendorItem", JSON.stringify(snapshot.val()))
     //   if (snapshot.exists()) {
     //     console.log('yes')

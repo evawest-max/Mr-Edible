@@ -14,15 +14,15 @@ import vendorsdata from "../component/vendor-component/vendorDatabase";
 
 function Vendors(){
     // let cart=useContext(Cartcontext)
+    let sortedvendor=[]
     let vendorsData=JSON.parse(localStorage.getItem("vendors"))
     let vendorsda=Object.values(vendorsData).map((item)=>{
-        return item
+        if (item.accountType==='vendor'){
+            sortedvendor.push(item)
+        }
     })
     
 
-    let sortedvendor= vendorsda.sort( (a,b)=>{
-            return b.rating-a.rating
-         })
     let [vendor, setvendor]=useState(sortedvendor.map((data, index)=>{
         let star=data.rating===1?<AiFillStar/>:data.rating===2?<div><AiFillStar/><AiFillStar/></div>:data.rating===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
             return(
@@ -34,7 +34,7 @@ function Vendors(){
     )
     const inputvalue=useRef()
     function findvendor(){
-        let filteredVendor=vendorsda.filter((vendor, index)=>{
+        let filteredVendor=sortedvendor.filter((vendor, index)=>{
             return vendor.bussiness_name.toLocaleLowerCase().includes(inputvalue.current.value.toLocaleLowerCase())
         })
         vendorsda.length>0 ? setvendor(filteredVendor.map((data, index)=>{
