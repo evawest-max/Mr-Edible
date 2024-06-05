@@ -36,7 +36,7 @@ import { child, get, getDatabase, onValue, ref } from "firebase/database"
     let [itemsInDatabase, newItemsInDatabase]=useState(edFoods.map((items, index)=>{ 
         let star=items.star===1?<AiFillStar/>:items.star===2?<div><AiFillStar/><AiFillStar/></div>:items.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:items.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:items.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
         return(
-            <Fooditem key={index}  id={items.id} image={items.passport} name={items.name} price={items.amount} oldprice={items.oldAmount} stars={star} vendorName={items.vendorName}/>
+            <Fooditem key={index}  id={items.id} image={items.passport} name={items.name} price={items.amount} oldprice={items.oldAmount} stars={star} vendorName={items.vendorName} availability={items.availability}/>
         ) 
     }))
 
@@ -49,10 +49,10 @@ import { child, get, getDatabase, onValue, ref } from "firebase/database"
         console.log(filtereditemsInDatabase)
         
         newItemsInDatabase(filtereditemsInDatabase.map((item, index)=>{
-            console.log(index)
+            // console.log(index)
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
             return(
-                <Fooditem key={item.id} id={item.id} image={item.link} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName}/>
+                <Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
             ) 
         }))
     }
@@ -61,81 +61,81 @@ import { child, get, getDatabase, onValue, ref } from "firebase/database"
 
     //filter by category
     function filterbycategoryAll(){
-        newItemsInDatabase(foods.map((item, index)=>{
+        newItemsInDatabase(edFoods.map((item, index)=>{
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
             return(
-                <Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName}/>
+                <Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
             ) 
         }))
     }
     function filterbycategorySnacks(){
-        newItemsInDatabase(foods.map((item, index)=>{
+        newItemsInDatabase(edFoods.map((item, index)=>{
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.category==="snacks"&&<Fooditem key={item.id} id={item.id} image={item.link} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName}/>
+            return item.category==="snacks"&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     function filterbycategoryDrinks(){
-        newItemsInDatabase(foods.map((item, index)=>{
+        newItemsInDatabase(edFoods.map((item, index)=>{
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.category==="drinks"&&<Fooditem key={item.id} id={item.id} image={item.link} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName}/>
+            return item.category==="drinks"&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     function filterbycategoryFoods(){
-        newItemsInDatabase(foods.map((item, index)=>{
+        newItemsInDatabase(edFoods.map((item, index)=>{
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.category==="foods"&&<Fooditem key={item.id} id={item.id} image={item.link} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName}/>
+            return item.category==="foods"&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     //filter by price
     function filterbyprice1000(){
-        newItemsInDatabase(foods.map((item, index)=>{
+        newItemsInDatabase(edFoods.map((item, index)=>{
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.amount<=1000&&<Fooditem key={item.id} id={item.id} image={item.link} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName}/>
+            return item.amount<=1000&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     function filterbyprice1000_4000(){
-        newItemsInDatabase(foods.map((item, index)=>{
+        newItemsInDatabase(edFoods.map((item, index)=>{
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return (item.amount>1000&&item.amount<=4000)&&<Fooditem key={item.id} id={item.id} image={item.link} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName}/>
+            return (item.amount>1000&&item.amount<=4000)&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     function filterbypriceOver4000(){
-        newItemsInDatabase(foods.map((item, index)=>{
+        newItemsInDatabase(edFoods.map((item, index)=>{
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.amount>=4000&&<Fooditem key={item.id} id={item.id} image={item.link} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName}/>
+            return item.amount>=4000&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
 
     //filter by rating
     function filterbyratings(){
-        newItemsInDatabase(foods.map((item, index)=>{
+        newItemsInDatabase(edFoods.map((item, index)=>{
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.star===1&&<Fooditem key={item.id} id={item.id} image={item.link} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName}/>
+            return item.star===1&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
 
     function filterbyratings2(){
-        newItemsInDatabase(foods.map((item, index)=>{
+        newItemsInDatabase(edFoods.map((item, index)=>{
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.star===2&&<Fooditem key={item.id} id={item.id} image={item.link} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName}/>
+            return item.star===2&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     function filterbyratings3(){
-        newItemsInDatabase(foods.map((item, index)=>{
+        newItemsInDatabase(edFoods.map((item, index)=>{
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.star===3&&<Fooditem key={item.id} id={item.id} image={item.link} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName}/>
+            return item.star===3&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     function filterbyratings4(){
-        newItemsInDatabase(foods.map((item, index)=>{
+        newItemsInDatabase(edFoods.map((item, index)=>{
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.star===4&&<Fooditem key={item.id} id={item.id} image={item.link} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName}/>
+            return item.star===4&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     function filterbyratings5(){
-        newItemsInDatabase(foods.map((item, index)=>{
+        newItemsInDatabase(edFoods.map((item, index)=>{
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.star===5&&<Fooditem key={item.id} id={item.id} image={item.link} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} />
+            return item.star===5&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     // fillter ny 

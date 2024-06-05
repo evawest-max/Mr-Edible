@@ -11,7 +11,7 @@ function ring(){
     alert("ringing")
 }
 
-function VendorCard({id, name,image,rating, about, vendorPage}) {
+function VendorCard({id, name,image,rating, about, vendorPage, storeStatus}) {
     let  cart=useContext(Cartcontext)
     console.log(image)
     const storage= getStorage()
@@ -29,12 +29,15 @@ function VendorCard({id, name,image,rating, about, vendorPage}) {
     function sendShopDetail(){
         cart.forwardDetails(name, image)
     }
+    function vendorClosed(){
+        alert("Vendor is closed. check back later")
+    }
     return (
         <div id='vendorcard-container'>
             
             {/* <div id='vendor-secondDIv'> */}
-                <NavLink onClick={sendShopDetail} to={"/mrEdible"}>
-                    <img src={pic} alt='vendor_image'/>
+                <NavLink onClick={!storeStatus ? sendShopDetail : vendorClosed} to={!storeStatus ?"/mrEdible":"#"}>
+                    <img src={!storeStatus ? pic : "https://img.freepik.com/premium-vector/closed-sign-illustration_118124-3040.jpg"} alt='vendor_image'/>
                 </NavLink>
                     {/* <p id='vendor-about'>{about}</p> */}
                     <div id='vendor-card-name'>{name}</div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Foodsection.css";
 import { Cartcontext} from "../context folder/appContext";
 import { useContext } from "react";
@@ -12,6 +12,7 @@ import { getDownloadURL, getStorage, ref } from "firebase/storage";
     const cart= useContext(Cartcontext)
     
     const [buttonState, newbuttonState]= useState(<button onClick={addToCart} className="food-button">Add to cart <FaCartPlus/></button>)
+    
 
     function addToCart(){
         newbuttonState(<button onClick={removefromCart} className="food-button">Remove <MdRemoveShoppingCart /></button>)
@@ -24,16 +25,17 @@ import { getDownloadURL, getStorage, ref } from "firebase/storage";
     }
     const [imageurl, setimageurl]=useState("https://robohash.org/ebu")
     const storage = getStorage();
+    
     getDownloadURL(ref(storage, props.image))
     .then((url) => {
         // `url` is the download URL for 'images/stars.jpg'
         setimageurl(url)
         // alert(url)
-        console.log("URL is Correct")
+        // console.log("URL is Correct")
     })
     .catch((error) => {
         alert(error)
-        console.log("URL is wrong")
+        // console.log("URL is wrong")
     });
 
     return(
@@ -43,7 +45,7 @@ import { getDownloadURL, getStorage, ref } from "firebase/storage";
                 <p className="food-name">{props.name}</p>
                 <p className="food-price"><del>{props.oldprice}</del> ₦{props.price}</p>
                 <div>{props.stars}</div>
-                {buttonState}
+                {!props.availability?<button>Unavailabile</button>:buttonState}
             </div>
         
     )
