@@ -265,7 +265,8 @@ function Signup() {
                         accountType:"vendor",
                         registeration_date_and_time:new Date().toLocaleString(),
                         store_status:false,
-                        aboutUs: "Empty"
+                        aboutUs: "Empty",
+                        rating: 3
                       }
                       await set(ref(db,"users/"+vendor.uid, ), postData).then(() => {
                         

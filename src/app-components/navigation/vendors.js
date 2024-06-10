@@ -9,6 +9,7 @@ import { TiArrowDownThick } from "react-icons/ti";
 import Footer from "../component/footer-components/footer";
 import VendorCard from "../component/vendor-component/vendor-card";
 import vendorsdata from "../component/vendor-component/vendorDatabase";
+import { getDatabase, onValue, ref } from "firebase/database";
 // import { FaSearch } from "react-icons/fa";
 // import { IoIosStar } from "react-icons/io";
 
@@ -41,12 +42,27 @@ function Vendors(){
             let star=data.rating===1?<AiFillStar/>:data.rating===2?<div><AiFillStar/><AiFillStar/></div>:data.rating===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
             return(
                 
-                    <VendorCard key={index} name={data.bussiness_name} image={data.passport} rating={star} about={data.about} vendorPage={data.vendorPage} storeStatus={data.store_status}/>
+                    <VendorCard key={index} name={data.bussiness_name} image={data.passport} rating={star} about={data.about} vendorPage={data.vendorPage} storeStatus={data.store_status} address={data.address} email={data.email} phonenumber={data.phonenumber}/>
                 
             )
         })
         ): alert("No vendors yet, please check back later. Thank you")
     }
+    const db = getDatabase();
+    const starCountRef = ref(db, 'users/vendors');
+    onValue(starCountRef, (snapshot) => {
+        let list=[]
+        const data = snapshot.val();
+        for (const key in data) {
+            const element = data[key];
+
+                if(element.accountType==="vendor"){
+                    list.push(data)
+                    localStorage.setItem('vendors',JSON.stringify(list[0]));
+                }
+        }
+    });
+
     return(
         <div>
             <div className="vendorContainer">

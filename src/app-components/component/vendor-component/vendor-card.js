@@ -1,17 +1,18 @@
 import React, { useContext, useState } from 'react'
 import "./vendor-card.css"
-import {NavLink } from 'react-router-dom';
+import {Link, NavLink } from 'react-router-dom';
 import { getDownloadURL, getStorage, ref as storageref } from 'firebase/storage';
 import SearchBar from '../../Mr edible store/search component/searchBar';
 import Cart from '../../Mr edible store/cart component/cart';
 import { Cartcontext } from '../../Mr edible store/context folder/appContext';
+import AboutVendor from './About vendor/about-vendor';
 
 export let storeName="genesis group"
 function ring(){
     alert("ringing")
 }
 
-function VendorCard({id, name,image,rating, about, vendorPage, storeStatus}) {
+function VendorCard({id, name,image,rating, about, vendorPage, storeStatus, address, email, phonenumber}) {
     let  cart=useContext(Cartcontext)
     console.log(image)
     const storage= getStorage()
@@ -25,6 +26,10 @@ function VendorCard({id, name,image,rating, about, vendorPage, storeStatus}) {
         console.log(error)
         setPic("https://robohash.org/vendor")
     })
+
+    function passdownProps(){
+        <AboutVendor id={id} bussinessName={name} logo={image} rating={rating} about={about} storeStatus={storeStatus} address={address} email={email} phonenumber={phonenumber} />
+    }
     
     function sendShopDetail(){
         cart.forwardDetails(name, image)
@@ -42,7 +47,7 @@ function VendorCard({id, name,image,rating, about, vendorPage, storeStatus}) {
                     {/* <p id='vendor-about'>{about}</p> */}
                     <div id='vendor-card-name'>{name}</div>
                     <div id='vendor-rating'>{rating}</div>
-                    <button id='vendor-Aboutus-button'>About us</button>
+                    <NavLink to="/about-vendor"><button onClick={passdownProps} id='vendor-Aboutus-button'>About us</button></NavLink> 
             {/* </div> */}
         </div>
     )

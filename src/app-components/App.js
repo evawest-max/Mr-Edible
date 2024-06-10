@@ -36,6 +36,7 @@ import Notifications from './login/vendors/notifications/notifications';
 import VendorFoods from './login/vendors/vendor-foods/vendor-foods';
 import VendorUpload from './login/vendors/upload/upload';
 import VendorSettings from './login/vendors/vendor settings/vendor-settings';
+import AboutVendor from './component/vendor-component/About vendor/about-vendor';
 
 
 const router=createBrowserRouter(
@@ -56,6 +57,7 @@ const router=createBrowserRouter(
         <Route path='/smile-cakes' element={<SmileCakesSearchBar/>}></Route>
         <Route path='/smile-cakes-cart' element={<SmileCakesCart/>}></Route>
         <Route path='/smile-cakes-checkoutpage' element={<Cartitem/>}></Route>
+        <Route path='/about-vendor' element={<AboutVendor/>}></Route>
         <Route path='admin-page' element={<AdminRoot/>}>
           <Route index element={<Overview/>}/>
           <Route path='overview' element={<Overview/>}/>

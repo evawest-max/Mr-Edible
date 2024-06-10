@@ -47,19 +47,19 @@ function Homepage(){
     console.error(error);
     });
 
-    // const starCountRef = ref(db, 'users/vendors');
-    // onValue(starCountRef, (snapshot) => {
-    //     let list=[]
-    //     const data = snapshot.val();
-    //     for (const key in data) {
-    //         const element = data[key];
+    const starCountRef = ref(db, 'users/vendors');
+    onValue(starCountRef, (snapshot) => {
+        let list=[]
+        const data = snapshot.val();
+        for (const key in data) {
+            const element = data[key];
 
-    //             if(element.accountType==="vendor"){
-    //                 list.push(data)
-    //                 localStorage.setItem('vendors',JSON.stringify(list[0]));
-    //             }
-    //     }
-    // });
+                if(element.accountType==="vendor"){
+                    list.push(data)
+                    localStorage.setItem('vendors',JSON.stringify(list[0]));
+                }
+        }
+    });
 
     const starCountRefs = ref(db, 'food items/');
     onValue(starCountRefs, (snapshot) => {
@@ -80,7 +80,7 @@ function Homepage(){
                     <h3> Welcome to Mr Edible Food<br/> market place <br/><span>WE ARE RATED<IoIosStar /><IoIosStar /><IoIosStar /><IoIosStar /><IoIosStar /></span></h3>
                     <div>
                         <NavLink to="vendors" className="homepage-Btn-1">Order <span><MdKeyboardDoubleArrowRight style={{fontSize:"200%"}}/></span></NavLink>
-                        <Link to="https://www.youtube.com/channel/UCblfN9rFw3yW1P64VThsgnw" className="homepage-Btn-2"><MdPlayCircle style={{fontSize:"200%"}} />  How to order</Link>
+                        <Link to="https://youtu.be/JqQbDXQ8f40" className="homepage-Btn-2"><MdPlayCircle style={{fontSize:"200%"}} />  How to order</Link>
                         <NavLink className="homepage-Btn-3"><FcFaq style={{fontSize:"200%"}}/> FAQ</NavLink>
                     </div>
                 </div>
