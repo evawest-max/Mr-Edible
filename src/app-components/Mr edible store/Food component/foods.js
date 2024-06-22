@@ -1,3 +1,54 @@
+let all=
+    {
+        genesis:[
+            {
+                id:0,
+                name:"Rice and chicken",
+                amount:3500,
+                oldAmount:"₦4000",
+                star:4,
+                reviews:"(123 reviews)",
+                category:"foods",
+                link:"https://c4.wallpaperflare.com/wallpaper/604/535/600/stalk-rice-meat-greens-wallpaper-preview.jpg",
+                vendorName:"mr edible"
+            },
+            {
+                id:1,
+                name:"Egusi soup",
+                amount:4820,
+                oldAmount:"₦5300",
+                star:2,
+                reviews:"(123 reviews)",
+                category:"foods",
+                link:"https://www.allnigerianrecipes.com/wp-content/uploads/2019/03/egusi-soup-fried.jpg",
+                vendorName:"mr edible"
+            }
+        ],
+        smile:[
+            {
+                id:0,
+                name:"Rice and chicken",
+                amount:3500,
+                oldAmount:"₦4000",
+                star:4,
+                reviews:"(123 reviews)",
+                category:"foods",
+                link:"https://c4.wallpaperflare.com/wallpaper/604/535/600/stalk-rice-meat-greens-wallpaper-preview.jpg",
+                vendorName:"mr edible"
+            },
+            {
+                id:1,
+                name:"Egusi soup",
+                amount:4820,
+                oldAmount:"₦5300",
+                star:2,
+                reviews:"(123 reviews)",
+                category:"foods",
+                link:"https://www.allnigerianrecipes.com/wp-content/uploads/2019/03/egusi-soup-fried.jpg",
+                vendorName:"mr edible"
+            }
+        ]
+    }
 const foods =[
     {
         id:0,

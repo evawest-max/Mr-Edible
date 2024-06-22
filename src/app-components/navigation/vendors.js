@@ -26,7 +26,10 @@ function Vendors(){
 
     let [vendor, setvendor]=useState(sortedvendor.map((data, index)=>{
         let star=data.rating===1?<AiFillStar/>:data.rating===2?<div><AiFillStar/><AiFillStar/></div>:data.rating===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return(
+        if (!localStorage.getItem(data.bussiness_name)) {
+            localStorage.setItem(data.bussiness_name, JSON.stringify([]))
+        }    
+        return(
                 
                     <VendorCard key={index} name={data.bussiness_name} image={data.passport} rating={star} about={data.about} vendorPage={data.vendorPage}/>
                 

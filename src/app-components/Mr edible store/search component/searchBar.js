@@ -34,9 +34,24 @@ import { child, get, getDatabase, onValue, ref } from "firebase/database"
 
     // console.log(cart.buissnessName)
     let [itemsInDatabase, newItemsInDatabase]=useState(edFoods.map((items, index)=>{ 
+        let cartcheck=false
+        let allfoods=JSON.parse(localStorage.getItem("mredible_cart"));
+        localStorage.getItem("mredible_cart") !==null?
+        Object.keys(allfoods).forEach((item)=>{
+            item===localStorage.getItem("nameobject")&&
+            allfoods[item].map((product)=>{
+                product.id===items.id?
+                cartcheck=true
+                
+                :cartcheck=false
+                
+            })
+            
+        }):cartcheck=false
+        
         let star=items.star===1?<AiFillStar/>:items.star===2?<div><AiFillStar/><AiFillStar/></div>:items.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:items.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:items.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
         return(
-            <Fooditem key={index}  id={items.id} image={items.passport} name={items.name} price={items.amount} oldprice={items.oldAmount} stars={star} vendorName={items.vendorName} availability={items.availability}/>
+            <Fooditem key={index} cartcheck={cartcheck} id={items.id} image={items.passport} name={items.name} price={items.amount} oldprice={items.oldAmount} stars={star} vendorName={items.vendorName} availability={items.availability}/>
         ) 
     }))
 

@@ -43,16 +43,24 @@ export const Cartcontext= createContext({
 function Cartprovider({children}) {
   let regID=null
   let [imageUrl, setimageUrl]= useState("")
-  const [numberOfItemsInCart, setnumberOfItemsInCart]=useState(localStorage.getItem("mredible_cart")!==null? JSON.parse(localStorage.getItem("mredible_cart")).length:0)
+  if (localStorage.getItem("mredible_cart") !==null){
+    let allfoods=JSON.parse(localStorage.getItem("mredible_cart"))
+    Object.keys(allfoods).forEach((item)=>{
+      if (item===localStorage.getItem("nameobject")){
+        productsIDInTheCartList=allfoods[item]
+      }
+    })
+  }
+  const [numberOfItemsInCart, setnumberOfItemsInCart]=useState(productsIDInTheCartList.length)
   const [indexState, setindexState]=useState({ zIndex:"2" })
   function changeZ(){
     changes=!changes
     changes? setindexState({ zIndex:"0" }):setindexState({zIndex:"2"})
   }
 
-  const [totalCart, settotalCart]=useState(productsIDInTheCartList.reduce((total, item)=>{
-    return total+(item.price*item.quantity)
-  },0))
+  
+
+  const [totalCart, settotalCart]=useState(0)
 
   function getproductquantity(id){
     const quantity=productsIDInTheCartList.find(product=> product.id===id)?.quantity
@@ -65,27 +73,67 @@ function Cartprovider({children}) {
   function addItemsToCartList(id, price, name, image, vendorName){
     const quantity=getproductquantity(id)
     if (quantity===0){
-        productsIDInTheCartList=[{id:id, price:price, name:name, image:image, vendorName:vendorName, quantity:1}, ...productsIDInTheCartList ]
+        // productsIDInTheCartList=[{id:id, price:price, name:name, image:image, vendorName:vendorName, quantity:1}, ...productsIDInTheCartList ]
+        if (localStorage.getItem("mredible_cart") !==null){
+          let allfoods=JSON.parse(localStorage.getItem("mredible_cart"))
+          Object.keys(allfoods).forEach((item)=>{
+            if (item===localStorage.getItem("nameobject")){
+              allfoods[item]=[{id:id, price:price, name:name, image:image, vendorName:vendorName, quantity:1}, ...allfoods[item] ]
+              console.log(allfoods[item])
+              localStorage.setItem("mredible_cart", JSON.stringify(allfoods))
+            }
+          })
+        }
+        else {
+          localStorage.setItem("mredible_cart", JSON.stringify({[localStorage.getItem("nameobject")]:[{id:id, price:price, name:name, image:image, vendorName:vendorName, quantity:1}]}))
+        }
       }else{console.log("item already exist in cart")}
+
     getTotalCart() 
-    localStorage.setItem("mredible_cart", JSON.stringify(productsIDInTheCartList))
+    // localStorage.setItem("mredible_cart", JSON.stringify(productsIDInTheCartList))
     if (localStorage.getItem("mredible_cart")!==null){
-      setnumberOfItemsInCart(JSON.parse(localStorage.getItem("mredible_cart")).length)
+      let allfoods=JSON.parse(localStorage.getItem("mredible_cart"))
+      let cartlength=0
+      Object.keys(allfoods).forEach((item)=>{
+        if (item===localStorage.getItem("nameobject")){
+          cartlength=allfoods[item].length
+          setnumberOfItemsInCart(cartlength)
+        }
+      })
+      // setnumberOfItemsInCart(JSON.parse(localStorage.getItem("mredible_cart")).length)
     }
-    else{
-      setnumberOfItemsInCart(0)
-    }
+    // else{
+    //   setnumberOfItemsInCart(0)
+    // }
   }
 
   function deleteFromCartList(id){
-    productsIDInTheCartList=productsIDInTheCartList.filter((product)=>{
-      return product.id!==id
-    })
-    console.log(productsIDInTheCartList)
-    productsIDInTheCartList.length<1?settotalCart(0):getTotalCart()
-    localStorage.setItem("mredible_cart", JSON.stringify(productsIDInTheCartList))
+    if (localStorage.getItem("mredible_cart") !==null){
+      let allfoods=JSON.parse(localStorage.getItem("mredible_cart"))
+      Object.keys(allfoods).forEach((item)=>{
+        if (item===localStorage.getItem("nameobject")){
+          let matchingproduct=allfoods[item].filter((product)=>{
+            return product.id!==id
+          })
+          allfoods[item]=matchingproduct
+          console.log(allfoods[item])
+          localStorage.setItem("mredible_cart", JSON.stringify(allfoods))
+          allfoods[item].length<1?settotalCart(0):getTotalCart()
+        }
+      })
+    }
+    
+    // productsIDInTheCartList.length<1?settotalCart(0):getTotalCart()
+    // localStorage.setItem("mredible_cart", JSON.stringify(productsIDInTheCartList))
     if (localStorage.getItem("mredible_cart")!==null){
-      setnumberOfItemsInCart(JSON.parse(localStorage.getItem("mredible_cart")).length)
+      let allfoods=JSON.parse(localStorage.getItem("mredible_cart"))
+      let cartlength=0
+      Object.keys(allfoods).forEach((item)=>{
+        if (item===localStorage.getItem("nameobject")){
+          cartlength=allfoods[item].length
+          setnumberOfItemsInCart(cartlength)
+        }
+      })
     }
     else{
       setnumberOfItemsInCart(0)
@@ -93,40 +141,63 @@ function Cartprovider({children}) {
   }
 
   function increaseProductQuantity(id, price, name, image){
-    productsIDInTheCartList=productsIDInTheCartList.map(product=>{
-        if (product.id === id){
-         return {...product, quantity:product.quantity+1}
-        }else {return product}
-      }) 
-    console.log(productsIDInTheCartList)
+    if (localStorage.getItem("mredible_cart") !==null){
+      let allfoods=JSON.parse(localStorage.getItem("mredible_cart"))
+      Object.keys(allfoods).forEach((item)=>{
+        if (item===localStorage.getItem("nameobject")){
+          allfoods[item]=allfoods[item].map(product=>{
+            if (product.id === id){
+             return {...product, quantity:product.quantity+1}
+            }else {return product}
+          }) 
+          localStorage.setItem("mredible_cart", JSON.stringify(allfoods))
+        }
+      })
+    }
+    
+    // console.log(productsIDInTheCartList)
     getTotalCart()
-    localStorage.setItem("mredible_cart", JSON.stringify(productsIDInTheCartList))
+    // localStorage.setItem("mredible_cart", JSON.stringify(productsIDInTheCartList))
 }
 
   function decreaseProductQuantity(id){
-    const quantity=getproductquantity(id)
-      if (quantity===1){
-        deleteFromCartList(id)
-      }else{
-        productsIDInTheCartList=productsIDInTheCartList.map((product)=>{
-          if(product.id===id){
-            product.quantity--
-            return product
+
+    if (localStorage.getItem("mredible_cart") !==null){
+      let allfoods=JSON.parse(localStorage.getItem("mredible_cart"))
+      Object.keys(allfoods).forEach((item)=>{
+        if (item===localStorage.getItem("nameobject")){
+          if (allfoods[item].length<=1){
+            deleteFromCartList(id)
+          }else{
+            allfoods[item]=allfoods[item].map((product)=>{
+              if(product.id===id){
+                product.quantity--
+                return product
+              }
+              else{return product}
+            })
           }
-          else{return product}
-        })
-      }
-    console.log(productsIDInTheCartList)
+          
+          localStorage.setItem("mredible_cart", JSON.stringify(allfoods))
+        }
+      })
+    }
     getTotalCart()
-    localStorage.setItem("mredible_cart", JSON.stringify(productsIDInTheCartList))
+    
   }
   
   function getTotalCart(){
-    settotalCart(productsIDInTheCartList.reduce((total, product)=>{
-      return total+(product.price*product.quantity)
-    },0)
-    )
-    console.log(totalCart)
+    if (localStorage.getItem("mredible_cart") !==null){
+      let allfoods=JSON.parse(localStorage.getItem("mredible_cart"))
+      Object.keys(allfoods).forEach((item)=>{
+        if (item===localStorage.getItem("nameobject")){
+          settotalCart(allfoods[item].reduce((total, product)=>{
+            return total+(product.price*product.quantity)
+          },0)
+          )
+        }
+      })
+    }
   }
 
   // let userOrders=[]

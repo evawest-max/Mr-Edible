@@ -19,7 +19,18 @@ function Cart(){
     let deleveryfee=0
     const tax=5
     const cart=useContext(Cartcontext)
-    productsIDInTheCartList.forEach(element => {
+    let allCartItems=[]
+    if (localStorage.getItem("mredible_cart") !==null){
+        let allfoods=JSON.parse(localStorage.getItem("mredible_cart"))
+        Object.keys(allfoods).forEach((item)=>{
+          if (item===localStorage.getItem("nameobject")){
+            // console.log(allfoods[item])
+            allCartItems=allfoods[item]
+          }else allCartItems=[]
+        })
+    }
+    
+    allCartItems.forEach(element => {
         deleveryfee+=1000
     });
     
@@ -31,12 +42,13 @@ function Cart(){
     
     const [foodState, newfoodState]=useState("cart is emptys")
     
-    productsIDInTheCartList.reverse()
+    
+    allCartItems.reverse()
     useEffect(()=>{
-        if (productsIDInTheCartList.length===0){
+        if (JSON.stringify(localStorage.getItem('kilimanjaro')).length===0){
             newfoodState("cart is empty")
         }
-        else{newfoodState(productsIDInTheCartList.map((item, index)=>{    
+        else{newfoodState(allCartItems.map((item, index)=>{    
             function removeFromCart(){  
                 cart.deleteFromCartList(item.id) 
             }
@@ -60,7 +72,7 @@ function Cart(){
     function tests(){
         cart.addToOrders()
     }
-    
+    console.log(allCartItems)
     return(
     
             <div id="cart-parent">
