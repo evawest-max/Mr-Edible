@@ -40,13 +40,8 @@ import { child, get, getDatabase, onValue, ref } from "firebase/database"
         Object.keys(allfoods).forEach((item)=>{
             item===localStorage.getItem("nameobject")&&
             allfoods[item].map((product)=>{
-                product.id===items.id?
-                cartcheck=true
-                
-                :cartcheck=false
-                
-            })
-            
+                product.id===items.id?cartcheck=true:cartcheck=false  
+            })    
         }):cartcheck=false
         
         let star=items.star===1?<AiFillStar/>:items.star===2?<div><AiFillStar/><AiFillStar/></div>:items.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:items.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:items.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
@@ -64,10 +59,19 @@ import { child, get, getDatabase, onValue, ref } from "firebase/database"
         console.log(filtereditemsInDatabase)
         
         newItemsInDatabase(filtereditemsInDatabase.map((item, index)=>{
+            let cartcheck=false
+            let allfoods=JSON.parse(localStorage.getItem("mredible_cart"));
+            localStorage.getItem("mredible_cart") !==null?
+            Object.keys(allfoods).forEach((item)=>{
+                item===localStorage.getItem("nameobject")&&
+                allfoods[item].map((product)=>{
+                    product.id===item.id?cartcheck=true:cartcheck=false  
+                })    
+            }):cartcheck=false
             // console.log(index)
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
             return(
-                <Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
+                <Fooditem key={item.id} cartcheck={cartcheck} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
             ) 
         }))
     }
@@ -77,80 +81,188 @@ import { child, get, getDatabase, onValue, ref } from "firebase/database"
     //filter by category
     function filterbycategoryAll(){
         newItemsInDatabase(edFoods.map((item, index)=>{
+            let cartcheck=false
+            let allfoods=JSON.parse(localStorage.getItem("mredible_cart"));
+            localStorage.getItem("mredible_cart") !==null?
+            Object.keys(allfoods).forEach((item)=>{
+                item===localStorage.getItem("nameobject")&&
+                allfoods[item].map((product)=>{
+                    product.id===item.id?cartcheck=true:cartcheck=false  
+                })    
+            }):cartcheck=false
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
             return(
-                <Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
+                <Fooditem key={item.id} cartcheck={cartcheck} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
             ) 
         }))
     }
     function filterbycategorySnacks(){
         newItemsInDatabase(edFoods.map((item, index)=>{
+            let cartcheck=false
+            let allfoods=JSON.parse(localStorage.getItem("mredible_cart"));
+            localStorage.getItem("mredible_cart") !==null?
+            Object.keys(allfoods).forEach((item)=>{
+                item===localStorage.getItem("nameobject")&&
+                allfoods[item].map((product)=>{
+                    product.id===item.id?cartcheck=true:cartcheck=false  
+                })    
+            }):cartcheck=false
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.category==="snacks"&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
+            return item.category==="snacks"&&<Fooditem key={item.id} cartcheck={cartcheck} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     function filterbycategoryDrinks(){
         newItemsInDatabase(edFoods.map((item, index)=>{
+            let cartcheck=false
+            let allfoods=JSON.parse(localStorage.getItem("mredible_cart"));
+            localStorage.getItem("mredible_cart") !==null?
+            Object.keys(allfoods).forEach((item)=>{
+                item===localStorage.getItem("nameobject")&&
+                allfoods[item].map((product)=>{
+                    product.id===item.id?cartcheck=true:cartcheck=false  
+                })    
+            }):cartcheck=false
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.category==="drinks"&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
+            return item.category==="drinks"&&<Fooditem key={item.id} cartcheck={cartcheck} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     function filterbycategoryFoods(){
         newItemsInDatabase(edFoods.map((item, index)=>{
+            let cartcheck=false
+            let allfoods=JSON.parse(localStorage.getItem("mredible_cart"));
+            localStorage.getItem("mredible_cart") !==null?
+            Object.keys(allfoods).forEach((item)=>{
+                item===localStorage.getItem("nameobject")&&
+                allfoods[item].map((product)=>{
+                    product.id===item.id?cartcheck=true:cartcheck=false  
+                })    
+            }):cartcheck=false
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.category==="foods"&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
+            return item.category==="foods"&&<Fooditem key={item.id} cartcheck={cartcheck} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     //filter by price
     function filterbyprice1000(){
         newItemsInDatabase(edFoods.map((item, index)=>{
+            let cartcheck=false
+            let allfoods=JSON.parse(localStorage.getItem("mredible_cart"));
+            localStorage.getItem("mredible_cart") !==null?
+            Object.keys(allfoods).forEach((item)=>{
+                item===localStorage.getItem("nameobject")&&
+                allfoods[item].map((product)=>{
+                    product.id===item.id?cartcheck=true:cartcheck=false  
+                })    
+            }):cartcheck=false
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.amount<=1000&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
+            return item.amount<=1000&&<Fooditem key={item.id} cartcheck={cartcheck} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     function filterbyprice1000_4000(){
         newItemsInDatabase(edFoods.map((item, index)=>{
+            let cartcheck=false
+            let allfoods=JSON.parse(localStorage.getItem("mredible_cart"));
+            localStorage.getItem("mredible_cart") !==null?
+            Object.keys(allfoods).forEach((item)=>{
+                item===localStorage.getItem("nameobject")&&
+                allfoods[item].map((product)=>{
+                    product.id===item.id?cartcheck=true:cartcheck=false  
+                })    
+            }):cartcheck=false
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return (item.amount>1000&&item.amount<=4000)&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
+            return (item.amount>1000&&item.amount<=4000)&&<Fooditem key={item.id} cartcheck={cartcheck} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     function filterbypriceOver4000(){
         newItemsInDatabase(edFoods.map((item, index)=>{
+            let cartcheck=false
+            let allfoods=JSON.parse(localStorage.getItem("mredible_cart"));
+            localStorage.getItem("mredible_cart") !==null?
+            Object.keys(allfoods).forEach((item)=>{
+                item===localStorage.getItem("nameobject")&&
+                allfoods[item].map((product)=>{
+                    product.id===item.id?cartcheck=true:cartcheck=false  
+                })    
+            }):cartcheck=false
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.amount>=4000&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
+            return item.amount>=4000&&<Fooditem key={item.id} id={item.id} cartcheck={cartcheck} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
 
     //filter by rating
     function filterbyratings(){
         newItemsInDatabase(edFoods.map((item, index)=>{
+            let cartcheck=false
+            let allfoods=JSON.parse(localStorage.getItem("mredible_cart"));
+            localStorage.getItem("mredible_cart") !==null?
+            Object.keys(allfoods).forEach((item)=>{
+                item===localStorage.getItem("nameobject")&&
+                allfoods[item].map((product)=>{
+                    product.id===item.id?cartcheck=true:cartcheck=false  
+                })    
+            }):cartcheck=false
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.star===1&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
+            return item.star===1&&<Fooditem key={item.id} cartcheck={cartcheck} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
 
     function filterbyratings2(){
         newItemsInDatabase(edFoods.map((item, index)=>{
+            let cartcheck=false
+            let allfoods=JSON.parse(localStorage.getItem("mredible_cart"));
+            localStorage.getItem("mredible_cart") !==null?
+            Object.keys(allfoods).forEach((item)=>{
+                item===localStorage.getItem("nameobject")&&
+                allfoods[item].map((product)=>{
+                    product.id===item.id?cartcheck=true:cartcheck=false  
+                })    
+            }):cartcheck=false
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.star===2&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
+            return item.star===2&&<Fooditem key={item.id} cartcheck={cartcheck} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     function filterbyratings3(){
         newItemsInDatabase(edFoods.map((item, index)=>{
+            let cartcheck=false
+            let allfoods=JSON.parse(localStorage.getItem("mredible_cart"));
+            localStorage.getItem("mredible_cart") !==null?
+            Object.keys(allfoods).forEach((item)=>{
+                item===localStorage.getItem("nameobject")&&
+                allfoods[item].map((product)=>{
+                    product.id===item.id?cartcheck=true:cartcheck=false  
+                })    
+            }):cartcheck=false
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.star===3&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
+            return item.star===3&&<Fooditem key={item.id} cartcheck={cartcheck} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     function filterbyratings4(){
         newItemsInDatabase(edFoods.map((item, index)=>{
+            let cartcheck=false
+            let allfoods=JSON.parse(localStorage.getItem("mredible_cart"));
+            localStorage.getItem("mredible_cart") !==null?
+            Object.keys(allfoods).forEach((item)=>{
+                item===localStorage.getItem("nameobject")&&
+                allfoods[item].map((product)=>{
+                    product.id===item.id?cartcheck=true:cartcheck=false  
+                })    
+            }):cartcheck=false
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.star===4&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
+            return item.star===4&&<Fooditem key={item.id} cartcheck={cartcheck} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     function filterbyratings5(){
         newItemsInDatabase(edFoods.map((item, index)=>{
+            let cartcheck=false
+            let allfoods=JSON.parse(localStorage.getItem("mredible_cart"));
+            localStorage.getItem("mredible_cart") !==null?
+            Object.keys(allfoods).forEach((item)=>{
+                item===localStorage.getItem("nameobject")&&
+                allfoods[item].map((product)=>{
+                    product.id===item.id?cartcheck=true:cartcheck=false  
+                })    
+            }):cartcheck=false
             let star=item.star===1?<AiFillStar/>:item.star===2?<div><AiFillStar/><AiFillStar/></div>:item.star===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:item.star===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-            return item.star===5&&<Fooditem key={item.id} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
+            return item.star===5&&<Fooditem key={item.id} cartcheck={cartcheck} id={item.id} image={item.passport} name={item.name} price={item.amount} oldprice={item.oldAmount} stars={star} vendorName={item.vendorName} availability={item.availability}/>
         }))
     }
     // fillter ny 

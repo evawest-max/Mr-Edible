@@ -81,6 +81,9 @@ function Cartprovider({children}) {
               allfoods[item]=[{id:id, price:price, name:name, image:image, vendorName:vendorName, quantity:1}, ...allfoods[item] ]
               console.log(allfoods[item])
               localStorage.setItem("mredible_cart", JSON.stringify(allfoods))
+            }else{
+              allfoods[localStorage.getItem("nameobject")] = [{id:id, price:price, name:name, image:image, vendorName:vendorName, quantity:1} ];
+              localStorage.setItem("mredible_cart", JSON.stringify(allfoods))
             }
           })
         }

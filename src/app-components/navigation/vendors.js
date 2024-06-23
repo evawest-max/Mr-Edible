@@ -26,9 +26,9 @@ function Vendors(){
 
     let [vendor, setvendor]=useState(sortedvendor.map((data, index)=>{
         let star=data.rating===1?<AiFillStar/>:data.rating===2?<div><AiFillStar/><AiFillStar/></div>:data.rating===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-        if (!localStorage.getItem(data.bussiness_name)) {
-            localStorage.setItem(data.bussiness_name, JSON.stringify([]))
-        }    
+        // if (!localStorage.getItem(data.bussiness_name)) {
+        //     localStorage.setItem(data.bussiness_name, JSON.stringify([]))
+        // }    
         return(
                 
                     <VendorCard key={index} name={data.bussiness_name} image={data.passport} rating={star} about={data.about} vendorPage={data.vendorPage}/>
@@ -58,13 +58,36 @@ function Vendors(){
         const data = snapshot.val();
         for (const key in data) {
             const element = data[key];
-
                 if(element.accountType==="vendor"){
                     list.push(data)
                     localStorage.setItem('vendors',JSON.stringify(list[0]));
+                    showResentlyAddedVendor()
                 }
         }
     });
+
+    function showResentlyAddedVendor(){
+        vendorsData=JSON.parse(localStorage.getItem("vendors"))
+        vendorsda=Object.values(vendorsData).map((item)=>{
+        if (item.accountType==='vendor'){
+            sortedvendor.push(item)
+        }
+        })
+    
+
+    setvendor(sortedvendor.map((data, index)=>{
+        let star=data.rating===1?<AiFillStar/>:data.rating===2?<div><AiFillStar/><AiFillStar/></div>:data.rating===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
+        // if (!localStorage.getItem(data.bussiness_name)) {
+        //     localStorage.setItem(data.bussiness_name, JSON.stringify([]))
+        // }    
+        return(
+                
+                    <VendorCard key={index} name={data.bussiness_name} image={data.passport} rating={star} about={data.about} vendorPage={data.vendorPage}/>
+                
+            )
+    })
+    )
+    }
 
     return(
         <div>
