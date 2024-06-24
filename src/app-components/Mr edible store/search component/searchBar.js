@@ -20,6 +20,7 @@ import { child, get, getDatabase, onValue, ref } from "firebase/database"
  function SearchBar(props){
     // const car=useContext(Cartcontext)
     const cart=useContext(Cartcontext)
+    cart.getTotalCart()
     let edFoods=[]
     // console.log(localStorage.getItem("nameobject"))
   

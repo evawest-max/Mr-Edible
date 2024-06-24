@@ -1,13 +1,13 @@
 import React, { createContext, useEffect,} from 'react'
 import { useState } from 'react'
-import { Link, NavLink, Navigate, } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { FaUserCircle } from "react-icons/fa";
 // import users from '../../signup/usersData'
-import { child, get, getDatabase, onValue, push, ref, remove, set, update } from 'firebase/database';
+import { child, getDatabase, onValue, push, ref, remove, set, update } from 'firebase/database';
 import { getDownloadURL,ref as refStorage, getStorage, deleteObject } from 'firebase/storage';
 import { deleteUser, getAuth } from 'firebase/auth';
 import "./appcontext.css"
-import { storeName } from '../../component/vendor-component/vendor-card';
+// import { storeName } from '../../component/vendor-component/vendor-card';
 
 export let productsIDInTheCartList=[]
 let changes=false
@@ -63,26 +63,71 @@ function Cartprovider({children}) {
   const [totalCart, settotalCart]=useState(0)
 
   function getproductquantity(id){
-    const quantity=productsIDInTheCartList.find(product=> product.id===id)?.quantity
-    if(quantity===undefined){
-      return 0;
+    let quantity=0
+    if (localStorage.getItem("mredible_cart")!==null){
+      let allfoods=JSON.parse(localStorage.getItem("mredible_cart"))
+      Object.keys(allfoods).forEach((item)=>{
+        if (item===localStorage.getItem("nameobject")){
+          if (allfoods[item].id===id && allfoods[item].quantity!== undefined){
+            quantity=allfoods[item].quantity
+          }
+          // quantity=allfoods[item].find(product=> product.id===id)?.quantity
+        }
+        else if (allfoods[item].quantity===undefined){
+          quantity=0
+        }
+      })
+
     }
+    // const quantity=productsIDInTheCartList.find(product=> product.id===id)?.quantity
+    // if(quantity===undefined){
+    //   return 0;
+    // }
     return quantity
   }
-
-  function addItemsToCartList(id, price, name, image, vendorName){
+  
+function look(id){
+  let product=0
+  let allfoods=JSON.parse(localStorage.getItem("mredible_cart"))
+          Object.keys(allfoods).forEach((item)=>{
+            if (item===localStorage.getItem("nameobject") ){
+              allfoods[localStorage.getItem("nameobject")].map(item=>{
+                if(item.id===id){
+                  product=1
+                }
+              }) 
+            }
+          })
+  return product
+}
+  async function addItemsToCartList(id, price, name, image, vendorName){
+    let imageUrl=null
+    const storage = getStorage();
+             await getDownloadURL(refStorage(storage, image))
+                .then((url) => {
+                  // `url` is the download URL for 'images/stars.jpg'
+                  imageUrl=url
+                  console.log(url)
+                })
+                .catch((error) => {
+                  // Handle any errors
+                });
     const quantity=getproductquantity(id)
-    if (quantity===0){
+      if (quantity===0){
         // productsIDInTheCartList=[{id:id, price:price, name:name, image:image, vendorName:vendorName, quantity:1}, ...productsIDInTheCartList ]
         if (localStorage.getItem("mredible_cart") !==null){
           let allfoods=JSON.parse(localStorage.getItem("mredible_cart"))
           Object.keys(allfoods).forEach((item)=>{
-            if (item===localStorage.getItem("nameobject")){
-              allfoods[item]=[{id:id, price:price, name:name, image:image, vendorName:vendorName, quantity:1}, ...allfoods[item] ]
-              console.log(allfoods[item])
-              localStorage.setItem("mredible_cart", JSON.stringify(allfoods))
+            
+            if (item===localStorage.getItem("nameobject") ){
+              let finditem=look(id)
+              if (finditem===0){
+                allfoods[localStorage.getItem("nameobject")]=[{id:id, price:price, name:name, image:imageUrl, vendorName:vendorName, quantity:1}, ...allfoods[item] ]
+                console.log(allfoods[item])
+                localStorage.setItem("mredible_cart", JSON.stringify(allfoods))
+              }
             }else{
-              allfoods[localStorage.getItem("nameobject")] = [{id:id, price:price, name:name, image:image, vendorName:vendorName, quantity:1} ];
+              allfoods[localStorage.getItem("nameobject")] = [{id:id, price:price, name:name, image:imageUrl, vendorName:vendorName, quantity:1} ];
               localStorage.setItem("mredible_cart", JSON.stringify(allfoods))
             }
           })
@@ -93,7 +138,7 @@ function Cartprovider({children}) {
       }else{console.log("item already exist in cart")}
 
     getTotalCart() 
-    // localStorage.setItem("mredible_cart", JSON.stringify(productsIDInTheCartList))
+    // set the count on the cart
     if (localStorage.getItem("mredible_cart")!==null){
       let allfoods=JSON.parse(localStorage.getItem("mredible_cart"))
       let cartlength=0
@@ -103,11 +148,7 @@ function Cartprovider({children}) {
           setnumberOfItemsInCart(cartlength)
         }
       })
-      // setnumberOfItemsInCart(JSON.parse(localStorage.getItem("mredible_cart")).length)
     }
-    // else{
-    //   setnumberOfItemsInCart(0)
-    // }
   }
 
   function deleteFromCartList(id){
@@ -201,6 +242,19 @@ function Cartprovider({children}) {
         }
       })
     }
+
+    if (localStorage.getItem("mredible_cart")!==null){
+      let allfoods=JSON.parse(localStorage.getItem("mredible_cart"))
+      let cartlength=0
+      Object.keys(allfoods).forEach((item)=>{
+        if (item===localStorage.getItem("nameobject")){
+          cartlength=allfoods[item].length
+          setnumberOfItemsInCart(cartlength)
+        }
+      })
+      // setnumberOfItemsInCart(JSON.parse(localStorage.getItem("mredible_cart")).length)
+    }
+
   }
 
   // let userOrders=[]

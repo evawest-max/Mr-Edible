@@ -11,7 +11,7 @@ import { getDownloadURL, getStorage, ref } from "firebase/storage";
  function Fooditem(props){
     const cart= useContext(Cartcontext)
     
-    const [buttonState, newbuttonState]= useState(!props.cartcheck?<button onClick={addToCart} className="food-button">Add to cart <FaCartPlus/></button>:<button onClick={removefromCart} className="food-button">Remove <MdRemoveShoppingCart /></button>)
+    const [buttonState, newbuttonState]= useState(<button onClick={addToCart} className="food-button">Add to cart <FaCartPlus/></button>)
 
     function addToCart(){
         newbuttonState(<button onClick={removefromCart} className="food-button">Remove <MdRemoveShoppingCart /></button>)

@@ -29,6 +29,8 @@ function Cart(){
           }else allCartItems=[]
         })
     }
+
+    
     
     allCartItems.forEach(element => {
         deleveryfee+=1000
@@ -45,27 +47,54 @@ function Cart(){
     
     allCartItems.reverse()
     useEffect(()=>{
-        if (JSON.stringify(localStorage.getItem('kilimanjaro')).length===0){
-            newfoodState("cart is empty")
-        }
-        else{newfoodState(allCartItems.map((item, index)=>{    
-            function removeFromCart(){  
-                cart.deleteFromCartList(item.id) 
+        if (localStorage.getItem("mredible_cart") !==null){
+            let allfoods=JSON.parse(localStorage.getItem("mredible_cart"))
+            Object.keys(allfoods).forEach((item)=>{
+              if (item===localStorage.getItem("nameobject")){
+                if (allfoods[item].length===0){
+                    newfoodState("cart is empty")
+                }else if (allfoods[item].length>0){newfoodState(allfoods[item].map((item, index)=>{    
+                    function removeFromCart(){  
+                        cart.deleteFromCartList(item.id) 
+                    }
+                    return(
+                        <div key={index} className="foodcartMapped">
+                            <ItemQuantity id={item.id} price={item.price} quantity={item.quantity}/>
+                            <div className="foodcartInfomation">
+                                <img className="foodcartMappedImage" src={item.image} alt="food"/>
+                                <p>{item.name}</p>
+                                <p className="foodcartMappedAmount">₦{item.price}</p>
+                                <img onClick={removeFromCart} className="Xbutton" src={removeBTN} alt="remove button"/>
+                            </div>
+                        </div>
+                    ) 
+                }))
+                // allCartItems=allfoods[item]
+              }
             }
-            return(
-                <div key={index} className="foodcartMapped">
-                    <ItemQuantity id={item.id} price={item.price} quantity={item.quantity}/>
-                    <div className="foodcartInfomation">
-                        <img className="foodcartMappedImage" src={item.image} alt="food"/>
-                        <p>{item.name}</p>
-                        <p className="foodcartMappedAmount">₦{item.price}</p>
-                        <img onClick={removeFromCart} className="Xbutton" src={removeBTN} alt="remove button"/>
-                    </div>
-                </div>
-            ) 
-        }))
+            })
+        }
+        // if (JSON.stringify(localStorage.getItem('kilimanjaro')).length===0){
+        //     newfoodState("cart is empty")
+        // }
+        // else{newfoodState(allCartItems.map((item, index)=>{    
+        //     function removeFromCart(){  
+        //         cart.deleteFromCartList(item.id) 
+        //     }
+        //     return(
+        //         <div key={index} className="foodcartMapped">
+        //             <ItemQuantity id={item.id} price={item.price} quantity={item.quantity}/>
+        //             <div className="foodcartInfomation">
+        //                 <img className="foodcartMappedImage" src={item.image} alt="food"/>
+        //                 <p>{item.name}</p>
+        //                 <p className="foodcartMappedAmount">₦{item.price}</p>
+        //                 <img onClick={removeFromCart} className="Xbutton" src={removeBTN} alt="remove button"/>
+        //             </div>
+        //         </div>
+        //     ) 
+        // }))
         productsIDInTheCartListpagetotal=subtotal
-    }
+    
     },[cart.items])
 
     // productsIDInTheCartListpagetotal=subtotal
