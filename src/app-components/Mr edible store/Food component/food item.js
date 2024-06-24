@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./Foodsection.css";
 import { Cartcontext} from "../context folder/appContext";
 import { useContext } from "react";
@@ -38,7 +38,6 @@ import { getDownloadURL, getStorage, ref } from "firebase/storage";
     });
 
     return(
-       
             <div className="food-item"  >
                 <img src={imageurl} alt="rice"/>
                 <p className="food-name">{props.name}</p>
@@ -46,7 +45,6 @@ import { getDownloadURL, getStorage, ref } from "firebase/storage";
                 <div>{props.stars}</div>
                 {!props.availability?<button>Unavailabile</button>:buttonState}
             </div>
-        
     )
 }
 export default Fooditem
