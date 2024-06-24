@@ -20,6 +20,9 @@ export default function VendorNav() {
     if (localStorage.getItem("mredibleloggedinUser")!==null){
       localStorage.removeItem('mredibleloggedinUser')
       localStorage.removeItem('vendorsFoodItems')
+      localStorage.removeItem('mredible_cart')
+      localStorage.removeItem('allVendorItem')
+      localStorage.removeItem('vendors')  
         cart.signout()
     }
   }
