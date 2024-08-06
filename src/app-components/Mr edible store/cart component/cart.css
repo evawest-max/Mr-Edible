@@ -141,6 +141,7 @@
 }
 .cart-back-arrow{
     display: flex;
+    margin-top: 40px;
     margin-left: 10px;
     cursor: pointer;
 }
