@@ -8,7 +8,6 @@ import {AiFillStar} from "react-icons/ai";
 import { TiArrowDownThick } from "react-icons/ti";
 import Footer from "../component/footer-components/footer";
 import VendorCard from "../component/vendor-component/vendor-card";
-import vendorsdata from "../component/vendor-component/vendorDatabase";
 import { getDatabase, onValue, ref } from "firebase/database";
 // import { FaSearch } from "react-icons/fa";
 // import { IoIosStar } from "react-icons/io";
@@ -17,11 +16,12 @@ function Vendors(){
     // let cart=useContext(Cartcontext)
     let sortedvendor=[]
     let vendorsData=JSON.parse(localStorage.getItem("vendors"))
-    let vendorsda=Object.values(vendorsData).map((item)=>{
-        if (item.accountType==='vendor'){
-            sortedvendor.push(item)
-        }
-    })
+    function loadvendors(){
+        vendorsData=JSON.parse(localStorage.getItem("vendors"))
+        sortedvendor= Object.values(vendorsData).filter(item => item.accountType==='vendor' )  
+    }
+    localStorage.getItem("vendors")&& loadvendors()
+    
     
 
     let [vendor, setvendor]=useState(sortedvendor.map((data, index)=>{
@@ -41,7 +41,7 @@ function Vendors(){
         let filteredVendor=sortedvendor.filter((vendor, index)=>{
             return vendor.bussiness_name.toLocaleLowerCase().includes(inputvalue.current.value.toLocaleLowerCase())
         })
-        vendorsda.length>0 ? setvendor(filteredVendor.map((data, index)=>{
+        sortedvendor.length>0 ? setvendor(filteredVendor.map((data, index)=>{
             let star=data.rating===1?<AiFillStar/>:data.rating===2?<div><AiFillStar/><AiFillStar/></div>:data.rating===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
             return(
                 
@@ -67,26 +67,20 @@ function Vendors(){
     });
 
     function showResentlyAddedVendor(){
-        vendorsData=JSON.parse(localStorage.getItem("vendors"))
-        vendorsda=Object.values(vendorsData).map((item)=>{
-        if (item.accountType==='vendor'){
-            sortedvendor.push(item)
-        }
-        })
-    
+        loadvendors()
 
-    setvendor(sortedvendor.map((data, index)=>{
-        let star=data.rating===1?<AiFillStar/>:data.rating===2?<div><AiFillStar/><AiFillStar/></div>:data.rating===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-        // if (!localStorage.getItem(data.bussiness_name)) {
-        //     localStorage.setItem(data.bussiness_name, JSON.stringify([]))
-        // }    
-        return(
-                
-                    <VendorCard key={index} name={data.bussiness_name} image={data.passport} rating={star} about={data.about} vendorPage={data.vendorPage}/>
-                
-            )
-    })
-    )
+        setvendor(sortedvendor.map((data, index)=>{
+            let star=data.rating===1?<AiFillStar/>:data.rating===2?<div><AiFillStar/><AiFillStar/></div>:data.rating===3?<div><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===4?<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>:data.rating===5&&<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
+            // if (!localStorage.getItem(data.bussiness_name)) {
+            //     localStorage.setItem(data.bussiness_name, JSON.stringify([]))
+            // }    
+            return(
+                    
+                        <VendorCard key={index} name={data.bussiness_name} image={data.passport} rating={star} about={data.about} vendorPage={data.vendorPage}/>
+                    
+                )
+            })
+        )
     }
 
     return(

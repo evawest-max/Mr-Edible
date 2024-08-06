@@ -53,6 +53,8 @@ function Cart(){
               if (item===localStorage.getItem("nameobject")){
                 if (allfoods[item].length===0){
                     newfoodState("cart is empty")
+                    // cart.totalItemInCart=0
+                    alert("Jesus")
                 }else if (allfoods[item].length>0){newfoodState(allfoods[item].map((item, index)=>{    
                     function removeFromCart(){  
                         cart.deleteFromCartList(item.id) 

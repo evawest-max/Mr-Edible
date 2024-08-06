@@ -43,6 +43,7 @@ export const Cartcontext= createContext({
 function Cartprovider({children}) {
   let regID=null
   let [imageUrl, setimageUrl]= useState("")
+
   if (localStorage.getItem("mredible_cart") !==null){
     let allfoods=JSON.parse(localStorage.getItem("mredible_cart"))
     Object.keys(allfoods).forEach((item)=>{

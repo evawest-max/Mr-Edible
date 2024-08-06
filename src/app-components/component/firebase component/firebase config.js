@@ -9,14 +9,14 @@ import { getMessaging } from "firebase/messaging";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAVgfqHjefIfMY5qEroa8BPSLg5cF-q8kI",
-  authDomain: "mr-edible-app-29b9c.firebaseapp.com",
-  databaseURL: "https://mr-edible-app-29b9c-default-rtdb.firebaseio.com",
-  projectId: "mr-edible-app-29b9c",
-  storageBucket: "mr-edible-app-29b9c.appspot.com",
-  messagingSenderId: "543967130031",
-  appId: "1:543967130031:web:8cd0c43cc468aef2103f5a"
+const firebaseConfig = {  
+  apiKey: "AIzaSyDTS9zAfJiFsZB4Yl42HpGXt0jDCJgNtuQ",
+  authDomain: "mr-edible-d79b7.firebaseapp.com",
+  databaseURL: "https://mr-edible-d79b7-default-rtdb.firebaseio.com",
+  projectId: "mr-edible-d79b7",
+  storageBucket: "mr-edible-d79b7.appspot.com",
+  messagingSenderId: "1035970516483",
+  appId: "1:1035970516483:web:8bb57b667064f230c02036"
 };
 
 // Initialize Cloud Storage and get a reference to the service

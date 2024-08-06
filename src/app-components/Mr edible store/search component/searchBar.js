@@ -12,6 +12,7 @@ import { useContext } from "react"
 import { Cartcontext } from "../context folder/appContext"
 import { IoIosSearch } from "react-icons/io";
 import { child, get, getDatabase, onValue, ref } from "firebase/database"
+import { productsIDInTheCartList } from "../context folder/appContext"
 
 
 
@@ -23,7 +24,7 @@ import { child, get, getDatabase, onValue, ref } from "firebase/database"
     cart.getTotalCart()
     let edFoods=[]
     // console.log(localStorage.getItem("nameobject"))
-  
+    
     for (const key in JSON.parse(localStorage.getItem("allVendorItem"))) {
         if (String(key).toLocaleLowerCase() === localStorage.getItem("nameobject").toLocaleLowerCase()){
             Object.values(JSON.parse(localStorage.getItem("allVendorItem"))[key]).map((item)=>{
