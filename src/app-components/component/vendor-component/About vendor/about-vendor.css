@@ -1,0 +1,59 @@
+
+
+
+#Vendors-personal-info-about{
+    /* margin-top: 500px; */
+    margin:70px auto 10px auto;
+    width: 80%;
+    border: 1px solid orange;
+    text-align: center;
+}
+#Vendors-personal-info-about img{
+    /* width: 100%; */
+    max-width: 600px;
+}
+#vendor-about-us{
+    /* max-width: 100%; */
+    margin-bottom: 100px;
+    padding: 0px 10%;
+    /* width: 80%; */
+    background-color: azure;
+}
+
+@media screen and (max-width: 1252px) {
+    #Vendors-personal-info-about img{
+        /* width: 100%; */
+        max-width: 100%;
+    }
+}
+@media screen and (max-width: 1119px) {
+    #Vendors-personal-info-about img{
+        /* width: 100%; */
+        /* max-width: 190px; */
+        margin: 0px auto;
+    }
+}
+
+@media screen and (max-width: 974px) {
+   
+    #Vendors-personal-info-about{
+        /* margin-top: 50px;
+        margin:50px 10px 10px 10px; */
+        text-align: center;
+    }
+    #Vendors-personal-info-about img{
+        /* width: 100%; */
+        max-width: 100%;
+    }
+    #vendor-about-us{
+        max-width: 100%;
+        margin:0px 10px 10px 10px
+    }
+    
+}
+@media screen and (max-width: 349px) {
+   
+}
+@media screen and (max-width: 319px) {
+    
+}

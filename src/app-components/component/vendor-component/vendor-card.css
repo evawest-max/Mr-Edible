@@ -7,7 +7,7 @@
     width: 90%;
     max-width: 115px;
     min-width: 100px;
-    height: 155px;
+    height: fit-content;
     animation-name: fade-slide-right;
     animation-duration: 2s;
     /* box-shadow: -2px 3px 7px  white; */
@@ -26,7 +26,7 @@
 
 }
 #vendor-rating{
-    position: absolute;
+    /* position: absolute; */
     color: gold;
     width: 100%;
     bottom: 1px;
@@ -38,5 +38,6 @@
 #vendor-Aboutus-button{
     width: 100%;
     background-color: orange;
+    margin-bottom: 15px;
 }
 
