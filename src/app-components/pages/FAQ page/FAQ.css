@@ -1,0 +1,30 @@
+#FAQ-section{
+    background-image: url("https://images.squarespace-cdn.com/content/v1/590cc34c1b631b401a7b6e84/1494698441925-3I4RZWNHUPHXZBUPYZQ0/image-asset.jpeg");
+    /* border: 2px solid red; */
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+#faq-title{
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+#faq-title h1{
+    text-align: center;
+    font-size:250% ;
+}
+#FAQ-question-container{
+    width: 80%;
+    margin: 0px auto;
+}
+#FAQ-question-container h4{
+    text-decoration: underline;
+    font-size: 130%;
+    cursor: pointer;
+}
+#FAQ-question-container p{
+    font-size: larger;
+    cursor: pointer;
+}

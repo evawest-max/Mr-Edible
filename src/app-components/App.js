@@ -5,8 +5,8 @@ import CheckoutPage from './Mr edible store/cart component/checkoutPage';
 import Cartprovider from './Mr edible store/context folder/appContext';
 import LoginPage from './login/login';
 
-import SpecialOrders from './navigation/specialOrder';
-import TrackOrder from './navigation/trackOrder';
+import SpecialOrders from './navigation/contact';
+import TrackOrder from './navigation/services';
 import Vendors from './navigation/vendors';
 import Notfound from './notfound/notfound';
 import SearchBar from './Mr edible store/search component/searchBar';
@@ -37,6 +37,8 @@ import VendorFoods from './login/vendors/vendor-foods/vendor-foods';
 import VendorUpload from './login/vendors/upload/upload';
 import VendorSettings from './login/vendors/vendor settings/vendor-settings';
 import AboutVendor from './component/vendor-component/About vendor/about-vendor';
+import Faq from './pages/FAQ page/FAQ';
+import WatchHowTo from './pages/how to order/watch_how_to';
 
 
 const router=createBrowserRouter(
@@ -58,6 +60,8 @@ const router=createBrowserRouter(
         <Route path='/smile-cakes-cart' element={<SmileCakesCart/>}></Route>
         <Route path='/smile-cakes-checkoutpage' element={<Cartitem/>}></Route>
         <Route path='/about-vendor' element={<AboutVendor/>}></Route>
+        <Route path='/faq'element={<Faq/>}></Route>
+        <Route path='/watch_how_to' element={<WatchHowTo/>}></Route>
         <Route path='admin-page' element={<AdminRoot/>}>
           <Route index element={<Overview/>}/>
           <Route path='overview' element={<Overview/>}/>
